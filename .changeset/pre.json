@@ -1,0 +1,15 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@repo/next-app": "0.0.0",
+    "@gitcoin/config": "0.0.0",
+    "@gitcoin/themes": "0.0.0",
+    "@gitcoin/types": "0.0.0",
+    "@gitcoin/ui": "0.0.0",
+    "@gitcoin/utils": "0.0.0"
+  },
+  "changesets": [
+    "seven-shirts-destroy"
+  ]
+}

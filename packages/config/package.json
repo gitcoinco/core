@@ -1,0 +1,53 @@
+{
+  "name": "@gitcoin/config",
+  "version": "0.0.0-beta.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitcoinco/core",
+    "directory": "packages/config"
+  },
+  "private": true,
+  "license": "AGPL-3.0",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "exports": {
+    "./eslint-library": "./eslint/library.js",
+    "./eslint-next": "./eslint/next.js",
+    "./eslint-react": "./eslint/react.js",
+    "./eslint-react-internal": "./eslint/react-internal.js",
+    "./eslint-storybook": "./eslint/storybook.js",
+    "./tsconfig-nextjs.json": "./tsconfig/nextjs.json",
+    "./tsconfig-react.json": "./tsconfig/react.json",
+    "./tsconfig-storybook.json": "./tsconfig/storybook.json",
+    "./tsconfig-ui.json": "./tsconfig/ui.json"
+  },
+  "files": [
+    "eslint/library.js",
+    "eslint/next.js",
+    "eslint/react.js",
+    "eslint/react-internal.js",
+    "eslint/storybook.js",
+    "tsconfig/base.json",
+    "tsconfig/nextjs.json",
+    "tsconfig/react.json",
+    "tsconfig/storybook.json",
+    "tsconfig/ui.json"
+  ],
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^14.1.4",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "@vercel/style-guide": "^5.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-turbo": "^2.0.0",
+    "eslint-plugin-mdx": "^3.1.5",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-storybook": "^0.8.0",
+    "typescript": "5.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

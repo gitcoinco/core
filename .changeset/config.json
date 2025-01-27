@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "gitcoinco/core" }],
+  "baseBranch": "main",
+  "commit": false,
+  "fixed": [["@gitcoin/**"]],
+  "linked": [],
+  "access": "public",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@repo/**"]
+}

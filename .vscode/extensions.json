@@ -1,9 +1,12 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
     "esbenp.prettier-vscode",
-    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "unifiedjs.vscode-mdx",
     "figma.figma-vscode-extension",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss"
   ]
 }

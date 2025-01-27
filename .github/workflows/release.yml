@@ -1,71 +1,50 @@
-name: release
+name: Release
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to tag (e.g., 3.0.3)"
-        required: true
-        type: string
 
-permissions:
-  contents: read
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
-
+      contents: write # to create release (changesets/action)
+      issues: write # to post issue comments (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm 8
+        uses: pnpm/action-setup@v3
         with:
-          fetch-depth: 0
+          version: 8
 
-      - name: Setup Git
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git tag -a v${{ inputs.version }} -m "v${{ inputs.version }}"
-          git push origin v${{ inputs.version }}
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
         with:
-          version: 9
-          run_install: false
+          node-version: 20.x
 
-      - uses: actions/setup-node@v4
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
         with:
-          node-version-file: ".nvmrc"
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile # Install dependencies with lockfile's versions to ensure consistency
-
-      - name: Cache Build
-        id: cache-build
-        uses: actions/cache@v4
-        with:
-          path: dist
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.mdx') }} # Cache key based on OS and file hashes
-          restore-keys: |
-            ${{ runner.os }}-build-
-
-      - name: Build
-        if: steps.cache-build.outputs.cache-hit != 'true'
-        run: pnpm build
-
-      - name: Semantic Release
-        run: pnpx semantic-release
+          publish: pnpm release
+          version: pnpm version-packages
+          commit: "ci: new release"
+          title: "ci: new release candidate"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # - name: Send a Slack notification if a publish happens
+      #   if: steps.changesets.outputs.published == 'true'
+      #   # You can do something when a publish happens.
+      #   run: my-slack-bot send-notification --message "A new version of ${GITHUB_REPOSITORY} was published!"

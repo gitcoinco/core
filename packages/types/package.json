@@ -1,0 +1,33 @@
+{
+  "name": "@gitcoin/types",
+  "version": "0.0.0-beta.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitcoinco/core",
+    "directory": "packages/types"
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "sideEffects": false,
+  "license": "AGPL-3.0",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "devDependencies": {
+    "@gitcoin/config": "workspace:*",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.2",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "react": "18.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

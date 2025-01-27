@@ -1,11 +1,9 @@
-import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
-import { colors } from "./src/theme/colors";
+import { colors } from "./colors";
 
-export default withTV({
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+const config: Omit<Config, "content"> = {
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
     colors,
@@ -75,4 +73,6 @@ export default withTV({
     },
   },
   plugins: [tailwindcssAnimate],
-}) satisfies Config;
+} satisfies Omit<Config, "content">;
+
+export default config;
