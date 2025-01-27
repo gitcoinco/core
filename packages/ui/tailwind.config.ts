@@ -1,9 +1,9 @@
 import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
-import sharedConfig from "@gitcoin/themes/gitcoin-theme"
+import { tailwindConfig } from "@gitcoin/themes"
 
 
 export default withTV<Pick<Config, "content" | "presets">>({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  presets: [sharedConfig],
+  presets: [tailwindConfig],
 }) satisfies Config;

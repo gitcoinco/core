@@ -1,4 +1,4 @@
-import { Colors, ColorSet } from "./types";
+import { Colors, ColorSet } from "../types";
 
 const black = "#000000";
 const white = "#ffffff";

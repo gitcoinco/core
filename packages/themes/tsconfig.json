@@ -1,8 +1,10 @@
 {
   "extends": "@gitcoin/config/tsconfig-react.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
-  "include": ["tailwind.config.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

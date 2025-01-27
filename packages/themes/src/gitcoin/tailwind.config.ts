@@ -3,7 +3,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 import { colors } from "./colors";
 
-const config: Omit<Config, "content"> = {
+export const tailwindConfig: Omit<Config, "content"> = {
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
     colors,
@@ -74,5 +74,3 @@ const config: Omit<Config, "content"> = {
   },
   plugins: [tailwindcssAnimate],
 } satisfies Omit<Config, "content">;
-
-export default config;
