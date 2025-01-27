@@ -6,21 +6,38 @@
     "url": "https://github.com/gitcoinco/core",
     "directory": "packages/themes"
   },
-  "private": true,
   "license": "AGPL-3.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "exports": {
-    "./gitcoin-theme": "./tailwind.config.ts",
-    "./gitcoin-colors": "./colors/colors.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./gitcoin": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@gitcoin/config": "workspace:*",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.14",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tsup": "^8.0.2",
+    "typescript": "5.5.4"
   },
   "publishConfig": {
     "access": "public"
