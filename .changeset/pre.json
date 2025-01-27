@@ -10,6 +10,7 @@
     "@gitcoin/utils": "0.0.0"
   },
   "changesets": [
+    "olive-toes-change",
     "seven-shirts-destroy"
   ]
 }

@@ -1,5 +1,13 @@
 # @gitcoin/config
 
+## 0.0.0-beta.1
+
+### Patch Changes
+
+- [#1](https://github.com/gitcoinco/core/pull/1)
+  [`f912011`](https://github.com/gitcoinco/core/commit/f912011edfe5a4658abc72202b64c4f7cd699f85)
+  Thanks [@hussedev](https://github.com/hussedev)! - fix: theme not published
+
 ## 0.0.0-beta.0
 
 ### Patch Changes
