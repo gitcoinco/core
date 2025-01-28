@@ -1,5 +1,25 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.3
+
+### Patch Changes
+
+- [#5](https://github.com/gitcoinco/core/pull/5) [`cc1a895`](https://github.com/gitcoinco/core/commit/cc1a895ad3e81120cf7f82cd7c15ec343def7b84) Thanks [@nijoe1](https://github.com/nijoe1)! - ### Features
+
+  - Created new program picker modal component for improved program selection
+  - Refactored carousel component for better performance and maintainability
+
+  ### Bug Fixes
+
+  - Improved disabled field styling
+  - Fixed conditional padding in review application page checker
+  - Updated program list filter placeholder text
+
+  ### Chores
+
+  - Enhanced IndexDB implementation
+  - Added mock service worker file for testing purposes
+
 ## 0.0.0-beta.2
 
 ### Patch Changes
