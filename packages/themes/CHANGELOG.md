@@ -1,5 +1,7 @@
 # @gitcoin/themes
 
+## 0.0.0-beta.2
+
 ## 0.0.0-beta.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.2
+
+### Patch Changes
+
+- [#3](https://github.com/gitcoinco/core/pull/3) [`81c843c`](https://github.com/gitcoinco/core/commit/81c843c5234387e8ae5311d3c253d66ce4f43c3a) Thanks [@hussedev](https://github.com/hussedev)! - Added disabled input and improvements for pool details
+
 ## 0.0.0-beta.1
 
 ### Patch Changes
