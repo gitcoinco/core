@@ -23,3 +23,4 @@ export * from "./Toast";
 export * from "./VerticalTabs";
 export * from "./Checkbox";
 export * from "./Switch";
+export * from "./Carousel";
