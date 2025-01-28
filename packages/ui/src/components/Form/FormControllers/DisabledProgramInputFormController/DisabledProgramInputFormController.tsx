@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import { getChainInfo } from "@/lib";
@@ -32,7 +31,7 @@ export const renderDisabledProgramInput = (value: {
   const { chainId, programName } = value;
   const chainInfo = getChainInfo(chainId);
   return (
-    <div className="flex cursor-not-allowed gap-2 rounded-md bg-grey-100 px-3 py-2 font-normal text-grey-500">
+    <div className="flex cursor-not-allowed items-center gap-2 rounded-md bg-grey-100 px-3 py-2 font-normal text-grey-500">
       <Icon type={chainInfo.icon} />
       <div>{programName}</div>
     </div>
