@@ -43,7 +43,7 @@ export const getOrderAndFilterOptions = (programs: ProgramCardProps[]) => {
       multiple: true,
       collapsible: true,
       items: [...new Set(programs.map((program) => program.chainId))].map((chainId) => ({
-        label: `Rounds on ${getChainInfo(chainId).name}`,
+        label: `Programs on ${getChainInfo(chainId).name}`,
         value: chainId.toString(),
       })),
     },

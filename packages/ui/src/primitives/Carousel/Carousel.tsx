@@ -1,10 +1,45 @@
 import * as React from "react";
 
+import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/outline";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { tv, VariantProps } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button/Button";
+
+export const carouselVariants = tv({
+  slots: {
+    icon: "size-12 text-black",
+  },
+  variants: {
+    size: {
+      sm: {
+        icon: "size-8",
+      },
+      md: {
+        icon: "size-10",
+      },
+      lg: {
+        icon: "size-12",
+      },
+      xl: {
+        icon: "size-14",
+      },
+    },
+  },
+});
+
+export const CarouselIcons = {
+  default: {
+    left: ArrowCircleLeftIcon,
+    right: ArrowCircleRightIcon,
+  },
+  simple: {
+    left: ArrowLeft,
+    right: ArrowRight,
+  },
+} as const;
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -175,57 +210,46 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 );
 CarouselItem.displayName = "CarouselItem";
 
-const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = "outlined-primary", size = "icon", ...props }, ref) => {
-    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+export interface NavigateButtonProps extends React.ComponentProps<typeof Button> {
+  carouselIconType?: keyof typeof CarouselIcons;
+  size?: VariantProps<typeof carouselVariants>["size"];
+}
+
+const CarouselPrevious = React.forwardRef<HTMLButtonElement, NavigateButtonProps>(
+  ({ className, size = "lg", carouselIconType = "default", ...props }, ref) => {
+    const { scrollPrev, canScrollPrev } = useCarousel();
+    const { icon } = carouselVariants({ size });
+    const Icon = CarouselIcons[carouselIconType].left;
 
     return (
       <Button
         ref={ref}
-        variant={variant}
-        size={size}
-        className={cn(
-          "absolute  h-8 w-8 rounded-full",
-          orientation === "horizontal"
-            ? "-left-12 top-1/2 -translate-y-1/2"
-            : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-          className,
-        )}
+        className={cn("size-12 bg-transparent", className)}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
+        icon={<Icon className={cn(icon(), !canScrollPrev && "text-grey-500")} />}
         {...props}
-      >
-        <ArrowLeft className="h-4 w-4" />
-        <span className="sr-only">Previous slide</span>
-      </Button>
+      />
     );
   },
 );
 CarouselPrevious.displayName = "CarouselPrevious";
 
-const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = "outlined-primary", size = "icon", ...props }, ref) => {
-    const { orientation, scrollNext, canScrollNext } = useCarousel();
+const CarouselNext = React.forwardRef<HTMLButtonElement, NavigateButtonProps>(
+  ({ className, size = "lg", carouselIconType = "default", ...props }, ref) => {
+    const { scrollNext, canScrollNext } = useCarousel();
+    const { icon } = carouselVariants({ size });
+    const Icon = CarouselIcons[carouselIconType].right;
 
     return (
       <Button
         ref={ref}
-        variant={variant}
-        size={size}
-        className={cn(
-          "absolute h-8 w-8 rounded-full",
-          orientation === "horizontal"
-            ? "-right-12 top-1/2 -translate-y-1/2"
-            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-          className,
-        )}
+        className={cn("size-12 bg-transparent", className)}
         disabled={!canScrollNext}
         onClick={scrollNext}
+        icon={<Icon className={cn(icon(), !canScrollNext && "text-grey-500")} />}
         {...props}
-      >
-        <ArrowRight className="h-4 w-4" />
-        <span className="sr-only">Next slide</span>
-      </Button>
+      />
     );
   },
 );

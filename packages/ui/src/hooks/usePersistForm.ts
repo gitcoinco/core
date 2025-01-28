@@ -7,6 +7,8 @@ import { useInterval } from "react-use";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
 
+import { compare } from "@/lib";
+
 import { useIndexedDB } from "./useIndexedDB";
 
 /**
@@ -29,8 +31,6 @@ export const usePersistForm = (
   const [initialized, setInitialized] = useState(false);
 
   const { getValue, setValue, isReady } = useIndexedDB(config);
-
-  const [formValues, setFormValues] = useState<any>(null);
 
   useEffect(() => {
     if (!isReady || !persistKey) return;
@@ -55,10 +55,12 @@ export const usePersistForm = (
 
     (async () => {
       try {
-        const values = form.getValues();
-        if (JSON.stringify(values) !== JSON.stringify(formValues)) {
-          await setValue(persistKey, values);
-          setFormValues(values);
+        const current_values = form.getValues();
+        const form_values = await getValue(persistKey);
+        const isEqual = compare(current_values, form_values);
+        if (!isEqual && Object.keys(current_values).length > 0) {
+          await setValue(persistKey, current_values);
+          return;
         }
       } catch (err) {
         console.error("Error saving to IndexedDB:", err);
