@@ -1,6 +1,7 @@
 import { FieldArrayProps, MetricsProps } from "@/components/Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
 import { SelectProps } from "@/primitives/Select";
+import { InputProps } from "@/ui-shadcn/input";
 
 import { Markdown } from "../markdown";
 
@@ -49,7 +50,7 @@ export interface BaseField {
   className?: string;
 }
 
-export interface InputField {
+export interface InputField extends InputProps {
   field: BaseField;
   component: "Input";
   type?: string;

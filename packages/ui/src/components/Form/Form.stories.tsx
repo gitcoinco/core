@@ -14,7 +14,17 @@ const fields: FormField[] = [
     component: "Input",
     placeholder: "your cool round name",
   },
-
+  {
+    field: {
+      name: "disabledField",
+      label: "Disabled input",
+      className: "border-grey-300",
+      validation: { stringValidation: { minLength: 7 } },
+    },
+    component: "Input",
+    placeholder: "This field is disabled",
+    disabled: true,
+  },
   {
     field: {
       name: "roundDescription",
