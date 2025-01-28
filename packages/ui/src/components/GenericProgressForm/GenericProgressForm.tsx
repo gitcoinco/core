@@ -18,6 +18,7 @@ export interface GenericProgressFormProps {
   onSubmit: (values: any) => Promise<void>;
   dbName: string;
   storeName: string;
+  stepsPersistKey: string;
 }
 
 export const GenericProgressForm = ({
@@ -26,9 +27,10 @@ export const GenericProgressForm = ({
   onSubmit,
   dbName,
   storeName,
+  stepsPersistKey,
 }: GenericProgressFormProps) => {
-  const { currentStep, updateStep } = useFormProgress(name);
-  const { getValues } = useIndexedDB({ dbName, storeName });
+  const { currentStep, updateStep } = useFormProgress(stepsPersistKey);
+  const { getValues, isReady } = useIndexedDB({ dbName, storeName });
   const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
 
   const handleNextStep = () => {
@@ -58,6 +60,8 @@ export const GenericProgressForm = ({
 
   const currentStepProps = steps[currentStep];
   const progressValue = (currentStep / steps.length) * 100;
+
+  if (!isReady) return null;
 
   return (
     <div className="inset-0 flex justify-center gap-24 px-20 pt-16">

@@ -22,5 +22,6 @@ export const Default: Story = {
     onSubmit: async (values: any) => onSubmit(values),
     dbName: "formDB",
     storeName: "formDrafts",
+    stepsPersistKey: "roundSetup",
   },
 };
