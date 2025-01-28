@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardProps } from "@/primitives/StatCard";
@@ -16,7 +17,7 @@ import {
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
-import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
+import { getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
 export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean }) => {
@@ -81,7 +82,7 @@ export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean
           donationsEndTime={poolData?.donationsEndTime}
         />
       )}
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
+      <div className={cn("mx-auto flex max-w-[1440px] flex-col gap-6", isStandalone && "px-20")}>
         {isStandalone && (
           <div className="flex justify-start">
             <Button
