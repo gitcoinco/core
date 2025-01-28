@@ -29,6 +29,7 @@ export interface CheckerRouterProps {
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;
+  isStandalone: boolean;
 }
 
 export const CheckerRouter = ({
@@ -42,6 +43,7 @@ export const CheckerRouter = ({
   steps,
   setReviewBody,
   isReviewing,
+  isStandalone = true,
 }: CheckerRouterProps) => {
   useInitialize({ address, poolId, chainId });
 
@@ -53,7 +55,9 @@ export const CheckerRouter = ({
   }, [route]);
 
   return match(route)
-    .with({ id: CheckerRoute.ReviewApplications }, () => <ReviewApplicationsPage />)
+    .with({ id: CheckerRoute.ReviewApplications }, () => (
+      <ReviewApplicationsPage isStandalone={isStandalone} />
+    ))
     .with(
       { id: CheckerRoute.ApplicationEvaluationOverview, projectId: P.string.minLength(1) },
       ({ projectId }) => (
@@ -62,6 +66,7 @@ export const CheckerRouter = ({
           poolId={poolId}
           applicationId={projectId}
           address={address}
+          isStandalone={isStandalone}
         />
       ),
     )
@@ -78,6 +83,7 @@ export const CheckerRouter = ({
             chainId={chainId}
             poolId={poolId}
             address={address}
+            isStandalone={isStandalone}
           />
         );
       },
@@ -87,6 +93,7 @@ export const CheckerRouter = ({
         steps={steps}
         setReviewBody={setReviewBody}
         isReviewing={isReviewing}
+        isStandalone={isStandalone}
       />
     ))
     .otherwise(() => <div>{`Route Not Found: ${JSON.stringify(route)}`}</div>);

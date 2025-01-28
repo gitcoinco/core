@@ -11,7 +11,7 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ApplicationSummary, SummaryAccordians } from "~application";
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations, useGetPastApplications } from "~checker/hooks";
-import { getExplorerUrl } from "~checker/utils";
+import { getApplicationLinkOnExplorer, getExplorerUrl } from "~checker/utils";
 import { ProjectBanner } from "~project";
 import { ProjectSummary } from "~project";
 
@@ -80,10 +80,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
               variant="none"
               className="h-[38px] w-40 bg-white"
               onClick={() => {
-                window.open(
-                  `${getExplorerUrl(chainId)}/#/round/${chainId}/${poolId}/${applicationId}`,
-                  "_blank",
-                );
+                window.open(getApplicationLinkOnExplorer(chainId, poolId, applicationId), "_blank");
               }}
             />
           </div>

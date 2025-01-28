@@ -72,32 +72,35 @@ export const IconLabel: React.FC<
           ))}
       </IconLabelContainer>
     ))
-    .with({ type: "roundPeriod" }, ({ startDate, endDate = undefined, className, isLoading }) => (
-      <IconLabelContainer
-        type="period"
-        className={className}
-        iconType={IconType.CLOCK}
-        iconVariant={icon({ type: isLoading ? "loading" : "roundPeriod" })}
-      >
-        {match(isLoading)
-          .with(true, () => (
-            <div className="flex items-center gap-1">
-              <span className={text({ type: "roundPeriod" })}>{`Review period:`}</span>
-              <Skeleton className="h-6 w-72 rounded-lg" />
-            </div>
-          ))
-          .otherwise(() => (
-            <span className={text({ type: "roundPeriod" })}>{`Review period: ${formatDate(
-              startDate,
-              DateFormat.ShortMonthDayYear24HourUTC,
-            )} - ${
-              endDate
-                ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
-                : "No end date (open round)"
-            }`}</span>
-          ))}
-      </IconLabelContainer>
-    ))
+    .with(
+      { type: "roundPeriod" },
+      ({ startDate, endDate = undefined, className, isLoading, label = "Review Period" }) => (
+        <IconLabelContainer
+          type="period"
+          className={className}
+          iconType={IconType.CLOCK}
+          iconVariant={icon({ type: isLoading ? "loading" : "roundPeriod" })}
+        >
+          {match(isLoading)
+            .with(true, () => (
+              <div className="flex items-center gap-1">
+                <span className={text({ type: "roundPeriod" })}>{label}</span>
+                <Skeleton className="h-6 w-72 rounded-lg" />
+              </div>
+            ))
+            .otherwise(() => (
+              <span className={text({ type: "roundPeriod" })}>{`${label}: ${formatDate(
+                startDate,
+                DateFormat.ShortMonthDayYear24HourUTC,
+              )} - ${
+                endDate
+                  ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
+                  : "No end date (open round)"
+              }`}</span>
+            ))}
+        </IconLabelContainer>
+      ),
+    )
     .with({ type: "dateWithPrefix" }, ({ date, prefix, className, isLoading }) => (
       <IconLabelContainer
         type="date"

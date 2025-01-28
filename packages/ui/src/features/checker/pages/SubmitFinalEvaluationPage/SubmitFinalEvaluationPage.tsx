@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
-import { Step } from "@/types";
+import { PoolType, Step } from "@/types";
 
 import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
@@ -19,7 +19,7 @@ import {
   useCheckerContext,
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
-import { getManagerUrl } from "~checker/utils";
+import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
@@ -28,12 +28,14 @@ export interface SubmitFinalEvaluationPageProps {
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;
+  isStandalone: boolean;
 }
 
 export const SubmitFinalEvaluationPage = ({
   steps,
   setReviewBody,
   isReviewing,
+  isStandalone,
 }: SubmitFinalEvaluationPageProps) => {
   const { categorizedReviews, statCardsProps, reviewBody, poolData } =
     useGetApplicationsFinalEvaluationPage() || {};
@@ -115,24 +117,32 @@ export const SubmitFinalEvaluationPage = ({
 
   return (
     <div className="flex flex-col gap-6">
-      <PoolSummary
-        chainId={chainId as number}
-        poolId={poolId as string}
-        programId={poolData?.project.id as string}
-        strategyName={poolData?.strategyName}
-        name={poolData?.roundMetadata.name}
-        applicationsStartTime={poolData?.applicationsStartTime}
-        applicationsEndTime={poolData?.applicationsEndTime}
-        donationsStartTime={poolData?.donationsStartTime}
-        donationsEndTime={poolData?.donationsEndTime}
-      />
+      {isStandalone && (
+        <PoolSummary
+          chainId={chainId as number}
+          poolId={poolId as string}
+          programId={poolData?.project.id as string}
+          strategyName={poolData?.strategyName}
+          name={poolData?.roundMetadata.name}
+          applicationsStartTime={poolData?.applicationsStartTime}
+          applicationsEndTime={poolData?.applicationsEndTime}
+          donationsStartTime={poolData?.donationsStartTime}
+          donationsEndTime={poolData?.donationsEndTime}
+        />
+      )}
       <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
         <div className="flex justify-start">
           <Button
             variant="secondry"
             icon={<Icon type={IconType.CHEVRON_LEFT} />}
             onClick={() =>
-              window.open(`${getManagerUrl(chainId as number)}/#/chain/${chainId}/round/${poolId}`)
+              window.open(
+                getRoundLinkOnManager(
+                  chainId as number,
+                  poolId as string,
+                  poolData?.strategyName as PoolType,
+                ),
+              )
             }
             value="back to round manager"
           />

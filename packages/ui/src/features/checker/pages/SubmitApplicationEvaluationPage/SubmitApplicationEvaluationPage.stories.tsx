@@ -60,6 +60,7 @@ export const Default: Story = {
         chainId={args.chainId}
         poolId={args.poolId}
         address={args.address}
+        isStandalone={true}
       />
     );
   },

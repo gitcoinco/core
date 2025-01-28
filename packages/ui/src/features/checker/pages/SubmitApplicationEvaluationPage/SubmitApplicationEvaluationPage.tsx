@@ -33,6 +33,7 @@ export interface SubmitApplicationEvaluationPageProps {
   isSuccess: boolean;
   isEvaluating: boolean;
   isError: boolean;
+  isStandalone: boolean;
 }
 
 export const SubmitApplicationEvaluationPage = ({
@@ -44,6 +45,7 @@ export const SubmitApplicationEvaluationPage = ({
   isSuccess,
   isEvaluating,
   isError,
+  isStandalone,
 }: SubmitApplicationEvaluationPageProps) => {
   useInitialize({ address, poolId, chainId });
 
@@ -134,17 +136,19 @@ export const SubmitApplicationEvaluationPage = ({
 
   return (
     <div className="flex flex-col gap-6">
-      <PoolSummary
-        chainId={chainId}
-        poolId={poolId}
-        programId={poolData?.project.id as string}
-        strategyName={poolData?.strategyName}
-        name={poolData?.roundMetadata?.name}
-        applicationsStartTime={poolData?.applicationsStartTime}
-        applicationsEndTime={poolData?.applicationsEndTime}
-        donationsStartTime={poolData?.donationsStartTime}
-        donationsEndTime={poolData?.donationsEndTime}
-      />
+      {isStandalone && (
+        <PoolSummary
+          chainId={chainId}
+          poolId={poolId}
+          programId={poolData?.project.id as string}
+          strategyName={poolData?.strategyName}
+          name={poolData?.roundMetadata?.name}
+          applicationsStartTime={poolData?.applicationsStartTime}
+          applicationsEndTime={poolData?.applicationsEndTime}
+          donationsStartTime={poolData?.donationsStartTime}
+          donationsEndTime={poolData?.donationsEndTime}
+        />
+      )}
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <SubmitApplicationEvaluationModal
           evaluationStatus={evaluationStatus}

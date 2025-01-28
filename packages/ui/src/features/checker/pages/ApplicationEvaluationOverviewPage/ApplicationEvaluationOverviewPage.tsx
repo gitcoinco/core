@@ -20,6 +20,7 @@ export interface ApplicationEvaluationOverviewPageProps {
   poolId: string;
   applicationId: string;
   address: Hex;
+  isStandalone: boolean;
 }
 
 export const ApplicationEvaluationOverviewPage = ({
@@ -27,6 +28,7 @@ export const ApplicationEvaluationOverviewPage = ({
   poolId,
   applicationId,
   address,
+  isStandalone,
 }: ApplicationEvaluationOverviewPageProps) => {
   useInitialize({ address, poolId, chainId });
 
@@ -49,17 +51,19 @@ export const ApplicationEvaluationOverviewPage = ({
 
   return (
     <div className="flex flex-col gap-6">
-      <PoolSummary
-        chainId={chainId}
-        poolId={poolId}
-        programId={poolData?.project.id as string}
-        strategyName={poolData?.strategyName}
-        name={poolData?.roundMetadata.name}
-        applicationsStartTime={poolData?.applicationsStartTime}
-        applicationsEndTime={poolData?.applicationsEndTime}
-        donationsStartTime={poolData?.donationsStartTime}
-        donationsEndTime={poolData?.donationsEndTime}
-      />
+      {isStandalone && (
+        <PoolSummary
+          chainId={chainId}
+          poolId={poolId}
+          programId={poolData?.project.id as string}
+          strategyName={poolData?.strategyName}
+          name={poolData?.roundMetadata.name}
+          applicationsStartTime={poolData?.applicationsStartTime}
+          applicationsEndTime={poolData?.applicationsEndTime}
+          donationsStartTime={poolData?.donationsStartTime}
+          donationsEndTime={poolData?.donationsEndTime}
+        />
+      )}
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <div>
           <Button

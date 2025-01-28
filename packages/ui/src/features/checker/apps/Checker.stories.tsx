@@ -46,3 +46,32 @@ export const Default: Story = {
     );
   },
 };
+
+export const Embedded: Story = {
+  render(args) {
+    // New StoryWrapper component
+    const StoryWrapper = () => {
+      const { setEvaluationBody, isSuccess, isEvaluating, isError } = usePerformEvaluation();
+      const { steps, setReviewBody, isReviewing } = usePerformOnChainReview();
+
+      return (
+        <Checker
+          {...args}
+          setEvaluationBody={setEvaluationBody}
+          isSuccess={isSuccess}
+          isEvaluating={isEvaluating}
+          isError={isError}
+          steps={steps}
+          setReviewBody={setReviewBody}
+          isReviewing={isReviewing}
+          isStandalone={false}
+        />
+      );
+    };
+    return (
+      <CheckerProvider>
+        <StoryWrapper />
+      </CheckerProvider>
+    );
+  },
+};

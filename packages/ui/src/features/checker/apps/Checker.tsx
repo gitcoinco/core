@@ -19,6 +19,7 @@ export interface CheckerProps {
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;
+  isStandalone: boolean;
 }
 
 export const Checker = (props: CheckerProps) => {

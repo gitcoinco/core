@@ -11,7 +11,13 @@ import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { PoolStatus, PoolType } from "@/types";
 
-import { getManagerUrl, getBuilderUrl, getExplorerUrl } from "~checker/utils";
+import {
+  getApplyLink,
+  getPoolLinkOnExplorer,
+  getProgramLinkOnManager,
+  getManagerUrl,
+  getVotingInterfaceLinkOnExplorer,
+} from "~checker/utils";
 
 import { PoolBadge } from "../PoolBadge";
 
@@ -38,12 +44,10 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   const { toast } = useToast();
   const chainInfo = getChainInfo(pool.chainId);
 
-  const managerUrl = getManagerUrl(pool.chainId);
-  const builderUrl = getBuilderUrl(pool.chainId);
-  const explorerUrl = getExplorerUrl(pool.chainId);
-
   let poolStatus: PoolStatus;
   const poolType = pool.strategyName as PoolType;
+
+  const managerUrl = getManagerUrl(pool.chainId, poolType);
 
   const now = new Date();
 
@@ -67,9 +71,9 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   } else {
     poolStatus = PoolStatus.PreRound;
   }
-  const applyLink = `${builderUrl}/#/chains/${pool.chainId}/rounds/${pool.poolId}/apply`;
-  const explorerLink = `${explorerUrl}/#/round/${pool.chainId}/${pool.poolId}`;
-  const managerProgramLink = `${managerUrl}/#/chain/${pool.chainId}/program/${pool.programId}`;
+  const applyLink = getApplyLink(pool.chainId, pool.poolId, poolType);
+  const explorerLink = getPoolLinkOnExplorer(pool.chainId, pool.poolId, poolType);
+  const managerProgramLink = getProgramLinkOnManager(pool.chainId, pool.programId, poolType);
   const breadcrumbItems = [
     { label: "My Programs", href: managerUrl },
     {
@@ -81,11 +85,18 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
       href: explorerLink,
     },
   ];
+
+  const { registerDateLabel, allocationDateLabel, viewButton } = getInfoBasedOnPoolType(
+    poolType,
+    pool,
+    explorerLink,
+  );
+
   return (
-    <div className={cn(variants.variants.default, "grid grid-cols-2")}>
+    <div className={cn(variants.variants.default, "grid grid-cols-2 py-6")}>
       <div className="flex flex-col items-start justify-start gap-4">
         <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <div>
             <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
           </div>
@@ -98,12 +109,23 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             isLoading={pool.isLoading}
             laodingSkeletonClassName="h-10 w-72 rounded-lg"
           />
-          <IconLabel
-            type="roundPeriod"
-            startDate={allocationStartDate}
-            endDate={allocationEndDate}
-            isLoading={pool.isLoading}
-          />
+
+          <div className="flex flex-col gap-2">
+            <IconLabel
+              type="roundPeriod"
+              startDate={registerStartDate}
+              endDate={registerEndDate}
+              isLoading={pool.isLoading}
+              label={registerDateLabel}
+            />
+            <IconLabel
+              type="roundPeriod"
+              startDate={allocationStartDate}
+              endDate={allocationEndDate}
+              isLoading={pool.isLoading}
+              label={allocationDateLabel}
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-end justify-between">
@@ -129,14 +151,45 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
               );
             }}
           />
-          <Button
-            icon={<Icon type={IconType.EXPLORER} />}
-            className="border-grey-100 bg-white text-black shadow-sm"
-            value="View round"
-            onClick={() => window.open(explorerLink, "_blank")}
-          />
+          {viewButton}
         </div>
       </div>
     </div>
   );
 };
+
+function getInfoBasedOnPoolType(poolType: PoolType, pool: PoolSummaryProps, explorerLink: string) {
+  let allocationDateLabel;
+  let registerDateLabel;
+  let viewButton;
+
+  if (poolType === PoolType.Retrofunding) {
+    registerDateLabel = "Applications";
+    allocationDateLabel = "Voting";
+    viewButton = (
+      <Button
+        icon={<Icon type={IconType.LINK} />}
+        className="border-grey-100 bg-white text-black shadow-sm"
+        value="Voting Interface"
+        onClick={() =>
+          window.open(
+            getVotingInterfaceLinkOnExplorer(pool.chainId, pool.poolId, poolType),
+            "_blank",
+          )
+        }
+      />
+    );
+  } else {
+    registerDateLabel = "Review";
+    allocationDateLabel = "Allocation";
+    viewButton = (
+      <Button
+        icon={<Icon type={IconType.EXPLORER} />}
+        className="border-grey-100 bg-white text-black shadow-sm"
+        value="View round"
+        onClick={() => window.open(explorerLink, "_blank")}
+      />
+    );
+  }
+  return { registerDateLabel, allocationDateLabel, viewButton };
+}
