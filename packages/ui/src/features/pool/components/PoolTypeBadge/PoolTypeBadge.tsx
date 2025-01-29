@@ -27,8 +27,8 @@ export interface PoolTypeBadgeProps {
 }
 
 const badgeTexts = {
-  [PoolType.QuadraticFunding]: "Quadratic funding",
-  [PoolType.DirectGrants]: "Direct grants",
+  [PoolType.QuadraticFunding]: "Quadratic Funding",
+  [PoolType.DirectGrants]: "Direct Grants",
   [PoolType.Retrofunding]: "Retrofunding",
 };
 

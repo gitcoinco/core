@@ -11,7 +11,7 @@ export const isPoolStatus = (value: string): value is PoolStatus =>
 
 export enum PoolType {
   QuadraticFunding = "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
-  DirectGrants = "allov2.DirectGrantsSimpleStrategy",
+  DirectGrants = "allov2.DirectGrantsLiteStrategy",
   Retrofunding = "allov2.EasyRetroFundingStrategy",
 }
 

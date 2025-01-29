@@ -7,7 +7,7 @@ import { ProjectReview, Review } from "~checker/types";
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {
   categorizedReviews: Record<
-    "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
+    "IN_REVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
     ProjectReview[]
   >;
   statCardsProps: StatCardProps[];
@@ -24,10 +24,10 @@ export function categorizeProjectReviews(
 
   // Initialize the categorized reviews record
   const categorizedReviews: Record<
-    "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
+    "IN_REVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
     ProjectReview[]
   > = {
-    INREVIEW: [],
+    IN_REVIEW: [],
     READY_TO_REVIEW: [],
     APPROVED: [],
     REJECTED: [],
@@ -42,7 +42,7 @@ export function categorizeProjectReviews(
   };
 
   for (const application of applicationsArray) {
-    const reviewedApplicationStatus = application.status !== "PENDING";
+    const reviewedApplicationStatus = !["PENDING", "IN_REVIEW"].includes(application.status);
 
     // Only consider applications that are PENDING
     // Update application counts based on status
@@ -53,6 +53,7 @@ export function categorizeProjectReviews(
       case "REJECTED":
         applicationCounts.rejected += 1;
         break;
+      case "IN_REVIEW":
       case "PENDING":
         applicationCounts.pending += 1;
         break;
@@ -78,12 +79,12 @@ export function categorizeProjectReviews(
 
     // Determine the category based on the number of human evaluations
     const isReadyForReview = humanEvaluations.length >= 2;
-    const category: "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED" | "IGNORE" =
+    const category: "IN_REVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED" | "IGNORE" =
       !reviewedApplicationStatus && isReadyForReview
         ? "READY_TO_REVIEW"
         : !reviewedApplicationStatus
-          ? "INREVIEW"
-          : application.status !== "PENDING"
+          ? "IN_REVIEW"
+          : application.status !== "PENDING" && application.status !== "IN_REVIEW"
             ? application.status
             : "IGNORE";
 
