@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.5
+
+### Patch Changes
+
+- [#10](https://github.com/gitcoinco/core/pull/10) [`9bb43f0`](https://github.com/gitcoinco/core/commit/9bb43f096dd444962713ee67ea421ff1fc38e265) Thanks [@nijoe1](https://github.com/nijoe1)! - Forms refactoring: Added support for Form(Without persistence) and FormWithPersist
+
 ## 0.0.0-beta.4
 
 ### Patch Changes
