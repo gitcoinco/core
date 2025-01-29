@@ -33,7 +33,7 @@ export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean
   } = useMemo(() => {
     return {
       ReadyApplicationsToSubmit: categorizedReviews?.READY_TO_REVIEW || [],
-      PendingApplications: categorizedReviews?.INREVIEW || [],
+      PendingApplications: categorizedReviews?.IN_REVIEW || [],
       ApprovedApplications: categorizedReviews?.APPROVED || [],
       RejectedApplications: categorizedReviews?.REJECTED || [],
       isLoading: poolFetchState?.isLoading,
