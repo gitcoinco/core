@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.4
+
+### Patch Changes
+
+- [#7](https://github.com/gitcoinco/core/pull/7) [`efdab98`](https://github.com/gitcoinco/core/commit/efdab9808a3df10da5fbbe5e08f26f524ebaff53) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - direct grants status fix
+
 ## 0.0.0-beta.3
 
 ### Patch Changes
