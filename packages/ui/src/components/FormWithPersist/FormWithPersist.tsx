@@ -5,9 +5,9 @@ import { UseFormReturn } from "react-hook-form";
 
 import { tv, VariantProps } from "tailwind-variants";
 
-import { Form_ } from "@/components/_Form";
+import { FormWithPersist_ } from "@/components/_Form";
 import { Button } from "@/primitives/Button";
-import { FormStep } from "@/types";
+import { FormWithPersistStep } from "@/types";
 
 const formVariants = tv({
   slots: {
@@ -42,31 +42,34 @@ const formVariants = tv({
   },
 });
 
-export interface FormProps {
-  step: FormStep;
+export interface FormWithPersistProps {
+  step: FormWithPersistStep;
   onSubmit: (values: any) => Promise<void>;
   submitButtonLabel?: string;
+  dbName: string;
+  storeName: string;
   align?: VariantProps<typeof formVariants>["align"];
   size?: VariantProps<typeof formVariants>["size"];
 }
-
-export const Form = ({
+export const FormWithPersist = ({
   step,
   onSubmit,
+  dbName,
+  storeName,
   submitButtonLabel = "Save",
   align = "right",
   size = "default",
-}: FormProps) => {
+}: FormWithPersistProps) => {
   const formRef = useRef<{ form: UseFormReturn }>(null);
-
-  const handleSubmit = async () => {
-    await onSubmit(formRef.current?.form?.getValues());
-  };
 
   const { container, title, description, button } = formVariants({
     align,
     size,
   });
+
+  const handleSubmit = async () => {
+    await onSubmit(formRef.current?.form?.getValues());
+  };
   return (
     <div className={container()}>
       <div className="flex flex-col gap-3">
@@ -75,7 +78,7 @@ export const Form = ({
         {/* Form Description */}
         <div className={description()}>{step.stepProps.formDescription}</div>
       </div>
-      <Form_ ref={formRef} {...step.formProps} />
+      <FormWithPersist_ ref={formRef} {...step.formProps} dbName={dbName} storeName={storeName} />
       <div className={button()}>
         <Button
           variant="primary"

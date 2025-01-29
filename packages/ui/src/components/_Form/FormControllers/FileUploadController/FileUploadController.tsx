@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import { FileUpload, FileUploadProps } from "@/primitives/FileUpload";
@@ -14,8 +14,27 @@ export const FileUploadFormController: React.FC<FileUploadFormControllerProps> =
   mimeTypes,
   className,
 }) => {
-  const { control, watch } = useFormContext();
+  const { control, watch, setValue } = useFormContext();
   const fieldValue = watch(name);
+
+  const fetchAndCreateFile = async (url: string) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const file = new File([blob], "file");
+      setValue(name, file);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (fieldValue instanceof File) {
+      return;
+    } else if (typeof fieldValue === "string" && fieldValue.startsWith("http")) {
+      fetchAndCreateFile(fieldValue);
+    }
+  }, [fieldValue]);
 
   return (
     <Controller

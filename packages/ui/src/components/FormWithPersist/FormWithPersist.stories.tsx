@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { FormField } from "@/types";
 
-import { Form } from "./Form";
+import { FormWithPersist } from "./FormWithPersist";
 
 const onSubmit = action("onSubmit");
 
@@ -80,25 +80,27 @@ const roundDetailsArgs = {
 
 const roundStep = {
   name: "Round details",
-  formProps: roundDetailsArgs,
+  formProps: { ...roundDetailsArgs, persistKey: "round" },
   stepProps: {
     formTitle: "Round details",
     formDescription:
       "Fill out the details about your round. You can change most of these at any time.",
   },
 };
-const meta: Meta<typeof Form> = {
-  title: "Components/Form",
-  component: Form,
-} satisfies Meta<typeof Form>;
+const meta: Meta<typeof FormWithPersist> = {
+  title: "Components/FormWithPersist",
+  component: FormWithPersist,
+} satisfies Meta<typeof FormWithPersist>;
 
 export default meta;
 
-type Story = StoryObj<typeof Form>;
+type Story = StoryObj<typeof FormWithPersist>;
 
 export const Default: Story = {
   args: {
     step: roundStep,
     onSubmit: async (values: any) => onSubmit(values),
+    dbName: "round",
+    storeName: "round",
   },
 };
