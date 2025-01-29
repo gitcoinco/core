@@ -15,13 +15,13 @@ A comprehensive design system and component library powering Gitcoin's ecosystem
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Development Commands](#development)
+- [Versioning & Publishing Packages](#versioning--publishing-packages)
+  - [Publishing process](#publishing-process)
+  - [Optional Token](#optional-token-for-locally-versioning-packages)
 - [Project Structure](#project-structure)
   - [Apps & Packages](#apps--packages)
   - [Component Organization](#component-organization)
 - [Build Tools](#build-tools)
-- [Versioning & Publishing Packages](#versioning--publishing-packages)
-  - [Generating the Changelog](#generating-the-changelog)
-  - [Releasing](#releasing)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -30,6 +30,7 @@ A comprehensive design system and component library powering Gitcoin's ecosystem
 ## Overview
 
 Gitcoin Core is built and maintained by the Gitcoin team and community to:
+
 - Ensure consistency across all Gitcoin products
 - Accelerate development with pre-built, tested components
 - Maintain high quality standards for accessibility and user experience
@@ -93,6 +94,7 @@ This design system is powered by modern, battle-tested technologies:
 
 1. Clone the repository
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
@@ -119,6 +121,92 @@ pnpm format
 pnpm clean
 ```
 
+## Versioning & Publishing Packages
+
+This example uses [Changesets](https://github.com/changesets/changesets) to manage versions, create
+changelogs, and publish to npm. It's preconfigured so you can start publishing packages immediately.
+
+You'll need to create an `NPM_TOKEN` and add it to your GitHub repository settings to enable access
+to npm. It's also worth installing the [Changesets bot](https://github.com/apps/changeset-bot) on
+your repository.
+
+### Publishing Process
+
+1. **Create a Changeset**
+
+   ```bash
+   pnpm changeset
+   ```
+
+   This will:
+
+   - Show which packages have changed
+   - Let you select packages to include in the changeset
+   - Ask about version bumps (major/minor/patch)
+   - Prompt for a change summary
+   - Create a new Markdown file in the `changeset` folder
+
+2. **Update Package Versions** (optional, needs
+   [GITHUB_TOKEN](#optional-token-for-locally-versioning-packages)
+
+   ```bash
+   pnpm version-packages
+   ```
+
+   This command:
+
+   - Reads all changesets
+   - Updates package versions
+   - Updates CHANGELOG files
+   - Commits these changes directly (skipping the PR process)
+
+3. **Release** There are two paths for releasing:
+
+   a) **Direct Release** (if you ran `pnpm version-packages` locally):
+
+   - Push your changes to GitHub
+   - When merged to main, the GitHub Action will automatically:
+     - Build all packages
+     - Publish to npm
+     - Create GitHub releases
+
+   b) **PR-based Release** (if you only created changesets):
+
+   - Push your changes with changesets to GitHub
+   - The GitHub Action will:
+     1. Create a "Version Packages" PR that:
+        - Updates package versions
+        - Updates changelogs
+     2. After merging this PR, the action will automatically:
+        - Build all packages
+        - Publish to npm
+        - Create GitHub releases
+
+### Optional Token (for locally versioning packages)
+
+You'll need to set up a GitHub Personal Access Token (PAT):
+
+1. **Create the token**:
+
+   - Go to [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new)
+   - Name it (e.g., "Changesets Token")
+   - Set the expiration as needed
+   - Under "Repository permissions", grant:
+     - `repo:status`
+     - `read:user`
+
+2. **Add to Local Environment** (for local development):
+
+   ```bash
+   # For bash users
+   echo 'export GITHUB_TOKEN=your_token_here' >> ~/.bashrc
+   source ~/.bashrc
+
+   # For zsh users
+   echo 'export GITHUB_TOKEN=your_token_here' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
 ## Project Structure
 
 ### Apps & Packages
@@ -131,7 +219,6 @@ This Turborepo includes the following packages and applications:
 - `packages/types`: Shared TypeScript types
 - `packages/ui`: Core React components
 - `packages/utils`: Shared React utilities
-
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Workspaces enables us to
 "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller
@@ -169,56 +256,6 @@ This monorepo uses different build tools for different packages:
 
 - `@gitcoin/ui`: Uses Vite for building the component library with features like SVG imports, TypeScript declaration files, and CSS processing
 - All other packages: Use Tsup for fast, efficient TypeScript/JavaScript bundling
-
-## Versioning & Publishing Packages
-
-This example uses [Changesets](https://github.com/changesets/changesets) to manage versions, create
-changelogs, and publish to npm. It's preconfigured so you can start publishing packages immediately.
-
-You'll need to create an `NPM_TOKEN` and `GITHUB_TOKEN` and add it to your GitHub repository
-settings to enable access to npm. It's also worth installing the
-[Changesets bot](https://github.com/apps/changeset-bot) on your repository.
-
-### Generating the Changelog
-
-To generate your changelog, run `pnpm changeset` locally:
-
-1. **Which packages would you like to include?** – This shows which packages have changed and which
-   have remained the same. By default, no packages are included. Press `space` to select the
-   packages you want to include in the `changeset`.
-1. **Which packages should have a major bump?** – Press `space` to select the packages you want to
-   bump versions for.
-1. If doing the first major version, confirm you want to release.
-1. Write a summary for the changes.
-1. Confirm the changeset looks as expected.
-1. A new Markdown file will be created in the `changeset` folder with the summary and a list of the
-   packages included.
-
-### Releasing
-
-When you push your code to GitHub, the [GitHub Action](https://github.com/changesets/action) will
-run the `release` script defined in the root `package.json`:
-
-```bash
-turbo run build --filter=@repo/*^... && changeset publish
-```
-
-Turborepo runs the `build` script for all publishable packages (excluding @repo/*) and publishes the
-packages to npm. By default, this example includes `gitcoin` as the npm organization. To change
-this, do the following:
-
-- Rename folders in `packages/*` to replace `gitcoin` with your desired scope
-- Search and replace `gitcoin` with your desired scope
-- Re-run `pnpm install`
-
-To publish packages to a private npm organization scope, **remove** the following from each of the
-`package.json`'s
-
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
-```
 
 ## Documentation
 
