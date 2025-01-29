@@ -21,7 +21,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
 }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const base64 = useMemo(() => (value ? URL.createObjectURL(value) : null), [value]);
+  const base64 = useMemo(() => {
+    if (!value) return null;
+    return value instanceof Blob ? URL.createObjectURL(value) : value;
+  }, [value]);
+
   const [preview, setPreview] = useState<string | null>(base64);
 
   useEffect(() => {

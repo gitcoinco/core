@@ -1,19 +1,19 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { GenericProgressForm } from "./GenericProgressForm";
+import { ProgressForm } from "./ProgressForm";
 import { roundSetupSteps } from "./mocks/RoundSetup";
 
 const onSubmit = action("onSubmit");
 
-const meta: Meta<typeof GenericProgressForm> = {
-  title: "Components/GenericProgressForm",
-  component: GenericProgressForm,
-} satisfies Meta<typeof GenericProgressForm>;
+const meta: Meta<typeof ProgressForm> = {
+  title: "Components/ProgressForm",
+  component: ProgressForm,
+} satisfies Meta<typeof ProgressForm>;
 
 export default meta;
 
-type Story = StoryObj<typeof GenericProgressForm>;
+type Story = StoryObj<typeof ProgressForm>;
 
 export const Default: Story = {
   args: {

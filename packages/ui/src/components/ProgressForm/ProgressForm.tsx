@@ -1,37 +1,38 @@
 "use client";
 
 import { useRef } from "react";
+import { UseFormReturn } from "react-hook-form";
 
 import { CheckIcon } from "@heroicons/react/solid";
 
-import { Form } from "@/components/Form";
+import { FormWithPersist_ } from "@/components/_Form";
 import { useIndexedDB } from "@/hooks";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
-import { FormStep } from "@/types";
+import { FormWithPersistStep } from "@/types";
 
 import { useFormProgress } from "./hooks/useFormProgress";
 
-export interface GenericProgressFormProps {
+export interface ProgressFormProps {
   name: string;
-  steps: FormStep[];
+  steps: FormWithPersistStep[];
   onSubmit: (values: any) => Promise<void>;
   dbName: string;
   storeName: string;
   stepsPersistKey: string;
 }
 
-export const GenericProgressForm = ({
+export const ProgressForm = ({
   name,
   steps,
   onSubmit,
   dbName,
   storeName,
   stepsPersistKey,
-}: GenericProgressFormProps) => {
+}: ProgressFormProps) => {
   const { currentStep, updateStep } = useFormProgress(stepsPersistKey);
   const { getValues, isReady } = useIndexedDB({ dbName, storeName });
-  const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
+  const formRef = useRef<{ form: UseFormReturn }>(null);
 
   const handleNextStep = () => {
     if (currentStep < steps.length - 1) {
@@ -97,7 +98,7 @@ export const GenericProgressForm = ({
               {currentStepProps.stepProps.formDescription}
             </div>
           </div>
-          <Form
+          <FormWithPersist_
             ref={formRef}
             key={currentStep}
             {...currentStepProps.formProps}
@@ -120,7 +121,7 @@ export const GenericProgressForm = ({
                   if (currentStep === steps.length - 1) {
                     await handleSubmit();
                   } else {
-                    const isValid = await formRef.current?.isFormValid();
+                    const isValid = await formRef.current?.form.trigger();
                     if (isValid) {
                       handleNextStep();
                     }

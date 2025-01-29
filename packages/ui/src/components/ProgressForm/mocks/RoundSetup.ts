@@ -1,7 +1,6 @@
 import moment from "moment";
-import { title } from "process";
 
-import { FormField, FormStep } from "@/types";
+import { FormField, FormWithPersistStep } from "@/types";
 
 const program = {
   chainId: 10,
@@ -269,4 +268,4 @@ export const roundSetupSteps = [
       formDescription: "You can edit your round after it’s been deployed. ",
     },
   },
-] satisfies FormStep[];
+] satisfies FormWithPersistStep[];

@@ -1,5 +1,5 @@
 export * from "./Form";
-export * from "./GenericProgressForm";
+export * from "./ProgressForm";
 export * from "./IconLabel";
 export * from "./ProgressModal";
 export * from "./RadioGroupList";
