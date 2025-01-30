@@ -1,3 +1,4 @@
+export * from "./allocationSidebar";
 export * from "./form";
 export * from "./indexedDB";
 export * from "./markdown";
