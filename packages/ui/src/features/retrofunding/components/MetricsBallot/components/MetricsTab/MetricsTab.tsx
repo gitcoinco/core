@@ -1,10 +1,10 @@
 import { MetricCard } from "@/features/retrofunding/components/MetricCard";
-import { BallotFieldValues } from "@/features/retrofunding/types/metricsBallot";
 import {
   handleMetricToggle,
   isMetricLocked,
   isMetricAdded,
 } from "@/features/retrofunding/utils/metricsBallot";
+import { BallotFieldValues } from "@/types";
 
 import { MetricButton } from ".";
 

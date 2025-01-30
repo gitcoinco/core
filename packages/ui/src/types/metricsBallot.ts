@@ -1,5 +1,3 @@
-import { FieldArrayPath } from "react-hook-form";
-
 import { z } from "zod";
 
 export interface BallotFieldValues {
@@ -10,28 +8,6 @@ export interface BallotFieldValues {
 }
 
 export type MetricsBallotFormValues = Record<string, BallotFieldValues[]>;
-
-export interface MetricsBallotProps {
-  name: FieldArrayPath<MetricsBallotFormValues>;
-  availableMetrics: {
-    title: string;
-    description: string;
-    metricId: string;
-  }[];
-  submittedBallot?: {
-    ballot: BallotFieldValues[];
-    submittedAt: string;
-  };
-  maxAllocation?: number;
-  onSubmit: (values: any) => void;
-  onFormChange: (values: any) => void;
-}
-
-export interface MetricsBallotControllerProps
-  extends Omit<MetricsBallotProps, "onSubmit" | "onFormChange"> {
-  isReady: boolean;
-  onSubmit: () => void;
-}
 
 export type TabType = "ballot" | "metrics";
 

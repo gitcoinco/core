@@ -48,53 +48,49 @@ type Story = StoryObj<typeof MetricsBallot>;
 
 export const Default: Story = {
   args: {
-    args: {
-      name: "metrics",
-      availableMetrics: mockAvailableMetrics,
-      maxAllocation: 100,
-      onSubmit: (values) => onSubmit(values),
-      onFormChange: (values) => onFormChange(values),
-    },
+    name: "metrics",
+    availableMetrics: mockAvailableMetrics,
+    maxAllocation: 100,
+    onSubmit: (values) => onSubmit(values),
+    onFormChange: (values) => onFormChange(values),
   },
 };
 
 export const AlreadyVoted: Story = {
   args: {
-    args: {
-      name: "alreadyVoted-metrics",
-      availableMetrics: mockAvailableMetrics,
-      maxAllocation: 100,
-      onSubmit: (values) => onSubmit(values),
-      onFormChange: (values) => onFormChange(values),
-      submittedBallot: {
-        ballot: [
-          {
-            metricId: "1",
-            name: "Ecosystem Adoption",
-            amount: 10,
-            locked: false,
-          },
-          {
-            metricId: "2",
-            name: "Technical Innovation",
-            amount: 20,
-            locked: false,
-          },
-          {
-            metricId: "3",
-            name: "Community Engagement",
-            amount: 30,
-            locked: false,
-          },
-          {
-            metricId: "4",
-            name: "Security & Reliability",
-            amount: 40,
-            locked: false,
-          },
-        ],
-        submittedAt: "2024-12-12T17:06:00Z",
-      },
+    name: "alreadyVoted-metrics",
+    availableMetrics: mockAvailableMetrics,
+    maxAllocation: 100,
+    onSubmit: (values) => onSubmit(values),
+    onFormChange: (values) => onFormChange(values),
+    submittedBallot: {
+      ballot: [
+        {
+          metricId: "1",
+          name: "Ecosystem Adoption",
+          amount: 10,
+          locked: false,
+        },
+        {
+          metricId: "2",
+          name: "Technical Innovation",
+          amount: 20,
+          locked: false,
+        },
+        {
+          metricId: "3",
+          name: "Community Engagement",
+          amount: 30,
+          locked: false,
+        },
+        {
+          metricId: "4",
+          name: "Security & Reliability",
+          amount: 40,
+          locked: false,
+        },
+      ],
+      submittedAt: "2024-12-12T17:06:00Z",
     },
   },
 };

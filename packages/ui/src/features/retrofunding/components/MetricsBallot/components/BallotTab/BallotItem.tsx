@@ -8,7 +8,6 @@ import {
   TrashIcon,
 } from "@heroicons/react/solid";
 
-import { BallotFieldValues } from "@/features/retrofunding/types/metricsBallot";
 import {
   getTotalAllocation,
   handleDecrease,
@@ -18,6 +17,7 @@ import {
   toggleLock,
 } from "@/features/retrofunding/utils/metricsBallot";
 import { cn } from "@/lib/utils";
+import { BallotFieldValues } from "@/types";
 
 interface BallotItemProps {
   field: BallotFieldValues;

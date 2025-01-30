@@ -2,18 +2,36 @@
 
 import { useEffect, useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { FieldArrayPath } from "react-hook-form";
 
 import { useMetricsBallot } from "@/features/retrofunding/hooks/useMetricsBallot";
-import {
-  MetricsBallotFormValues,
-  MetricsBallotControllerProps,
-  DB_NAME,
-  STORE_NAME,
-} from "@/features/retrofunding/types/metricsBallot";
+import { cn } from "@/lib";
+import { MetricsBallotFormValues, DB_NAME, STORE_NAME, BallotFieldValues } from "@/types";
 
-import { MetricsTab, TabButton, BallotTab, AlreadyVotedBadge } from "..";
+import { BallotTab } from "../BallotTab";
+import { MetricsTab } from "../MetricsTab";
+import { AlreadyVotedBadge } from "./AlreadyVotedBadge";
+import { TabButton } from "./TabButton";
+
+export interface MetricsBallotControllerProps {
+  className?: string;
+  name: FieldArrayPath<MetricsBallotFormValues>;
+  availableMetrics: {
+    title: string;
+    description: string;
+    metricId: string;
+  }[];
+  submittedBallot?: {
+    ballot: BallotFieldValues[];
+    submittedAt: string;
+  };
+  maxAllocation?: number;
+  isReady: boolean;
+  onSubmit: () => void;
+}
 
 export function MetricsBallotController({
+  className,
   name,
   submittedBallot,
   availableMetrics,
@@ -51,7 +69,7 @@ export function MetricsBallotController({
   if (!isReady) return null;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className={cn("flex flex-col gap-6", className)}>
       {/* Tabs */}
       <div className="flex gap-6">
         <TabButton active={activeTab === "ballot"} onClick={() => updateActiveTab("ballot")}>
