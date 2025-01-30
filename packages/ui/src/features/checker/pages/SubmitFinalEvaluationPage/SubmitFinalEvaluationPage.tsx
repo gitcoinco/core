@@ -6,6 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
 import { useToast } from "@/hooks/useToast";
+import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
@@ -130,7 +131,7 @@ export const SubmitFinalEvaluationPage = ({
           donationsEndTime={poolData?.donationsEndTime}
         />
       )}
-      <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
+      <div className={cn("flex max-w-[1440px] flex-col gap-6", isStandalone && "mx-auto px-20")}>
         <div className="flex justify-start">
           <Button
             variant="secondry"
