@@ -73,7 +73,7 @@ export const SelectedDateRenderer: React.FC<SelectedDateRendererProps> = ({
         disabled={disabled}
         min={min}
         onChange={(e) => onChange(e.target.value)}
-        className="hidden"
+        className="invisible absolute"
       />
       <div
         className={`
