@@ -71,7 +71,7 @@ export const NoLogo: Story = {
   args: {
     queryResult: createQueryState("success", {
       ...simpleRound,
-      logoImg: undefined,
+      logoImg: "https://gateway.pinata.cloud/ipfs/undefined",
     }),
   },
 };
