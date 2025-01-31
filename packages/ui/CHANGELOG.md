@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.6
+
+### Patch Changes
+
+- [#13](https://github.com/gitcoinco/core/pull/13) [`89b7bb4`](https://github.com/gitcoinco/core/commit/89b7bb4655a7b03cee364f09e70082901bfa9801) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - improvements to date picker, checker
+
 ## 0.0.0-beta.5
 
 ### Patch Changes
