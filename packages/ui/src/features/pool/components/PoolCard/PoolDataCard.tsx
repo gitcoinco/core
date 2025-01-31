@@ -15,9 +15,8 @@ export interface PoolDataCardProps {
 export function PoolDataCard({ data }: PoolDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
 
-  if (data.logoImg === undefined || data.logoImg?.endsWith("undefined")) {
-    data.logoImg = DefaultLogo;
-  }
+  const logoImg =
+    data.logoImg === undefined || data.logoImg?.endsWith("undefined") ? DefaultLogo : data.logoImg;
 
   return (
     <div
@@ -30,7 +29,7 @@ export function PoolDataCard({ data }: PoolDataCardProps) {
       className="inline-flex h-60 w-full cursor-pointer items-center justify-between rounded-2xl border border-grey-100 p-6"
     >
       <div className="flex items-center justify-start gap-6">
-        <img className="relative size-48 rounded-2xl" src={data.logoImg} />
+        <img className="relative size-48 rounded-2xl" src={logoImg} />
         <div className="inline-flex w-[482px] flex-col items-start justify-start gap-3">
           <div className="self-stretch text-2xl font-medium">{data.roundName}</div>
           <IconLabel
