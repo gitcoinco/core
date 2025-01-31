@@ -1,5 +1,6 @@
 "use client";
 
+import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
 import { IconType } from "@/primitives/Icon";
@@ -13,6 +14,11 @@ export interface PoolDataCardProps {
 
 export function PoolDataCard({ data }: PoolDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
+
+  if (data.logoImg === undefined || data.logoImg?.endsWith("undefined")) {
+    data.logoImg = DefaultLogo;
+  }
+
   return (
     <div
       onClick={() =>

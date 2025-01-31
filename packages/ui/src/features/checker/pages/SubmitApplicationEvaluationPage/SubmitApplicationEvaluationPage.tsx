@@ -7,6 +7,7 @@ import { Hex } from "viem";
 
 import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
 import { useToast } from "@/hooks/useToast";
+import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 
@@ -149,7 +150,7 @@ export const SubmitApplicationEvaluationPage = ({
           donationsEndTime={poolData?.donationsEndTime}
         />
       )}
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
+      <div className={cn("flex max-w-[1440px] flex-col gap-6", isStandalone && "mx-auto px-20")}>
         <SubmitApplicationEvaluationModal
           evaluationStatus={evaluationStatus}
           isOpen={isModalOpen}

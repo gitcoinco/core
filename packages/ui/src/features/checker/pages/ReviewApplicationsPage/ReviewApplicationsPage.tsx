@@ -82,7 +82,7 @@ export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean
           donationsEndTime={poolData?.donationsEndTime}
         />
       )}
-      <div className={cn("mx-auto flex max-w-[1440px] flex-col gap-6", isStandalone && "px-20")}>
+      <div className={cn("flex max-w-[1440px] flex-col gap-6", isStandalone && "mx-auto px-20")}>
         {isStandalone && (
           <div className="flex justify-start">
             <Button
