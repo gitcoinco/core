@@ -78,7 +78,7 @@ export function categorizeProjectReviews(
       ) ?? [];
 
     // Determine the category based on the number of human evaluations
-    const isReadyForReview = humanEvaluations.length >= 2;
+    const isReadyForReview = humanEvaluations.length >= 1;
     const category: "IN_REVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED" | "IGNORE" =
       !reviewedApplicationStatus && isReadyForReview
         ? "READY_TO_REVIEW"
