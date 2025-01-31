@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.8
+
+### Patch Changes
+
+- [#17](https://github.com/gitcoinco/core/pull/17) [`0bcc698`](https://github.com/gitcoinco/core/commit/0bcc698f68026f303f5f8b5f34a13de50483b5ed) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - set min review to 1 on checker
+
 ## 0.0.0-beta.7
 
 ### Patch Changes
