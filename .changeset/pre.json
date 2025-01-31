@@ -10,6 +10,7 @@
     "@gitcoin/utils": "0.0.0"
   },
   "changesets": [
+    "hip-impalas-eat",
     "kind-pens-build",
     "rare-plants-work",
     "shy-pigs-camp",
