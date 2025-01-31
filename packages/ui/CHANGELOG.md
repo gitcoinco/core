@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.7
+
+### Patch Changes
+
+- [#15](https://github.com/gitcoinco/core/pull/15) [`5884d4f`](https://github.com/gitcoinco/core/commit/5884d4f73a4a21df68ec4a489b74724e62b16aee) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - fix read only error
+
 ## 0.0.0-beta.6
 
 ### Patch Changes
