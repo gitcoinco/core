@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.9
+
+### Patch Changes
+
+- added classname prop to AllocationSidebar and MetricsBallot
+
 ## 0.0.0-beta.8
 
 ### Patch Changes
