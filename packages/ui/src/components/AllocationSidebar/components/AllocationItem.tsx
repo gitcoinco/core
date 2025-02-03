@@ -4,8 +4,7 @@ import { PropsWithChildren } from "react";
 
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/primitives/Skeleton";
-
-import { ProjectAllocation } from "../types";
+import { ProjectAllocation } from "@/types";
 
 export const AllocationItem = ({
   id,

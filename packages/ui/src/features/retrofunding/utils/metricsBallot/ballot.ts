@@ -1,4 +1,4 @@
-import { BallotFieldValues } from "@/features/retrofunding/types/metricsBallot";
+import { BallotFieldValues } from "@/types";
 
 /**
  * Distributes a total available amount evenly among an array of items.

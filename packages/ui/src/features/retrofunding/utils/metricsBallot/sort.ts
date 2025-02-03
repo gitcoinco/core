@@ -1,4 +1,4 @@
-import { BallotFieldValues } from "@/features/retrofunding/types/metricsBallot";
+import { BallotFieldValues } from "@/types";
 
 export const sortFieldsByOrder = (
   arr: BallotFieldValues[],

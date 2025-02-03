@@ -1,7 +1,10 @@
 "use client";
 
+import { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "@/primitives/ScrollArea";
+import { ProjectAllocation, SortConfig } from "@/types";
 
 import {
   AllocationChart,
@@ -9,9 +12,23 @@ import {
   AllocationSortButton,
   SkeletonAllocationItems,
 } from "./components";
-import { AllocationSidebarProps } from "./types";
+
+export interface AllocationSidebarProps {
+  className?: string;
+  title: string;
+  projects: ProjectAllocation[];
+  chartData: { x: number; y: number }[];
+  sortConfig: SortConfig;
+  description?: string;
+  isLoading?: boolean;
+  footer?: ReactNode;
+  formatAllocation?: (alloc: number) => string | number;
+  formatChartTick?: (alloc: number) => string;
+  onClickProject?: (id?: string) => void;
+}
 
 export const AllocationSidebar = ({
+  className,
   title,
   description,
   isLoading,
@@ -30,6 +47,7 @@ export const AllocationSidebar = ({
       className={cn(
         "relative w-[300px] rounded-lg border border-grey-900 bg-grey-50 py-6",
         "flex flex-col gap-4",
+        className,
       )}
     >
       <div className="flex flex-col gap-4 px-4">

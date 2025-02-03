@@ -1,6 +1,6 @@
 import { DocumentTextIcon } from "@heroicons/react/solid";
 
-import { TabType } from "@/features/retrofunding/types/metricsBallot";
+import { TabType } from "@/types";
 
 export const EmptyBallot = ({ setActiveTab }: { setActiveTab: (tab: TabType) => void }) => {
   return (

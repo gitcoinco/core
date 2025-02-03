@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { openDB } from "idb";
 
-import { TabType } from "@/features/retrofunding/types/metricsBallot";
+import { TabType } from "@/types";
 
 const DB_VERSION = 1;
 
