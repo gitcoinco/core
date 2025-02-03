@@ -50,12 +50,18 @@ export type CheckboxVariants = VariantProps<typeof checkboxVariants>;
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & CheckboxVariants
->(({ className, ...props }, ref) => {
+>(({ className, checked, onCheckedChange, ...props }, ref) => {
   const { size, color, ...rest } = props;
   const { base } = checkboxVariants({ size, color });
 
   return (
-    <CheckboxPrimitive.Root ref={ref} className={cn(base(), className)} {...rest}>
+    <CheckboxPrimitive.Root
+      ref={ref}
+      checked={checked}
+      onCheckedChange={onCheckedChange}
+      className={cn(base(), className)}
+      {...rest}
+    >
       <CheckboxPrimitive.Indicator>
         <CheckIcon />
       </CheckboxPrimitive.Indicator>

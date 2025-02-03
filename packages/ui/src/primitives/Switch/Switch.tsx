@@ -43,12 +43,18 @@ type SwitchVariants = VariantProps<typeof switchVariants>;
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & SwitchVariants
->(({ className, ...props }, ref) => {
+>(({ className, checked, onCheckedChange, ...props }, ref) => {
   const { color, ...rest } = props;
   const { base, thumb } = switchVariants({ color });
 
   return (
-    <SwitchPrimitives.Root className={cn(base(), className)} {...rest} ref={ref}>
+    <SwitchPrimitives.Root
+      className={cn(base(), className)}
+      checked={checked}
+      onCheckedChange={onCheckedChange}
+      ref={ref}
+      {...rest}
+    >
       <SwitchPrimitives.Thumb className={thumb()} />
     </SwitchPrimitives.Root>
   );
