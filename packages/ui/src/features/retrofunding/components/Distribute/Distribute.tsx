@@ -72,6 +72,7 @@ export const Distribute = ({
   const { fundRoundCompleted } = useRound({
     poolConfig,
     totalPaid,
+    distributionCompleted,
   });
 
   const handleEditPayouts = async (applications: ApplicationPayout[]) => {
@@ -87,7 +88,12 @@ export const Distribute = ({
           Distribute funds and pay out grantees here.
         </p>
       </div>
-      <FundRoundSection poolConfig={poolConfig} onFundRound={onFundRound} totalPaid={totalPaid} />
+      <FundRoundSection
+        poolConfig={poolConfig}
+        onFundRound={onFundRound}
+        totalPaid={totalPaid}
+        distributionCompleted={distributionCompleted}
+      />
       <div className="flex flex-col gap-2">
         <h2 className="font-ui-sans text-xl font-medium">Pay grantees</h2>
         <p className="font-ui-sans text-base text-grey-900">

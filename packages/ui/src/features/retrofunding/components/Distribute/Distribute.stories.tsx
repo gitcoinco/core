@@ -55,14 +55,15 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
     title: "Project Delta",
     imageUrl: "https://picsum.photos/104",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2 + 9e-18,
+    payoutPercentage: 2 + 1e-7,
+    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
   },
   {
     id: "6",
     title: "Project Epsilon",
     imageUrl: "https://picsum.photos/105",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 1 + (1 - 9e-18),
+    payoutPercentage: 1 + (1 - 1e-7),
     payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
   },
 
@@ -79,7 +80,6 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
     imageUrl: "https://picsum.photos/107",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
     payoutPercentage: 2,
-    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
   },
 ];
 

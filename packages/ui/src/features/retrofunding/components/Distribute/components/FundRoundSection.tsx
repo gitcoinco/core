@@ -1,7 +1,7 @@
-import { PoolConfig } from "@/types/distribute";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
+import { PoolConfig } from "@/types/distribute";
 
 import { useRound } from "../hooks/useRound";
 
@@ -9,12 +9,19 @@ interface FundRoundSectionProps {
   onFundRound: (amount: bigint) => void;
   poolConfig: PoolConfig;
   totalPaid: bigint;
+  distributionCompleted: boolean;
 }
 
-export const FundRoundSection = ({ poolConfig, onFundRound, totalPaid }: FundRoundSectionProps) => {
+export const FundRoundSection = ({
+  poolConfig,
+  onFundRound,
+  totalPaid,
+  distributionCompleted,
+}: FundRoundSectionProps) => {
   const { statCardGroupProps, fundRoundCompleted, formattedNeededTokens, tokensNeeded } = useRound({
     poolConfig,
     totalPaid,
+    distributionCompleted,
   });
 
   return (
@@ -37,7 +44,7 @@ export const FundRoundSection = ({ poolConfig, onFundRound, totalPaid }: FundRou
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="inline-flex h-9 w-20 items-center justify-start gap-2 rounded-lg border border-black bg-white p-2">
+              <div className="inline-flex h-9 w-24 items-center justify-start gap-2 rounded-lg border border-black bg-white p-2">
                 <div className="font-ui-mono text-sm font-normal leading-tight text-grey-500">
                   {formattedNeededTokens}
                 </div>

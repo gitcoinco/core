@@ -29,10 +29,13 @@ export const formatAmountFromPercentage = (
  * safeParseUnits(1.23, 18)   // Works as usual
  */
 export const safeParseUnits = (amount: number | string, tokenDecimals: number) => {
+  if (tokenDecimals < 0) {
+    throw new Error("Decimals cannot be negative");
+  }
   const numberAmount = typeof amount === "string" ? Number(amount) : amount;
   const safeAmount = numberAmount.toLocaleString("fullwide", {
     useGrouping: false,
-    maximumSignificantDigits: 18,
+    maximumSignificantDigits: tokenDecimals,
   });
   return parseUnits(safeAmount, tokenDecimals);
 };
@@ -50,6 +53,9 @@ export const safeParseUnits = (amount: number | string, tokenDecimals: number) =
  * - Without maxDecimals: Returns full precision number
  */
 export const formatAmount = (amount: bigint, decimals: number, maxDecimals?: number) => {
+  if (decimals < 0) {
+    throw new Error("Decimals cannot be negative");
+  }
   // Convert from smallest unit to human readable format
   const formatted = formatUnits(amount, decimals);
 
@@ -57,11 +63,11 @@ export const formatAmount = (amount: bigint, decimals: number, maxDecimals?: num
   const num = Number(formatted);
 
   // Display special string for very small non-zero numbers
-  if (num < 0.000001 && num > 0) {
-    return "< 0.000001";
+  if (num < 0.0001 && num > 0) {
+    return "< 0.0001";
   }
 
-  if (maxDecimals !== undefined) {
+  if (maxDecimals !== undefined && num > 0) {
     // Split into integer and decimal parts to handle truncation without rounding
     const [integerPart, decimalPart = ""] = formatted.split(".");
     // Truncate decimal places to maxDecimals
@@ -74,6 +80,6 @@ export const formatAmount = (amount: bigint, decimals: number, maxDecimals?: num
   // For full precision numbers, format without scientific notation
   return num.toLocaleString("fullwide", {
     useGrouping: false,
-    maximumSignificantDigits: 18,
+    maximumSignificantDigits: decimals,
   });
 };

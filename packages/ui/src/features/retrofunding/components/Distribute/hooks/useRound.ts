@@ -9,9 +9,11 @@ import { formatAmount, safeParseUnits } from "../utils";
 export const useRound = ({
   poolConfig,
   totalPaid,
+  distributionCompleted,
 }: {
   poolConfig: PoolConfig;
   totalPaid: bigint;
+  distributionCompleted: boolean;
 }) => {
   const [tokensNeeded, currentBalance] = useMemo(() => {
     try {
@@ -31,9 +33,9 @@ export const useRound = ({
     }
   }, [poolConfig]);
 
-  const formattedNeededTokens = formatAmount(tokensNeeded, poolConfig.tokenDecimals, 4);
-  const formattedCurrentBalance = formatAmount(currentBalance, poolConfig.tokenDecimals);
-  const formattedTotalPaid = formatAmount(totalPaid, poolConfig.tokenDecimals, 4);
+  const formattedNeededTokens = formatAmount(tokensNeeded, poolConfig.tokenDecimals, 5);
+  const formattedCurrentBalance = formatAmount(currentBalance, poolConfig.tokenDecimals, 5);
+  const formattedTotalPaid = formatAmount(totalPaid, poolConfig.tokenDecimals, 5);
 
   const statCards: StatCardProps[] = [
     {
@@ -58,9 +60,10 @@ export const useRound = ({
   };
 
   const fundRoundCompleted =
-    (tokensNeeded === 0n && totalPaid === 0n) ||
+    (tokensNeeded <= 0n) ||
     safeParseUnits(poolConfig.amountOfTokensToDistribute, poolConfig.tokenDecimals) <=
-      totalPaid + currentBalance;
+      totalPaid + currentBalance ||
+    distributionCompleted;
 
   return {
     statCardGroupProps,
