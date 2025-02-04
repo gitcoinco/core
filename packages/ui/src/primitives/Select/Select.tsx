@@ -37,6 +37,7 @@ export interface SelectProps {
   variant?: "default" | "outlined" | "filled";
   size?: "sm" | "md" | "lg";
   className?: string;
+  disabled?: boolean;
 }
 
 const selectStyles = tv({
@@ -114,24 +115,31 @@ export const Select = ({
   variant,
   size,
   className,
+  disabled,
 }: SelectProps) => {
-  const item = getSelectedItem(options, value, defaultValue);
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
+  const isControlled = value !== undefined;
+  const currentValue = isControlled ? value : internalValue;
 
-  React.useEffect(() => {
-    if (item && onValueChange) {
-      onValueChange(item.value);
+  const handleValueChange = (newValue: string) => {
+    if (!isControlled) {
+      setInternalValue(newValue);
     }
-  }, [item, onValueChange]);
+    onValueChange?.(newValue);
+  };
 
+  const selectedItem = getSelectedItem(options, currentValue, defaultValue);
   const { trigger, item: selectItem, label, icon } = selectStyles({ variant, size, className });
+
   return (
     <ShadcnSelect
       defaultValue={defaultValue}
-      onValueChange={onValueChange}
-      value={value || defaultValue}
+      onValueChange={handleValueChange}
+      value={currentValue}
+      disabled={disabled}
     >
       <SelectTrigger className={cn(trigger(), className)}>
-        {item ? <Label {...item} iconClassName={icon()} /> : placeholder}
+        {selectedItem ? <Label {...selectedItem} iconClassName={icon()} /> : placeholder}
       </SelectTrigger>
       <SelectContent>
         {options.map((group, index) => (
