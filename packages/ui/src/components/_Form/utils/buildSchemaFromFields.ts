@@ -6,6 +6,7 @@ import { buildArraySchema } from "./validations/validateArray";
 import { buildFileSchema } from "./validations/validateFile";
 import { getRoundDatesSchema } from "./validations/validateRoundDates";
 import { buildStringSchema } from "./validations/validateString";
+import { buildNumberSchema } from "./validations/validateNumber";
 
 /**
  * Builds a Zod schema object from an array of FormFields.
@@ -50,6 +51,13 @@ export function buildSchemaFromFields(fields: FormField[]): z.ZodObject<any> {
     // 5) isStringValidation
     if (validation?.stringValidation) {
       fieldSchema = buildStringSchema(label, validation?.required, validation?.stringValidation);
+      shape[name] = fieldSchema;
+      continue;
+    }
+
+    // 6) isNumberValidation
+    if (validation?.numberValidation) {
+      fieldSchema = buildNumberSchema(label, validation?.required, validation?.numberValidation);
       shape[name] = fieldSchema;
       continue;
     }
