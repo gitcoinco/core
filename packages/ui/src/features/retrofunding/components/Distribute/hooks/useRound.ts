@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 
-import { formatUnits } from "viem";
-import { parseUnits } from "viem";
-
-import { PoolConfig } from "@/types/distribute";
 import { StatCardProps } from "@/primitives/StatCard";
 import { StatCardGroupProps } from "@/primitives/StatCardGroup";
+import { PoolConfig } from "@/types/distribute";
+
+import { formatAmount, safeParseUnits } from "../utils";
 
 export const useRound = ({
   poolConfig,
@@ -16,25 +15,25 @@ export const useRound = ({
 }) => {
   const [tokensNeeded, currentBalance] = useMemo(() => {
     try {
-      const totalNeeded = parseUnits(
-        poolConfig.amountOfTokensToDistribute.toString(),
+      const totalNeeded = safeParseUnits(
+        poolConfig.amountOfTokensToDistribute,
         poolConfig.tokenDecimals,
       );
 
-      const currentBalance = parseUnits(
-        poolConfig.amountOfTokensInPool.toString(),
+      const currentBalance = safeParseUnits(
+        poolConfig.amountOfTokensInPool,
         poolConfig.tokenDecimals,
       );
-      return [totalNeeded - currentBalance, currentBalance];
+      return [totalNeeded - currentBalance - totalPaid, currentBalance];
     } catch (error) {
       console.error("Error calculating tokens needed:", error);
       return [0n, 0n];
     }
   }, [poolConfig]);
 
-  const formattedNeededTokens = formatUnits(tokensNeeded, poolConfig.tokenDecimals);
-  const formattedCurrentBalance = formatUnits(currentBalance, poolConfig.tokenDecimals);
-  const formattedTotalPaid = formatUnits(totalPaid, poolConfig.tokenDecimals);
+  const formattedNeededTokens = formatAmount(tokensNeeded, poolConfig.tokenDecimals, 4);
+  const formattedCurrentBalance = formatAmount(currentBalance, poolConfig.tokenDecimals);
+  const formattedTotalPaid = formatAmount(totalPaid, poolConfig.tokenDecimals, 4);
 
   const statCards: StatCardProps[] = [
     {
@@ -60,7 +59,7 @@ export const useRound = ({
 
   const fundRoundCompleted =
     (tokensNeeded === 0n && totalPaid === 0n) ||
-    parseUnits(poolConfig.amountOfTokensToDistribute.toString(), poolConfig.tokenDecimals) <=
+    safeParseUnits(poolConfig.amountOfTokensToDistribute, poolConfig.tokenDecimals) <=
       totalPaid + currentBalance;
 
   return {

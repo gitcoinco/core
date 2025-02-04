@@ -50,24 +50,28 @@ export const DistributeTable = ({
     (checked: boolean) => {
       const newSelection = checked ? applications.map((p) => p.id) : [];
       setSelectedApplications(newSelection);
-      onSelectApplications?.(checked ? applications : []);
+      if (onSelectApplications) {
+        onSelectApplications(checked ? applications : []);
+      }
     },
     [applications, onSelectApplications],
   );
 
   const handleSelectApplication = useCallback(
     (applicationId: string, checked: boolean) => {
-      setSelectedApplications((prev) => {
-        const newSelection = checked
-          ? [...prev, applicationId]
-          : prev.filter((id) => id !== applicationId);
-        onSelectApplications?.(
-          (isEditing ? editedApplications : originalApplications).filter((p) =>
-            newSelection.includes(p.id),
-          ),
-        );
-        return newSelection;
-      });
+      if (onSelectApplications) {
+        setSelectedApplications((prev) => {
+          const newSelection = checked
+            ? [...prev, applicationId]
+            : prev.filter((id) => id !== applicationId);
+          onSelectApplications(
+            (isEditing ? editedApplications : originalApplications).filter((p) =>
+              newSelection.includes(p.id),
+            ),
+          );
+          return newSelection;
+        });
+      }
     },
     [isEditing, editedApplications, originalApplications, onSelectApplications],
   );
