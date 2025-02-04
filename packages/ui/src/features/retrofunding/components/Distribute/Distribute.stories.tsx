@@ -14,7 +14,7 @@ const onFundRound = action("onFundRound");
 
 const POOL_CONFIG: PoolConfig = {
   tokenTicker: "ETH",
-  amountOfTokensInPool: 10,
+  amountOfTokensInPool: "10",
   amountOfTokensToDistribute: 100,
   tokenDecimals: 18,
   poolStatus: PoolStatus.FundingPending,
@@ -55,14 +55,14 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
     title: "Project Delta",
     imageUrl: "https://picsum.photos/104",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2,
+    payoutPercentage: 2 + 9e-18,
   },
   {
     id: "6",
     title: "Project Epsilon",
     imageUrl: "https://picsum.photos/105",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2,
+    payoutPercentage: 1 + (1 - 9e-18),
     payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
   },
 
@@ -85,7 +85,7 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
 
 const args = {
   applications: MOCK_APPLICATIONS,
-  poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: 96 },
+  poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "96" },
   onFundRound: async (values: any) => onFundRound(values),
   onDistribute: async (values: any) => onDistribute(values),
   onEditPayouts: async (values: any) => onEditPayouts(values),
@@ -108,7 +108,7 @@ export const Finalized: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: 0.5 },
+    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "0.0000001" },
   },
 };
 
@@ -119,7 +119,7 @@ export const FundingRequired: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: undefined,
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: 0 },
+    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "0.000000000000000001" },
   },
 };
 
@@ -130,7 +130,7 @@ export const NoFinalizedProjects: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: undefined,
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: 100 },
+    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "100" },
   },
 };
 
@@ -140,7 +140,7 @@ export const NotFundingPhase: StoryObj<typeof Distribute> = {
     poolConfig: {
       ...POOL_CONFIG,
       poolStatus: PoolStatus.ApplicationsInProgress,
-      amountOfTokensInPool: 100,
+      amountOfTokensInPool: "100",
     },
     applications: [],
   },
