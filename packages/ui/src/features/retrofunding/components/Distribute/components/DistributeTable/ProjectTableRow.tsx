@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { NumericFormat } from "react-number-format";
 
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
 import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
+import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { TableRow, TableCell } from "@/ui-shadcn/table";
 
 import { formatAmountFromPercentage } from "../../utils";
@@ -175,7 +175,7 @@ export const ProjectTableRow = ({
       {isFinalized && (
         <TableCell className="text-center">
           <Button
-            className="rounded-lg bg-grey-100 px-4 py-2 font-ui-mono text-sm font-medium text-black"
+            variant="light-purple"
             value="View transaction"
             onClick={() => {
               const url = getTransactionUrl(
