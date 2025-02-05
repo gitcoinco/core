@@ -39,7 +39,6 @@ export const Navbar = ({
           {text && <NavbarTitle {...text} />}
         </div>
       </NavbarStartSection>
-      <NavbarCenterSection>{"hola"}</NavbarCenterSection>
       <NavbarEndSection>{children}</NavbarEndSection>
     </NavbarGeneric>
   );
