@@ -100,7 +100,7 @@ const args = {
 };
 
 export default {
-  title: "Features/Retrofunding/Components/Distribute",
+  title: "Features/Retrofunding/Distribute",
   component: Distribute,
 } as Meta;
 

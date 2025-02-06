@@ -6,7 +6,7 @@ import { ConnectButton } from "@/components/ConnectButton/ConnectButton";
 import { LandingPage } from "./LandingPage";
 
 const meta: Meta<typeof LandingPage> = {
-  title: "Features/RetroFunding/Components/Landing",
+  title: "Features/RetroFunding/Landing",
   component: LandingPage,
 } satisfies Meta<typeof LandingPage>;
 

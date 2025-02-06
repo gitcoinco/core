@@ -1,90 +1,86 @@
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { MetricsBallot } from ".";
+import { BallotForm } from "./BallotForm";
 
-export default {
-  title: "Features/RetroFunding/MetricsBallot",
-  component: MetricsBallot,
-} as Meta;
+const meta: Meta<typeof BallotForm> = {
+  title: "Features/RetroFunding/BallotForm",
+  component: BallotForm,
+  parameters: {
+    layout: "centered",
+  },
+};
 
-const onSubmit = action("onSubmit");
-const onFormChange = action("onFormChange");
+export default meta;
 
 const mockAvailableMetrics = [
   {
     title: "Ecosystem Adoption",
     description:
       "This metric evaluates the adoption of a project's solution across the Web3 landscape. By assessing integrations with protocols, wallets, and decentralized...",
-    metricId: "1",
+    metricId: "ecosystem-adoption",
   },
   {
     title: "Technical Innovation",
     description:
       "Measures the project's technological advancement and unique contributions to the blockchain space. Evaluates code quality, architectural decisions, and innovative solutions...",
-    metricId: "2",
+    metricId: "technical-innovation",
   },
   {
     title: "Community Engagement",
     description:
       "Assesses the project's community growth, participation, and governance involvement. Examines factors like active contributors, governance proposals, and social presence...",
-    metricId: "3",
+    metricId: "community-engagement",
   },
   {
     title: "Security & Reliability",
     description:
       "Evaluates the project's security practices, audit history, and operational reliability. Considers factors like code audits, incident response, and system uptime...",
-    metricId: "4",
+    metricId: "security-reliability",
   },
   {
     title: "Token Economics",
     description:
       "Analyzes the project's tokenomics model, including distribution mechanisms, utility, and economic sustainability. Examines token velocity, supply dynamics, and value accrual...",
-    metricId: "5",
+    metricId: "token-economics",
   },
 ];
 
-type Story = StoryObj<typeof MetricsBallot>;
+type Story = StoryObj<typeof BallotForm>;
+
+const commonArgs = {
+  name: "metrics",
+  availableMetrics: mockAvailableMetrics,
+  maxAllocation: 100,
+  onSubmit: action("onSubmit"),
+  onChange: action("onChange"),
+};
 
 export const Default: Story = {
-  args: {
-    name: "metrics",
-    availableMetrics: mockAvailableMetrics,
-    maxAllocation: 100,
-    onSubmit: (values) => onSubmit(values),
-    onFormChange: (values) => onFormChange(values),
-  },
+  args: commonArgs,
 };
 
 export const AlreadyVoted: Story = {
   args: {
+    ...commonArgs,
     name: "alreadyVoted-metrics",
-    availableMetrics: mockAvailableMetrics,
-    maxAllocation: 100,
-    onSubmit: (values) => onSubmit(values),
-    onFormChange: (values) => onFormChange(values),
     submittedBallot: {
       ballot: [
+        { metricId: "ecosystem-adoption", name: "Ecosystem Adoption", amount: 10, locked: false },
         {
-          metricId: "1",
-          name: "Ecosystem Adoption",
-          amount: 10,
-          locked: false,
-        },
-        {
-          metricId: "2",
+          metricId: "technical-innovation",
           name: "Technical Innovation",
           amount: 20,
           locked: false,
         },
         {
-          metricId: "3",
+          metricId: "community-engagement",
           name: "Community Engagement",
           amount: 30,
           locked: false,
         },
         {
-          metricId: "4",
+          metricId: "security-reliability",
           name: "Security & Reliability",
           amount: 40,
           locked: false,

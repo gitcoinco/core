@@ -5,7 +5,7 @@ import { Button } from "@/primitives/Button";
 import { MetricCard } from "./MetricCard";
 
 export default {
-  title: "Features/Retrofunding/Components/MetricCard/MetricCard",
+  title: "Features/Retrofunding/MetricCard",
   component: MetricCard,
 } as Meta<typeof MetricCard>;
 
