@@ -30,7 +30,7 @@ export const componentRegistry = {
     isControlled: true,
   },
   Select: {
-    Component: SelectFormController,
+    Component: SelectFormController as React.FC<any>,
     isControlled: true,
   },
   FieldArray: {

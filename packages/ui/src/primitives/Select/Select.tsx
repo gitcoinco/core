@@ -37,6 +37,7 @@ export interface SelectProps {
   variant?: "default" | "outlined" | "filled";
   size?: "sm" | "md" | "lg";
   className?: string;
+  disabled?: boolean;
 }
 
 const selectStyles = tv({
@@ -45,6 +46,7 @@ const selectStyles = tv({
     trigger: "h-10 rounded-md border text-sm",
     item: "",
     label: "",
+    icon: "h-5 w-5",
   },
   variants: {
     variant: {
@@ -71,16 +73,19 @@ const selectStyles = tv({
         trigger: "h-8 gap-1 text-xs",
         item: "h-8 text-xs",
         label: "text-xs",
+        icon: "h-4 w-4",
       },
       md: {
         trigger: "h-10 px-3 py-2 text-sm",
         item: "text-sm",
         label: "text-sm",
+        icon: "h-5 w-5",
       },
       lg: {
         trigger: "h-12 gap-2 text-base",
         item: "text-base",
         label: "",
+        icon: "h-6 w-6",
       },
     },
   },
@@ -110,24 +115,31 @@ export const Select = ({
   variant,
   size,
   className,
+  disabled,
 }: SelectProps) => {
-  const item = getSelectedItem(options, value, defaultValue);
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
+  const isControlled = value !== undefined;
+  const currentValue = isControlled ? value : internalValue;
 
-  React.useEffect(() => {
-    if (item && onValueChange) {
-      onValueChange(item.value);
+  const handleValueChange = (newValue: string) => {
+    if (!isControlled) {
+      setInternalValue(newValue);
     }
-  }, [item, onValueChange]);
+    onValueChange?.(newValue);
+  };
 
-  const { trigger, item: selectItem, label } = selectStyles({ variant, size, className });
+  const selectedItem = getSelectedItem(options, currentValue, defaultValue);
+  const { trigger, item: selectItem, label, icon } = selectStyles({ variant, size, className });
+
   return (
     <ShadcnSelect
       defaultValue={defaultValue}
-      onValueChange={onValueChange}
-      value={value || defaultValue}
+      onValueChange={handleValueChange}
+      value={currentValue}
+      disabled={disabled}
     >
       <SelectTrigger className={cn(trigger(), className)}>
-        {item ? <Label {...item} /> : placeholder}
+        {selectedItem ? <Label {...selectedItem} iconClassName={icon()} /> : placeholder}
       </SelectTrigger>
       <SelectContent>
         {options.map((group, index) => (
@@ -144,6 +156,7 @@ export const Select = ({
                   icon={item.icon}
                   iconPosition={item.iconPosition}
                   className={selectItem()}
+                  iconClassName={icon()}
                 />
               </SelectItem>
             ))}

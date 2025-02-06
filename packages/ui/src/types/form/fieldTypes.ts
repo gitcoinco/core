@@ -36,10 +36,17 @@ export interface StringValidationConfig {
   patternMessage?: string;
 }
 
+export interface NumberValidationConfig {
+  min?: number;
+  minMessage?: string;
+  max?: number;
+  maxMessage?: string;
+}
 export interface ValidationConfig extends BaseValidation {
   fileValidation?: FileValidationConfig;
   arrayValidation?: ArrayValidationConfig;
   stringValidation?: StringValidationConfig;
+  numberValidation?: NumberValidationConfig;
   // any other custom validations
 }
 

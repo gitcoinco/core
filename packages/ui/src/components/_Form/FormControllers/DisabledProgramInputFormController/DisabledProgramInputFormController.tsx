@@ -16,6 +16,10 @@ export const DisabledProgramInputFormController = ({
 
   const value = watch(name);
 
+  if (!value) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col gap-2">
       <Controller name={name} control={control} render={() => renderDisabledProgramInput(value)} />

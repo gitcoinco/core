@@ -1,34 +1,23 @@
 "use client";
 
-import { tv } from "tailwind-variants";
+import { tv, VariantProps } from "tailwind-variants";
 
+import { cn } from "@/lib/utils";
 import { StatCard, StatCardProps } from "@/primitives/StatCard";
 
-export type JustifyVariants =
-  | "normal"
-  | "start"
-  | "end"
-  | "center"
-  | "between"
-  | "around"
-  | "evenly";
-
-export interface StatCardGroupProps {
-  stats: StatCardProps[];
-  justify?: JustifyVariants;
-}
-
-const justifyVariants = tv({
-  base: "flex flex-wrap gap-6",
+const statCardGroupVariants = tv({
+  slots: {
+    root: "flex flex-wrap gap-6",
+  },
   variants: {
     justify: {
-      normal: "justify-normal",
-      start: "justify-start",
-      end: "justify-end",
-      center: "justify-center",
-      between: "justify-between",
-      around: "justify-around",
-      evenly: "justify-evenly",
+      normal: { root: "justify-normal" },
+      start: { root: "justify-start" },
+      end: { root: "justify-end" },
+      center: { root: "justify-center" },
+      between: { root: "justify-between" },
+      around: { root: "justify-around" },
+      evenly: { root: "justify-evenly" },
     },
   },
   defaultVariants: {
@@ -36,9 +25,15 @@ const justifyVariants = tv({
   },
 });
 
-export const StatCardGroup = ({ stats, justify }: StatCardGroupProps) => {
+export interface StatCardGroupProps extends VariantProps<typeof statCardGroupVariants> {
+  stats: StatCardProps[];
+  className?: string;
+}
+
+export const StatCardGroup = ({ stats, justify, className }: StatCardGroupProps) => {
+  const { root } = statCardGroupVariants({ justify });
   return (
-    <div className={justifyVariants({ justify })}>
+    <div className={cn(root(), className)}>
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}

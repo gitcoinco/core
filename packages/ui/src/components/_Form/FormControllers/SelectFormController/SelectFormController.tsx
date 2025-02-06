@@ -9,7 +9,7 @@ export interface SelectFormControllerProps extends SelectProps {
   name: string;
 }
 
-export const SelectFormController: React.FC<any> = ({
+export const SelectFormController: React.FC<SelectFormControllerProps> = ({
   name,
   options,
   defaultValue,
@@ -17,6 +17,7 @@ export const SelectFormController: React.FC<any> = ({
   className,
   size,
   variant,
+  disabled,
 }) => {
   const { control } = useFormContext();
 
@@ -34,6 +35,7 @@ export const SelectFormController: React.FC<any> = ({
           className={className}
           size={size}
           variant={variant}
+          disabled={disabled}
         />
       )}
     />

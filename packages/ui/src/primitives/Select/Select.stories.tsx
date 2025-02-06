@@ -31,23 +31,30 @@ export const Default: Story = {};
 export const Outlined: Story = {
   args: {
     variant: "outlined",
+    defaultValue: "apple",
   },
 };
 
 export const Filled: Story = {
   args: {
     variant: "filled",
+    defaultValue: "apple",
   },
 };
 
 export const SmallSize: Story = {
   args: {
     size: "sm",
+    disabled: true,
+    variant: "default",
+    defaultValue: "apple",
   },
 };
 
 export const LargeSize: Story = {
   args: {
     size: "lg",
+    variant: "default",
+    defaultValue: "apple",
   },
 };
