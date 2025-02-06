@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { NumericFormat } from "react-number-format";
 
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
@@ -36,6 +36,31 @@ export const ProjectTableRow = ({
   onEditApplication,
   onDistribute,
 }: ApplicationTableRowProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleWheel = useCallback(
+    (e: WheelEvent) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 1 : -1;
+      const currentVal = editedApplication.payoutPercentage;
+      const nextVal = Number((currentVal + delta).toFixed(4));
+
+      if (nextVal >= 0 && handleSafeChange(nextVal) && onEditApplication) {
+        onEditApplication({
+          ...editedApplication,
+          payoutPercentage: nextVal,
+        });
+      }
+    },
+    [editedApplication],
+  );
+
+  useEffect(() => {
+    const input = inputRef.current;
+    input?.addEventListener("wheel", handleWheel, { passive: false });
+    return () => input?.removeEventListener("wheel", handleWheel);
+  }, [handleWheel, inputRef.current]);
+
   const handleSafeChange = useCallback(
     (newValue: number) => {
       const otherApplicationsTotal = editedApplications
@@ -97,37 +122,18 @@ export const ProjectTableRow = ({
       {isEditing && (
         <TableCell className="text-center">
           <NumericFormat
+            getInputRef={inputRef}
             suffix="%"
             allowNegative={false}
             allowLeadingZeros={false}
             decimalSeparator=","
             decimalScale={6}
             min={0}
-            className="w-[68px] rounded-lg border border-grey-300 bg-white py-2 text-center"
+            className="w-[68px] rounded-lg border border-grey-300 bg-white py-2 text-center font-ui-mono text-sm outline-none"
             isAllowed={(values) => {
               const val = values?.floatValue ?? 0;
-              console.log(val, handleSafeChange(val));
               return val >= 0 && handleSafeChange(val);
             }}
-            customInput={(p: React.InputHTMLAttributes<HTMLInputElement>) => (
-              <input
-                disabled={false}
-                className="font-ui-mono text-sm outline-none "
-                onWheel={(e) => {
-                  const delta = e.deltaY < 0 ? 1 : -1;
-                  const currentVal = editedApplication.payoutPercentage;
-                  const nextVal = Number((currentVal + delta).toFixed(4));
-
-                  if (nextVal >= 0 && handleSafeChange(nextVal) && onEditApplication) {
-                    onEditApplication({
-                      ...editedApplication,
-                      payoutPercentage: nextVal,
-                    });
-                  }
-                }}
-                {...p}
-              />
-            )}
             value={editedApplication.payoutPercentage}
             onBlur={(e) => {
               const newValue = Number(
