@@ -107,6 +107,7 @@ export const DistributeTable = ({
                 application={application}
                 editedApplication={editedApplication || application}
                 allApplications={originalApplications}
+                editedApplications={editedApplications}
                 isEditing={isEditing}
                 isFinalized={isFinalized}
                 isSelected={selectedApplications.includes(application.id)}

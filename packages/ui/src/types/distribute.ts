@@ -11,7 +11,7 @@ export interface ApplicationPayout {
 
 export interface PoolConfig {
   tokenTicker: string;
-  amountOfTokensInPool: string;
+  amountOfTokensInPool: bigint | string;
   amountOfTokensToDistribute: number;
   tokenDecimals: number;
   poolStatus: PoolStatus;

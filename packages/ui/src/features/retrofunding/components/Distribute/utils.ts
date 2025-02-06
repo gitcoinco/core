@@ -12,7 +12,7 @@ export const formatAmountFromPercentage = (
   percentage: number,
   tokenDecimals: number,
 ) => {
-  return safeParseUnits((amountOfTokens * percentage) / 100, tokenDecimals);
+  return safeParseUnits(((amountOfTokens * percentage) / 100) * 10 ** 9, tokenDecimals) / 10n ** 9n;
 };
 
 /**

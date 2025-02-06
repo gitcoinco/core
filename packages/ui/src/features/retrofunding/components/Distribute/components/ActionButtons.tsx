@@ -3,10 +3,12 @@ import { Button } from "@/index";
 interface ActionButtonsProps {
   isEditing: boolean;
   canEdit: boolean;
+  canResetEdit: boolean;
   hasPendingApplications: boolean;
   distributionCompleted: boolean;
   selectedCount: number;
   onEdit: () => void;
+  onResetEdit: () => void;
   onSave: () => void;
   onCancel: () => void;
   onDistribute: () => void;
@@ -15,24 +17,36 @@ interface ActionButtonsProps {
 export const ActionButtons = ({
   isEditing,
   canEdit,
+  canResetEdit,
   hasPendingApplications,
   selectedCount,
   distributionCompleted,
   onEdit,
+  onResetEdit,
   onSave,
   onCancel,
   onDistribute,
 }: ActionButtonsProps) => (
-  <div className="flex items-center justify-end gap-6">
+  <div className="flex items-start justify-end gap-6">
     {!isEditing ? (
       <>
         {canEdit && (
-          <Button
-            value="Edit voting distribution"
-            variant="ghost"
-            onClick={onEdit}
-            className="h-10 rounded-lg bg-white px-4 py-2 font-ui-mono text-sm font-medium text-[#4b5050]"
-          />
+          <div className="flex flex-col items-start gap-2">
+            <Button
+              value="Edit voting distribution"
+              variant="ghost"
+              onClick={onEdit}
+              className="h-10 rounded-lg bg-white px-4 py-2 font-ui-mono text-sm font-medium text-[#4b5050]"
+            />
+            {canResetEdit && (
+              <Button
+                value="Reset editted distribution"
+                variant="ghost"
+                onClick={onResetEdit}
+                className="h-10 rounded-lg bg-white px-4 py-2 font-ui-mono text-sm font-medium text-[#4b5050]"
+              />
+            )}
+          </div>
         )}
         {hasPendingApplications && (
           <Button

@@ -1,5 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { StoryObj, Meta } from "@storybook/react";
+import { parseUnits } from "viem";
 
 import { PoolStatus } from "@/types";
 import { ApplicationPayout, PoolConfig } from "@/types/distribute";
@@ -10,13 +11,17 @@ const onDistribute = action("onDistribute");
 
 const onEditPayouts = action("onEditPayouts");
 
+const onResetEdit = action("onResetEdit");
+
 const onFundRound = action("onFundRound");
+
+const TOKEN_DECIMALS = 18;
 
 const POOL_CONFIG: PoolConfig = {
   tokenTicker: "ETH",
-  amountOfTokensInPool: "10",
+  amountOfTokensInPool: parseUnits("10", TOKEN_DECIMALS).toString(),
   amountOfTokensToDistribute: 100,
-  tokenDecimals: 18,
+  tokenDecimals: TOKEN_DECIMALS,
   poolStatus: PoolStatus.FundingPending,
   chainId: 11155111,
 };
@@ -85,10 +90,12 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
 
 const args = {
   applications: MOCK_APPLICATIONS,
-  poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "96" },
+  poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: parseUnits("96", TOKEN_DECIMALS).toString() },
+  canResetEdit: true,
   onFundRound: async (values: any) => onFundRound(values),
   onDistribute: async (values: any) => onDistribute(values),
   onEditPayouts: async (values: any) => onEditPayouts(values),
+  onResetEdit: async () => onResetEdit(),
   className: "w-full",
 };
 
@@ -108,7 +115,10 @@ export const Finalized: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "0.0000001" },
+    poolConfig: {
+      ...POOL_CONFIG,
+      amountOfTokensInPool: parseUnits("0.0000001", POOL_CONFIG.tokenDecimals).toString(),
+    },
   },
 };
 
@@ -119,7 +129,13 @@ export const FundingRequired: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: undefined,
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "0.000000000000000001" },
+    poolConfig: {
+      ...POOL_CONFIG,
+      amountOfTokensInPool: parseUnits(
+        "0.000000000000000001",
+        POOL_CONFIG.tokenDecimals,
+      ).toString(),
+    },
   },
 };
 
@@ -130,7 +146,10 @@ export const NoFinalizedProjects: StoryObj<typeof Distribute> = {
       ...application,
       payoutTransactionHash: undefined,
     })),
-    poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: "100" },
+    poolConfig: {
+      ...POOL_CONFIG,
+      amountOfTokensInPool: parseUnits("100", POOL_CONFIG.tokenDecimals).toString(),
+    },
   },
 };
 
@@ -140,7 +159,7 @@ export const NotFundingPhase: StoryObj<typeof Distribute> = {
     poolConfig: {
       ...POOL_CONFIG,
       poolStatus: PoolStatus.ApplicationsInProgress,
-      amountOfTokensInPool: "100",
+      amountOfTokensInPool: parseUnits("100", POOL_CONFIG.tokenDecimals).toString(),
     },
     applications: [],
   },

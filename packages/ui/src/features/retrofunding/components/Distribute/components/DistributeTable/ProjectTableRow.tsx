@@ -13,6 +13,7 @@ interface ApplicationTableRowProps {
   application: ApplicationPayout;
   editedApplication: ApplicationPayout;
   allApplications: ApplicationPayout[];
+  editedApplications: ApplicationPayout[];
   isEditing?: boolean;
   isFinalized?: boolean;
   isSelected: boolean;
@@ -26,6 +27,7 @@ export const ProjectTableRow = ({
   application,
   editedApplication,
   allApplications,
+  editedApplications,
   isEditing,
   isFinalized,
   isSelected,
@@ -36,13 +38,13 @@ export const ProjectTableRow = ({
 }: ApplicationTableRowProps) => {
   const handleSafeChange = useCallback(
     (newValue: number) => {
-      const otherApplicationsTotal = allApplications
+      const otherApplicationsTotal = editedApplications
         .filter((a) => a.id !== application.id)
         .reduce((acc, p) => acc + (p.payoutPercentage ?? 0), 0);
 
       return otherApplicationsTotal + newValue <= 100;
     },
-    [allApplications, application.id],
+    [editedApplications, application.id],
   );
 
   const formatPayoutAmount = (percentage: number): number => {

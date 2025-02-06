@@ -12,18 +12,22 @@ import { formatAmountFromPercentage } from "./utils";
 interface DistributeProps {
   applications: ApplicationPayout[];
   poolConfig: PoolConfig;
+  canResetEdit: boolean;
   onFundRound: (amount: bigint) => Promise<void>;
   onDistribute: (applications: { applicationId: string; amount: bigint }[]) => Promise<void>;
   onEditPayouts: (applications: ApplicationPayout[]) => Promise<void>;
+  onResetEdit: () => Promise<void>;
   className?: string;
 }
 
 export const Distribute = ({
   applications,
   poolConfig,
+  canResetEdit,
   onFundRound,
   onDistribute,
   onEditPayouts,
+  onResetEdit,
   className,
 }: DistributeProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -106,6 +110,8 @@ export const Distribute = ({
           <ActionButtons
             isEditing={isEditing}
             canEdit={canEdit}
+            canResetEdit={canResetEdit}
+            onResetEdit={onResetEdit}
             hasPendingApplications={hasPendingApplications}
             distributionCompleted={distributionCompleted}
             selectedCount={selectedApplications.length}

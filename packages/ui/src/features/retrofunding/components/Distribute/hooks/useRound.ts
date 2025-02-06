@@ -22,10 +22,7 @@ export const useRound = ({
         poolConfig.tokenDecimals,
       );
 
-      const currentBalance = safeParseUnits(
-        poolConfig.amountOfTokensInPool,
-        poolConfig.tokenDecimals,
-      );
+      const currentBalance = BigInt(poolConfig.amountOfTokensInPool);
       return [totalNeeded - currentBalance - totalPaid, currentBalance];
     } catch (error) {
       console.error("Error calculating tokens needed:", error);
