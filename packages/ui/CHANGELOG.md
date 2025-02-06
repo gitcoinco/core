@@ -5,6 +5,7 @@
 ### Patch Changes
 
 - feature: implemented BallotForm
+- fix: onWheel functionality for DistributeTable
 
 ## 0.0.0-beta.11
 
