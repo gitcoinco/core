@@ -6,7 +6,7 @@ import { CreateButton } from "./CreateButton";
 const onButtonClick = action("Button clicked!");
 
 const meta: Meta<typeof CreateButton> = {
-  title: "Features/RetroFunding/Components/CreateButton",
+  title: "Features/RetroFunding/CreateButton",
   component: CreateButton,
   args: {
     children: "Create new program",

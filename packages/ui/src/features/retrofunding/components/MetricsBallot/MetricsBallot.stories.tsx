@@ -4,7 +4,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { MetricsBallot } from ".";
 
 export default {
-  title: "Features/RetroFunding/Components/MetricsBallot",
+  title: "Features/RetroFunding/MetricsBallot",
   component: MetricsBallot,
 } as Meta;
 

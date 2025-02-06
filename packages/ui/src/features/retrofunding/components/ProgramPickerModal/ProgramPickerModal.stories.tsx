@@ -10,7 +10,7 @@ import { ProgramPickerModal, ProgramPickerModalProps } from "./ProgramPickerModa
 
 const onProgramClick = action("Program clicked!");
 const meta: Meta<typeof ProgramPickerModal> = {
-  title: "Features/Retrofunding/Components/ProgramPickerModal",
+  title: "Features/Retrofunding/ProgramPickerModal",
   component: ProgramPickerModal,
   parameters: {
     layout: "centered",
