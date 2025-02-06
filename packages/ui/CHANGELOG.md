@@ -1,5 +1,27 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.11
+
+### Patch Changes
+
+- [#20](https://github.com/gitcoinco/core/pull/20) [`c104d69`](https://github.com/gitcoinco/core/commit/c104d6913051a937acbe154b7d38f6f37a763d43) Thanks [@nijoe1](https://github.com/nijoe1)! - ### Features
+
+  - **Get Transaction URL:** Added the `getTransactionUrl` utility function.
+  - **SVG Conversion:** Added a utility to convert SVG to Blob.
+  - **Retrofunding:** Created the retrofunding distribute component.
+  - **Form Validation:** Added a number validation utility in forms.
+  - **Math Utilities:** Enhanced math utilities and included a reset for editing ballots.
+
+  ### Chores
+
+  - **Select Component:** Enhanced the Select component (added SVG icon support and additional
+    improvements).
+  - **UI Props:** Added missing Radix UI props to Switch and Checkbox components.
+  - **Tailwind Variants:** Improved Tailwind variants for statCard/Group.
+  - **Storybook:** Updated story args to demonstrate the new math utilities.
+  - **Types Migration:** Moved distribute types to the types folder.
+  - **General Improvements:** Miscellaneous improvements.
+
 ## 0.0.0-beta.10
 
 ### Patch Changes
