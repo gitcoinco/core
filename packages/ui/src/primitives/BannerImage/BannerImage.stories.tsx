@@ -102,6 +102,19 @@ export const RoundedVariant: Story = {
   },
 };
 
+export const BigAndRoundedVariant: Story = {
+  args: {
+    ipfsCID: gitcoinBannerCID,
+    size: 1280,
+    rounding: "3xl",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const image = await canvas.findByAltText("banner");
+    expect(image).toHaveClass("rounded-3xl");
+  },
+};
+
 export const DefaultVariant: Story = {
   args: {
     ipfsCID: gitcoinBannerCID,
