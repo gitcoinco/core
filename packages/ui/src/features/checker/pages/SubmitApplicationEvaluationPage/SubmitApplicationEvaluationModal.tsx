@@ -5,8 +5,8 @@ import { useMemo } from "react";
 import { match } from "ts-pattern";
 
 import { Button } from "@/primitives/Button";
+import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/primitives/Dialog";
 import { Modal } from "@/primitives/Modal";
-import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
 import { EvaluationActionState, EvaluationStatus } from "~checker/types";
 

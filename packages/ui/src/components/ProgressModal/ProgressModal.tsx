@@ -4,7 +4,7 @@ import { Check, X } from "lucide-react";
 
 import { Modal } from "@/primitives/Modal";
 import { ProgressStatus, Step } from "@/types";
-import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
+import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/primitives/Dialog";
 
 export interface ProgressModalProps {
   steps: Step[];

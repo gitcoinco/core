@@ -4,7 +4,7 @@ import React from "react";
 
 import { tv } from "tailwind-variants";
 
-import { DialogContent, DialogOverlay } from "@/ui-shadcn/dialog";
+import { DialogContent, DialogOverlay } from "@/primitives/Dialog";
 
 export type OverlayVariants = "blur" | "dark";
 
