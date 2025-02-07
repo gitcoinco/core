@@ -23,6 +23,8 @@ export * from "./primitives/Typography";
 export * from "./primitives/VerticalTabs";
 export * from "./primitives/Switch";
 export * from "./primitives/Checkbox";
+export * from "./primitives/Table";
+export * from "./primitives/Dialog";
 
 export * from "./components/AllocationSidebar";
 export * from "./components/CreateButton";
