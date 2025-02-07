@@ -5,7 +5,7 @@ import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
 import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
 import { ApplicationPayout, PoolConfig } from "@/types/distribute";
-import { TableRow, TableCell } from "@/ui-shadcn/table";
+import { TableRow, TableCell } from "@/primitives/Table";
 
 import { formatAmountFromPercentage } from "../../utils";
 
