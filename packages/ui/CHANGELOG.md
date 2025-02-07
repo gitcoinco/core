@@ -1,5 +1,15 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.13
+
+### Patch Changes
+
+- [#25](https://github.com/gitcoinco/core/pull/25) [`3c2472b`](https://github.com/gitcoinco/core/commit/3c2472bcb1dc94d60f8668ef44748bb991481c4f) Thanks [@nijoe1](https://github.com/nijoe1)! - chore: moved table to primitives
+
+  chore: moved dialog to primitives
+
+  chore: removed accordion as it already exists on primitives
+
 ## 0.0.0-beta.12
 
 ### Patch Changes
