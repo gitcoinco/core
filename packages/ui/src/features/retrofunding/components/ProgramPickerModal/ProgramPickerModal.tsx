@@ -8,9 +8,9 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/primitives/Carousel";
+import { Dialog, DialogTitle } from "@/primitives/Dialog";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Modal } from "@/primitives/Modal";
-import { Dialog, DialogTitle } from "@/ui-shadcn/dialog";
 
 export interface ProgramPickerModalProps {
   programs: ProgramCardProps[];

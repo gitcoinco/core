@@ -1,7 +1,7 @@
 import { useCallback, useState, useMemo, useEffect } from "react";
 
 import { ApplicationPayout, PoolConfig } from "@/types/distribute";
-import { Table, TableHeader, TableBody } from "@/ui-shadcn/table";
+import { Table, TableHeader, TableBody } from "@/primitives/Table";
 
 import { ProjectTableRow } from "./ProjectTableRow";
 import { TableHeaderRow } from "./TableHeaderRow";

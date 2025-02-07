@@ -4,9 +4,9 @@ import { Check, X } from "lucide-react";
 
 import { ProgressModal } from "@/components/ProgressModal";
 import { Button } from "@/primitives/Button";
+import { Dialog, DialogHeader, DialogTitle } from "@/primitives/Dialog";
 import { Modal } from "@/primitives/Modal";
 import { Step } from "@/types";
-import { Dialog, DialogHeader, DialogTitle } from "@/ui-shadcn/dialog";
 
 export interface SubmitFinalEvaluationModalProps {
   reviews: Record<string, boolean>;

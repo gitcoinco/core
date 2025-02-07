@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/ui-shadcn/dialog";
+} from "@/primitives/Dialog";
 
 import { Button } from "../Button";
 import { Modal } from "./Modal";

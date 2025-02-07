@@ -1,5 +1,5 @@
 import { Checkbox } from "@/primitives";
-import { TableHead, TableRow } from "@/ui-shadcn/table";
+import { TableHead, TableRow } from "@/primitives/Table";
 
 interface TableHeaderRowProps {
   isEditing?: boolean;
