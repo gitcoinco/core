@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.14
+
+### Patch Changes
+
+- [#27](https://github.com/gitcoinco/core/pull/27) [`1f93b17`](https://github.com/gitcoinco/core/commit/1f93b17a28fb5cc08bc5a3e8bc1b0745347e4a61) Thanks [@nijoe1](https://github.com/nijoe1)! - Export dialog and table
+
 ## 0.0.0-beta.13
 
 ### Patch Changes
