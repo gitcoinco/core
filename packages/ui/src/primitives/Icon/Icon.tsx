@@ -32,6 +32,12 @@ export enum IconType {
   USERS = "users",
   USER_GROUP = "user-group",
   X = "x",
+  EXCLAMATION_TRIANGLE = "exclamation-triangle",
+  MENU_ALT_4 = "menu-alt-4",
+  MENU_ALT_2 = "menu-alt-2",
+  DOTS_CIRCLE_HORIZONTAL = "dots-circle-horizontal",
+  CHEVRON_DOWN = "chevron-down",
+  PAPER_CLIP = "paper-clip",
   // Social Media
   TWITTER = "twitter",
   GITHUB = "github",
@@ -48,6 +54,9 @@ export enum IconType {
   SHINE = "shine",
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
+  HEADING = "heading",
+  BOLD = "bold",
+  ITALIC = "italic",
 }
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;
