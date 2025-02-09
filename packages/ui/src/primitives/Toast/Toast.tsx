@@ -111,7 +111,7 @@ export const toastCloseVariants = tv({
   variants: {
     variant: {
       default:
-        "group-[.destructive]:focus:ring-offset-red-600 absolute right-2 top-2 rounded-md p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-900 dark:text-grey-50/50 dark:hover:text-grey-50",
+        "absolute right-2 top-2 rounded-md p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-900 group-[.destructive]:focus:ring-offset-red-700 dark:text-grey-50/50 dark:hover:text-grey-50",
       alwaysVisible: "opacity-100",
       destructive: "text-red-300 hover:text-red-50 focus:text-red-50",
     },
