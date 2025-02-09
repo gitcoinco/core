@@ -1,5 +1,5 @@
+import { Input } from "@/primitives/Input";
 import { TextArea } from "@/primitives/TextArea";
-import { Input } from "@/ui-shadcn/input";
 
 import { AllowlistFormController } from "../FormControllers";
 import { ApplicationQuestionsFormController } from "../FormControllers";

@@ -9,8 +9,8 @@ import { X } from "lucide-react";
 
 import { Button } from "@/primitives/Button";
 import { Checkbox } from "@/primitives/Checkbox";
+import { Input } from "@/primitives/Input";
 import { Switch } from "@/primitives/Switch";
-import { Input } from "@/ui-shadcn/input";
 import { Label } from "@/ui-shadcn/label";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/ui-shadcn/select";
 
@@ -39,44 +39,41 @@ export const ApplicationQuestionsFormController: React.FC<
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-4">
+        <Label className="text-[16px]/[24px] font-medium">Default questions</Label>
+        <div className="flex w-64 items-center justify-between">
+          <Label className="text-sm font-normal">Project name</Label>
+          <div className="flex items-center gap-2">
+            <Label className="text-sm font-normal text-moss-700">*Required</Label>
+          </div>
+        </div>
+        <div className="flex w-64 items-center justify-between">
+          <Label className="text-sm font-normal">Project website</Label>
+          <div className="flex items-center gap-2">
+            <Label className="text-sm font-normal text-moss-700">*Required</Label>
+          </div>
+        </div>
+        <div className="flex w-64 items-center justify-between">
+          <Label className="text-sm font-normal">Project logo</Label>
+          <div className="flex items-center gap-2">
+            <Label className="text-sm font-normal text-grey-900">Optional</Label>
+          </div>
+        </div>
+        <div className="flex w-64 items-center justify-between">
+          <Label className="text-sm font-normal">Project banner</Label>
+          <div className="flex items-center gap-2">
+            <Label className="text-sm font-normal text-grey-900">Optional</Label>
+          </div>
+        </div>
+        <div className="flex w-64 items-center justify-between">
+          <Label className="text-sm font-normal">Project description</Label>
+          <div className="flex items-center gap-2">
+            <Label className="text-sm font-normal text-moss-700">*Required</Label>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
         <Label className="text-[16px]/[24px] font-medium">Project socials</Label>
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-4">
-            <Controller
-              name={`${name}.requirements.twitter.required`}
-              control={control}
-              render={({ field }) => (
-                <div className="flex w-64 items-center justify-between ">
-                  <Label className="text-sm font-normal">Project X</Label>
-                  <div className="flex items-center gap-2">
-                    <Label className="text-sm font-normal">
-                      {field.value ? "Required" : "Optional"}
-                    </Label>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
-                  </div>
-                </div>
-              )}
-            />
-          </div>
-          {watch(`${name}.requirements.twitter.required`) && (
-            <div className="flex items-center gap-4">
-              <Controller
-                name={`${name}.requirements.twitter.verification`}
-                control={control}
-                render={({ field }) => (
-                  <div className="flex w-64 items-center justify-between">
-                    <Label className="text-sm font-normal">Account Verification</Label>
-                    <div className="flex items-center gap-2">
-                      <Label className="text-sm font-normal">
-                        {field.value ? "Required" : "Optional"}
-                      </Label>
-                      <Switch checked={field.value} onCheckedChange={field.onChange} />
-                    </div>
-                  </div>
-                )}
-              />
-            </div>
-          )}
           <div className="flex items-center gap-4">
             <Controller
               name={`${name}.requirements.github.required`}
@@ -101,12 +98,42 @@ export const ApplicationQuestionsFormController: React.FC<
                 control={control}
                 render={({ field }) => (
                   <div className="flex w-64 items-center justify-between">
-                    <Label className="text-sm font-normal">Account Verification</Label>
-                    <div className="flex items-center gap-2">
-                      <Label className="text-sm font-normal">
-                        {field.value ? "Required" : "Optional"}
-                      </Label>
-                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    <div className="flex items-center gap-2 pl-4">
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      <Label className="text-xs font-normal">Verify account ownership</Label>
+                    </div>
+                  </div>
+                )}
+              />
+            </div>
+          )}
+          <div className="flex items-center gap-4">
+            <Controller
+              name={`${name}.requirements.twitter.required`}
+              control={control}
+              render={({ field }) => (
+                <div className="flex w-64 items-center justify-between ">
+                  <Label className="text-sm font-normal">Project X</Label>
+                  <div className="flex items-center gap-2">
+                    <Label className="text-sm font-normal">
+                      {field.value ? "Required" : "Optional"}
+                    </Label>
+                    <Switch checked={field.value} onCheckedChange={field.onChange} />
+                  </div>
+                </div>
+              )}
+            />
+          </div>
+          {watch(`${name}.requirements.twitter.required`) && (
+            <div className="flex items-center gap-4">
+              <Controller
+                name={`${name}.requirements.twitter.verification`}
+                control={control}
+                render={({ field }) => (
+                  <div className="flex w-64 items-center justify-between">
+                    <div className="flex items-center gap-2 pl-4">
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                      <Label className="text-xs font-normal">Verify account ownership</Label>
                     </div>
                   </div>
                 )}

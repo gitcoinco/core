@@ -26,3 +26,4 @@ export * from "./Switch";
 export * from "./Carousel";
 export * from "./Dialog";
 export * from "./Table";
+export * from "./Input";
