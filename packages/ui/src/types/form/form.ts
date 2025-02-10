@@ -14,7 +14,7 @@ export interface FormConfig {
 export interface FormWithPersistStep {
   name: string;
   formProps: PersistFormConfig;
-  stepProps: {
+  stepProps?: {
     formTitle: string;
     formDescription: string;
   };
@@ -22,7 +22,7 @@ export interface FormWithPersistStep {
 
 export interface FormStep {
   formProps: FormConfig;
-  stepProps: {
+  stepProps?: {
     formTitle: string;
     formDescription: string;
   };

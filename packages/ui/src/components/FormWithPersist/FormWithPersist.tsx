@@ -6,6 +6,7 @@ import { UseFormReturn } from "react-hook-form";
 import { tv, VariantProps } from "tailwind-variants";
 
 import { FormWithPersist_ } from "@/components/_Form";
+import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { FormWithPersistStep } from "@/types";
 
@@ -50,6 +51,7 @@ export interface FormWithPersistProps {
   storeName: string;
   align?: VariantProps<typeof formVariants>["align"];
   size?: VariantProps<typeof formVariants>["size"];
+  className?: string;
 }
 export const FormWithPersist = ({
   step,
@@ -59,6 +61,7 @@ export const FormWithPersist = ({
   submitButtonLabel = "Save",
   align = "right",
   size = "default",
+  className,
 }: FormWithPersistProps) => {
   const formRef = useRef<{ form: UseFormReturn }>(null);
 
@@ -70,14 +73,18 @@ export const FormWithPersist = ({
   const handleSubmit = async () => {
     await onSubmit(formRef.current?.form?.getValues());
   };
+
+  const stepProps = step.stepProps;
   return (
-    <div className={container()}>
-      <div className="flex flex-col gap-3">
-        {/* Form Title */}
-        <div className={title()}>{step.stepProps.formTitle}</div>
-        {/* Form Description */}
-        <div className={description()}>{step.stepProps.formDescription}</div>
-      </div>
+    <div className={cn(container(), className)}>
+      {stepProps && (
+        <div className="flex flex-col gap-3">
+          {/* Form Title */}
+          <div className={title()}>{stepProps.formTitle}</div>
+          {/* Form Description */}
+          <div className={description()}>{stepProps.formDescription}</div>
+        </div>
+      )}
       <FormWithPersist_ ref={formRef} {...step.formProps} dbName={dbName} storeName={storeName} />
       <div className={button()}>
         <Button
