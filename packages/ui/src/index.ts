@@ -26,6 +26,7 @@ export * from "./primitives/Checkbox";
 export * from "./primitives/Table";
 export * from "./primitives/Dialog";
 export * from "./primitives/Input";
+export * from "./primitives/Label";
 
 export * from "./components/AllocationSidebar";
 export * from "./components/CreateButton";

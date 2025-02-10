@@ -7,7 +7,7 @@ import { PlusIcon, TrashIcon, XIcon } from "@heroicons/react/outline";
 
 import { Button } from "@/primitives/Button";
 import { Input } from "@/primitives/Input";
-import { Label } from "@/ui-shadcn/label";
+import { Label } from "@/primitives/Label";
 
 export interface FieldArrayProps {
   itemName: string;

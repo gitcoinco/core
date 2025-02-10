@@ -2,7 +2,7 @@
 
 import { CheckCircle2Icon } from "lucide-react";
 
-import { Label } from "@/ui-shadcn/label";
+import { Label } from "@/primitives/Label";
 
 interface TimelineRowProps {
   label: string;

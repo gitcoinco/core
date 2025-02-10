@@ -10,8 +10,8 @@ import { X } from "lucide-react";
 import { Button } from "@/primitives/Button";
 import { Checkbox } from "@/primitives/Checkbox";
 import { Input } from "@/primitives/Input";
+import { Label } from "@/primitives/Label";
 import { Switch } from "@/primitives/Switch";
-import { Label } from "@/ui-shadcn/label";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/ui-shadcn/select";
 
 import { inputTypes } from "./utils";
