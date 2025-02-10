@@ -1,7 +1,7 @@
-import { FieldArrayProps, MetricsProps } from "@/components/_Form";
+import { AllowlistProps, FieldArrayProps, MetricsProps } from "@/components/_Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
+import { InputProps } from "@/primitives/Input";
 import { SelectProps } from "@/primitives/Select";
-import { InputProps } from "@/ui-shadcn/input";
 
 import { Markdown } from "../markdown";
 
@@ -107,7 +107,7 @@ export interface ApplicationQuestions {
   component: "ApplicationQuestions";
 }
 
-export interface Allowlist {
+export interface Allowlist extends AllowlistProps {
   field: BaseField;
   component: "Allowlist";
 }

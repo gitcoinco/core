@@ -102,3 +102,29 @@ export const ErrorToastTopCenter = () => {
   };
   return <Button onClick={showToast} variant="primary" value="Show Error Toast Bottom Right" />;
 };
+
+export const WarningToast = () => {
+  const { toast } = useToast();
+
+  const showToast = () => {
+    toast({
+      status: "warning",
+      description: "Warning: Your evaluation has not been saved. Please try again.",
+      timeout: 5000,
+    });
+  };
+  return <Button onClick={showToast} variant="primary" value="Show Warning Toast" />;
+};
+
+export const InfoToast = () => {
+  const { toast } = useToast();
+
+  const showToast = () => {
+    toast({
+      status: "info",
+      description: "Info: Your evaluation has not been saved. Please try again.",
+      timeout: 5000,
+    });
+  };
+  return <Button onClick={showToast} variant="primary" value="Show Info Toast" />;
+};

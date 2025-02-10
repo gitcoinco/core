@@ -1,5 +1,5 @@
 // Status Icons
-import { InformationCircleIcon } from "@heroicons/react/outline";
+import { InformationCircleIcon, PaperClipIcon } from "@heroicons/react/outline";
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -25,6 +25,11 @@ import {
   XCircleIcon as XSolidIcon,
   XIcon,
   PlusIcon,
+  ExclamationIcon as SolidExclamationTriangleIcon,
+  MenuAlt4Icon,
+  MenuAlt2Icon,
+  DotsCircleHorizontalIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/solid";
 
 enum HeroiconsType {
@@ -52,6 +57,12 @@ enum HeroiconsType {
   USERS = "users",
   USER_GROUP = "user-group",
   X = "x",
+  EXCLAMATION_TRIANGLE = "exclamation-triangle",
+  MENU_ALT_4 = "menu-alt-4",
+  MENU_ALT_2 = "menu-alt-2",
+  DOTS_CIRCLE_HORIZONTAL = "dots-circle-horizontal",
+  CHEVRON_DOWN = "chevron-down",
+  PAPER_CLIP = "paper-clip",
 }
 
 const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -65,6 +76,7 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   collection: CollectionIcon,
   "document-duplicate": DocumentDuplicateIcon,
   "exclamation-circle": ExclamationCircleIcon,
+  "exclamation-triangle": SolidExclamationTriangleIcon,
   globe: GlobeIcon,
   informationCircle: InformationCircleIcon,
   home: HomeIcon,
@@ -79,6 +91,11 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   "user-group": UserGroupIcon,
   "solid-x": XSolidIcon,
   x: XIcon,
+  "menu-alt-4": MenuAlt4Icon,
+  "menu-alt-2": MenuAlt2Icon,
+  "dots-circle-horizontal": DotsCircleHorizontalIcon,
+  "chevron-down": ChevronDownIcon,
+  "paper-clip": PaperClipIcon,
 };
 
 const heroIcons = Object.keys(heroiconsComponents).sort((a, b) =>

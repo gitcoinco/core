@@ -6,6 +6,7 @@ import { UseFormReturn } from "react-hook-form";
 import { tv, VariantProps } from "tailwind-variants";
 
 import { Form_ } from "@/components/_Form";
+import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { FormStep } from "@/types";
 
@@ -48,6 +49,7 @@ export interface FormProps {
   submitButtonLabel?: string;
   align?: VariantProps<typeof formVariants>["align"];
   size?: VariantProps<typeof formVariants>["size"];
+  className?: string;
 }
 
 export const Form = ({
@@ -56,6 +58,7 @@ export const Form = ({
   submitButtonLabel = "Save",
   align = "right",
   size = "default",
+  className,
 }: FormProps) => {
   const formRef = useRef<{ form: UseFormReturn }>(null);
 
@@ -67,14 +70,18 @@ export const Form = ({
     align,
     size,
   });
+
+  const stepProps = step.stepProps;
   return (
-    <div className={container()}>
-      <div className="flex flex-col gap-3">
-        {/* Form Title */}
-        <div className={title()}>{step.stepProps.formTitle}</div>
-        {/* Form Description */}
-        <div className={description()}>{step.stepProps.formDescription}</div>
-      </div>
+    <div className={cn(container(), className)}>
+      {stepProps && (
+        <div className="flex flex-col gap-3">
+          {/* Form Title */}
+          <div className={title()}>{stepProps.formTitle}</div>
+          {/* Form Description */}
+          <div className={description()}>{stepProps.formDescription}</div>
+        </div>
+      )}
       <Form_ ref={formRef} {...step.formProps} />
       <div className={button()}>
         <Button

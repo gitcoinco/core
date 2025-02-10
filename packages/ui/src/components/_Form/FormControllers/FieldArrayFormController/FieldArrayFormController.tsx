@@ -6,8 +6,8 @@ import { useFieldArray, useFormContext, Controller } from "react-hook-form";
 import { PlusIcon, TrashIcon, XIcon } from "@heroicons/react/outline";
 
 import { Button } from "@/primitives/Button";
-import { Input } from "@/ui-shadcn/input";
-import { Label } from "@/ui-shadcn/label";
+import { Input } from "@/primitives/Input";
+import { Label } from "@/primitives/Label";
 
 export interface FieldArrayProps {
   itemName: string;

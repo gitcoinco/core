@@ -48,9 +48,12 @@ export const Toaster = () => {
                   className="size-5 rounded-full fill-yellow-300"
                 />
               ))
-              // .with("warning", () => (
-              //   <Icon type={IconType.SOLID_WARNING} className="size-5 rounded-full" />
-              // ))
+              .with("warning", () => (
+                <Icon
+                  type={IconType.EXCLAMATION_TRIANGLE}
+                  className="size-5 rounded-full fill-red-700"
+                />
+              ))
               .otherwise(() => <Icon type={IconType.SOLID_X} className="size-5 rounded-full" />);
             return (
               <Toast

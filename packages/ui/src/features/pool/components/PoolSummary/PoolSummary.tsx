@@ -164,8 +164,8 @@ function getInfoBasedOnPoolType(poolType: PoolType, pool: PoolSummaryProps, expl
   let viewButton;
 
   if (poolType === PoolType.Retrofunding) {
-    registerDateLabel = "Applications";
-    allocationDateLabel = "Voting";
+    registerDateLabel = "Applications:";
+    allocationDateLabel = "Voting:";
     viewButton = (
       <Button
         icon={<Icon type={IconType.LINK} />}

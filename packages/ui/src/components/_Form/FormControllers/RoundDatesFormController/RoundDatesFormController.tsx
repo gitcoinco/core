@@ -6,7 +6,7 @@ import { useFormContext, Controller } from "react-hook-form";
 import moment from "moment-timezone";
 
 import { Checkbox } from "@/primitives/Checkbox";
-import { Label } from "@/ui-shadcn/label";
+import { Label } from "@/primitives/Label";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/ui-shadcn/select";
 
 import { SelectedDateRenderer } from "./SelectedDateRenderer";
@@ -165,7 +165,7 @@ export const RoundDatesFormController: React.FC = () => {
 
       <div className="flex flex-col gap-6">
         <TimelineRow
-          label="Round starts"
+          label="Voting starts"
           isSelected={isSelected(roundStart)}
           lineColor={roundLineColor}
           showLine
@@ -212,7 +212,7 @@ export const RoundDatesFormController: React.FC = () => {
         </TimelineRow>
 
         <TimelineRow
-          label="Round ends"
+          label="Voting ends"
           isSelected={isSelected(roundEnd) || roundHasNoEndDate}
           showLine={false}
           error={roundEndError}

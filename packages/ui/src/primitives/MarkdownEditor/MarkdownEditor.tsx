@@ -5,7 +5,9 @@ import { ComponentProps, forwardRef, Ref, useContext } from "react";
 import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
+import { IconType } from "@/index";
 import { cn } from "@/lib";
+import { Icon } from "@/primitives/Icon";
 import { Markdown } from "@/types";
 
 import "./markdown_editor.css";
@@ -77,6 +79,21 @@ const customPreviewCommand = {
   icon: <PreviewButton />,
 };
 
+const customTitleCommand = {
+  ...commands.title,
+  icon: <Icon type={IconType.HEADING} className="size-fit text-grey-900" />,
+};
+
+const customBoldCommand = {
+  ...commands.bold,
+  icon: <Icon type={IconType.BOLD} className="size-fit text-grey-900" />,
+};
+
+const customItalicCommand = {
+  ...commands.italic,
+  icon: <Icon type={IconType.ITALIC} className="size-fit text-grey-900" />,
+};
+
 export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
   { ...props }: MarkdownEditorProps & ComponentProps<"div">,
   ref: Ref<HTMLDivElement>,
@@ -86,9 +103,9 @@ export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
       commands={[editPreviewCommand, customPreviewCommand]}
       // TODO: Customize commands Icons
       extraCommands={[
-        commands.title,
-        commands.bold,
-        commands.italic,
+        customTitleCommand,
+        customBoldCommand,
+        customItalicCommand,
         commands.divider,
         commands.link,
         commands.image,
