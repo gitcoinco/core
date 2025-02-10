@@ -22,14 +22,14 @@ export const IconLabel: React.FC<
   const { text, icon } = variants();
 
   return match(props)
-    .with({ type: "ai-evaluation" }, ({ percent = 0, className, isLoading }) => {
+    .with({ type: "ai-evaluation" }, ({ percent = 0, className, isLoading, iconType }) => {
       const { message, variant } = getEvaluation(percent, isLoading) as keyof typeof icon;
 
       return (
         <IconLabelContainer
           type="ai-evaluation-a"
           className={className}
-          iconType={IconType.SPARKLES}
+          iconType={iconType ?? IconType.SPARKLES}
           iconVariant={icon({ type: variant })}
         >
           {match(isLoading)
@@ -55,11 +55,11 @@ export const IconLabel: React.FC<
           ))}
       </IconLabelContainer>
     ))
-    .with({ type: "period" }, ({ startDate, endDate, className, isLoading }) => (
+    .with({ type: "period" }, ({ startDate, endDate, className, isLoading, iconType }) => (
       <IconLabelContainer
         type="period"
         className={className}
-        iconType={IconType.CALENDAR}
+        iconType={iconType ?? IconType.CALENDAR}
         iconVariant={icon({ type: isLoading ? "loading" : "dateWithPrefix" })}
       >
         {match(isLoading)
@@ -74,11 +74,11 @@ export const IconLabel: React.FC<
     ))
     .with(
       { type: "roundPeriod" },
-      ({ startDate, endDate = undefined, className, isLoading, label = "Review Period" }) => (
+      ({ startDate, endDate = undefined, className, isLoading, label = "Review Period", iconType }) => (
         <IconLabelContainer
           type="period"
           className={className}
-          iconType={IconType.CLOCK}
+          iconType={iconType ?? IconType.CLOCK}
           iconVariant={icon({ type: isLoading ? "loading" : "roundPeriod" })}
         >
           {match(isLoading)
@@ -89,7 +89,7 @@ export const IconLabel: React.FC<
               </div>
             ))
             .otherwise(() => (
-              <span className={text({ type: "roundPeriod" })}>{`${label}: ${formatDate(
+              <span className={text({ type: "roundPeriod" })}>{`${label} ${formatDate(
                 startDate,
                 DateFormat.ShortMonthDayYear24HourUTC,
               )} - ${
@@ -101,11 +101,11 @@ export const IconLabel: React.FC<
         </IconLabelContainer>
       ),
     )
-    .with({ type: "dateWithPrefix" }, ({ date, prefix, className, isLoading }) => (
+    .with({ type: "dateWithPrefix" }, ({ date, prefix, className, isLoading, iconType }) => (
       <IconLabelContainer
         type="date"
         className={className}
-        iconType={IconType.CALENDAR}
+        iconType={iconType ?? IconType.CALENDAR}
         iconVariant={icon({ type: isLoading ? "loading" : "dateWithPrefix" })}
       >
         {match(isLoading)
@@ -123,13 +123,13 @@ export const IconLabel: React.FC<
           ))}
       </IconLabelContainer>
     ))
-    .with({ type: "address" }, ({ address, ens, className }) => {
+    .with({ type: "address" }, ({ address, ens, className, iconType }) => {
       const label = getAddressLabel(ens, address);
       return (
         <IconLabelContainer
           type="default"
           className={className}
-          iconType={IconType.ETH}
+          iconType={iconType ?? IconType.ETH}
           iconVariant={icon({ type: "default" })}
         >
           <span className={text()}>{label}</span>
