@@ -1,5 +1,26 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.15
+
+### Patch Changes
+
+- [#29](https://github.com/gitcoinco/core/pull/29) [`378e333`](https://github.com/gitcoinco/core/commit/378e3339cd77240a5f0ca2af43c325d8c9d5f5f5) Thanks [@nijoe1](https://github.com/nijoe1)! - feat: UI Component Enhancements
+
+  - Added new icon components
+  - Added warning toaster component
+  - Made IconLabel component more modular
+  - Updated markdown editor action buttons to match designs
+  - Added summary section support in progress form
+  - Added clickable side navigation for form steps
+
+  chore: Component Organization
+
+  - Moved Input component to primitives
+  - Moved Label component to primitives
+  - Made allowlist import button optional
+
+  fix: Markdown editor styling matches design spec
+
 ## 0.0.0-beta.14
 
 ### Patch Changes
