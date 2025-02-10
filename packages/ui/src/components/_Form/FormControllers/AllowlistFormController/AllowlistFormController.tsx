@@ -7,15 +7,23 @@ import { UploadIcon } from "@heroicons/react/solid";
 import Papa from "papaparse";
 import { getAddress, isAddress } from "viem";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { TextArea } from "@/primitives/TextArea";
 
-export interface AllowlistFormControllerProps {
+export interface AllowlistProps {
+  showImportButton?: boolean;
+}
+
+export interface AllowlistFormControllerProps extends AllowlistProps {
   /** The name of the form field */
   name: string;
 }
 
-export const AllowlistFormController: React.FC<AllowlistFormControllerProps> = ({ name }) => {
+export const AllowlistFormController: React.FC<AllowlistFormControllerProps> = ({
+  name,
+  showImportButton = true,
+}) => {
   const { control, setValue } = useFormContext();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -50,7 +58,7 @@ export const AllowlistFormController: React.FC<AllowlistFormControllerProps> = (
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-start">
+      <div className={cn("flex justify-start", !showImportButton && "hidden")}>
         <Button
           value="Import CSV"
           className="bg-grey-100 text-grey-900"
