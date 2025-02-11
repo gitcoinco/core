@@ -1,10 +1,12 @@
+import { PropsWithChildren } from "react";
+
 import { match } from "ts-pattern";
 
 import { RetrofundingIcon, VoteIcon } from "@/assets/icons";
 
 interface BaseLandingProps {
   type: "vote" | "admin";
-  actionButton?: React.ReactNode;
+  children: React.ReactNode;
 }
 export interface VoteSpecificProps extends BaseLandingProps {
   roundName: string;
@@ -22,7 +24,7 @@ export const LandingPage = ({ type, ...props }: LandingProps) => {
     .exhaustive();
 };
 
-const VoteLanding = ({ roundName, roundDescription, actionButton }: VoteSpecificProps) => {
+const VoteLanding = ({ roundName, roundDescription, children }: VoteSpecificProps) => {
   return (
     <div className="background-grid-purple flex flex-col items-center justify-center">
       <div className="flex max-w-[564px] flex-col items-center gap-8 ">
@@ -31,18 +33,18 @@ const VoteLanding = ({ roundName, roundDescription, actionButton }: VoteSpecific
           <div className="text-2xl font-medium">{roundName}</div>
           <div className="text-[16px]/[28px]">{roundDescription}</div>
         </div>
-        {actionButton}
+        {children}
       </div>
     </div>
   );
 };
 
-const AdminLanding = ({ actionButton }: AdminSpecificProps) => {
+const AdminLanding = ({ children }: AdminSpecificProps) => {
   return (
     <div className="background-grid-green flex flex-col justify-center">
       <div className="flex flex-col items-center gap-10">
         <RetrofundingIcon />
-        {actionButton}
+        {children}
       </div>
     </div>
   );
