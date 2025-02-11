@@ -25,13 +25,13 @@ export const VoteLanding: Story = {
     roundName: "Cool retro round",
     roundDescription:
       "Lorem ipsum dolor sit amet consectetur. Non laoreet nulla blandit at integer. Consectetur adipiscing magna sollicitudin arcu elementum nunc. Elit fermentum.",
-    actionButton: <ConnectButton type="vote" onClick={handleConnect} />,
+    children: <ConnectButton type="vote" onClick={handleConnect} />,
   },
 };
 
 export const AdminLanding: Story = {
   args: {
     type: "admin",
-    actionButton: <ConnectButton type="admin" onClick={handleConnect} />,
+    children: <ConnectButton type="admin" onClick={handleConnect} />,
   },
 };

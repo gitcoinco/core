@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.17
+
+### Patch Changes
+
+- (retrofunding): changed props in LandingPage "actionButton" -> "children"
+
 ## 0.0.0-beta.16
 
 ### Patch Changes
