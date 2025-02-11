@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.16
+
+### Patch Changes
+
+- [#31](https://github.com/gitcoinco/core/pull/31) [`aabdc5f`](https://github.com/gitcoinco/core/commit/aabdc5f0e01ae382de435d3010e704f3ea8b8292) Thanks [@nijoe1](https://github.com/nijoe1)! - chore: updated retrofunding landing pages svgs
+
 ## 0.0.0-beta.15
 
 ### Patch Changes

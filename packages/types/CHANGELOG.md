@@ -1,5 +1,7 @@
 # @gitcoin/types
 
+## 0.0.0-beta.16
+
 ## 0.0.0-beta.15
 
 ## 0.0.0-beta.14
