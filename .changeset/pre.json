@@ -10,6 +10,7 @@
     "@gitcoin/utils": "0.0.0"
   },
   "changesets": [
+    "cuddly-pumas-watch",
     "dirty-donkeys-live",
     "forty-planets-collect",
     "grumpy-flies-smell",

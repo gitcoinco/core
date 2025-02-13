@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.18
+
+### Patch Changes
+
+- implemented Spinner component
+
 ## 0.0.0-beta.17
 
 ### Patch Changes
