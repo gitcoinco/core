@@ -5,6 +5,7 @@ import HeadingIcon from "./heading.svg?react";
 import ItalicIcon from "./italic.svg?react";
 import RetrofundingIcon from "./retrofunding.svg?react";
 import ShineIcon from "./shine.svg?react";
+import SpinnerIcon from "./spinner.svg?react";
 import UserIcon from "./user.svg?react";
 import VerifiedBadgeIcon from "./verifiedBadge.svg?react";
 import VoteIcon from "./vote.svg?react";
@@ -18,6 +19,7 @@ enum CustomIconType {
   HEADING = "heading",
   BOLD = "bold",
   ITALIC = "italic",
+  SPINNER = "spinner",
 }
 
 const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -29,6 +31,7 @@ const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSV
   heading: HeadingIcon,
   bold: BoldIcon,
   italic: ItalicIcon,
+  spinner: SpinnerIcon,
 };
 
 const customIcons = Object.keys(customIconComponents).sort((a, b) =>
@@ -38,6 +41,7 @@ const customIcons = Object.keys(customIconComponents).sort((a, b) =>
 export {
   CheckerIcon,
   ExplorerIcon,
+  SpinnerIcon,
   ShineIcon,
   UserIcon,
   VerifiedBadgeIcon,

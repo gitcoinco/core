@@ -22,6 +22,7 @@ export * from "./primitives/Toast";
 export * from "./primitives/Typography";
 export * from "./primitives/VerticalTabs";
 export * from "./primitives/Switch";
+export * from "./primitives/Spinner";
 export * from "./primitives/Checkbox";
 export * from "./primitives/Table";
 export * from "./primitives/Dialog";
