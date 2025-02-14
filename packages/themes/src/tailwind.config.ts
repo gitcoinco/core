@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-
+import { createThemes } from "tw-colors";
+import { leaderboardPlugin } from "./plugins/leaderboard";
+import { leaderboardColors } from "./themes/leaderboard";
 import { colors } from "./colors";
 
-export const tailwindConfig: Omit<Config, "content"> = {
-  darkMode: ["class", "[data-mode='dark']"],
+const config: Omit<Config, "content"> = {
+  darkMode: ["class", "[data-theme='dark']"],
   theme: {
     colors,
     extend: {
@@ -36,8 +38,18 @@ export const tailwindConfig: Omit<Config, "content"> = {
         "ui-sans": ["DM Sans", "sans-serif"],
       },
       fontSize: {
-        p: ["1rem", { lineHeight: "1.75rem", fontWeight: "400", letterSpacing: undefined }],
-        body: ["0.875rem", { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined }],
+        p: [
+          "1rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: "400",
+            letterSpacing: undefined,
+          },
+        ],
+        body: [
+          "0.875rem",
+          { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined },
+        ],
       },
       borderRadius: {
         "3.5": "14px",
@@ -72,5 +84,23 @@ export const tailwindConfig: Omit<Config, "content"> = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
-} satisfies Omit<Config, "content">;
+  plugins: [tailwindcssAnimate, leaderboardPlugin],
+} as Omit<Config, "content">;
+
+// Define the themes with their respective color configurations
+const themes = createThemes({
+  light: {
+    ...config.theme?.colors,
+    leaderboard: leaderboardColors.light,
+  },
+  dark: {
+    ...config.theme?.colors,
+    leaderboard: leaderboardColors.dark,
+  },
+});
+
+// Merge the themes with the base Tailwind configuration
+export const tailwindConfig = {
+  ...config,
+  plugins: [...config.plugins, themes],
+} as Omit<Config, "content">;

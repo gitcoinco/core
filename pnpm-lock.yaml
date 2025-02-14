@@ -111,22 +111,26 @@ importers:
         version: 5.5.4
 
   packages/themes:
+    dependencies:
+      tw-colors:
+        specifier: ^3.3.2
+        version: 3.3.2(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4)))
     devDependencies:
       '@gitcoin/config':
         specifier: workspace:*
         version: link:../config
       tailwind-variants:
         specifier: ^0.2.1
-        version: 0.2.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4)))
+        version: 0.2.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4)))
       tailwindcss:
         specifier: ^3.4.14
-        version: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))
+        version: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4)))
+        version: 1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4)))
       tsup:
         specifier: ^8.0.2
-        version: 8.3.6(@microsoft/api-extractor@7.49.1(@types/node@22.10.10))(@swc/core@1.10.11(@swc/helpers@0.5.5))(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
+        version: 8.3.6(@microsoft/api-extractor@7.49.1)(@swc/core@1.10.11)(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -151,7 +155,7 @@ importers:
         version: 8.57.1
       tsup:
         specifier: ^8.0.2
-        version: 8.3.6(@microsoft/api-extractor@7.49.1(@types/node@22.10.10))(@swc/core@1.10.11(@swc/helpers@0.5.5))(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
+        version: 8.3.6(@microsoft/api-extractor@7.49.1)(@swc/core@1.10.11)(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -552,7 +556,7 @@ importers:
         version: 8.57.1
       tsup:
         specifier: ^8.0.2
-        version: 8.3.6(@microsoft/api-extractor@7.49.1(@types/node@22.10.10))(@swc/core@1.10.11(@swc/helpers@0.5.5))(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
+        version: 8.3.6(@microsoft/api-extractor@7.49.1)(@swc/core@1.10.11)(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -4073,6 +4077,13 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
+  color-string@1.9.1:
+    resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
+
+  color@4.2.3:
+    resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
+    engines: {node: '>=12.5.0'}
+
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
@@ -5032,6 +5043,10 @@ packages:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}
     engines: {node: '>=16'}
 
+  flat@5.0.2:
+    resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
+    hasBin: true
+
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
 
@@ -5559,6 +5574,9 @@ packages:
 
   is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
+
+  is-arrayish@0.3.2:
+    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
 
   is-async-function@2.1.1:
     resolution: {integrity: sha512-9dgM/cZBnNvjzaMYHVoxxfPj2QXt22Ev7SuuPrs+xav0ukGB0S6d4ydZdEiM48kLx5kDV+QBPrpVnFyefL8kkQ==}
@@ -6167,6 +6185,9 @@ packages:
 
   lodash.flattendeep@4.4.0:
     resolution: {integrity: sha512-uHaJFihxmJcEX3kT4I23ABqKKalJ/zDrDg0lsFtc1h+3uw49SIJ5beyhx5ExVRti3AvKoOJngIj7xz3oylPdWQ==}
+
+  lodash.foreach@4.5.0:
+    resolution: {integrity: sha512-aEXTF4d+m05rVOAUG3z4vZZ4xVexLKZGF0lIxuHZ1Hplpk/3B6Z1+/ICICYRLm7c41Z2xiejbkCkJoTlypoXhQ==}
 
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
@@ -7899,6 +7920,9 @@ packages:
     resolution: {integrity: sha512-iuh+gPf28RkltuJC7W5MRi6XAjTDCAPC/prJUpQoG4vIP3MJZ+GTydVnodXA7pwvTKb2cA0m9OFZW/cdWy/I/w==}
     engines: {node: '>=6'}
 
+  simple-swizzle@0.2.2:
+    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -8443,6 +8467,11 @@ packages:
   turbo@2.3.4:
     resolution: {integrity: sha512-1kiLO5C0Okh5ay1DbHsxkPsw9Sjsbjzm6cF85CpWjR0BIyBFNDbKqtUyqGADRS1dbbZoQanJZVj4MS5kk8J42Q==}
     hasBin: true
+
+  tw-colors@3.3.2:
+    resolution: {integrity: sha512-TosYI43Jec/KO4NPzDoBlccPPtPMYholoRUSVYGmzCGa1Zek9exDQIQ+6UViHqqK6Nti/4wBzEGyRTxMSNnSXQ==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0'
 
   tween-functions@1.2.0:
     resolution: {integrity: sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==}
@@ -12319,7 +12348,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4))(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4)
       '@typescript-eslint/parser': 6.21.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4)
       eslint-config-prettier: 9.1.0(eslint@9.19.0(jiti@1.21.7))
-      eslint-import-resolver-alias: 1.1.2(eslint-plugin-import@2.31.0)
+      eslint-import-resolver-alias: 1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4))(eslint-import-resolver-typescript@3.7.0)(eslint@9.19.0(jiti@1.21.7)))
       eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0)(eslint@9.19.0(jiti@1.21.7))
       eslint-plugin-eslint-comments: 3.2.0(eslint@9.19.0(jiti@1.21.7))
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4))(eslint@9.19.0(jiti@1.21.7))
@@ -13053,6 +13082,16 @@ snapshots:
 
   color-name@1.1.4: {}
 
+  color-string@1.9.1:
+    dependencies:
+      color-name: 1.1.4
+      simple-swizzle: 0.2.2
+
+  color@4.2.3:
+    dependencies:
+      color-convert: 2.0.1
+      color-string: 1.9.1
+
   colorette@2.0.20: {}
 
   combined-stream@1.0.8:
@@ -13659,7 +13698,7 @@ snapshots:
       eslint-plugin-turbo: 2.3.4(eslint@9.19.0(jiti@1.21.7))(turbo@2.3.4)
       turbo: 2.3.4
 
-  eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.31.0):
+  eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4))(eslint-import-resolver-typescript@3.7.0)(eslint@9.19.0(jiti@1.21.7))):
     dependencies:
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.5.4))(eslint@9.19.0(jiti@1.21.7))
 
@@ -14219,6 +14258,8 @@ snapshots:
     dependencies:
       flatted: 3.3.2
       keyv: 4.5.4
+
+  flat@5.0.2: {}
 
   flatted@3.3.2: {}
 
@@ -14859,6 +14900,8 @@ snapshots:
       get-intrinsic: 1.2.7
 
   is-arrayish@0.2.1: {}
+
+  is-arrayish@0.3.2: {}
 
   is-async-function@2.1.1:
     dependencies:
@@ -15672,6 +15715,8 @@ snapshots:
   lodash.escaperegexp@4.1.2: {}
 
   lodash.flattendeep@4.4.0: {}
+
+  lodash.foreach@4.5.0: {}
 
   lodash.isplainobject@4.0.6: {}
 
@@ -16867,13 +16912,13 @@ snapshots:
       postcss: 8.5.1
       ts-node: 10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.4.2)
 
-  postcss-load-config@4.0.2(postcss@8.5.1)(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4)):
+  postcss-load-config@4.0.2(postcss@8.5.1)(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.0
     optionalDependencies:
       postcss: 8.5.1
-      ts-node: 10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4)
+      ts-node: 10.9.2(@swc/core@1.10.11)(typescript@5.5.4)
 
   postcss-load-config@6.0.1(jiti@1.21.7)(postcss@8.5.1)(yaml@2.7.0):
     dependencies:
@@ -17693,6 +17738,10 @@ snapshots:
       figures: 2.0.0
       pkg-conf: 2.1.0
 
+  simple-swizzle@0.2.2:
+    dependencies:
+      is-arrayish: 0.3.2
+
   sisteransi@1.0.5: {}
 
   skin-tone@2.0.0:
@@ -18038,18 +18087,18 @@ snapshots:
       tailwind-merge: 2.6.0
       tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.4.2))
 
-  tailwind-variants@0.2.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))):
+  tailwind-variants@0.2.1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))):
     dependencies:
       tailwind-merge: 2.6.0
-      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))
 
   tailwindcss-animate@1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.4.2))):
     dependencies:
       tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.4.2))
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))):
     dependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))
 
   tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.4.2)):
     dependencies:
@@ -18078,7 +18127,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -18097,7 +18146,7 @@ snapshots:
       postcss: 8.5.1
       postcss-import: 15.1.0(postcss@8.5.1)
       postcss-js: 4.0.1(postcss@8.5.1)
-      postcss-load-config: 4.0.2(postcss@8.5.1)(ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4))
+      postcss-load-config: 4.0.2(postcss@8.5.1)(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))
       postcss-nested: 6.2.0(postcss@8.5.1)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -18231,14 +18280,13 @@ snapshots:
     optionalDependencies:
       '@swc/core': 1.10.11(@swc/helpers@0.5.5)
 
-  ts-node@10.9.2(@swc/core@1.10.11(@swc/helpers@0.5.5))(@types/node@22.10.10)(typescript@5.5.4):
+  ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.10.10
       acorn: 8.14.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -18271,7 +18319,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.3.6(@microsoft/api-extractor@7.49.1(@types/node@22.10.10))(@swc/core@1.10.11(@swc/helpers@0.5.5))(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0):
+  tsup@8.3.6(@microsoft/api-extractor@7.49.1)(@swc/core@1.10.11)(jiti@1.21.7)(postcss@8.5.1)(typescript@5.5.4)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.24.2)
       cac: 6.7.14
@@ -18331,6 +18379,13 @@ snapshots:
       turbo-linux-arm64: 2.3.4
       turbo-windows-64: 2.3.4
       turbo-windows-arm64: 2.3.4
+
+  tw-colors@3.3.2(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))):
+    dependencies:
+      color: 4.2.3
+      flat: 5.0.2
+      lodash.foreach: 4.5.0
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.10.11)(typescript@5.5.4))
 
   tween-functions@1.2.0: {}
 
