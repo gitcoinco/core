@@ -18,6 +18,9 @@ export const SelectFormController: React.FC<SelectFormControllerProps> = ({
   size,
   variant,
   disabled,
+  align,
+  side,
+  position,
 }) => {
   const { control } = useFormContext();
 
@@ -36,6 +39,9 @@ export const SelectFormController: React.FC<SelectFormControllerProps> = ({
           size={size}
           variant={variant}
           disabled={disabled}
+          align={align}
+          side={side}
+          position={position}
         />
       )}
     />

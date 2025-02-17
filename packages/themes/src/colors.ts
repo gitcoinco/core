@@ -1,4 +1,4 @@
-import { Colors, ColorSet } from "../types";
+import { ColorSet, Colors } from "./types";
 
 const black = "#000000";
 const white = "#ffffff";
@@ -131,7 +131,7 @@ export const grantsStackUIKit: Colors = {
   purple,
 };
 
-export const colors: Colors = {
+export const colors = {
   ...grantsStackDesignSystem,
   ...grantsStackUIKit,
-};
+} as ColorSet;

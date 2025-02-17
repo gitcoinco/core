@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-
+import { createThemes } from "tw-colors";
 import { colors } from "./colors";
+import { leaderboardPlugin, paginationPlugin } from "./plugins";
+import { leaderboardColors, paginationColors } from "./themes";
 
-export const tailwindConfig: Omit<Config, "content"> = {
-  darkMode: ["class", "[data-mode='dark']"],
+const config: Omit<Config, "content"> = {
+  darkMode: ["class", "[data-theme='dark']"],
   theme: {
     colors,
     extend: {
@@ -36,7 +38,14 @@ export const tailwindConfig: Omit<Config, "content"> = {
         "ui-sans": ["DM Sans", "sans-serif"],
       },
       fontSize: {
-        p: ["1rem", { lineHeight: "1.75rem", fontWeight: "400", letterSpacing: undefined }],
+        p: [
+          "1rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: "400",
+            letterSpacing: undefined,
+          },
+        ],
         body: ["0.875rem", { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined }],
       },
       borderRadius: {
@@ -72,5 +81,25 @@ export const tailwindConfig: Omit<Config, "content"> = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
-} satisfies Omit<Config, "content">;
+  plugins: [tailwindcssAnimate, leaderboardPlugin, paginationPlugin],
+} as Omit<Config, "content">;
+
+// Define the themes with their respective color configurations
+const themes = createThemes({
+  light: {
+    ...config.theme?.colors,
+    leaderboard: leaderboardColors.light,
+    pagination: paginationColors.light,
+  },
+  dark: {
+    ...config.theme?.colors,
+    leaderboard: leaderboardColors.dark,
+    pagination: paginationColors.dark,
+  },
+});
+
+// Merge the themes with the base Tailwind configuration
+export const tailwindConfig = {
+  ...config,
+  plugins: [...config.plugins, themes],
+} as Omit<Config, "content">;

@@ -51,12 +51,14 @@ export enum IconType {
   // Custom
   CHECKER = "checker",
   EXPLORER = "explorer",
+  EXPLORER_RAW = "explorerRaw",
   SHINE = "shine",
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
   HEADING = "heading",
   BOLD = "bold",
   ITALIC = "italic",
+  SORT = "sort",
 }
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;

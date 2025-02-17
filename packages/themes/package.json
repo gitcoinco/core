@@ -22,10 +22,10 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./gitcoin": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+    "./colors": {
+      "types": "./dist/colors.d.ts",
+      "import": "./dist/colors.mjs",
+      "require": "./dist/colors.js"
     }
   },
   "files": [
@@ -41,5 +41,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "tw-colors": "^3.3.2"
   }
 }

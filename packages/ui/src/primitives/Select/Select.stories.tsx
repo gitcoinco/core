@@ -51,9 +51,9 @@ export const SmallSize: Story = {
   },
 };
 
-export const LargeSize: Story = {
+export const MediumSize: Story = {
   args: {
-    size: "lg",
+    size: "md",
     variant: "default",
     defaultValue: "apple",
   },
