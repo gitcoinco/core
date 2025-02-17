@@ -1,7 +1,3 @@
-"use client";
-
-import "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 

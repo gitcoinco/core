@@ -1,72 +1,71 @@
+import { ReactNode } from "react";
+
 import { DateFormat } from "@/lib/dates/formatDate";
 import { IconType } from "@/primitives/Icon";
 
-interface AIEvaluationProps {
+interface CustomVariantProps {
+  className?: string;
+  iconVariant?: string;
+  textVariant?: string;
+}
+
+interface AIEvaluationProps extends CustomVariantProps {
   type: "ai-evaluation";
   percent?: number;
-  className?: string;
   iconType?: IconType;
 }
 
-interface DateProps {
+interface DateProps extends CustomVariantProps {
   type: "date";
   date: Date;
   dateFormat?: DateFormat;
-  className?: string;
   iconType?: IconType;
 }
 
-interface PeriodProps {
+interface PeriodProps extends CustomVariantProps {
   type: "period";
   startDate: Date;
   endDate: Date;
   dateFormat?: DateFormat;
-  className?: string;
   iconType?: IconType;
 }
 
-interface RoundPeriodProps {
+interface RoundPeriodProps extends CustomVariantProps {
   type: "roundPeriod";
   startDate: Date;
   endDate?: Date;
   dateFormat?: DateFormat;
   label?: string;
-  className?: string;
   iconType?: IconType;
 }
 
-interface DateWithPrefixProps {
+interface DateWithPrefixProps extends CustomVariantProps {
   type: "dateWithPrefix";
   date: Date;
   prefix: string;
   dateFormat?: DateFormat;
-  className?: string;
   iconType?: IconType;
 }
 
-interface AddressProps {
+interface AddressProps extends CustomVariantProps {
   type: "address";
   address?: string;
   ens?: string;
-  className?: string;
   iconType?: IconType;
 }
 
-export interface SocialProps {
+interface SocialProps extends CustomVariantProps {
   type: "social";
   platform?: "github" | "twitter" | "website";
+  iconType?: IconType;
   link?: string;
   isVerified?: boolean;
-  className?: string;
 }
 
-export interface DefaultProps {
+interface DefaultProps extends CustomVariantProps {
   type: "default";
   iconType: IconType;
-  label?: string;
-  iconVariant?: string;
-  textVariant?: string;
-  className?: string;
+  label?: ReactNode;
   laodingSkeletonClassName?: string;
 }
 
