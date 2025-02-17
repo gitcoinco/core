@@ -85,18 +85,21 @@ const config: Omit<Config, "content"> = {
 } as Omit<Config, "content">;
 
 // Define the themes with their respective color configurations
-const themes = createThemes({
-  light: {
-    ...config.theme?.colors,
-    leaderboard: leaderboardColors.light,
-    pagination: paginationColors.light,
+const themes = createThemes(
+  {
+    light: {
+      ...config.theme?.colors,
+      leaderboard: leaderboardColors.light,
+      pagination: paginationColors.light,
+    },
+    dark: {
+      ...config.theme?.colors,
+      leaderboard: leaderboardColors.dark,
+      pagination: paginationColors.dark,
+    },
   },
-  dark: {
-    ...config.theme?.colors,
-    leaderboard: leaderboardColors.dark,
-    pagination: paginationColors.dark,
-  },
-});
+  { defaultTheme: "light" },
+);
 
 // Merge the themes with the base Tailwind configuration
 export const tailwindConfig = {
