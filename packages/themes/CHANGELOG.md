@@ -1,5 +1,24 @@
 # @gitcoin/themes
 
+## 0.0.0-beta.20
+
+### Patch Changes
+
+- [#37](https://github.com/gitcoinco/core/pull/37)
+  [`ef6701f`](https://github.com/gitcoinco/core/commit/ef6701ffabdf4cd73f4020be2eef7891e7d91cec)
+  Thanks [@nijoe1](https://github.com/nijoe1)! - ### Features
+
+  - Refactored themes package using `tw-colors`
+  - Added new icons to the library
+  - Created new `IconWithTooltip` component
+  - Implemented pagination primitive with theme support
+  - Built Retrofunding leaderboard component with theme support
+
+  ### Improvements
+
+  - Enhanced `IconLabel` component functionality
+  - Upgraded `Select` component with better UX
+
 ## 0.0.0-beta.19
 
 ## 0.0.0-beta.18
