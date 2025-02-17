@@ -1,5 +1,11 @@
 # @gitcoin/themes
 
+## 0.0.0-beta.21
+
+### Patch Changes
+
+- fix(theme): default theme missing
+
 ## 0.0.0-beta.20
 
 ### Patch Changes
