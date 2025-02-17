@@ -1,13 +1,14 @@
+import ExplorerIconRaw from "@/assets/logos/explorer/explorer.svg?react";
+import ExplorerIcon from "@/assets/logos/explorer/explorerGrad.svg?react";
+
 import BoldIcon from "./bold.svg?react";
 import CheckerIcon from "./checker.svg?react";
-import ExplorerIcon from "./explorer.svg?react";
-import ExplorerIconRaw from "./rawExplorer.svg?react";
 import HeadingIcon from "./heading.svg?react";
 import ItalicIcon from "./italic.svg?react";
 import RetrofundingIcon from "./retrofunding.svg?react";
 import ShineIcon from "./shine.svg?react";
-import SpinnerIcon from "./spinner.svg?react";
 import SortIcon from "./sortIcon.svg?react";
+import SpinnerIcon from "./spinner.svg?react";
 import UserIcon from "./user.svg?react";
 import VerifiedBadgeIcon from "./verifiedBadge.svg?react";
 import VoteIcon from "./vote.svg?react";
