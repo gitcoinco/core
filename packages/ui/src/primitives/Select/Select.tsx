@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { SelectGroup } from "@radix-ui/react-select";
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
@@ -18,7 +18,9 @@ import {
 
 import { Label } from "./Label";
 
-export interface SelectProps {
+export interface SelectProps
+  extends VariantProps<typeof selectStyles>,
+    React.ComponentProps<typeof SelectContent> {
   options: {
     groupLabel?: string;
     items: {
@@ -34,8 +36,6 @@ export interface SelectProps {
   onValueChange?: (value: string) => void;
   value?: string;
   defaultValue?: string;
-  variant?: "default" | "outlined" | "filled";
-  size?: "sm" | "md" | "lg";
   className?: string;
   disabled?: boolean;
 }
@@ -70,22 +70,16 @@ const selectStyles = tv({
     },
     size: {
       sm: {
-        trigger: "h-8 gap-1 text-xs",
-        item: "h-8 text-xs",
+        trigger: "h-6 gap-1 text-xs",
+        item: "text-xs ",
         label: "text-xs",
-        icon: "h-4 w-4",
+        icon: "size-3",
       },
       md: {
         trigger: "h-10 px-3 py-2 text-sm",
         item: "text-sm",
         label: "text-sm",
-        icon: "h-5 w-5",
-      },
-      lg: {
-        trigger: "h-12 gap-2 text-base",
-        item: "text-base",
-        label: "",
-        icon: "h-6 w-6",
+        icon: "h-4 w-4",
       },
     },
   },
@@ -116,6 +110,9 @@ export const Select = ({
   size,
   className,
   disabled,
+  position,
+  side,
+  align,
 }: SelectProps) => {
   const [internalValue, setInternalValue] = React.useState(defaultValue);
   const isControlled = value !== undefined;
@@ -141,7 +138,7 @@ export const Select = ({
       <SelectTrigger className={cn(trigger(), className)}>
         {selectedItem ? <Label {...selectedItem} iconClassName={icon()} /> : placeholder}
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="min-w-fit" position={position} side={side} align={align}>
         {options.map((group, index) => (
           <React.Fragment key={index}>
             {group.groupLabel && (
@@ -150,7 +147,11 @@ export const Select = ({
               </SelectGroup>
             )}
             {group.items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem
+                key={item.value}
+                value={item.value}
+                indicatorClassName={cn("size-4", icon())}
+              >
                 <Label
                   label={item.label}
                   icon={item.icon}
