@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 import { createThemes } from "tw-colors";
-import { leaderboardPlugin } from "./plugins/leaderboard";
-import { leaderboardColors } from "./themes/leaderboard";
 import { colors } from "./colors";
+import { leaderboardPlugin, paginationPlugin } from "./plugins";
+import { leaderboardColors, paginationColors } from "./themes";
 
 const config: Omit<Config, "content"> = {
   darkMode: ["class", "[data-theme='dark']"],
@@ -46,10 +46,7 @@ const config: Omit<Config, "content"> = {
             letterSpacing: undefined,
           },
         ],
-        body: [
-          "0.875rem",
-          { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined },
-        ],
+        body: ["0.875rem", { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined }],
       },
       borderRadius: {
         "3.5": "14px",
@@ -84,7 +81,7 @@ const config: Omit<Config, "content"> = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, leaderboardPlugin],
+  plugins: [tailwindcssAnimate, leaderboardPlugin, paginationPlugin],
 } as Omit<Config, "content">;
 
 // Define the themes with their respective color configurations
@@ -92,10 +89,12 @@ const themes = createThemes({
   light: {
     ...config.theme?.colors,
     leaderboard: leaderboardColors.light,
+    pagination: paginationColors.light,
   },
   dark: {
     ...config.theme?.colors,
     leaderboard: leaderboardColors.dark,
+    pagination: paginationColors.dark,
   },
 });
 

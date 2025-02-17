@@ -28,3 +28,4 @@ export * from "./Dialog";
 export * from "./Table";
 export * from "./Input";
 export * from "./Label";
+export * from "./Pagination";

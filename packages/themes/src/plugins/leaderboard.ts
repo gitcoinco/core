@@ -3,7 +3,8 @@ import plugin from "tailwindcss/plugin";
 export const leaderboardPlugin = plugin(({ addComponents }) => {
   const leaderboardComponents = {
     ".leaderboard-container": {
-      border: "1px solid hsl(var(--twc-leaderboard-border))",
+      border: "1px solid",
+      borderColor: "hsl(var(--twc-leaderboard-border))",
       backgroundImage: `linear-gradient(
           to bottom,
           hsl(var(--twc-leaderboard-gradientFrom)),
@@ -33,16 +34,6 @@ export const leaderboardPlugin = plugin(({ addComponents }) => {
     },
     ".leaderboard-table-items": {
       color: "hsl(var(--twc-leaderboard-tableItemsText))",
-    },
-    ".leaderboard-pagination-items:hover": {
-      border: "1px solid hsl(var(--twc-leaderboard-paginationHoverBorder))",
-      backgroundColor: "hsl(var(--twc-leaderboard-paginationHoverBg))",
-    },
-    ".leaderboard-pagination-icons": {
-      color: "hsl(var(--twc-leaderboard-paginationIcons))",
-    },
-    ".leaderboard-pagination-text": {
-      color: "hsl(var(--twc-leaderboard-paginationText))",
     },
     ".leaderboard-project-info-link": {
       color: "hsl(var(--twc-leaderboard-projectInfoLink))",
