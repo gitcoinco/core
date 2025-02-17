@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.19
+
+### Patch Changes
+
+- implemented NotFoundPage
+
 ## 0.0.0-beta.18
 
 ### Patch Changes

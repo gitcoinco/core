@@ -26,6 +26,7 @@ const preview: Preview = {
           ["Checker", "Retrofunding", "Application", "*"],
           "Components",
           "Primitives",
+          "Pages",
           "Shadcn",
           "*",
         ],

@@ -37,3 +37,5 @@ export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";
 export * from "./components/SideNav";
 export * from "./components/Toaster";
+
+export * from "./pages/NotFoundPage";
