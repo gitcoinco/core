@@ -28,10 +28,11 @@ export * from "./primitives/Table";
 export * from "./primitives/Dialog";
 export * from "./primitives/Input";
 export * from "./primitives/Label";
-
+export * from "./primitives/Pagination";
 export * from "./components/AllocationSidebar";
 export * from "./components/CreateButton";
 export * from "./components/IconLabel";
+export * from "./components/IconWithTooltip";
 export * from "./components/Navbar";
 export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";

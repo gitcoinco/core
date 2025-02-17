@@ -5,3 +5,4 @@ export * from "./ProgressModal";
 export * from "./RadioGroupList";
 export * from "./SideNav";
 export * from "./Toaster";
+export * from "./IconWithTooltip";
