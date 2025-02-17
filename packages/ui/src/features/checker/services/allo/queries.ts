@@ -2,10 +2,7 @@ import { gql } from "graphql-request";
 
 export const applicationsForManagerQuery = gql`
   query getApplicationsForManager($chainId: Int!, $roundId: String!) {
-    applications(
-      first: 1000
-      filter: { roundId: { equalTo: $roundId }, chainId: { equalTo: $chainId } }
-    ) {
+    applications(limit: 1000, where: { roundId: { _eq: $roundId }, chainId: { _eq: $chainId } }) {
       id
       projectId
       chainId
@@ -22,7 +19,7 @@ export const applicationsForManagerQuery = gql`
         }
       }
     }
-    round(chainId: $chainId, id: $roundId) {
+    rounds(where: { chainId: { _eq: $chainId }, id: { _eq: $roundId } }) {
       roundMetadata
       strategyName
       strategyAddress
@@ -42,7 +39,9 @@ export const applicationsForManagerQuery = gql`
 
 export const getApplicationByIdQuery = gql`
   query getApplicationById($chainId: Int!, $roundId: String!, $applicationId: String!) {
-    application(chainId: $chainId, roundId: $roundId, id: $applicationId) {
+    applications(
+      where: { chainId: { _eq: $chainId }, roundId: { _eq: $roundId }, id: { _eq: $applicationId } }
+    ) {
       id
       projectId
       chainId
@@ -69,11 +68,7 @@ export const getPastApplicationsQueryByApplicationId = gql`
     $applicationId: String!
   ) {
     applications(
-      filter: {
-        chainId: { equalTo: $chainId }
-        roundId: { equalTo: $roundId }
-        id: { equalTo: $applicationId }
-      }
+      where: { chainId: { _eq: $chainId }, roundId: { _eq: $roundId }, id: { _eq: $applicationId } }
     ) {
       project {
         applications {

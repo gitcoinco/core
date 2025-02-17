@@ -2,7 +2,7 @@
 import { GraphQLClient } from "graphql-request";
 
 // Base URL for the GraphQL API
-const GS_INDEXER_ENDPOINT = "https://grants-stack-indexer-v2.gitcoin.co/graphql";
+const GS_INDEXER_ENDPOINT = "http://gitcoin-data-layer-staging-lb-242619440.us-east-2.elb.amazonaws.com/v1/graphql";
 
 // Create a new instance of GraphQLClient
 export const graphqlClient = new GraphQLClient(GS_INDEXER_ENDPOINT, {
