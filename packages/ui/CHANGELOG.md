@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.21
+
+### Patch Changes
+
+- fix(ui): NotFoundPage should be full height
+
 ## 0.0.0-beta.20
 
 ### Patch Changes
