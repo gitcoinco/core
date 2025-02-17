@@ -107,7 +107,7 @@ export const MobileLeaderboard = ({
                         <IconWithTooltip
                           iconType={IconType.INFORMATION_CIRCLE}
                           tooltipText={metrics[metricId].description}
-                          iconClassName={cn(icon(), "fill-white text-black")}
+                          iconClassName={cn(icon(), "fill-none stroke-leaderboard-tableIcons")}
                           tooltipClassName={tooltipText()}
                         />
                       )}
