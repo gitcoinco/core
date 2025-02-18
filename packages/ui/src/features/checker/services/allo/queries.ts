@@ -13,8 +13,8 @@ export const applicationsForManagerQuery = gql`
       distributionTransaction
       statusSnapshots
       anchorAddress
-      canonicalProject {
-        roles {
+      project {
+        projectRoles {
           address
         }
       }
@@ -27,11 +27,11 @@ export const applicationsForManagerQuery = gql`
       applicationsEndTime
       donationsEndTime
       donationsStartTime
-      roles {
-        address
-      }
       project {
         id
+        projectRoles {
+          address
+        }
       }
     }
   }
@@ -52,8 +52,8 @@ export const getApplicationByIdQuery = gql`
       distributionTransaction
       statusSnapshots
       anchorAddress
-      canonicalProject {
-        roles {
+      project {
+        projectRoles {
           address
         }
       }
