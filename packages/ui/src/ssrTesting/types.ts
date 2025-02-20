@@ -1,8 +1,9 @@
 export interface SSRComponent<TProps> {
   component: React.ComponentType<TProps>;
   cases: {
-    label: string;
-    props: [string, TProps][];
+    label?: string;
+    props?: Record<string, any>;
+    groupProps?: Record<string, any>;
   }[];
 }
 

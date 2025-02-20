@@ -9,36 +9,55 @@ const avatarSSR: SSRComponent<AvatarProps> = {
   component: Avatar,
   cases: [
     {
-      label: "Default",
-      props: Object.entries({
-        sourceFromIPFS: {
-          ipfsCID: gitcoinProfileCID,
-        },
-        sourceFromURL: {
-          url: gitcoinProfileURL,
-        },
-        fallbackName: {
-          fallbackName: "Gitcoin Labs",
-        },
-        missingEverything: {},
-        allProvided: {
-          url: gitcoinProfileURL,
-          ipfsCID: gitcoinProfileCID,
-          fallbackName: "Gitcoin Labs",
-        },
-        big: {
-          ipfsCID: gitcoinProfileCID,
-          size: 200,
-        },
-        defaultVariant: {
-          ipfsCID: gitcoinProfileCID,
-          variant: "default",
-        },
-        borderedVariant: {
-          ipfsCID: gitcoinProfileCID,
-          variant: "bordered",
-        },
-      }),
+      label: "Source from IPFS",
+      props: {
+        ipfsCID: gitcoinProfileCID,
+      },
+    },
+    {
+      label: "Source from URL",
+      props: {
+        url: gitcoinProfileURL,
+      },
+    },
+    {
+      label: "Fallback Name",
+      props: {
+        fallbackName: "Gitcoin Labs",
+      },
+    },
+    {
+      label: "Missing Everything",
+      props: {},
+    },
+    {
+      label: "All Provided",
+      props: {
+        url: gitcoinProfileURL,
+        ipfsCID: gitcoinProfileCID,
+        fallbackName: "Gitcoin Labs",
+      },
+    },
+    {
+      label: "Big",
+      props: {
+        ipfsCID: gitcoinProfileCID,
+        size: 200,
+      },
+    },
+    {
+      label: "Default Variant",
+      props: {
+        ipfsCID: gitcoinProfileCID,
+        variant: "default",
+      },
+    },
+    {
+      label: "Bordered Variant",
+      props: {
+        ipfsCID: gitcoinProfileCID,
+        variant: "bordered",
+      },
     },
   ],
 };

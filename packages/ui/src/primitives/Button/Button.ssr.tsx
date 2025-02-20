@@ -9,7 +9,7 @@ const buttonSSR: SSRComponent<React.ComponentProps<typeof Button>> = {
   cases: [
     {
       label: "Default",
-      props: Object.entries({
+      groupProps: {
         default: {
           value: "Click Me",
           onClick,
@@ -60,7 +60,7 @@ const buttonSSR: SSRComponent<React.ComponentProps<typeof Button>> = {
           disabled: true,
           onClick,
         },
-      }),
+      },
     },
   ],
 };

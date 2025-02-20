@@ -90,19 +90,19 @@ const badgeSSR: SSRComponent<BadgeProps> = {
   cases: [
     {
       label: "Default",
-      props: Object.entries(testBadges),
+      groupProps: testBadges,
     },
     {
       label: "Strong",
-      props: Object.entries(testBadgesStrong),
+      groupProps: testBadgesStrong,
     },
     {
       label: "Outlined",
-      props: Object.entries(testBadgesOutlined),
+      groupProps: testBadgesOutlined,
     },
     {
       label: "Size",
-      props: Object.entries(testBadgesSize),
+      groupProps: testBadgesSize,
     },
   ],
 };

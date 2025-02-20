@@ -10,7 +10,7 @@ const bannerImageSSR: SSRComponent<React.ComponentProps<typeof BannerImage>> = {
   cases: [
     {
       label: "Default",
-      props: Object.entries({
+      groupProps: {
         sourceFromIPFS: {
           ipfsCID: gitcoinBannerCID,
           size: 350,
@@ -50,7 +50,7 @@ const bannerImageSSR: SSRComponent<React.ComponentProps<typeof BannerImage>> = {
           size: 350,
           rounding: "none",
         },
-      }),
+      },
     },
   ],
 };

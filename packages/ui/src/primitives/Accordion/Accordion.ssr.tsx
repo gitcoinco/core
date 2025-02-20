@@ -7,27 +7,31 @@ const accordionSSR: SSRComponent<AccordionProps> = {
   cases: [
     {
       label: "Default",
-      props: Object.entries({
-        default: {
-          header: "Simple Header",
-          content: "Simple Content",
-          variant: "default",
-        },
-        light: {
-          header: "Simple Header",
-          content: "Simple Content",
-          variant: "light",
-          border: "md",
-          paddingX: "xl",
-        },
-        blue: {
-          header: "Simple Header",
-          content: "Simple Content",
-          variant: "blue",
-          border: "md",
-          paddingX: "xl",
-        },
-      }),
+      props: {
+        header: "Simple Header",
+        content: "Simple Content",
+        variant: "default",
+      },
+    },
+    {
+      label: "Light",
+      props: {
+        header: "Simple Header",
+        content: "Simple Content",
+        variant: "light",
+        border: "md",
+        paddingX: "xl",
+      },
+    },
+    {
+      label: "Blue",
+      props: {
+        header: "Simple Header",
+        content: "Simple Content",
+        variant: "blue",
+        border: "md",
+        paddingX: "xl",
+      },
     },
   ],
 };

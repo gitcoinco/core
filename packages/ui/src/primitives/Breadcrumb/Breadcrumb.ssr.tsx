@@ -7,15 +7,13 @@ const breadcrumbSSR: SSRComponent<React.ComponentProps<typeof Breadcrumb>> = {
   cases: [
     {
       label: "Default",
-      props: Object.entries({
-        default: {
-          items: [
-            { label: "My Programs", href: "#" },
-            { label: "Program Details", href: "#" },
-            { label: "Round Details", href: "#" },
-          ],
-        },
-      }),
+      props: {
+        items: [
+          { label: "My Programs", href: "#" },
+          { label: "Program Details", href: "#" },
+          { label: "Round Details", href: "#" },
+        ],
+      },
     },
   ],
 };
