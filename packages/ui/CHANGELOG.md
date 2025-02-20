@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.22
+
+### Patch Changes
+
+- [#40](https://github.com/gitcoinco/core/pull/40) [`2a58e93`](https://github.com/gitcoinco/core/commit/2a58e93965cfb5efd5122354efee9ab67ae1cbfe) Thanks [@nijoe1](https://github.com/nijoe1)! - fix: ballot form first render handling
+
 ## 0.0.0-beta.21
 
 ### Patch Changes
