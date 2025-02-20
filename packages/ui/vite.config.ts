@@ -35,6 +35,9 @@ export default defineConfig({
         program: resolve(__dirname, "./src/features/program/index.ts"),
         project: resolve(__dirname, "./src/features/project/index.ts"),
         retrofunding: resolve(__dirname, "./src/features/retrofunding/index.ts"),
+
+        // ssr testing
+        primitivesSSR: resolve(__dirname, "./src/ssrTesting/primitives.ts"),
       },
       name: "gitcoin-ui",
       fileName: (format: any, filename: any) => `${filename}.js`,

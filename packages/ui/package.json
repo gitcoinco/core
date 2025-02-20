@@ -123,6 +123,11 @@
       "types": "./dist/retrofunding.d.ts",
       "import": "./dist/retrofunding.js",
       "require": "./dist/retrofunding.js"
+    },
+    "./primitivesSSR": {
+      "types": "./dist/primitivesSSR.d.ts",
+      "import": "./dist/primitivesSSR.js",
+      "require": "./dist/primitivesSSR.js"
     }
   },
   "devDependencies": {
