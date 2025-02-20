@@ -5,7 +5,7 @@ import { BannerImage } from "./BannerImage";
 const gitcoinBannerCID = "QmXE6wP4Zsqp6VdNtXjv2EwqJpCTcBZfZNdSKSbjzEKKtn";
 const gitcoinBannerURL = "https://ipfs.io/ipfs/QmXE6wP4Zsqp6VdNtXjv2EwqJpCTcBZfZNdSKSbjzEKKtn";
 
-export const bannerImageSSR: SSRComponent<React.ComponentProps<typeof BannerImage>> = {
+const bannerImageSSR: SSRComponent<React.ComponentProps<typeof BannerImage>> = {
   component: BannerImage,
   cases: [
     {
