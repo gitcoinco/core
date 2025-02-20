@@ -1,10 +1,12 @@
-export default function Home() {
+import { PrimitivesMenu } from "@/components/PrimitivesMenu";
+
+export default function Page() {
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
-        Next 14 - SSR Testing
-      </main>
-      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6"></footer>
+    <div className="grid grid-cols-1 justify-between gap-4 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="flex flex-col items-center gap-3">
+        <div className="text-lg font-bold">Primitives</div>
+        <PrimitivesMenu />
+      </div>
     </div>
   );
 }
