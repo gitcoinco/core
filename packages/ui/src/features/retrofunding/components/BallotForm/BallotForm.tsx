@@ -72,9 +72,12 @@ export const BallotForm: React.FC<BallotFormProps> = ({
             ...acc,
             [item.metricId]: { ...item, locked: true },
           }),
-          {},
+          {} as BallotItemsMap,
         );
         setItems(submittedItems);
+        if (onChange) {
+          onChange(Object.values(submittedItems));
+        }
         setAlreadyVoted(true);
         return;
       }
@@ -82,6 +85,9 @@ export const BallotForm: React.FC<BallotFormProps> = ({
       getValue<BallotItemsMap>(persistKey).then((savedItems) => {
         if (savedItems) {
           setItems(savedItems);
+          if (onChange) {
+            onChange(Object.values(savedItems));
+          }
         } else {
           const equalShare = Math.floor(maxAllocation / availableMetrics.length);
           const remainder = maxAllocation % availableMetrics.length;
@@ -96,10 +102,13 @@ export const BallotForm: React.FC<BallotFormProps> = ({
                 locked: false,
               },
             }),
-            {},
+            {} as BallotItemsMap,
           );
           setItems(initialItems);
           setValue(persistKey, initialItems);
+          if (onChange) {
+            onChange(Object.values(initialItems));
+          }
         }
       });
     }
