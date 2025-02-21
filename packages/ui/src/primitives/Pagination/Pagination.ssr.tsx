@@ -4,6 +4,7 @@ import { Pagination } from "./Pagination";
 
 const paginationSSR: SSRComponent<React.ComponentProps<typeof Pagination>> = {
   component: Pagination,
+  isClient: true,
   cases: [
     {
       label: "Default",
