@@ -1,4 +1,6 @@
-import { SSRComponent, SSRComponents } from "@/types";
+import { SSRComponent, SSRComponentIndex, SSRComponents } from "@/types";
+
+import { generateSSRComponentIndex, generateSSRComponents } from "./utils";
 
 // Toast missing from SSR
 const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(
@@ -12,23 +14,13 @@ const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(
   },
 );
 
-const components = Object.fromEntries(
-  Object.entries(ssrModules).map(([path, module]) => {
-    // Extract component name from path, e.g: '../primitives/Accordion/Accordion.ssr.tsx' -> 'Accordion'
-    const name = path.split("/").at(-2) ?? "";
-    return [name.toLowerCase(), { ...module.default, name }];
-  }),
-);
+const components = generateSSRComponents(ssrModules);
 
-const primitivesSSR: SSRComponents = {
+const componentRegistry: SSRComponents = {
   title: "Primitives",
   components,
 };
 
-export const index = Object.entries(primitivesSSR.components).map(([key, { name, isClient }]) => ({
-  key,
-  name,
-  isClient,
-}));
+export const index: SSRComponentIndex[] = generateSSRComponentIndex(componentRegistry);
 
-export default primitivesSSR;
+export default componentRegistry;

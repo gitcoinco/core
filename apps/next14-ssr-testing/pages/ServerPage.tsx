@@ -1,16 +1,13 @@
-"use client";
-
-import * as React from "react";
+import { ComponentType, getSSRComponentData } from "@/utils/getSSRComponentData";
 import { TestCaseCard } from "@/components/TestCaseCard";
-import { ComponentType, getSSRComponentData } from "@/app/utils/getSSRComponentData";
+import * as React from "react";
 
-export const ClientPage = ({ type, component }: { type: ComponentType; component: string }) => {
+export const ServerPage = ({ component, type }: { component: string; type: ComponentType }) => {
   const componentData = getSSRComponentData({ component, type });
   if (!componentData) {
     return <div>Component not found</div>;
   }
   const { component: Component, cases } = componentData;
-
   return (
     <div className="flex max-h-[80vh] w-full flex-wrap justify-center gap-4 overflow-y-auto">
       {cases?.map((testCase) => (

@@ -1,8 +1,11 @@
 import { ComponentsMenu } from "@/components/ComponentsMenu";
-import { index as componentsIndex } from "@gitcoin/ui/componentsSSR";
-import { index as primitivesIndex } from "@gitcoin/ui/primitivesSSR";
-import { index as featuresIndex } from "@gitcoin/ui/featuresSSR";
+import { getSSRComponentIndex } from "@/utils/getSSRComponentData";
 export default function Page() {
+  const primitivesIndex = getSSRComponentIndex({ type: "primitives" });
+  const componentsIndex = getSSRComponentIndex({ type: "components" });
+  const featuresIndex = getSSRComponentIndex({ type: "features" });
+  const smartComponentsIndex = getSSRComponentIndex({ type: "smartComponents" });
+
   return (
     <div className="grid grid-cols-1 justify-between gap-4 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <div className="flex flex-col items-center gap-3">
@@ -16,6 +19,10 @@ export default function Page() {
       <div className="flex flex-col items-center gap-3">
         <div className="text-lg font-bold">Features</div>
         <ComponentsMenu path="features" index={featuresIndex} />
+      </div>
+      <div className="flex flex-col items-center gap-3">
+        <div className="text-lg font-bold">Smart Components</div>
+        <ComponentsMenu path="smartComponents" index={smartComponentsIndex} />
       </div>
     </div>
   );

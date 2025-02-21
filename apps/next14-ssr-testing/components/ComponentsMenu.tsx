@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@gitcoin/ui/lib";
+import { SSRComponentIndex } from "@gitcoin/ui/types";
 
 export function ComponentsMenu({
   className,
@@ -7,10 +8,7 @@ export function ComponentsMenu({
   path,
 }: {
   className?: string;
-  index: {
-    key: string;
-    name: string | undefined;
-  }[];
+  index: SSRComponentIndex[];
   path: string;
 }) {
   return (

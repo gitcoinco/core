@@ -15,3 +15,9 @@ export interface SSRComponents {
   title: string;
   components: Record<string, SSRComponent<any>>;
 }
+
+export interface SSRComponentIndex {
+  key: string;
+  name?: string;
+  isClient?: boolean;
+}

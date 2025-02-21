@@ -40,6 +40,7 @@ export default defineConfig({
         primitivesSSR: resolve(__dirname, "./src/ssrTesting/primitives.ts"),
         componentsSSR: resolve(__dirname, "./src/ssrTesting/components.ts"),
         featuresSSR: resolve(__dirname, "./src/ssrTesting/features.ts"),
+        smartComponentsSSR: resolve(__dirname, "./src/ssrTesting/smartComponents.ts"),
       },
       name: "gitcoin-ui",
       fileName: (format: any, filename: any) => `${filename}.js`,

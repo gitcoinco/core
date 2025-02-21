@@ -138,6 +138,11 @@
       "types": "./dist/featuresSSR.d.ts",
       "import": "./dist/featuresSSR.js",
       "require": "./dist/featuresSSR.js"
+    },
+    "./smartComponentsSSR": {
+      "types": "./dist/smartComponentsSSR.d.ts",
+      "import": "./dist/smartComponentsSSR.js",
+      "require": "./dist/smartComponentsSSR.js"
     }
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import { SSRComponent, SSRComponentIndex, SSRComponents } from "@/types";
 import { generateSSRComponentIndex, generateSSRComponents } from "./utils";
 
 const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(
-  ["../features/**/*.ssr.{ts,tsx}"],
+  ["../smartComponents/**/*.ssr.{ts,tsx}"],
   {
     eager: true,
   },
@@ -12,7 +12,7 @@ const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(
 const components = generateSSRComponents(ssrModules);
 
 const componentRegistry: SSRComponents = {
-  title: "Features",
+  title: "Smart Components",
   components,
 };
 
