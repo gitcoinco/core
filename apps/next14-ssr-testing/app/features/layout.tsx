@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ComponentsMenu } from "@/components/ComponentsMenu";
-import { index as primitivesIndex } from "@gitcoin/ui/primitivesSSR";
+import { index as featuresIndex } from "@gitcoin/ui/featuresSSR";
 import Link from "next/link";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -12,7 +12,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             {"<- Back"}
           </Link>
           <div className="overflow-y-auto pr-6">
-            <ComponentsMenu path="primitives" index={primitivesIndex} />
+            <ComponentsMenu path="features" index={featuresIndex} />
           </div>
         </div>
       </div>

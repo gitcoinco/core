@@ -9,14 +9,21 @@ import {
 } from "@gitcoin/ui";
 import { usePathname } from "next/navigation";
 import { index as primitivesIndex } from "@gitcoin/ui/primitivesSSR";
-
+import { index as componentsIndex } from "@gitcoin/ui/componentsSSR";
+import { index as featuresIndex } from "@gitcoin/ui/featuresSSR";
 export const Navbar = () => {
   const pathname = usePathname();
   const [, section, componentKey] = pathname.split("/");
-  const primitiveIndex = primitivesIndex.find(({ key }) => key === componentKey);
+
+  let index: { key: string; name: string | undefined } | undefined;
+  if (section === "primitives") index = primitivesIndex.find(({ key }) => key === componentKey);
+  if (section === "components") index = componentsIndex.find(({ key }) => key === componentKey);
+  if (section === "features") index = featuresIndex.find(({ key }) => key === componentKey);
+
   const sectionTitle = section ? `${section.charAt(0).toUpperCase() + section.slice(1)}` : "";
-  const componentTitle = primitiveIndex?.name ?? "";
+  const componentTitle = index?.name ?? "";
   const title = componentTitle ? `${sectionTitle} / ${componentTitle}` : sectionTitle;
+
   return (
     <NavbarGeneric behavior="sticky">
       <NavbarStartSection>
