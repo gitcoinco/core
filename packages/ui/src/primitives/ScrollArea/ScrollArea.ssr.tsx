@@ -1,4 +1,4 @@
-import { SSRComponent } from "@/ssrTesting/types";
+import { SSRComponent } from "@/types";
 
 import { ScrollArea, ScrollBar } from "./ScrollArea";
 

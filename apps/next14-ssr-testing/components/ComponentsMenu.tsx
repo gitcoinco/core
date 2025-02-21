@@ -15,9 +15,12 @@ export function ComponentsMenu({
 }) {
   return (
     <nav className={cn("flex flex-col gap-0.5", className)}>
-      {index.map(({ key, name }) => (
-        <Link key={key} href={`/${path}/${key.toLowerCase()}`}>
-          {name}
+      {index.map(({ key, name, isClient }) => (
+        <Link
+          key={key}
+          href={`/${path}/${isClient ? `client/${key.toLowerCase()}` : key.toLowerCase()}`}
+        >
+          {isClient ? `* ${name}` : name}
         </Link>
       ))}
     </nav>

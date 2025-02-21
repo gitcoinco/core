@@ -1,4 +1,4 @@
-import { SSRComponent, SSRComponents } from "@/ssrTesting/types";
+import { SSRComponent, SSRComponents } from "@/types";
 
 // Toast missing from SSR
 const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(
@@ -25,9 +25,10 @@ const primitivesSSR: SSRComponents = {
   components,
 };
 
-export const index = Object.entries(primitivesSSR.components).map(([key, { name }]) => ({
+export const index = Object.entries(primitivesSSR.components).map(([key, { name, isClient }]) => ({
   key,
   name,
+  isClient,
 }));
 
 export default primitivesSSR;

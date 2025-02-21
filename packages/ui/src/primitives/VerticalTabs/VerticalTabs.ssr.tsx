@@ -1,4 +1,4 @@
-import { SSRComponent } from "@/ssrTesting/types";
+import { SSRComponent } from "@/types";
 
 import { Icon, IconType } from "../Icon";
 import { VerticalTabs } from "./VerticalTabs";

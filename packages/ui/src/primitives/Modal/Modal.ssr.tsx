@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/primitives/Dialog";
-import { SSRComponent } from "@/ssrTesting/types";
+import { SSRComponent } from "@/types";
 
 import { Modal, ModalProps } from "./Modal";
 

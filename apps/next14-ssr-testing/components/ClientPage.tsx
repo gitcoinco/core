@@ -1,13 +1,16 @@
-import { getSSRComponentData } from "@/app/utils/getSSRComponentData";
-import { TestCaseCard } from "@/components/TestCaseCard";
-import * as React from "react";
+"use client";
 
-export default function Page({ params }: { params: { component: string } }) {
-  const componentData = getSSRComponentData({ component: params.component, type: "components" });
+import * as React from "react";
+import { TestCaseCard } from "@/components/TestCaseCard";
+import { ComponentType, getSSRComponentData } from "@/app/utils/getSSRComponentData";
+
+export const ClientPage = ({ type, component }: { type: ComponentType; component: string }) => {
+  const componentData = getSSRComponentData({ component, type });
   if (!componentData) {
     return <div>Component not found</div>;
   }
   const { component: Component, cases } = componentData;
+
   return (
     <div className="flex max-h-[80vh] w-full flex-wrap justify-center gap-4 overflow-y-auto">
       {cases?.map((testCase) => (
@@ -15,4 +18,4 @@ export default function Page({ params }: { params: { component: string } }) {
       ))}
     </div>
   );
-}
+};

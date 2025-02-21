@@ -1,4 +1,4 @@
-import { SSRComponent } from "@/ssrTesting/types";
+import { SSRComponent } from "@/types";
 
 import { DialogTest } from "./Dialog.ssr.helper";
 

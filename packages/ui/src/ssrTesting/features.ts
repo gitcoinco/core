@@ -1,4 +1,4 @@
-import { SSRComponent, SSRComponents } from "@/ssrTesting/types";
+import { SSRComponent, SSRComponents } from "@/types";
 
 // Toast missing from SSR
 const ssrModules = import.meta.glob<{ default: SSRComponent<any> }>(

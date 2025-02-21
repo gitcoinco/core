@@ -1,4 +1,4 @@
-import { SSRComponent } from "@/ssrTesting/types";
+import { SSRComponent } from "@/types";
 
 import { ListGrid } from "./ListGrid";
 import { mockColumns0, mockData0, mockGetRowKey0 } from "./mocks";
