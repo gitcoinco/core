@@ -1,5 +1,3 @@
-"use client";
-
 import { tv, VariantProps } from "tailwind-variants";
 
 import { cn } from "@/lib";

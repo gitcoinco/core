@@ -17,6 +17,7 @@ const overlayVariants = tv({
   base: "fixed inset-0 z-50",
   variants: {
     overlayVariant: {
+      transparent: "bg-transparent",
       blur: "bg-black/50 backdrop-blur-sm",
       dark: "bg-black/80",
     },

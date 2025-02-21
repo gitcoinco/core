@@ -6,11 +6,13 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
   return (
     <div className="flex gap-20 px-6">
       <div className="pt-8">
-        <div className="flex max-h-[80vh] flex-col gap-3 overflow-y-auto rounded-lg border border-gray-200 p-6">
-          <Link className="text-grey-500 font-bold" href="/">
+        <div className="border-gray-200 flex max-h-[75vh] flex-col gap-3 rounded-lg border py-6 pl-6">
+          <Link className="font-bold text-grey-500" href="/">
             {"<- Back"}
           </Link>
-          <PrimitivesMenu />
+          <div className="overflow-y-auto pr-6">
+            <PrimitivesMenu />
+          </div>
         </div>
       </div>
       {children}

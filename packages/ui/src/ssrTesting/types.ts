@@ -1,4 +1,5 @@
 export interface SSRComponent<TProps> {
+  name?: string;
   component: React.ComponentType<TProps>;
   cases: {
     label?: string;

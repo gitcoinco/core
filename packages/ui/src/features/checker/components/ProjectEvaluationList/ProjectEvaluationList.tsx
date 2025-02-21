@@ -2,7 +2,7 @@
 
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
-import { CircleStat } from "@/primitives/Indicators";
+import { CircleStat } from "@/primitives/CircleStat";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { EvaluationAction, ProjectReview, ProjectStatus } from "~checker/types";
