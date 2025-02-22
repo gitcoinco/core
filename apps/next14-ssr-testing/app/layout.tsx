@@ -18,7 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <body className="m-0" suppressHydrationWarning>
           <ThemeProvider enableSystem>
             <Navbar />
-            <div className="mt-10">{children}</div>
+            <div className="mt-4">{children}</div>
           </ThemeProvider>
         </body>
       </html>

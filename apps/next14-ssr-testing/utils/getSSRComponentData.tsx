@@ -4,16 +4,16 @@ import featuresSSR, { index as featuresIndex } from "@gitcoin/ui/featuresSSR";
 import smartComponentsSSR, { index as smartComponentsIndex } from "@gitcoin/ui/smartComponentsSSR";
 import { SSRComponents, SSRComponentIndex } from "@gitcoin/ui/types";
 
-export type ComponentType = "primitives" | "components" | "features" | "smartComponents";
+export type SSRComponentType = "primitives" | "components" | "features" | "smartComponents";
 
-const ssrComponentsData: Record<ComponentType, SSRComponents> = {
+const ssrComponentsData: Record<SSRComponentType, SSRComponents> = {
   primitives: primitivesSSR,
   components: componentsSSR,
   features: featuresSSR,
   smartComponents: smartComponentsSSR,
 };
 
-const ssrComponentIndexes: Record<ComponentType, SSRComponentIndex[]> = {
+const ssrComponentIndexes: Record<SSRComponentType, SSRComponentIndex[]> = {
   primitives: primitivesIndex,
   components: componentsIndex,
   features: featuresIndex,
@@ -25,8 +25,8 @@ export const getSSRComponentData = ({
   type,
 }: {
   component: string;
-  type: ComponentType;
+  type: SSRComponentType;
 }) => ssrComponentsData[type].components[component];
 
-export const getSSRComponentIndex = ({ type }: { type: ComponentType }) =>
+export const getSSRComponentIndex = ({ type }: { type: SSRComponentType }) =>
   ssrComponentIndexes[type];

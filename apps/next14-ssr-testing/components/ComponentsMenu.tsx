@@ -1,16 +1,23 @@
 import Link from "next/link";
 import { cn } from "@gitcoin/ui/lib";
-import { SSRComponentIndex } from "@gitcoin/ui/types";
+import { SSRComponentType, getSSRComponentIndex } from "@/utils/getSSRComponentData";
+
+const pathsPerType: Record<SSRComponentType, string> = {
+  primitives: "primitives",
+  components: "components",
+  features: "features",
+  smartComponents: "smart-components",
+};
 
 export function ComponentsMenu({
   className,
-  index,
-  path,
+  type,
 }: {
   className?: string;
-  index: SSRComponentIndex[];
-  path: string;
+  type: SSRComponentType;
 }) {
+  const index = getSSRComponentIndex({ type });
+  const path = pathsPerType[type];
   return (
     <nav className={cn("flex flex-col gap-0.5", className)}>
       {index.map(({ key, name, isClient }) => (

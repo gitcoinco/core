@@ -16,7 +16,7 @@ export const ErrorPage = ({
 
   return (
     <div>
-      <span>Something went wrong! -> </span>
+      <span>{"Something went wrong! -> "}</span>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment

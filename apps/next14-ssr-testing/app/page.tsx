@@ -1,29 +1,19 @@
-import { ComponentsMenu } from "@/components/ComponentsMenu";
-import { getSSRComponentIndex } from "@/utils/getSSRComponentData";
-export default function Page() {
-  const primitivesIndex = getSSRComponentIndex({ type: "primitives" });
-  const componentsIndex = getSSRComponentIndex({ type: "components" });
-  const featuresIndex = getSSRComponentIndex({ type: "features" });
-  const smartComponentsIndex = getSSRComponentIndex({ type: "smartComponents" });
+import { ComponentsMenuWrapper } from "@/components/ComponentsMenuWrapper";
+import { SSRComponentType } from "@/utils/getSSRComponentData";
 
+const menuItems: { title: string; type: SSRComponentType }[] = [
+  { title: "Primitives", type: "primitives" },
+  { title: "Components", type: "components" },
+  { title: "Features", type: "features" },
+  { title: "Smart Components", type: "smartComponents" },
+];
+
+export default function Page() {
   return (
-    <div className="grid grid-cols-1 justify-between gap-4 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <div className="flex flex-col items-center gap-3">
-        <div className="text-lg font-bold">Primitives</div>
-        <ComponentsMenu path="primitives" index={primitivesIndex} />
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <div className="text-lg font-bold">Components</div>
-        <ComponentsMenu path="components" index={componentsIndex} />
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <div className="text-lg font-bold">Features</div>
-        <ComponentsMenu path="features" index={featuresIndex} />
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <div className="text-lg font-bold">Smart Components</div>
-        <ComponentsMenu path="smartComponents" index={smartComponentsIndex} />
-      </div>
+    <div className="grid h-[calc(100vh-100px)] grid-cols-1 justify-between gap-4 px-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {menuItems.map(({ title, type }) => (
+        <ComponentsMenuWrapper key={type} title={title} type={type} />
+      ))}
     </div>
   );
 }

@@ -16,7 +16,7 @@ export const Navbar = () => {
   const featuresIndex = getSSRComponentIndex({ type: "features" });
   const smartComponentsIndex = getSSRComponentIndex({ type: "smartComponents" });
   const pathname = usePathname();
-  const [, firstSection, secondSection, thirdSection] = pathname.split("/");
+  const [, firstSection, secondSection, thirdSection] = pathname?.split("/") ?? [];
 
   const isClient = secondSection === "client";
 
