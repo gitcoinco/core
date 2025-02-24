@@ -1,6 +1,7 @@
 "use client";
 
 import { IconLabel } from "@/components/IconLabel";
+import { usePoolManager } from "@/features/checker/hooks";
 import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
 import { IconType } from "@/primitives/Icon";
@@ -32,6 +33,7 @@ export const ApplicationSummary = ({
   hideAccordians?: SummaryAccordians[];
   className?: string;
 }) => {
+  const isPoolManager = usePoolManager();
   const columns: ListGridColumn<PastApplication>[] = pastApplications
     ? [
         {
@@ -121,7 +123,7 @@ export const ApplicationSummary = ({
           content={
             <div className="flex flex-col gap-4">
               {application.metadata.application.answers.map((answer, index) => {
-                if (answer.encryptedAnswer || !answer.answer) {
+                if ((answer.hidden && !isPoolManager) || answer.encryptedAnswer || !answer.answer) {
                   return null;
                 }
                 return (
