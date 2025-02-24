@@ -7,3 +7,4 @@ export * from "./useInitialize";
 export * from "./usePerformEvaluation";
 export * from "./usePerformOnChainReview";
 export * from "./usePoolData";
+export * from "./usePoolManager";
