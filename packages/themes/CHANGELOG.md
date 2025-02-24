@@ -1,5 +1,7 @@
 # @gitcoin/themes
 
+## 0.0.0-beta.23
+
 ## 0.0.0-beta.22
 
 ## 0.0.0-beta.21
