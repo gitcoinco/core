@@ -1,5 +1,13 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.23
+
+### Patch Changes
+
+- [#42](https://github.com/gitcoinco/core/pull/42) [`92c0dce`](https://github.com/gitcoinco/core/commit/92c0dce755a68b747dc66ad47a5b681c7d45a750) Thanks [@nijoe1](https://github.com/nijoe1)! - feat: added usePoolManager hook on checker
+
+  fix: showing hidden answers only to pool managers
+
 ## 0.0.0-beta.22
 
 ### Patch Changes
