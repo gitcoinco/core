@@ -189,8 +189,8 @@ export const getApplicationById = {
     strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
     strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
   },
-  canonicalProject: {
-    roles: [
+  project: {
+    projectRoles: [
       {
         address: "0xd35e119782059a27fead4edda8b555f393650bc8",
       },

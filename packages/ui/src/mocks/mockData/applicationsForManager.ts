@@ -44,8 +44,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0xb543d56ee04f516602057429ec4f1c85c19b1319",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x0d1781f0b693b35939a49831a6c799b938bd2f80",
             },
@@ -97,8 +97,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x3bbb6cd15ff7d268640409aef5b2d407d4891276",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -146,8 +146,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x3cdcb6611703a053751d2e82accd4daeb913aaa6",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -195,8 +195,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x2c7296a5ec0539f0a018c7176c97c92a9c44e2b4",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -244,8 +244,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x739dba380a2e448d66492a19f1efbec4228834ce",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -293,8 +293,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x0193b4e5d895292ee332fe6b624dd5091d43cf75",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -342,8 +342,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0xf490040fc45b7405dd695be07f09125a2e75c7a3",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -391,8 +391,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x656f2087b0c88370f74d3ed481694c99b7dcc035",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xe7eb5d2b5b188777df902e89c54570e7ef4f59ce",
             },
@@ -444,8 +444,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x98df600f5676cb7b06d4ecd2c7c9df9a866d45a0",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -554,8 +554,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0xe5023547991f22274f171f0cf0a88f69b178bb6d",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -605,8 +605,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x741bba71ab5f667b1f1abc5c64f24289aac26cf2",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x0d1781f0b693b35939a49831a6c799b938bd2f80",
             },
@@ -656,8 +656,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x9af6aad853b1f1f2908551c3e28c49ccc79cc765",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x0d1781f0b693b35939a49831a6c799b938bd2f80",
             },
@@ -709,8 +709,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x697a6cdd40b0bf7ce3ec818225f584ae5c48a573",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -760,8 +760,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0x3b6a76df677df5489499ae8f67b07ed33a491dbb",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0xb8cef765721a6da910f14be93e7684e9a3714123",
             },
@@ -808,8 +808,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0xfc024a01c5f837d7ff5164d541e6ec350a7eeff2",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -854,8 +854,8 @@ export const applicationsForManagers = {
           },
         ],
         anchorAddress: "0xc482ead44a5ba21b419eaa352bfdaee04592c0f1",
-        canonicalProject: {
-          roles: [
+        project: {
+          projectRoles: [
             {
               address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
@@ -863,75 +863,77 @@ export const applicationsForManagers = {
         },
       },
     ],
-    round: {
-      roundMetadata: {
-        name: "Checker Test Round",
-        support: {
-          info: "yy@yy.yy",
-          type: "Email",
+    rounds: [
+      {
+        roundMetadata: {
+          name: "Checker Test Round",
+          support: {
+            info: "yy@yy.yy",
+            type: "Email",
+          },
+          roundType: "private",
+          eligibility: {
+            description:
+              "This grant round is created purely for testing purposes. The project description is intentionally left empty, and the project itself is not intended to provide any meaningful service or product. This round is a placeholder for testing grant application processes.",
+            requirements: [
+              {
+                requirement:
+                  "You must provide a link to something (anything). It could be a website, a GitHub repo, or even just a link to your social media.",
+              },
+              {
+                requirement:
+                  "Your project must have a title. It can be a random word or phrase. Bonus points for creativity, but it's not required.",
+              },
+              {
+                requirement:
+                  'Briefly describe your "project" in one sentence. It can be completely unrelated to the title and should not matter at all.',
+              },
+              {
+                requirement: "Be awesome :)",
+              },
+            ],
+          },
+          feesAddress: "",
+          feesPercentage: 0,
+          programContractAddress:
+            "0x107879486cfb4f5e6284033fbe11a3cfd6bb447a119f15729cd8e3fc8ca8aff5",
+          quadraticFundingConfig: {
+            matchingCap: false,
+            sybilDefense: "passport-mbds",
+            minDonationThreshold: false,
+            matchingFundsAvailable: 0.1,
+          },
         },
-        roundType: "private",
-        eligibility: {
-          description:
-            "This grant round is created purely for testing purposes. The project description is intentionally left empty, and the project itself is not intended to provide any meaningful service or product. This round is a placeholder for testing grant application processes.",
-          requirements: [
+        strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
+        strategyAddress: "0xc5a0a4d4b0c46fc430362377d3d11a23bad4a645",
+        applicationsStartTime: "2024-11-26T13:50:00+00:00",
+        applicationsEndTime: "2024-12-27T23:00:00+00:00",
+        donationsEndTime: "2024-12-30T23:00:00+00:00",
+        donationsStartTime: "2024-11-29T23:00:00+00:00",
+        project: {
+          id: "0x107879486cfb4f5e6284033fbe11a3cfd6bb447a119f15729cd8e3fc8ca8aff5",
+          projectRoles: [
             {
-              requirement:
-                "You must provide a link to something (anything). It could be a website, a GitHub repo, or even just a link to your social media.",
+              address: "0x0d1781f0b693b35939a49831a6c799b938bd2f80",
             },
             {
-              requirement:
-                "Your project must have a title. It can be a random word or phrase. Bonus points for creativity, but it's not required.",
+              address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
             {
-              requirement:
-                'Briefly describe your "project" in one sentence. It can be completely unrelated to the title and should not matter at all.',
+              address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
             },
             {
-              requirement: "Be awesome :)",
+              address: "0x5933fb4969b322220ed8c24f2088633115ecbcc0",
+            },
+            {
+              address: "0x7b0e91c75ad9ec537083f61356c532bb882ea2fb",
+            },
+            {
+              address: "0xb8cef765721a6da910f14be93e7684e9a3714123",
             },
           ],
         },
-        feesAddress: "",
-        feesPercentage: 0,
-        programContractAddress:
-          "0x107879486cfb4f5e6284033fbe11a3cfd6bb447a119f15729cd8e3fc8ca8aff5",
-        quadraticFundingConfig: {
-          matchingCap: false,
-          sybilDefense: "passport-mbds",
-          minDonationThreshold: false,
-          matchingFundsAvailable: 0.1,
-        },
       },
-      strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
-      strategyAddress: "0xc5a0a4d4b0c46fc430362377d3d11a23bad4a645",
-      applicationsStartTime: "2024-11-26T13:50:00+00:00",
-      applicationsEndTime: "2024-12-27T23:00:00+00:00",
-      donationsEndTime: "2024-12-30T23:00:00+00:00",
-      donationsStartTime: "2024-11-29T23:00:00+00:00",
-      roles: [
-        {
-          address: "0x0d1781f0b693b35939a49831a6c799b938bd2f80",
-        },
-        {
-          address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
-        },
-        {
-          address: "0x5645bf145c3f1e974d0d7fb91bf3c68592ab5012",
-        },
-        {
-          address: "0x5933fb4969b322220ed8c24f2088633115ecbcc0",
-        },
-        {
-          address: "0x7b0e91c75ad9ec537083f61356c532bb882ea2fb",
-        },
-        {
-          address: "0xb8cef765721a6da910f14be93e7684e9a3714123",
-        },
-      ],
-      project: {
-        id: "0x107879486cfb4f5e6284033fbe11a3cfd6bb447a119f15729cd8e3fc8ca8aff5",
-      },
-    },
+    ],
   },
 };

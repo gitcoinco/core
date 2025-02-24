@@ -72,7 +72,9 @@ export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () =
 
   useEffect(() => {
     if (data && poolId && chainId && address) {
-      const managers = data.roundData.roles.map((role) => role.address.toLowerCase());
+      const managers = data.roundData.project.projectRoles.map((role) =>
+        role.address.toLowerCase(),
+      );
       dispatch(
         setPoolDataAction({
           poolId,
