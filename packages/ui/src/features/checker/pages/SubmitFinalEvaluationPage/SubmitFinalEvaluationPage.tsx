@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { PoolType, Step } from "@gitcoin/types";
 import { EvaluationAction, ReviewBody } from "@gitcoin/types/checker";
@@ -17,10 +17,10 @@ import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
 import {
   goToReviewApplicationsAction,
-  useCheckerDispatchContext,
   useCheckerContext,
+  useCheckerDispatchContext,
 } from "~checker/store";
-import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
+import { getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";

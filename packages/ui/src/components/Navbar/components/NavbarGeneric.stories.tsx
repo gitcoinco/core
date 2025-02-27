@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { NavbarGeneric } from "./NavbarGeneric";
 import { NavbarCenterSection, NavbarEndSection, NavbarStartSection } from "./NavbarSections";
+import { DefaultContent } from "./mocks";
 
 const meta = {
   title: "Components/NavbarGeneric",
@@ -23,20 +24,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof NavbarGeneric>;
-
-const DefaultContent = () => (
-  <>
-    <NavbarStartSection>
-      <div className="rounded-sm bg-grey-500 p-2">Start Content</div>
-    </NavbarStartSection>
-    <NavbarCenterSection>
-      <div className="rounded-sm bg-grey-500 p-2">Center Content</div>
-    </NavbarCenterSection>
-    <NavbarEndSection>
-      <div className="rounded-sm bg-grey-500 p-2">End Content</div>
-    </NavbarEndSection>
-  </>
-);
 
 const ScrollDecorator = (Story: React.ComponentType) => (
   <div className="h-[200vh]">

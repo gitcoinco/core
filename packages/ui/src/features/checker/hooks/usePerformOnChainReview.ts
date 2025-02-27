@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { ProgressStatus } from "@gitcoin/types";
 import { ReviewBody } from "@gitcoin/types/checker";

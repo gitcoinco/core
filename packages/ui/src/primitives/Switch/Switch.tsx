@@ -39,10 +39,12 @@ const switchVariants = tv({
 
 type SwitchVariants = VariantProps<typeof switchVariants>;
 
-const Switch = React.forwardRef<
-  React.ElementRef<typeof SwitchPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & SwitchVariants
->(({ className, checked, onCheckedChange, ...props }, ref) => {
+const Switch = ({
+  className,
+  checked,
+  onCheckedChange,
+  ...props
+}: React.ComponentProps<typeof SwitchPrimitives.Root> & SwitchVariants) => {
   const { color, ...rest } = props;
   const { base, thumb } = switchVariants({ color });
 
@@ -51,14 +53,12 @@ const Switch = React.forwardRef<
       className={cn(base(), className)}
       checked={checked}
       onCheckedChange={onCheckedChange}
-      ref={ref}
       {...rest}
     >
       <SwitchPrimitives.Thumb className={thumb()} />
     </SwitchPrimitives.Root>
   );
-});
-
+};
 Switch.displayName = SwitchPrimitives.Root.displayName;
 
 export { Switch };

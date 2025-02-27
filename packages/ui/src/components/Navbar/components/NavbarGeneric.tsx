@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { cn } from "@gitcoin/utils";
@@ -48,17 +46,23 @@ export interface NavbarGenericProps
    * @default true
    */
   shadow?: boolean;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-export const NavbarGeneric = React.forwardRef<HTMLDivElement, NavbarGenericProps>(
-  ({ className, behavior, children, blur, shadow, ...props }, ref) => {
-    const navbarStyle = navbarVariants({ behavior, blur, shadow });
-    const filteredChildren = filterAndSortChildren(children);
-    return (
-      <div ref={ref} className={cn(navbarStyle, className)} {...props}>
-        {filteredChildren}
-      </div>
-    );
-  },
-);
+export const NavbarGeneric = ({
+  className,
+  behavior,
+  children,
+  blur,
+  shadow,
+  ...props
+}: NavbarGenericProps) => {
+  const navbarStyle = navbarVariants({ behavior, blur, shadow });
+  const filteredChildren = filterAndSortChildren(children);
+  return (
+    <div className={cn(navbarStyle, className)} {...props}>
+      {filteredChildren}
+    </div>
+  );
+};
 NavbarGeneric.displayName = "NavbarGeneric";

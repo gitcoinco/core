@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Evaluation } from "@gitcoin/types/checker";
-import { cn, formatLocalDate, parseENSOrAddress, capitalizeString } from "@gitcoin/utils";
+import { capitalizeString, cn, formatLocalDate, parseENSOrAddress } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
 import { Accordion } from "@/primitives/Accordion";

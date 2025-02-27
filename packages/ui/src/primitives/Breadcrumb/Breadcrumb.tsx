@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import {
@@ -20,7 +18,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, isLoading = false
     <ShadcnBreadcrumb>
       <BreadcrumbList>
         {items.map((item, index) => (
-          <React.Fragment key={item.href}>
+          <React.Fragment key={item.href + item.label}>
             <BreadcrumbItem>
               <BreadcrumbLink
                 href={isLoading ? undefined : item.href} // Disable link when loading

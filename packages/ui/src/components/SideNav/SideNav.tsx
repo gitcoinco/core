@@ -32,7 +32,7 @@ export const SideNav = ({
   hoverVariant = "grey",
   accordionProps,
   isRecursive = false,
-  onClick,
+  onClick = () => null,
   activeId,
 }: InternalSideNavProps) => {
   const hoverVariantClass = sideNavVariants({ hover: hoverVariant });

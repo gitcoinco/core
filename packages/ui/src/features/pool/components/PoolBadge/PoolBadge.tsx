@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { isPoolStatus, isPoolType, PoolStatus, PoolType } from "@gitcoin/types";

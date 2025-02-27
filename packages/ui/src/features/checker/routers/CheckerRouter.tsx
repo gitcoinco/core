@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Step } from "@gitcoin/types";
 import { EvaluationBody, ReviewBody } from "@gitcoin/types/checker";
 import { CheckerRoute } from "@gitcoin/types/checker";
-import { match, P } from "ts-pattern";
+import { P, match } from "ts-pattern";
 import { Hex } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";

@@ -7,6 +7,7 @@ import { getTransactionUrl } from "@gitcoin/utils";
 
 import { Button, Checkbox } from "@/primitives";
 import { TableRow, TableCell } from "@/primitives/Table";
+import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 
 import { formatAmountFromPercentage } from "../../utils";
 

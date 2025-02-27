@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { ProjectApplicationForManager } from "@gitcoin/types/checker";
 
 import { verifyCredentials } from "@/features/checker";
 
-export function useCredentialVerification(
+export const useCredentialVerification = (
   application: Partial<ProjectApplicationForManager> | undefined,
-) {
+) => {
   const [isTwitterVerified, setIsTwitterVerified] = useState<boolean>(false);
   const [isGithubVerified, setIsGithubVerified] = useState<boolean>(false);
 
@@ -29,4 +29,4 @@ export function useCredentialVerification(
   }, [application]);
 
   return { isTwitterVerified, isGithubVerified };
-}
+};

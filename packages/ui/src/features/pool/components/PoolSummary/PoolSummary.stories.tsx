@@ -3,8 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { PoolSummary, PoolSummaryProps } from "./PoolSummary";
 
-const defaultProps = {
+const defaultProps: PoolSummaryProps = {
   chainId: 1,
+  programId: "1",
   name: "Beta Round",
   poolId: "1",
   strategyName: PoolType.QuadraticFunding,

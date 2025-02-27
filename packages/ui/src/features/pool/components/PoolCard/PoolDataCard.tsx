@@ -1,5 +1,3 @@
-"use client";
-
 import { PoolData } from "@gitcoin/types";
 
 import { DefaultLogo } from "@/assets";

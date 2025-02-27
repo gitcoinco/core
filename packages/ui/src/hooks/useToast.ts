@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import type { ReactElement } from "react";
 
 import type { ToastActionElement } from "@/primitives/Toast/Toast";
 import { ToastProps } from "@/primitives/Toast/types";
@@ -10,7 +11,7 @@ const TOAST_REMOVE_DELAY = 1000000;
 
 export interface ToasterToast extends ToastProps {
   id: string;
-  icon?: JSX.Element;
+  icon?: ReactElement;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   title?: React.ReactNode;

@@ -25,20 +25,19 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   className?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   heading?: React.ReactNode; // New heading prop
+  ref?: React.Ref<HTMLTextAreaElement>;
 }
 
-const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ className, size, heading, ...props }, ref) => {
-    return (
-      <div className="flex flex-col gap-2">
-        {heading && (
-          <div className="font-ui-sans text-[16px] font-bold leading-[24px]">{heading}</div>
-        )}
-        <textarea className={cn(textareaVariants({ size }), className)} ref={ref} {...props} />
-      </div>
-    );
-  },
-);
+const TextArea = ({ className, size, heading, ...props }: TextAreaProps) => {
+  return (
+    <div className="flex flex-col gap-2">
+      {heading && (
+        <div className="font-ui-sans text-[16px] font-bold leading-[24px]">{heading}</div>
+      )}
+      <textarea className={cn(textareaVariants({ size }), className)} {...props} />
+    </div>
+  );
+};
 
 TextArea.displayName = "TextArea";
 

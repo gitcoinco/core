@@ -6,9 +6,9 @@ import { EvaluationAction, ProjectStatus } from "@gitcoin/types/checker";
 import { cn } from "@gitcoin/utils";
 
 import { Button } from "@/primitives/Button";
-import { IconType, Icon } from "@/primitives/Icon";
+import { Icon, IconType } from "@/primitives/Icon";
 
-import { getButtonProps, evaluateProject } from "./utils";
+import { evaluateProject, getButtonProps } from "./utils";
 
 const baseButtonStyles = "font-mona flex gap-2 rounded-lg px-4 py-2";
 

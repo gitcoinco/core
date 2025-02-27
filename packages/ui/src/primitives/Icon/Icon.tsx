@@ -61,11 +61,14 @@ export enum IconType {
   ITALIC = "italic",
   SORT = "sort",
 }
+
+export type IconTypeString = `${IconType}`;
+
 export type IconProps = React.SVGProps<SVGSVGElement> & {
-  type: IconType;
+  type: IconType | IconTypeString;
 };
 
-const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGElement>>> = {
+const iconComponents: Record<IconTypeString, React.FC<React.SVGProps<SVGSVGElement>>> = {
   ...heroiconsComponents,
   ...socialMediaIconComponents,
   ...networkIconComponents,

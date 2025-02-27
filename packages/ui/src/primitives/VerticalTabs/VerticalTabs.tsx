@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 

@@ -2,21 +2,18 @@
 
 import React from "react";
 
-import { tv } from "tailwind-variants";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { tv, VariantProps } from "tailwind-variants";
 
-import { DialogContent, DialogOverlay } from "@/primitives/Dialog";
+import { DialogContent, DialogOverlay, DialogTitle } from "@/primitives/Dialog";
 
 export type OverlayVariants = "blur" | "dark";
-
-export interface ModalProps {
-  children: React.ReactNode;
-  overlayVariant?: OverlayVariants;
-}
 
 const overlayVariants = tv({
   base: "fixed inset-0 z-50",
   variants: {
     overlayVariant: {
+      transparent: "bg-transparent",
       blur: "bg-black/50 backdrop-blur-sm",
       dark: "bg-black/80",
     },
@@ -26,20 +23,39 @@ const overlayVariants = tv({
   },
 });
 
-export const Modal = React.forwardRef<
-  React.ElementRef<typeof DialogContent>,
-  React.ComponentPropsWithoutRef<typeof DialogContent> & ModalProps & { showCloseButton?: boolean }
->(({ children, overlayVariant = "blur", showCloseButton, ...props }, ref) => (
+export interface ModalProps
+  extends VariantProps<typeof overlayVariants>,
+    React.ComponentProps<typeof DialogContent> {
+  children: React.ReactNode;
+  showCloseButton?: boolean;
+}
+
+export const Modal = ({
+  children,
+  overlayVariant = "blur",
+  showCloseButton,
+  ref,
+  ...props
+}: ModalProps) => (
   <>
     <DialogOverlay
       className={overlayVariants({
         overlayVariant,
       })}
     />
-    <DialogContent showCloseButton={showCloseButton} ref={ref} className="sm:max-w-md" {...props}>
+    <DialogContent
+      aria-describedby="modal"
+      showCloseButton={showCloseButton}
+      ref={ref}
+      className="sm:max-w-md"
+      {...props}
+    >
+      <VisuallyHidden>
+        <DialogTitle />
+      </VisuallyHidden>
       {children}
     </DialogContent>
   </>
-));
+);
 
 Modal.displayName = "Modal";

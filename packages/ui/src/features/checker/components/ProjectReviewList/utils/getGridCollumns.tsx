@@ -7,7 +7,7 @@ import { Address } from "viem";
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { Button } from "@/primitives/Button";
-import { CircleStat } from "@/primitives/Indicators";
+import { CircleStat } from "@/primitives/CircleStat";
 import { ListGridColumn } from "@/primitives/ListGrid";
 import { Skeleton } from "@/primitives/Skeleton";
 

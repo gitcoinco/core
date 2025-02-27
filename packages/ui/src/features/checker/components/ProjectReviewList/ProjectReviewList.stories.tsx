@@ -1,6 +1,8 @@
 import { mockPendingReview0, mockReadyToSubmit0 } from "@repo/mocks/checker";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockPendingReview0, mockReadyToSubmit0 } from "@/mocks/checker";
+
 import { ProjectReviewList } from "./ProjectReviewList";
 
 const meta = {

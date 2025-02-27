@@ -1,10 +1,10 @@
 "use client";
 
-import { ComponentProps, forwardRef, Ref, useContext } from "react";
+import React, { Component, ComponentProps, Suspense, useContext } from "react";
 
 import { Markdown } from "@gitcoin/types";
 import { cn } from "@gitcoin/utils";
-import MDEditor, { commands, ContextStore, EditorContext } from "@uiw/react-md-editor";
+import { ContextStore, EditorContext, MDEditorProps, commands } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { IconType } from "@/index";
@@ -16,6 +16,10 @@ export interface MarkdownEditorProps extends Markdown {
   onChange?: (value: string) => void;
   value?: string;
 }
+
+const MDEditor = React.lazy<React.ComponentType<MDEditorProps>>(
+  () => import("@uiw/react-md-editor"),
+);
 
 const WriteButton = () => {
   const { preview, dispatch } = useContext<ContextStore>(EditorContext);
@@ -94,30 +98,29 @@ const customItalicCommand = {
   icon: <Icon type={IconType.ITALIC} className="size-fit text-grey-900" />,
 };
 
-export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
-  { ...props }: MarkdownEditorProps & ComponentProps<"div">,
-  ref: Ref<HTMLDivElement>,
-) {
+export const MarkdownEditor = ({ ref, ...props }: MarkdownEditorProps & ComponentProps<"div">) => {
   return (
-    <MDEditor
-      commands={[editPreviewCommand, customPreviewCommand]}
-      // TODO: Customize commands Icons
-      extraCommands={[
-        customTitleCommand,
-        customBoldCommand,
-        customItalicCommand,
-        commands.divider,
-        commands.link,
-        commands.image,
-      ]}
-      ref={ref}
-      preview="edit"
-      previewOptions={{
-        rehypePlugins: [[rehypeSanitize]],
-      }}
-      value={props.value ?? props.placeholder}
-      onChange={(val?: string) => props.onChange?.(val ?? "")}
-      data-color-mode="light"
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <MDEditor
+        commands={[editPreviewCommand, customPreviewCommand]}
+        // TODO: Customize commands Icons
+        extraCommands={[
+          customTitleCommand,
+          customBoldCommand,
+          customItalicCommand,
+          commands.divider,
+          commands.link,
+          commands.image,
+        ]}
+        ref={ref as React.Ref<Component>}
+        preview="edit"
+        previewOptions={{
+          rehypePlugins: [[rehypeSanitize]],
+        }}
+        value={props.value ?? props.placeholder}
+        onChange={(val) => props.onChange?.(val ?? "")}
+        data-color-mode="light"
+      />
+    </Suspense>
   );
-});
+};

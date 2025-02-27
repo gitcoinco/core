@@ -14,7 +14,7 @@ export interface SideNavItem {
 
 export interface InternalSideNavProps {
   items?: SideNavItem[];
-  onClick: (id: string | undefined) => void;
+  onClick?: (id: string | undefined) => void;
   activeId?: string;
   className?: string;
   accordionProps?: Omit<AccordionProps, "header" | "content">;

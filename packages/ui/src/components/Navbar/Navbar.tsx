@@ -1,14 +1,8 @@
-"use client";
-
 import * as React from "react";
 
 import { NavbarGeneric } from "./components/NavbarGeneric";
 import { NavbarLogo, NavbarLogoProps } from "./components/NavbarLogo";
-import {
-  NavbarCenterSection,
-  NavbarEndSection,
-  NavbarStartSection,
-} from "./components/NavbarSections";
+import { NavbarEndSection, NavbarStartSection } from "./components/NavbarSections";
 import { NavbarSeparator } from "./components/NavbarSeparator";
 import { NavbarTitle, NavbarTitleProps } from "./components/NavbarTitle";
 

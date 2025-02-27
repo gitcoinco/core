@@ -1,9 +1,9 @@
-"use client";
+import type { ReactElement } from "react";
 
 import { ProgressStatus, Step } from "@gitcoin/types";
 import { Check, X } from "lucide-react";
 
-import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/primitives/Dialog";
+import { Dialog, DialogDescription, DialogHeader, DialogTitle } from "@/primitives/Dialog";
 import { Modal } from "@/primitives/Modal";
 
 export interface ProgressModalProps {
@@ -85,8 +85,8 @@ function getStepAttributes(
   status: ProgressStatus,
   isLastStep: boolean,
 ): {
-  icon: JSX.Element;
-  line: JSX.Element | null;
+  icon: ReactElement;
+  line: ReactElement | null;
   nameColor: string;
   descriptionColor: string;
 } {

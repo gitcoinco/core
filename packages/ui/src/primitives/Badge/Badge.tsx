@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { cn } from "@gitcoin/utils";
@@ -61,20 +59,22 @@ export interface BadgeProps
     VariantProps<typeof badgeVariants> {
   size?: keyof typeof badgeVariants.variants.size;
   skeleton?: boolean;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant = "info", size = "sm", skeleton = false, ...props }, ref) => {
-    return skeleton ? (
-      <Skeleton
-        className={cn(badgeVariants({ variant: "skeleton", size }), className)}
-        {...props}
-      />
-    ) : (
-      <div className={cn(badgeVariants({ variant, size }), className)} ref={ref} {...props} />
-    );
-  },
-);
+const Badge = ({
+  className,
+  variant = "info",
+  size = "sm",
+  skeleton = false,
+  ...props
+}: BadgeProps) => {
+  return skeleton ? (
+    <Skeleton className={cn(badgeVariants({ variant: "skeleton", size }), className)} {...props} />
+  ) : (
+    <div className={cn(badgeVariants({ variant, size }), className)} {...props} />
+  );
+};
 
 Badge.displayName = "Badge";
 

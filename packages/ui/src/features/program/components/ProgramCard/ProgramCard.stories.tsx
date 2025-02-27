@@ -3,18 +3,9 @@ import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { ProgramCard, ProgramCardProps, ProgramCardQueryProps } from "./ProgramCard";
+import { mockProgramCard } from "./mocks";
 
 const onProgramClick = action("Program clicked!");
-
-const program: ProgramCardProps = {
-  id: "0x123456789",
-  chainId: 1,
-  title: "Gitcoin Grants Stack",
-  operatorsCount: 2,
-  roundsCount: 10,
-  createdAtBlock: 1000000,
-  onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
-};
 
 export default {
   title: "Features/Program/ProgramCard",
@@ -32,7 +23,8 @@ type Story = StoryObj<ProgramCardProps | ProgramCardQueryProps>;
 
 export const Default: Story = {
   args: {
-    ...program,
+    ...mockProgramCard,
+    onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
   },
 };
 
@@ -45,7 +37,8 @@ export const Loading: Story = {
 export const Success: Story = {
   args: {
     queryResult: createQueryState<ProgramCardProps>("success", {
-      ...program,
+      ...mockProgramCard,
+      onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
     }),
   },
 };

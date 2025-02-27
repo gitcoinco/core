@@ -1,7 +1,7 @@
 import {
-  GoToSubmitApplicationEvaluationAction,
   GoToApplicationEvaluationOverviewAction,
   GoToReviewApplicationsAction,
+  GoToSubmitApplicationEvaluationAction,
   GoToSubmitFinalEvaluationAction,
   SetInitialStateAction,
   SetPoolDataAction,

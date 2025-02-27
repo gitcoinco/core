@@ -1,4 +1,4 @@
-"use client";
+import { Evaluation } from "@gitcoin/types/checker";
 
 import { Evaluation } from "@gitcoin/types/checker";
 import { capitalizeString, parseENSOrAddress } from "@gitcoin/utils";

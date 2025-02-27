@@ -1,18 +1,22 @@
 "use client";
 
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import React, { Suspense } from "react";
 
-import { withSSR } from "@/lib/withSSR";
+import { type MarkdownPreviewProps } from "@uiw/react-markdown-preview";
 
-const MarkdownComponent = ({ children }: { children: string }) => {
+const MarkdownPreview = React.lazy<React.ComponentType<MarkdownPreviewProps>>(
+  () => import("@uiw/react-markdown-preview"),
+);
+
+export const Markdown = ({ children }: { children: string }) => {
   return (
-    <MarkdownPreview
-      source={children}
-      wrapperElement={{
-        "data-color-mode": "light",
-      }}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <MarkdownPreview
+        source={children}
+        wrapperElement={{
+          "data-color-mode": "light",
+        }}
+      />
+    </Suspense>
   );
 };
-
-export const Markdown = withSSR(MarkdownComponent);

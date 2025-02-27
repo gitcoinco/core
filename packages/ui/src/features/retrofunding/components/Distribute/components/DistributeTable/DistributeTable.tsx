@@ -1,8 +1,8 @@
-import { useCallback, useState, useMemo, useEffect } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ApplicationPayout, PoolConfig } from "@gitcoin/types";
 
-import { Table, TableHeader, TableBody } from "@/primitives/Table";
+import { Table, TableBody, TableHeader } from "@/primitives/Table";
 
 import { ProjectTableRow } from "./ProjectTableRow";
 import { TableHeaderRow } from "./TableHeaderRow";
@@ -89,43 +89,46 @@ export const DistributeTable = ({
 
   return (
     <div className="flex h-[692px] justify-center overflow-auto">
-      <Table className="mx-auto bg-grey-50">
-        <TableHeader>
-          <TableHeaderRow
-            isEditing={isEditing}
-            isFinalized={isFinalized}
-            isAllSelected={isAllSelected}
-            onSelectAll={handleSelectAll}
-            amountOfApplications={applications.length}
-          />
-        </TableHeader>
-        <TableBody>
-          {originalApplications.map((application) => {
-            const editedApplication = editedApplications.find((app) => app.id === application.id);
-            return (
-              <ProjectTableRow
-                key={application.id}
-                application={application}
-                editedApplication={editedApplication || application}
-                allApplications={originalApplications}
-                editedApplications={editedApplications}
-                isEditing={isEditing}
-                isFinalized={isFinalized}
-                isSelected={selectedApplications.includes(application.id)}
-                poolConfig={poolConfig}
-                onSelect={handleSelectApplication}
-                onEditApplication={handleEditApplication}
-                onDistribute={onDistribute}
-              />
-            );
-          })}
-        </TableBody>
-        {applications.length === 0 && !isFinalized && (
+      {applications.length > 0 ? (
+        <Table className="mx-auto bg-grey-50">
+          <TableHeader>
+            <TableHeaderRow
+              isEditing={isEditing}
+              isFinalized={isFinalized}
+              isAllSelected={isAllSelected}
+              onSelectAll={handleSelectAll}
+              amountOfApplications={applications.length}
+            />
+          </TableHeader>
+          <TableBody>
+            {originalApplications.map((application) => {
+              const editedApplication = editedApplications.find((app) => app.id === application.id);
+              return (
+                <ProjectTableRow
+                  key={application.id}
+                  application={application}
+                  editedApplication={editedApplication || application}
+                  allApplications={originalApplications}
+                  editedApplications={editedApplications}
+                  isEditing={isEditing}
+                  isFinalized={isFinalized}
+                  isSelected={selectedApplications.includes(application.id)}
+                  poolConfig={poolConfig}
+                  onSelect={handleSelectApplication}
+                  onEditApplication={handleEditApplication}
+                  onDistribute={onDistribute}
+                />
+              );
+            })}
+          </TableBody>
+        </Table>
+      ) : (
+        !isFinalized && (
           <div className="py-3 pl-3 font-ui-sans text-base font-normal text-grey-900">
-            Projects that haven’t been paid out yet will appear here.
+            {"Projects that haven’t been paid out yet will appear here."}
           </div>
-        )}
-      </Table>
+        )
+      )}
     </div>
   );
 };

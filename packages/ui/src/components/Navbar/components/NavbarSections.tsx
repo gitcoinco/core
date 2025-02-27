@@ -14,26 +14,21 @@ const navbarSectionStyle = tv({
   },
 });
 
-export const NavbarStartSection = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn(navbarSectionStyle({ section: "start" }), className)} {...props} />
-));
+interface NavbarSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+  ref?: React.Ref<HTMLDivElement>;
+}
+
+export const NavbarStartSection = ({ className, ...props }: NavbarSectionProps) => (
+  <div className={cn(navbarSectionStyle({ section: "start" }), className)} {...props} />
+);
 NavbarStartSection.displayName = "NavbarStartSection";
 
-export const NavbarCenterSection = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn(navbarSectionStyle({ section: "center" }), className)} {...props} />
-));
+export const NavbarCenterSection = ({ className, ...props }: NavbarSectionProps) => (
+  <div className={cn(navbarSectionStyle({ section: "center" }), className)} {...props} />
+);
 NavbarCenterSection.displayName = "NavbarCenterSection";
 
-export const NavbarEndSection = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn(navbarSectionStyle({ section: "end" }), className)} {...props} />
-));
+export const NavbarEndSection = ({ className, ...props }: NavbarSectionProps) => (
+  <div className={cn(navbarSectionStyle({ section: "end" }), className)} {...props} />
+);
 NavbarEndSection.displayName = "NavbarEndSection";

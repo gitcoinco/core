@@ -100,57 +100,63 @@ export type AccordionVariants = VariantProps<typeof accordionVariants>;
 
 const AccordionRoot = AccordionPrimitive.Root;
 
-type AccordionItemProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> &
+type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item> &
   AccordionVariants & {
     className?: string;
   };
 
-const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  AccordionItemProps
->(({ className, variant, border, ...props }, ref) => {
+const AccordionItem = ({ className, variant, border, ...props }: AccordionItemProps) => {
   const { item } = accordionVariants({ variant, border });
-  return <AccordionPrimitive.Item ref={ref} className={cn(item(), className)} {...props} />;
-});
+  return <AccordionPrimitive.Item className={cn(item(), className)} {...props} />;
+};
 AccordionItem.displayName = "AccordionItem";
 
-type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> &
+type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger> &
   AccordionVariants & {
     className?: string;
   };
 
-const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  AccordionTriggerProps
->(({ className, children, variant, border, paddingX, paddingY, radius, ...props }, ref) => {
+const AccordionTrigger = ({
+  className,
+  children,
+  variant,
+  border,
+  paddingX,
+  paddingY,
+  radius,
+  ...props
+}: AccordionTriggerProps) => {
   const { trigger } = accordionVariants({ variant, border, paddingX, paddingY, radius });
   return (
     <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger ref={ref} className={cn(trigger(), className)} {...props}>
+      <AccordionPrimitive.Trigger className={cn(trigger(), className)} {...props}>
         {children}
         <ChevronDown className="size-4 shrink-0 transition-transform duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
-});
+};
 AccordionTrigger.displayName = "AccordionTrigger";
 
-type AccordionContentProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> &
+type AccordionContentProps = React.ComponentProps<typeof AccordionPrimitive.Content> &
   AccordionVariants & {
     className?: string;
   };
 
-const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
-  AccordionContentProps
->(({ className, children, variant, border, ...props }, ref) => {
+const AccordionContent = ({
+  className,
+  children,
+  variant,
+  border,
+  ...props
+}: AccordionContentProps) => {
   const { content, contentInner } = accordionVariants({ variant, border });
   return (
-    <AccordionPrimitive.Content ref={ref} className={cn(content(), className)} {...props}>
+    <AccordionPrimitive.Content className={cn(content(), className)} {...props}>
       <div className={cn(contentInner())}>{children}</div>
     </AccordionPrimitive.Content>
   );
-});
+};
 AccordionContent.displayName = "AccordionContent";
 
 export interface AccordionProps {

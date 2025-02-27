@@ -1,6 +1,8 @@
 import { mockApplications } from "@repo/mocks/checker";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockApplications } from "@/mocks/checker";
+
 import { ApplicationHistoryList } from "./ApplicationHistoryList";
 
 const meta = {

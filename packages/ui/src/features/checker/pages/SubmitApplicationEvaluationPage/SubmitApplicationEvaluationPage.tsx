@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { EvaluationStatus, EvaluationBody } from "@gitcoin/types/checker";
+import { EvaluationBody, EvaluationStatus } from "@gitcoin/types/checker";
 import { cn } from "@gitcoin/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
@@ -14,9 +14,9 @@ import { Icon, IconType } from "@/primitives/Icon";
 
 import { ApplicationSummary } from "~application";
 import {
+  useApplicationOverviewEvaluations,
   useGetPastApplications,
   useInitialize,
-  useApplicationOverviewEvaluations,
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { PoolSummary } from "~pool";

@@ -22,6 +22,8 @@ export interface ApplicationBadgeProps {
   status: ApplicationBadgeStatus;
 }
 
+export { ApplicationBadgeStatus };
+
 export const ApplicationBadge: React.FC<ApplicationBadgeProps> = (props) => {
   const { variant, text } = match(props)
     .with({ status: ApplicationBadgeStatus.Pending }, () => ({

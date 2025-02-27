@@ -1,4 +1,4 @@
-import { project, application, pastApplications } from "@repo/mocks/application";
+import { application, pastApplications, project } from "@repo/mocks/application";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { ApplicationSummary } from "./ApplicationSummary";

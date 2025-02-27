@@ -1,30 +1,15 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockPrograms } from "../ProgramList/mocks";
 import { ProgramCardGroup } from "./ProgramCardGroup";
 
 const onProgramClick = action("Program clicked!");
 
-const programs = [
-  {
-    id: "0x123456789",
-    chainId: 1,
-    title: "Gitcoin Grants Stack",
-    operatorsCount: 2,
-    roundsCount: 10,
-    createdAtBlock: 1000,
-    onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
-  },
-  {
-    id: "0x3456",
-    chainId: 1,
-    title: "Allo Protocol",
-    operatorsCount: 4,
-    roundsCount: 2,
-    createdAtBlock: 1000000,
-    onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
-  },
-];
+const programs = mockPrograms.map((program) => ({
+  ...program,
+  onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
+}));
 
 const meta = {
   title: "Features/Program/ProgramCardGroup",
