@@ -2,16 +2,11 @@
 
 import * as React from "react";
 
+import { ApplicationStatus as ApplicationBadgeStatus } from "@gitcoin/types";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
 import { Badge } from "@/primitives/Badge";
-
-export enum ApplicationBadgeStatus {
-  Pending = "pending",
-  Approved = "approved",
-  Rejected = "rejected",
-}
 
 const ApplicationBadgeVariants = tv({
   variants: {
@@ -26,6 +21,8 @@ const ApplicationBadgeVariants = tv({
 export interface ApplicationBadgeProps {
   status: ApplicationBadgeStatus;
 }
+
+export { ApplicationBadgeStatus };
 
 export const ApplicationBadge: React.FC<ApplicationBadgeProps> = (props) => {
   const { variant, text } = match(props)

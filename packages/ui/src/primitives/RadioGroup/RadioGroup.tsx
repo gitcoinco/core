@@ -40,10 +40,14 @@ const {
   header,
 } = radioGroup();
 
-const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  RadioGroupPrimitive.RadioGroupProps & { buttonsPerRow?: number; heading?: React.ReactNode }
->(({ className, buttonsPerRow = 2, heading, ...props }, ref) => {
+export interface RadioGroupProps extends RadioGroupPrimitive.RadioGroupProps {
+  className?: string;
+  buttonsPerRow?: number;
+  heading?: React.ReactNode;
+  ref?: React.Ref<HTMLDivElement>;
+}
+
+const RadioGroup = ({ className, buttonsPerRow = 2, heading, ...props }: RadioGroupProps) => {
   const gridTemplateColumns = `repeat(${buttonsPerRow}, max-content)`;
 
   return (
@@ -57,23 +61,21 @@ const RadioGroup = React.forwardRef<
         className={cn(root(), className)}
         style={{ gridTemplateColumns }}
         {...props}
-        ref={ref}
       />
     </div>
   );
-});
+};
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
-const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  Omit<React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>, "checked"> & {
-    label: string;
-    disabled?: boolean;
-  }
->(({ className, label, disabled, ...props }, ref) => {
+interface RadioGroupItemProps
+  extends Omit<React.ComponentProps<typeof RadioGroupPrimitive.Item>, "checked"> {
+  label: string;
+  disabled?: boolean;
+}
+
+const RadioGroupItem = ({ className, label, disabled, ...props }: RadioGroupItemProps) => {
   return (
     <RadioGroupPrimitive.Item
-      ref={ref}
       className={cn(item(), disabled && itemDisabled(), className)}
       disabled={disabled}
       {...props}
@@ -88,7 +90,7 @@ const RadioGroupItem = React.forwardRef<
       {label && <span className={cn(text(), className)}>{label}</span>}
     </RadioGroupPrimitive.Item>
   );
-});
+};
 
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 

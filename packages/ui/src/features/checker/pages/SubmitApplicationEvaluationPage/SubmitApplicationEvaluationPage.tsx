@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { EvaluationStatus, EvaluationBody } from "@gitcoin/types/checker";
 import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
 
@@ -18,7 +19,6 @@ import {
   useApplicationOverviewEvaluations,
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
-import { EvaluationStatus, EvaluationBody } from "~checker/types";
 import { PoolSummary } from "~pool";
 import { ProjectBanner } from "~project";
 

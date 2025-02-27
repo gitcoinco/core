@@ -1,6 +1,6 @@
 "use client";
 
-import { ForwardedRef, forwardRef, useImperativeHandle } from "react";
+import { useImperativeHandle } from "react";
 import { FormProvider, useForm, UseFormReturn } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,12 +10,11 @@ import { FormConfig } from "@/types";
 import { FormControl } from "./components";
 import { buildSchemaFromFields } from "./utils/buildSchemaFromFields";
 
-export interface FormProps extends FormConfig {}
+export interface FormProps extends FormConfig {
+  ref: React.Ref<{ form: UseFormReturn }>;
+}
 
-export const Form_ = forwardRef(function Form(
-  { fields, defaultValues }: FormProps,
-  ref: ForwardedRef<{ form: UseFormReturn }>,
-) {
+export const Form_ = ({ fields, defaultValues, ref }: FormProps) => {
   const schema = buildSchemaFromFields(fields);
   const form = useForm({ resolver: zodResolver(schema), defaultValues });
   useImperativeHandle(ref, () => ({
@@ -30,4 +29,4 @@ export const Form_ = forwardRef(function Form(
       </form>
     </FormProvider>
   );
-});
+};

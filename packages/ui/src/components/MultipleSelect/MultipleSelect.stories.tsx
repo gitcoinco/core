@@ -29,7 +29,7 @@ export const Basic: Story = {
       },
     ],
     placeholder: "Select options",
-    onChange: (values) => onChange(values),
+    onChange: (values: any) => onChange(values),
   },
 };
 
@@ -66,7 +66,7 @@ export const OrderByExample: Story = {
     },
     placeholder: "Order by",
     className: "w-40",
-    onChange: (values) => onChange(values),
+    onChange: (values: any) => onChange(values),
   },
 };
 
@@ -110,7 +110,7 @@ export const FilterExample: Story = {
     variants: { triggerTextColor: "red" },
     placeholder: "Filter by",
     className: "w-64",
-    onChange: (values) => onChange(values),
+    onChange: (values: any) => onChange(values),
   },
 };
 
@@ -140,7 +140,7 @@ export const MixedSelectionTypes: Story = {
       },
     ],
     placeholder: "Select options",
-    onChange: (values) => onChange(values),
+    onChange: (values: any) => onChange(values),
   },
 };
 
@@ -166,7 +166,7 @@ export const WithVariants: Story = {
     },
 
     placeholder: "Select with variants",
-    onChange: (values) => onChange(values),
+    onChange: (values: any) => onChange(values),
     className: "w-40",
   },
 };

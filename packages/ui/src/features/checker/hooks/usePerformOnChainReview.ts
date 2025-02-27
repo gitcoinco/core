@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useMemo } from "react";
 
+import { ReviewBody } from "@gitcoin/types/checker";
 import { useMutation } from "@tanstack/react-query";
 
 import { getOnchainEvaluationProgressSteps } from "@/components/ProgressModal";
 import { ProgressStatus } from "@/types";
-
-import { ReviewBody } from "../types";
 
 export const usePerformOnChainReview = () => {
   const [reviewBody, setReviewBody] = useState<ReviewBody | null>(null);

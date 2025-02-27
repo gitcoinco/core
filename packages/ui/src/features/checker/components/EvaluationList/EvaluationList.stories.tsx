@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockEvaluations } from "@/mocks/checker";
+
 import { EvaluationList } from "./EvaluationList";
-import { mockEvaluations } from "./mocks";
 
 const meta = {
   title: "Features/Checker/Components/EvaluationList",

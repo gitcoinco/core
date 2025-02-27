@@ -1,11 +1,9 @@
-"use client";
+import { Evaluation } from "@gitcoin/types/checker";
 
 import { IconLabel } from "@/components/IconLabel";
 import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
-
-import { Evaluation } from "~checker/types";
 
 export interface EvaluationListProps {
   evaluations: Evaluation[];

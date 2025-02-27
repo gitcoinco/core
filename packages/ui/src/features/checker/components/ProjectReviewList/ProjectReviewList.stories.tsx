@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockPendingReview0, mockReadyToSubmit0 } from "@/mocks/checker";
+
 import { ProjectReviewList } from "./ProjectReviewList";
-import { mockPendingReview0, mockReadyToSubmit0 } from "./mocks";
 
 const meta = {
   title: "Features/Checker/Components/ProjectReviewList",

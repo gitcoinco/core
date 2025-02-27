@@ -1,0 +1,37 @@
+{
+  "name": "next14-usage",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
+  },
+  "dependencies": {
+    "@gitcoin/ui": "workspace:*",
+    "@gitcoin/utils": "workspace:*",
+    "@heroicons/react": "2.1.5",
+    "next": "14.2.23",
+    "next-themes": "^0.3.0",
+
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@gitcoin/config": "workspace:*",
+    "@gitcoin/themes": "workspace:*",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.23",
+    "postcss": "^8.4.47",
+    "prettier": "3.1.0",
+    "prettier-plugin-tailwindcss": "0.5.7",
+    "tailwindcss": "^3.4.14",
+    "typescript": "5.5.4"
+  }
+}

@@ -2,14 +2,13 @@
 
 import * as React from "react";
 
+import { Evaluation } from "@gitcoin/types/checker";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate, getAddressLabel, capitalizeWord } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
-
-import { Evaluation } from "../../types";
 
 const ReviewDropdownVariants = tv({
   slots: {

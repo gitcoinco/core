@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { tv } from "tailwind-variants";
 
@@ -130,8 +130,8 @@ export const DesktopLeaderboard = ({
             const { project, metrics: projectMetrics, originalRank } = projectData;
             const isExpanded = expandedProject === originalRank;
             return (
-              <>
-                <TableRow key={originalRank} className="border-b border-leaderboard-border">
+              <React.Fragment key={originalRank}>
+                <TableRow className="border-b border-leaderboard-border">
                   <TableCell className="pl-12">
                     <span
                       className={cn(
@@ -177,7 +177,7 @@ export const DesktopLeaderboard = ({
                     </TableCell>
                   </TableRow>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </TableBody>

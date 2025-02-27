@@ -2,14 +2,12 @@
 
 import { useEffect } from "react";
 
+import { CheckerApplication, CheckerPoolData, PoolInfo } from "@gitcoin/types/checker";
 import { useQuery } from "@tanstack/react-query";
 
 import { getApplicationsFromIndexer } from "~checker/services/allo";
-import { getCheckerPoolData, syncPool, SyncPoolBody } from "~checker/services/checker";
+import { SyncPoolBody, getCheckerPoolData, syncPool } from "~checker/services/checker";
 import {
-  CheckerApplication,
-  CheckerPoolData,
-  PoolInfo,
   setPoolDataAction,
   setPoolFetchStateAction,
   useCheckerContext,

@@ -1,6 +1,6 @@
 "use client";
 
-import { ForwardedRef, forwardRef, useImperativeHandle } from "react";
+import { useImperativeHandle } from "react";
 import { FormProvider, UseFormReturn } from "react-hook-form";
 
 import { useFormWithPersist } from "@/hooks";
@@ -12,12 +12,17 @@ import { buildSchemaFromFields } from "./utils/buildSchemaFromFields";
 export interface FormWithPersistProps extends PersistFormConfig {
   dbName: string;
   storeName: string;
+  ref: React.Ref<{ form: UseFormReturn }>;
 }
 
-export const FormWithPersist_ = forwardRef(function FormWithPersist(
-  { persistKey, fields, defaultValues, dbName, storeName }: FormWithPersistProps,
-  ref: ForwardedRef<{ form: UseFormReturn }>,
-) {
+export const FormWithPersist_ = ({
+  persistKey,
+  fields,
+  defaultValues,
+  dbName,
+  storeName,
+  ref,
+}: FormWithPersistProps) => {
   const schema = buildSchemaFromFields(fields);
 
   const form = useFormWithPersist({ schema, defaultValues, persistKey, dbName, storeName });
@@ -35,4 +40,4 @@ export const FormWithPersist_ = forwardRef(function FormWithPersist(
       </form>
     </FormProvider>
   );
-});
+};

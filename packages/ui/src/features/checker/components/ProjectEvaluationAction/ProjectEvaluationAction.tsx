@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 
+import { EvaluationAction, ProjectStatus } from "@gitcoin/types/checker";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { IconType, Icon } from "@/primitives/Icon";
-
-import { EvaluationAction, ProjectStatus } from "~checker/types";
 
 import { getButtonProps, evaluateProject } from "./utils";
 

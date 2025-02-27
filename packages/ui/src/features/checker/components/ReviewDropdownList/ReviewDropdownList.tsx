@@ -1,10 +1,10 @@
 "use client";
 
+import { Evaluation } from "@gitcoin/types/checker";
 import { tv } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 
-import { Evaluation } from "../../types";
 import { ReviewDropdown } from "../ReviewDropdown";
 
 const reviewDropdownListVariants = tv({

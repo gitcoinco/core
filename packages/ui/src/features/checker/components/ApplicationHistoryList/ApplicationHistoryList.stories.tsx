@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { mockApplications } from "@/mocks/checker";
+
 import { ApplicationHistoryList } from "./ApplicationHistoryList";
-import { mockApplications } from "./mocks";
 
 const meta = {
   title: "Features/Checker/Components/ApplicationHistoryList",

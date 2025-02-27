@@ -33,18 +33,11 @@ const ToastProvider = ToastPrimitives.Provider;
 // ToastViewport component with positioning variants
 interface ToastViewportProps
   extends VariantProps<typeof viewportVariants>,
-    React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport> {}
+    React.ComponentProps<typeof ToastPrimitives.Viewport> {}
 
-const ToastViewport = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Viewport>,
-  ToastViewportProps
->(({ className, position, ...props }, ref) => (
-  <ToastPrimitives.Viewport
-    ref={ref}
-    className={cn(viewportVariants({ position }), className)}
-    {...props}
-  />
-));
+const ToastViewport = ({ className, position, ...props }: ToastViewportProps) => (
+  <ToastPrimitives.Viewport className={cn(viewportVariants({ position }), className)} {...props} />
+);
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
 export const toastVariants = tv({
@@ -75,35 +68,29 @@ export const toastVariants = tv({
 
 // Toast component with size and alignment variants
 interface ToastProps
-  extends React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>,
+  extends React.ComponentProps<typeof ToastPrimitives.Root>,
     VariantProps<typeof toastVariants> {}
 
-const ToastRoot = React.forwardRef<React.ElementRef<typeof ToastPrimitives.Root>, ToastProps>(
-  ({ className, variant, size, align, ...props }, ref) => {
-    return (
-      <ToastPrimitives.Root
-        ref={ref}
-        className={cn(toastVariants({ variant, size, align }), className)}
-        {...props}
-      />
-    );
-  },
+const ToastRoot = ({ className, variant, size, align, ...props }: ToastProps) => (
+  <ToastPrimitives.Root
+    className={cn(toastVariants({ variant, size, align }), className)}
+    {...props}
+  />
 );
 ToastRoot.displayName = ToastPrimitives.Root.displayName;
 
-const ToastAction = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Action>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
->(({ className, ...props }, ref) => (
+const ToastAction = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof ToastPrimitives.Action>) => (
   <ToastPrimitives.Action
-    ref={ref}
     className={cn(
       "inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-grey-100 bg-transparent px-3 text-sm font-medium ring-offset-white transition-colors hover:bg-grey-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-grey-100/40 group-[.destructive]:hover:border-red-500/30 group-[.destructive]:hover:bg-red-500 group-[.destructive]:hover:text-grey-50 group-[.destructive]:focus:ring-red-500 dark:border-black dark:ring-offset-black dark:hover:bg-black dark:focus:ring-grey-100 dark:group-[.destructive]:border-black/40 dark:group-[.destructive]:hover:border-red-900/30 dark:group-[.destructive]:hover:bg-red-900 dark:group-[.destructive]:hover:text-grey-50 dark:group-[.destructive]:focus:ring-red-900",
       className,
     )}
     {...props}
   />
-));
+);
 ToastAction.displayName = ToastPrimitives.Action.displayName;
 
 export const toastCloseVariants = tv({
@@ -123,35 +110,28 @@ export const toastCloseVariants = tv({
 
 // ToastClose component with variants
 interface ToastCloseProps
-  extends React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>,
+  extends React.ComponentProps<typeof ToastPrimitives.Close>,
     VariantProps<typeof toastCloseVariants> {}
 
-const ToastClose = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Close>,
-  ToastCloseProps
->(({ className, children, variant, ...props }, ref) => (
-  <ToastPrimitives.Close
-    ref={ref}
-    className={cn(toastCloseVariants({ variant }), className)}
-    {...props}
-  >
+const ToastClose = ({ className, children, variant, ...props }: ToastCloseProps) => (
+  <ToastPrimitives.Close className={cn(toastCloseVariants({ variant }), className)} {...props}>
     {children ? children : <X className="size-5" />}
   </ToastPrimitives.Close>
-));
+);
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
-const ToastTitle = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Title>,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
->(({ className, ...props }, ref) => (
-  <ToastPrimitives.Title ref={ref} className={cn("text-sm font-semibold", className)} {...props} />
-));
+const ToastTitle = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof ToastPrimitives.Title>) => (
+  <ToastPrimitives.Title className={cn("text-sm font-semibold", className)} {...props} />
+);
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
 // Defines variant styles for the ToastDescription
 
 interface ToastDescriptionProps
-  extends React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>,
+  extends React.ComponentProps<typeof ToastPrimitives.Description>,
     VariantProps<typeof toastDescriptionVariants> {}
 
 export const toastDescriptionVariants = tv({
@@ -168,21 +148,17 @@ export const toastDescriptionVariants = tv({
   },
 });
 
-const ToastDescription = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitives.Description>,
-  ToastDescriptionProps
->(({ className, size, ...props }, ref) => (
+const ToastDescription = ({ className, size, ...props }: ToastDescriptionProps) => (
   <ToastPrimitives.Description
-    ref={ref}
     className={cn(toastDescriptionVariants({ size }), className)}
     {...props}
   />
-));
+);
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
 // Export all components and types
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
-type ToastPropsType = React.ComponentPropsWithoutRef<typeof ToastRoot> & ToasterToast;
+type ToastPropsType = React.ComponentProps<typeof ToastRoot> & ToasterToast;
 
 const Toast = ({ toast }: { toast: ToasterToast }) => (
   <ToastRoot

@@ -138,6 +138,23 @@ body {
   }
 }
 
+/* TODO:
+module.exports = {
+  theme: {
+    extend: {
+      backgroundImage: {
+        'grid': `linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                 linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px)`,
+      },
+    },
+  },
+}
+
+usage:
+<div className="absolute inset-0 min-w-full min-h-screen bg-grid [--grid-color:rgba(235,234,253,1)]"/><
+
+we could also create a grid component that takes in a color and spacing and then we can use that in the landing page, the component will be just the background, and then render the children in the center
+*/
 .background-grid-green {
   position: absolute;
   top: 0;

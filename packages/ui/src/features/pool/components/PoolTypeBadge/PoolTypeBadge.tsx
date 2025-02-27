@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { tv } from "tailwind-variants";
@@ -21,7 +19,7 @@ const variants = tv({
 });
 
 export interface PoolTypeBadgeProps {
-  value?: PoolType;
+  value?: PoolType | `${PoolType}`;
   className?: string;
   isLoading?: boolean;
 }
@@ -35,7 +33,7 @@ const badgeTexts = {
 const invalidValueText = "Error: Invalid type";
 
 export const PoolTypeBadge: React.FC<PoolTypeBadgeProps> = ({ value, className, isLoading }) => {
-  const variantClass = variants({ value });
+  const variantClass = variants({ value: value as PoolType });
 
   return match({ value, isLoading })
     .with({ isLoading: true }, () => <Badge skeleton className={className} size="md" />)

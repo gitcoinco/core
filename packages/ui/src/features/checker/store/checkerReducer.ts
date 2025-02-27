@@ -1,7 +1,6 @@
-import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
+import { CheckerAction, CheckerContextType, CheckerRoute } from "@gitcoin/types/checker";
 
-import { CheckerAction } from "./actions";
-import { CheckerContextType, CheckerRoute } from "./types";
+import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 
 export const checkerReducer = (
   state: CheckerContextType,

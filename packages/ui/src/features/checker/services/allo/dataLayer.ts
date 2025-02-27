@@ -1,4 +1,9 @@
-import { PoolInfo } from "~checker/store/types";
+import {
+  PastApplication,
+  PoolInfo,
+  ProjectApplication,
+  ProjectApplicationForManager,
+} from "@gitcoin/types/checker";
 
 import { executeQuery } from "./alloClient";
 import {
@@ -6,7 +11,6 @@ import {
   getApplicationByIdQuery,
   getPastApplicationsQueryByApplicationId,
 } from "./queries";
-import { PastApplication, ProjectApplication, ProjectApplicationForManager } from "./types";
 
 export async function getApplicationsFromIndexer(
   chainId?: number,

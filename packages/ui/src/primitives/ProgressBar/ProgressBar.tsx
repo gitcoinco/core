@@ -40,18 +40,21 @@ const progressVariants = tv({
   },
 });
 
-export const ProgressBar = React.forwardRef<
-  React.ElementRef<typeof ProgressPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & {
-    variant?: "default" | "green" | "green-md";
-    withLabel?: boolean;
-  }
->(({ className, value, variant = "default", withLabel = false, ...props }, ref) => {
+export const ProgressBar = ({
+  className,
+  value,
+  variant = "default",
+  withLabel = false,
+  ...props
+}: React.ComponentProps<typeof ProgressPrimitive.Root> & {
+  variant?: "default" | "green" | "green-md";
+  withLabel?: boolean;
+}) => {
   const { root, indicator } = progressVariants({ variant });
 
   return (
     <div className="flex flex-col gap-2">
-      <ProgressPrimitive.Root ref={ref} className={`${root()} ${className}`} {...props}>
+      <ProgressPrimitive.Root className={`${root()} ${className}`} {...props}>
         <ProgressPrimitive.Indicator
           className={indicator()}
           style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
@@ -62,6 +65,6 @@ export const ProgressBar = React.forwardRef<
       )}
     </div>
   );
-});
+};
 
 ProgressBar.displayName = ProgressPrimitive.Root.displayName;

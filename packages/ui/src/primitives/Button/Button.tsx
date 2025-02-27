@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { Slot } from "@radix-ui/react-slot";
@@ -34,6 +32,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   value?: string;
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
 export type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
@@ -74,48 +73,42 @@ const buttonVariants = tv({
   },
 });
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size = "default",
-      disabled,
-      asChild = false,
-      value,
-      icon,
-      iconPosition = "left",
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "button";
-    const appliedVariant = disabled
-      ? variant?.startsWith("outlined")
-        ? "outlined-disabled"
-        : "disabled"
-      : variant;
+const Button = ({
+  className,
+  variant,
+  size = "default",
+  disabled,
+  asChild = false,
+  value,
+  icon,
+  iconPosition = "left",
+  ...props
+}: ButtonProps) => {
+  const Comp = asChild ? Slot : "button";
+  const appliedVariant = disabled
+    ? variant?.startsWith("outlined")
+      ? "outlined-disabled"
+      : "disabled"
+    : variant;
 
-    return (
-      <Comp
-        className={cn(
-          buttonVariants({
-            variant: appliedVariant as ButtonVariants,
-            size: size as ButtonSizes,
-            className,
-          }),
-        )}
-        ref={ref}
-        disabled={disabled}
-        {...props}
-      >
-        {icon && iconPosition === "left" && <span>{icon}</span>}
-        {value && <span className={"font-ui-mono"}>{value}</span>}
-        {icon && iconPosition === "right" && <span>{icon}</span>}
-      </Comp>
-    );
-  },
-);
+  return (
+    <Comp
+      className={cn(
+        buttonVariants({
+          variant: appliedVariant as ButtonVariants,
+          size: size as ButtonSizes,
+          className,
+        }),
+      )}
+      disabled={disabled}
+      {...props}
+    >
+      {icon && iconPosition === "left" && <span>{icon}</span>}
+      {value && <span className={"font-ui-mono"}>{value}</span>}
+      {icon && iconPosition === "right" && <span>{icon}</span>}
+    </Comp>
+  );
+};
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

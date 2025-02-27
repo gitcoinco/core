@@ -1,8 +1,8 @@
 "use client";
 
-import { ComponentProps, forwardRef, Ref, useContext } from "react";
+import React, { Component, ComponentProps, Suspense, useContext } from "react";
 
-import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
+import { commands, ContextStore, EditorContext, MDEditorProps } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { IconType } from "@/index";
@@ -17,8 +17,12 @@ export interface MarkdownEditorProps extends Markdown {
   value?: string;
 }
 
+const MDEditor = React.lazy<React.ComponentType<MDEditorProps>>(
+  () => import("@uiw/react-md-editor"),
+);
+
 const WriteButton = () => {
-  const { preview, dispatch } = useContext(EditorContext);
+  const { preview, dispatch } = useContext<ContextStore>(EditorContext);
 
   const click = () => {
     if (dispatch) {
@@ -42,7 +46,7 @@ const WriteButton = () => {
 };
 
 const PreviewButton = () => {
-  const { preview, dispatch } = useContext(EditorContext);
+  const { preview, dispatch } = useContext<ContextStore>(EditorContext);
 
   const click = () => {
     if (dispatch) {
@@ -94,30 +98,29 @@ const customItalicCommand = {
   icon: <Icon type={IconType.ITALIC} className="size-fit text-grey-900" />,
 };
 
-export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
-  { ...props }: MarkdownEditorProps & ComponentProps<"div">,
-  ref: Ref<HTMLDivElement>,
-) {
+export const MarkdownEditor = ({ ref, ...props }: MarkdownEditorProps & ComponentProps<"div">) => {
   return (
-    <MDEditor
-      commands={[editPreviewCommand, customPreviewCommand]}
-      // TODO: Customize commands Icons
-      extraCommands={[
-        customTitleCommand,
-        customBoldCommand,
-        customItalicCommand,
-        commands.divider,
-        commands.link,
-        commands.image,
-      ]}
-      ref={ref}
-      preview="edit"
-      previewOptions={{
-        rehypePlugins: [[rehypeSanitize]],
-      }}
-      value={props.value ?? props.placeholder}
-      onChange={(val) => props.onChange?.(val ?? "")}
-      data-color-mode="light"
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <MDEditor
+        commands={[editPreviewCommand, customPreviewCommand]}
+        // TODO: Customize commands Icons
+        extraCommands={[
+          customTitleCommand,
+          customBoldCommand,
+          customItalicCommand,
+          commands.divider,
+          commands.link,
+          commands.image,
+        ]}
+        ref={ref as React.Ref<Component>}
+        preview="edit"
+        previewOptions={{
+          rehypePlugins: [[rehypeSanitize]],
+        }}
+        value={props.value ?? props.placeholder}
+        onChange={(val) => props.onChange?.(val ?? "")}
+        data-color-mode="light"
+      />
+    </Suspense>
   );
-});
+};

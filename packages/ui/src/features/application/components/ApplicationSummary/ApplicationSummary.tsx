@@ -1,5 +1,7 @@
 "use client";
 
+import { PastApplication, ProjectApplication, ProjectMetadata } from "@gitcoin/types/checker";
+
 import { IconLabel } from "@/components/IconLabel";
 import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
@@ -7,7 +9,6 @@ import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown";
 
-import { PastApplication, ProjectApplication, ProjectMetadata } from "~checker/services/allo/types";
 import { ProjectSummary } from "~project";
 
 import { ApplicationBadge, ApplicationBadgeStatus } from "../ApplicationBadge";

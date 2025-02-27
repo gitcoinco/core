@@ -1,7 +1,7 @@
+import { EvaluationAction } from "@gitcoin/types/checker";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { EvaluationAction } from "../../types";
 import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
 
 const meta = {
@@ -25,7 +25,7 @@ export const Default: Story = {
   args: {
     status: "pending",
     projectId: "0x123",
-    onEvaluate: (projectId, action) => {
+    onEvaluate: (projectId: string, action: EvaluationAction) => {
       onEvaluateAction("onEvaluate", projectId, action);
     },
   },
@@ -35,7 +35,7 @@ export const Approved: Story = {
   args: {
     status: "approved",
     projectId: "0x123",
-    onEvaluate: (projectId, action) => {
+    onEvaluate: (projectId: string, action: EvaluationAction) => {
       onEvaluateAction("onEvaluate", projectId, action);
     },
   },
@@ -45,7 +45,7 @@ export const Rejected: Story = {
   args: {
     status: "rejected",
     projectId: "0x123",
-    onEvaluate: (projectId, action) => {
+    onEvaluate: (projectId: string, action: EvaluationAction) => {
       onEvaluateAction("onEvaluate", projectId, action);
     },
   },

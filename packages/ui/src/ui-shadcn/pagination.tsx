@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ButtonProps, ButtonSizes, buttonVariants } from "@/primitives/Button/Button";
+
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
@@ -14,15 +15,13 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
 );
 Pagination.displayName = "Pagination";
 
-const PaginationContent = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(
-  ({ className, ...props }, ref) => (
-    <ul ref={ref} className={cn("flex flex-row items-center gap-1", className)} {...props} />
-  ),
+const PaginationContent = ({ className, ...props }: React.ComponentProps<"ul">) => (
+  <ul className={cn("flex flex-row items-center gap-1", className)} {...props} />
 );
 PaginationContent.displayName = "PaginationContent";
 
-const PaginationItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(
-  ({ className, ...props }, ref) => <li ref={ref} className={cn("", className)} {...props} />,
+const PaginationItem = ({ className, ...props }: React.ComponentProps<"li">) => (
+  <li className={cn("", className)} {...props} />
 );
 PaginationItem.displayName = "PaginationItem";
 

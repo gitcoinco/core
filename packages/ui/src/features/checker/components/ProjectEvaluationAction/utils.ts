@@ -1,7 +1,6 @@
+import { EvaluationAction, ProjectStatus } from "@gitcoin/types/checker";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
-
-import { EvaluationAction, ProjectStatus } from "~checker/types";
 
 const commonButtonStyles = "h-[36px] w-[111px] text-[14px]/[20px]";
 // TODO instead of ts-pattern, use a more readable approach with tailwind compound variants

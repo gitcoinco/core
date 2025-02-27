@@ -7,7 +7,8 @@
   "name": "with-changesets",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter=!next*-usage",
+    "dev:ssr": "turbo dev --filter=next*-usage",
     "lint": "turbo lint",
     "clean": "turbo clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

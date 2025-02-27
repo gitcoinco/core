@@ -1,4 +1,4 @@
-import { Evaluation } from "@/features/checker";
+import { Evaluation } from "@gitcoin/types/checker";
 
 export const checkerApplicationEvaluations: Evaluation[] = [
   {

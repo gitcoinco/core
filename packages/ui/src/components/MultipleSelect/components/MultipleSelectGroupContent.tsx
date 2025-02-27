@@ -64,7 +64,7 @@ export const MultipleSelectGroupContent = ({
           return (
             <CommandItem
               key={optItem.value}
-              onSelect={(str) => {
+              onSelect={(str: string) => {
                 // Only toggle if not clicking the checkbox (which has its own handler)
                 if (!str.startsWith("checkbox-click")) {
                   toggleOption(optItem, group.groupLabel, group.multiple);

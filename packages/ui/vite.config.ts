@@ -35,16 +35,23 @@ export default defineConfig({
         program: resolve(__dirname, "./src/features/program/index.ts"),
         project: resolve(__dirname, "./src/features/project/index.ts"),
         retrofunding: resolve(__dirname, "./src/features/retrofunding/index.ts"),
+
+        // ssr testing
+        primitivesSSR: resolve(__dirname, "./src/ssrTesting/primitives.ts"),
+        componentsSSR: resolve(__dirname, "./src/ssrTesting/components.ts"),
+        featuresSSR: resolve(__dirname, "./src/ssrTesting/features.ts"),
+        smartComponentsSSR: resolve(__dirname, "./src/ssrTesting/smartComponents.ts"),
       },
       name: "gitcoin-ui",
       fileName: (format: any, filename: any) => `${filename}.js`,
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "tailwindcss"],
+      external: ["react", "react/jsx-runtime", "react-dom", "tailwindcss"],
       output: {
         globals: {
           react: "React",
+          "react/jsx-runtime": "jsx",
           "react-dom": "ReactDOM",
           tailwindcss: "tailwindcss",
         },

@@ -1,12 +1,12 @@
 import {
-  GoToSubmitApplicationEvaluationAction,
   GoToApplicationEvaluationOverviewAction,
   GoToReviewApplicationsAction,
+  GoToSubmitApplicationEvaluationAction,
   GoToSubmitFinalEvaluationAction,
   SetInitialStateAction,
   SetPoolDataAction,
   SetPoolFetchStateAction,
-} from "./types";
+} from "@gitcoin/types/checker";
 
 export const setInitialStateAction = (
   payload: SetInitialStateAction["payload"],

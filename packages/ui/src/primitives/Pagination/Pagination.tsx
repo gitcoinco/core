@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronLeft, ChevronRight, LucideChevronsRight, LucideChevronsLeft } from "lucide-react";
 import { tv } from "tailwind-variants";
 

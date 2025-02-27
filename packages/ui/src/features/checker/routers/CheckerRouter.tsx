@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-import { match, P } from "ts-pattern";
+import { EvaluationBody, ReviewBody } from "@gitcoin/types/checker";
+import { CheckerRoute } from "@gitcoin/types/checker";
+import { P, match } from "ts-pattern";
 import { Hex } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
@@ -15,8 +17,6 @@ import {
   SubmitApplicationEvaluationPage,
   SubmitFinalEvaluationPage,
 } from "~checker/pages";
-import { CheckerRoute } from "~checker/store";
-import { EvaluationBody, ReviewBody } from "~checker/types";
 
 export interface CheckerRouterProps {
   address: Hex;

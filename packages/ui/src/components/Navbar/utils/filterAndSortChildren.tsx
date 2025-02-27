@@ -22,7 +22,9 @@ export const filterAndSortChildren = (children: React.ReactNode) => {
         !(child.type as any)?.displayName;
 
       if (mightBeFragment) {
-        const rendered = (child.type as React.FC)(child.props);
+        const rendered = (child.type as React.FC<any>)(child.props) as {
+          props: { children: React.ReactNode };
+        };
         if (React.isValidElement(rendered)) {
           React.Children.forEach(rendered.props.children, processChild);
         }

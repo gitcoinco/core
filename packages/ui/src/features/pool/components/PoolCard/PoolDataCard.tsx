@@ -1,5 +1,3 @@
-"use client";
-
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";

@@ -2,9 +2,9 @@
 
 import * as React from "react";
 
+import { ProjectApplicationForManager, ProjectMetadata } from "@gitcoin/types/checker";
+
 import { IconLabel } from "@/components/IconLabel";
-// import { useCredentialverification } from "@/features/checker/hooks";
-import { ProjectApplicationForManager, ProjectMetadata } from "@/features/checker/services/allo";
 import { useCredentialVerification } from "@/hooks/useCredentialVerification";
 import { IconType } from "@/primitives/Icon";
 

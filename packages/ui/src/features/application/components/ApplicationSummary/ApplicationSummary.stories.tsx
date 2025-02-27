@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+import { project, application, pastApplications } from "@/mocks/application/applicationSummary";
+
 import { ApplicationSummary } from "./ApplicationSummary";
-import { project, application, pastApplications } from "./mocks";
 
 const meta: Meta<typeof ApplicationSummary> = {
   title: "Features/Application/ApplicationSummary",

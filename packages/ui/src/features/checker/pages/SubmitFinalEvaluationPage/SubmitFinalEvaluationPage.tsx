@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 
+import { EvaluationAction, ReviewBody } from "@gitcoin/types/checker";
 import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
@@ -19,7 +20,6 @@ import {
   useCheckerDispatchContext,
   useCheckerContext,
 } from "~checker/store";
-import { EvaluationAction, ReviewBody } from "~checker/types";
 import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 

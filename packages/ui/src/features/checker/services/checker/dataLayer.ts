@@ -1,6 +1,7 @@
+import { CheckerApiApplication, CheckerApiPoolData } from "@gitcoin/types/checker";
+
 import { executeQuery } from "./checkerClient";
 import { checkerApplicationEvaluationsQuery, checkerPoolDataQuery } from "./queries";
-import { CheckerApiApplication, CheckerApiPoolData } from "./types";
 
 export async function getCheckerPoolData(
   chainId?: number,
