@@ -4,8 +4,8 @@ import { NumericFormat } from "react-number-format";
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
 import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { TableRow, TableCell } from "@/primitives/Table";
+import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 
 import { formatAmountFromPercentage } from "../../utils";
 
@@ -135,7 +135,7 @@ export const ProjectTableRow = ({
               return val >= 0 && handleSafeChange(val);
             }}
             value={editedApplication.payoutPercentage}
-            onBlur={(e) => {
+            onBlur={(e: any) => {
               const newValue = Number(
                 Number(e.target.value.replace("%", "").replace(",", ".")).toFixed(4),
               );

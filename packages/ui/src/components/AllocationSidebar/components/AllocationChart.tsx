@@ -23,6 +23,7 @@ export const AllocationChart = ({
       }
       margin={{ top: 16, right: 16, left: 16, bottom: 16 }}
     >
+      {/* @ts-expect-error - Recharts 2.x type issues with React 19 */}
       <YAxis
         width={30}
         tickMargin={8}
@@ -39,8 +40,9 @@ export const AllocationChart = ({
         vertical={false}
         strokeDasharray="4"
       />
+      {/* @ts-expect-error - Recharts 2.x type issues with React 19 */}
       <Line
-        dot={(p) => {
+        dot={(p: any) => {
           const { key, r, cx, cy } = p;
           return p.index === 0 ? (
             <circle key={key} r={r} cx={cx} cy={cy} fill="rgba(125, 103, 235, 1)" />
