@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 
+import { TabType } from "@gitcoin/types";
 import { openDB } from "idb";
-
-import { TabType } from "@/types";
 
 const DB_VERSION = 1;
 

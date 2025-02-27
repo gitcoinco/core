@@ -2,12 +2,12 @@
 
 import * as React from "react";
 
+import { isPoolType, PoolType } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 import { match, P } from "ts-pattern";
 
-import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge";
-import { isPoolType, PoolType } from "@/types";
 
 const variants = tv({
   base: "border-transparent",

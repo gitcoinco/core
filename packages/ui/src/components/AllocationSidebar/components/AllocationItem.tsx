@@ -2,9 +2,10 @@
 
 import { PropsWithChildren } from "react";
 
-import { cn } from "@/lib/utils";
+import { ProjectAllocation } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
+
 import { Skeleton } from "@/primitives/Skeleton";
-import { ProjectAllocation } from "@/types";
 
 export const AllocationItem = ({
   id,

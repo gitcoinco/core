@@ -1,10 +1,9 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { ChevronDown } from "lucide-react";
 import { tv } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,

@@ -1,10 +1,10 @@
 "use client";
 
+import { ProgressStatus, Step } from "@gitcoin/types";
 import { Check, X } from "lucide-react";
 
-import { Modal } from "@/primitives/Modal";
-import { ProgressStatus, Step } from "@/types";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/primitives/Dialog";
+import { Modal } from "@/primitives/Modal";
 
 export interface ProgressModalProps {
   steps: Step[];

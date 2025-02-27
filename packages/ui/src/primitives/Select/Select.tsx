@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { SelectGroup } from "@radix-ui/react-select";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cn } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import {
   Select as ShadcnSelect,

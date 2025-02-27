@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { PoolData, PoolStatus } from "@/types/pool";
+import { PoolData, PoolStatus } from "@gitcoin/types";
 
 interface UseFilteredAndOrderedPoolsProps {
   pools: PoolData[];

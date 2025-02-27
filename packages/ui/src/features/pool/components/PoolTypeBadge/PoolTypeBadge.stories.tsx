@@ -1,6 +1,5 @@
+import { PoolType } from "@gitcoin/types";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { PoolType } from "@/types";
 
 import { PoolTypeBadge } from "./PoolTypeBadge";
 

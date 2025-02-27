@@ -1,7 +1,6 @@
+import { ProjectApplicationForManager } from "@gitcoin/types/checker";
+import { applicationsForManagers } from "@repo/mocks/mockData";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { ProjectApplicationForManager } from "@/features/checker/services/allo";
-import { applicationsForManagers } from "@/mocks/mockData/applicationsForManager";
 
 import { ProjectSummary } from "./ProjectSummary";
 

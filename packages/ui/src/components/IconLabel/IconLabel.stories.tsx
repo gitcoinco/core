@@ -1,8 +1,8 @@
 // IconLabel.stories.tsx
+import { DateFormat, formatDate } from "@gitcoin/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
-import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { IconType } from "@/primitives/Icon";
 
 import { IconLabel } from "./IconLabel";

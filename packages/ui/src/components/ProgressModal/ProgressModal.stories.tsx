@@ -1,8 +1,7 @@
 import React from "react";
 
+import { ProgressStatus, Step } from "@gitcoin/types";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { ProgressStatus, Step } from "@/types";
 
 import { ProgressModal } from "./ProgressModal";
 

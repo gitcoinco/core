@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 
-import { ProjectApplicationForManager, verifyCredentials } from "@/features/checker";
+import { ProjectApplicationForManager } from "@gitcoin/types/checker";
+
+import { verifyCredentials } from "@/features/checker";
 
 export function useCredentialVerification(
   application: Partial<ProjectApplicationForManager> | undefined,

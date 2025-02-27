@@ -1,9 +1,9 @@
+import { handlers } from "@repo/mocks/handlers";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
 
 import "../src/index.css";
-import { handlers } from "../src/mocks/handlers";
 
 initialize();
 

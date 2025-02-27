@@ -1,6 +1,7 @@
 import { useCallback, useState, useMemo, useEffect } from "react";
 
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
+import { ApplicationPayout, PoolConfig } from "@gitcoin/types";
+
 import { Table, TableHeader, TableBody } from "@/primitives/Table";
 
 import { ProjectTableRow } from "./ProjectTableRow";

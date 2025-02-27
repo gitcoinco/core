@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { debounce } from "lodash";
 
 import { sortFieldsByOrder } from "@/features/retrofunding/utils/metricsBallot";
 import { useIndexedDB } from "@/hooks/useIndexedDB";
-import { cn } from "@/lib";
 import { Button } from "@/primitives";
 
 import { AlreadyVotedBadge, BallotHeader, BallotItem } from "./components";

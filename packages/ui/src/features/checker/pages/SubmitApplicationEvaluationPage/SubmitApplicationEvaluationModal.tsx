@@ -2,13 +2,12 @@
 
 import { useMemo } from "react";
 
+import { EvaluationActionState, EvaluationStatus } from "@gitcoin/types/checker";
 import { match } from "ts-pattern";
 
 import { Button } from "@/primitives/Button";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/primitives/Dialog";
 import { Modal } from "@/primitives/Modal";
-
-import { EvaluationActionState, EvaluationStatus } from "~checker/types";
 
 import { getButtonConfig } from "./utils";
 

@@ -1,12 +1,12 @@
 "use client";
 
+import { PoolType } from "@gitcoin/types";
+import { ApplicationStatusType, ReviewBody } from "@gitcoin/types/checker";
 import { Address } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { PoolType } from "@/types";
 
 import { DefaultStatCardsProps } from "~checker/constants";
-import { ApplicationStatusType, ReviewBody } from "~checker/types";
 import { categorizeProjectReviews, generatePoolUUID } from "~checker/utils";
 
 export const useGetApplicationsFinalEvaluationPage = () => {

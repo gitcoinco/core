@@ -1,6 +1,6 @@
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
-import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 
 const iconType = {

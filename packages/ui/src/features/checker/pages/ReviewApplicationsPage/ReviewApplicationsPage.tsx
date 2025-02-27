@@ -2,12 +2,13 @@
 
 import { useMemo } from "react";
 
-import { cn } from "@/lib";
+import { PoolType } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
+
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardProps } from "@/primitives/StatCard";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
-import { PoolType } from "@/types";
 
 import { ApplicationsSection } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";

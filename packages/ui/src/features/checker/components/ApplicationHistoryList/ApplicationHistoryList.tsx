@@ -1,11 +1,11 @@
 "use client";
 
+import { Application } from "@gitcoin/types/checker";
+
 import { IconLabel } from "@/components/IconLabel";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { ApplicationBadge } from "~application";
-
-import { Application } from "./types";
 
 export interface ApplicationHistoryListProps {
   applications: Application[];

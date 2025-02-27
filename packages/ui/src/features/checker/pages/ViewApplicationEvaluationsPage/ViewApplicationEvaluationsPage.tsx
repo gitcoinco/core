@@ -2,8 +2,9 @@
 
 import React from "react";
 
+import { capitalizeString } from "@gitcoin/utils";
+
 import { useToast } from "@/hooks/useToast";
-import { capitalizeWord } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
@@ -89,7 +90,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
       <div className="h-0.5 bg-grey-100" />
       <div className="flex gap-2">
         <Badge className="font-semibold" variant={reviewStatusBadgeVariant}>
-          {capitalizeWord(data?.application.status)}
+          {capitalizeString(data?.application.status)}
         </Badge>
       </div>
       <div className="flex flex-col gap-6">

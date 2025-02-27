@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
-import { DateFormat } from "@/lib/dates/formatDate";
+import { DateFormat } from "@gitcoin/utils";
+
 import { IconType } from "@/primitives/Icon";
 
 interface CustomVariantProps {

@@ -1,6 +1,7 @@
 // utils/getProjectReviewListColumns.ts
 import React from "react";
 
+import { ProjectReview } from "@gitcoin/types/checker";
 import { Address } from "viem";
 
 import { DefaultLogo } from "@/assets";
@@ -11,7 +12,6 @@ import { ListGridColumn } from "@/primitives/ListGrid";
 import { Skeleton } from "@/primitives/Skeleton";
 
 import { ReviewsCounterLabelWithTooltip } from "~checker/components";
-import { ProjectReview } from "~checker/types";
 import { getReviewsCount } from "~checker/utils";
 
 interface GetColumnsParams {

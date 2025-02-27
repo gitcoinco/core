@@ -1,11 +1,11 @@
 "use client";
 
+import { Evaluation } from "@gitcoin/types/checker";
+import { capitalizeString, parseENSOrAddress } from "@gitcoin/utils";
+
 import { IconLabel } from "@/components/IconLabel";
-import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
-
-import { Evaluation } from "~checker/types";
 
 export interface EvaluationListProps {
   evaluations: Evaluation[];
@@ -25,7 +25,9 @@ export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
       width: "1fr",
       render: (item) => (
         <p>
-          {item.evaluatorType === "HUMAN" ? getAddressLabel(undefined, item.evaluator) : "ChatGPT"}
+          {item.evaluatorType === "HUMAN"
+            ? parseENSOrAddress(undefined, item.evaluator)
+            : "ChatGPT"}
         </p>
       ),
     },
@@ -60,7 +62,7 @@ export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
             type="default"
             iconVariant="default"
             iconType={icon}
-            label={capitalizeWord(item.evaluationStatus)}
+            label={capitalizeString(item.evaluationStatus)}
           />
         );
       },

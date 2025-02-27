@@ -1,11 +1,12 @@
 "use client";
 
+import { EvaluationAction, ProjectReview, ProjectStatus } from "@gitcoin/types/checker";
+
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
-import { EvaluationAction, ProjectReview, ProjectStatus } from "~checker/types";
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
 
 import { ProjectEvaluationAction } from "../ProjectEvaluationAction";

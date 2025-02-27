@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+import { EvaluationStatus, EvaluationBody } from "@gitcoin/types/checker";
+import { cn } from "@gitcoin/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
 
 import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
 import { useToast } from "@/hooks/useToast";
-import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 
@@ -18,7 +19,6 @@ import {
   useApplicationOverviewEvaluations,
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
-import { EvaluationStatus, EvaluationBody } from "~checker/types";
 import { PoolSummary } from "~pool";
 import { ProjectBanner } from "~project";
 

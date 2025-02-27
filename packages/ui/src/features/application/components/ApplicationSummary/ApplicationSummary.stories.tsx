@@ -1,7 +1,7 @@
+import { project, application, pastApplications } from "@repo/mocks/application";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { ApplicationSummary } from "./ApplicationSummary";
-import { project, application, pastApplications } from "./mocks";
 
 const meta: Meta<typeof ApplicationSummary> = {
   title: "Features/Application/ApplicationSummary",

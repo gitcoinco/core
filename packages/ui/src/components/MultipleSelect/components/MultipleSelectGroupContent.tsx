@@ -1,6 +1,6 @@
+import { cn } from "@gitcoin/utils";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
 
-import { cn } from "@/lib/utils";
 import { Checkbox } from "@/primitives/Checkbox";
 import { CommandItem } from "@/ui-shadcn/command";
 import { CommandGroup } from "@/ui-shadcn/command";

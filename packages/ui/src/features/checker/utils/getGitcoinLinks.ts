@@ -1,6 +1,5 @@
 import { getChains, TChain } from "@gitcoin/gitcoin-chain-data";
-
-import { PoolType } from "@/types";
+import { PoolType } from "@gitcoin/types";
 
 type ChainIdToType = Record<number, string>;
 

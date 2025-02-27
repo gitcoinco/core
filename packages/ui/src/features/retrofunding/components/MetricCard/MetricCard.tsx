@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Skeleton } from "@/primitives/Skeleton";

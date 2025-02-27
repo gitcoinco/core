@@ -1,10 +1,11 @@
 "use client";
 
+import { PoolData } from "@gitcoin/types";
+
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
 import { IconType } from "@/primitives/Icon";
-import { PoolData } from "@/types";
 
 import { PoolBadge } from "../PoolBadge";
 

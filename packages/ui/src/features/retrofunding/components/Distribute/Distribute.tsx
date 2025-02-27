@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 
-import { cn } from "@/lib/utils";
-import { PoolStatus } from "@/types";
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
+import { PoolStatus } from "@gitcoin/types";
+import { ApplicationPayout, PoolConfig } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
 
 import { FundRoundSection, ActionButtons } from "./components";
 import { DistributeTabs } from "./components/DistributeTabs";

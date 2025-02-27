@@ -1,4 +1,4 @@
-import { Review } from "../types";
+import { Review } from "@gitcoin/types/checker";
 
 export const getReviewsCount = (reviews: Review[]) => {
   const { nApproved, nRejected } = reviews.reduce(

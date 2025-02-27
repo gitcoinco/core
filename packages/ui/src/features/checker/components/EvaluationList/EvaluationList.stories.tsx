@@ -1,7 +1,7 @@
+import { mockEvaluations } from "@repo/mocks/checker";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { EvaluationList } from "./EvaluationList";
-import { mockEvaluations } from "./mocks";
 
 const meta = {
   title: "Features/Checker/Components/EvaluationList",

@@ -2,9 +2,9 @@
 
 import React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
-import { cn } from "@/lib/utils";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/ui-shadcn/tooltip";
 
 import { ReviewIconGroup, ReviewIconGroupProps } from "./components/ReviewIconGroup";

@@ -1,4 +1,4 @@
-import { ProgressStatus, Step } from "@/types";
+import { ProgressStatus, Step } from "@gitcoin/types";
 
 export const getOnchainEvaluationProgressSteps = ({
   contractUpdatingStatus,

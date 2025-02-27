@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
+
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { variants } from "./variants";

@@ -1,7 +1,8 @@
+import { PoolConfig } from "@gitcoin/types";
+
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
-import { PoolConfig } from "@/types/distribute";
 
 import { useRound } from "../hooks/useRound";
 

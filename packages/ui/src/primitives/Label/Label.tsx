@@ -1,9 +1,8 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { tv } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const labelVariants = tv({
   base: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",

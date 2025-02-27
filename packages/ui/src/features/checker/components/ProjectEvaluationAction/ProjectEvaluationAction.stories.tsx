@@ -1,7 +1,7 @@
+import { EvaluationAction } from "@gitcoin/types/checker";
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { EvaluationAction } from "../../types";
 import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
 
 const meta = {

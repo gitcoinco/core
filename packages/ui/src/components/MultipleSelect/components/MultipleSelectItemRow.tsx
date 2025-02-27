@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
+
 import { Icon } from "@/primitives/Icon";
 
 import { MultipleSelectItem } from "../types";

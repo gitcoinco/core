@@ -79,11 +79,6 @@
       "import": "./dist/lib.js",
       "require": "./dist/lib.js"
     },
-    "./mocks": {
-      "types": "./dist/mocks.d.ts",
-      "import": "./dist/mocks.js",
-      "require": "./dist/mocks.js"
-    },
     "./types": {
       "types": "./dist/types.d.ts",
       "import": "./dist/types.js",
@@ -129,7 +124,9 @@
     "@chromatic-com/storybook": "^3.2.2",
     "@eslint/js": "^9.11.1",
     "@gitcoin/themes": "workspace:*",
+    "@gitcoin/types": "workspace:*",
     "@gitcoinco/passport-sdk-types": "^0.2.0",
+    "@repo/mocks": "workspace:*",
     "@storybook/addon-a11y": "^8.4.4",
     "@storybook/addon-essentials": "^8.4.4",
     "@storybook/addon-interactions": "^8.4.4",
@@ -193,21 +190,9 @@
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
-  },
   "dependencies": {
     "@gitcoin/gitcoin-chain-data": "^1.0.43",
+    "@gitcoin/utils": "workspace:*",
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.1",
@@ -272,5 +257,18 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

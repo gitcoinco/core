@@ -1,9 +1,9 @@
+import { Markdown } from "@gitcoin/types";
+
 import { AllowlistProps, FieldArrayProps, MetricsProps } from "@/components/_Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
 import { InputProps } from "@/primitives/Input";
 import { SelectProps } from "@/primitives/Select";
-
-import { Markdown } from "../markdown";
 
 export interface BaseValidation {
   required?: boolean | string;

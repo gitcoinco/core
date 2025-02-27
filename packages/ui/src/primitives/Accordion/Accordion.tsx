@@ -2,11 +2,10 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const accordionVariants = tv({
   slots: {

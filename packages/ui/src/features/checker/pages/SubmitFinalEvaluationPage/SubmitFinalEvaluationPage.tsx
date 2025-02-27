@@ -2,15 +2,16 @@
 
 import { useState, useMemo, useEffect } from "react";
 
+import { PoolType, Step } from "@gitcoin/types";
+import { EvaluationAction, ReviewBody } from "@gitcoin/types/checker";
+import { cn } from "@gitcoin/utils";
 import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
 import { useToast } from "@/hooks/useToast";
-import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
-import { PoolType, Step } from "@/types";
 
 import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
@@ -19,7 +20,6 @@ import {
   useCheckerDispatchContext,
   useCheckerContext,
 } from "~checker/store";
-import { EvaluationAction, ReviewBody } from "~checker/types";
 import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 

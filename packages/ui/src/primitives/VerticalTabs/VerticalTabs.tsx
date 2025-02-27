@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
-import { cn } from "@/lib";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui-shadcn/tabs";
 
 const variants = tv({

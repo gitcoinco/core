@@ -1,4 +1,4 @@
-import { BallotFieldValues } from "@/types";
+import { BallotFieldValues } from "@gitcoin/types";
 
 /**
  * Distributes a total available amount evenly among an array of items.

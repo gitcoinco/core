@@ -1,5 +1,7 @@
 import { NumericFormat } from "react-number-format";
 
+import { BallotFieldValues } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
 import {
   LockClosedIcon,
   LockOpenIcon,
@@ -16,8 +18,6 @@ import {
   handleSetAmount,
   toggleLock,
 } from "@/features/retrofunding/utils/metricsBallot";
-import { cn } from "@/lib/utils";
-import { BallotFieldValues } from "@/types";
 
 interface BallotItemProps {
   field: BallotFieldValues;

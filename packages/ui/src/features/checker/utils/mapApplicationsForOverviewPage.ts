@@ -1,8 +1,8 @@
-import { addressFrom } from "@/lib";
-import { StatCardProps } from "@/primitives/StatCard";
+import { ProjectReview, Review } from "@gitcoin/types/checker";
+import { CheckerApplication } from "@gitcoin/types/checker";
+import { addressFrom } from "@gitcoin/utils";
 
-import { CheckerApplication } from "~checker/store";
-import { ProjectReview, Review } from "~checker/types";
+import { StatCardProps } from "@/primitives/StatCard";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {

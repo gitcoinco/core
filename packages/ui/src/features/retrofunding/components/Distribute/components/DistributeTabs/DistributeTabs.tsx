@@ -1,5 +1,6 @@
 // DistributionTabs.tsx
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
+import { ApplicationPayout, PoolConfig } from "@gitcoin/types";
+
 import { Tabs, TabsContent, TabsList } from "@/ui-shadcn/tabs";
 
 import { DistributeTable } from "../DistributeTable";

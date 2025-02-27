@@ -1,8 +1,7 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
-
-import { cn } from "@/lib";
 
 const navbarSectionStyle = tv({
   base: "flex items-center gap-4",

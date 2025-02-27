@@ -1,9 +1,9 @@
 import { useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
 import { IconWithTooltip } from "@/components/IconWithTooltip";
-import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Pagination } from "@/primitives/Pagination";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/primitives/Table";

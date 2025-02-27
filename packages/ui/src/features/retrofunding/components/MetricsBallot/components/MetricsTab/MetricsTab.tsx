@@ -1,10 +1,11 @@
+import { BallotFieldValues } from "@gitcoin/types";
+
 import { MetricCard } from "@/features/retrofunding/components/MetricCard";
 import {
   handleMetricToggle,
   isMetricLocked,
   isMetricAdded,
 } from "@/features/retrofunding/utils/metricsBallot";
-import { BallotFieldValues } from "@/types";
 
 import { MetricButton } from ".";
 

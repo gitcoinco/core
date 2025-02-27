@@ -1,6 +1,7 @@
+import { ApplicationBadgeStatus } from "@gitcoin/types";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { ApplicationBadge, ApplicationBadgeStatus } from "./ApplicationBadge";
+import { ApplicationBadge } from "./ApplicationBadge";
 
 const meta: Meta<typeof ApplicationBadge> = {
   title: "Features/Application/ApplicationBadge",
@@ -14,7 +15,7 @@ export const PendingBadge: Story = {
   argTypes: {
     status: {
       control: "select",
-      options: Object.values(ApplicationBadgeStatus),
+      options: ["pending", "approved", "rejected"],
       description: "The Application Status.",
     },
     // badge: {

@@ -1,6 +1,7 @@
+import { PoolData } from "@gitcoin/types";
+
 import { MultipleSelectGroup } from "@/components/MultipleSelect/types";
 import { getChainInfo } from "@/lib";
-import { PoolData } from "@/types/pool";
 
 export const getSortFilterOptions = (pools: PoolData[]) => {
   const orderOptions = [

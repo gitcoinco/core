@@ -1,7 +1,6 @@
 // src/components/SubmitApplicationEvaluation/statusHandler.ts
+import { EvaluationActionState } from "@gitcoin/types/checker";
 import { match } from "ts-pattern";
-
-import { EvaluationActionState } from "../../types";
 
 export interface ButtonConfig {
   text: string;

@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef } from "react";
 import { NumericFormat } from "react-number-format";
 
-import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
-import { cn } from "@/lib/utils";
+import { ApplicationPayout, PoolConfig } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
+import { getTransactionUrl } from "@gitcoin/utils";
+
 import { Button, Checkbox } from "@/primitives";
 import { TableRow, TableCell } from "@/primitives/Table";
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 
 import { formatAmountFromPercentage } from "../../utils";
 
