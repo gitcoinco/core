@@ -18,6 +18,7 @@
     "./eslint-react-internal": "./eslint/react-internal.js",
     "./eslint-storybook": "./eslint/storybook.js",
     "./tsconfig-nextjs.json": "./tsconfig/nextjs.json",
+    "./tsconfig-nextjs15.json": "./tsconfig/nextjs15.json",
     "./tsconfig-react.json": "./tsconfig/react.json",
     "./tsconfig-storybook.json": "./tsconfig/storybook.json",
     "./tsconfig-ui.json": "./tsconfig/ui.json"

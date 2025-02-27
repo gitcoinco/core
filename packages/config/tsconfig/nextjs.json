@@ -12,8 +12,12 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "resolveJsonModule": true,
-    "target": "es5"
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["src", "next-env.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
