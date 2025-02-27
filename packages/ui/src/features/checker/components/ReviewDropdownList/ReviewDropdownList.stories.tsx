@@ -1,6 +1,5 @@
+import { checkerApplicationEvaluations } from "@repo/mocks/mockData";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { checkerApplicationEvaluations } from "@/mocks/mockData/checkerApplicationEvaluations";
 
 import { ReviewDropdownList } from "./ReviewDropdownList";
 

@@ -1,5 +1,5 @@
-import { EvaluationBody } from "../../types";
-import { ProjectApplicationForManager } from "../allo";
+import { EvaluationBody, ProjectApplicationForManager } from "@gitcoin/types/checker";
+
 import { CHECKER_ENDPOINT } from "./checkerClient";
 
 export interface SyncPoolBody {

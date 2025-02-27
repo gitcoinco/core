@@ -1,11 +1,10 @@
 "use client";
 
+import { ProjectReview } from "@gitcoin/types/checker";
 import { match } from "ts-pattern";
 import { Address } from "viem";
 
 import { ListGrid } from "@/primitives/ListGrid";
-
-import { ProjectReview } from "~checker/types";
 
 import { getProjectReviewListColumns, skeletonColumns, skeletonData } from "./utils";
 

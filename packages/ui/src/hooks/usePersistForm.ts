@@ -4,10 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useInterval } from "react-use";
 
+import { compareObjects } from "@gitcoin/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
-
-import { compare } from "@/lib";
 
 import { useIndexedDB } from "./useIndexedDB";
 
@@ -57,7 +56,7 @@ export const usePersistForm = (
       try {
         const current_values = form.getValues();
         const form_values = await getValue(persistKey);
-        const isEqual = compare(current_values, form_values);
+        const isEqual = compareObjects(current_values, form_values);
         if (!isEqual && Object.keys(current_values).length > 0) {
           await setValue(persistKey, current_values);
           return;

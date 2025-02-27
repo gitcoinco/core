@@ -2,16 +2,15 @@
 
 import * as React from "react";
 
-import { tv, type VariantProps } from "tailwind-variants";
+import { Evaluation } from "@gitcoin/types/checker";
+import { cn, formatLocalDate, parseENSOrAddress, capitalizeString } from "@gitcoin/utils";
+import { tv } from "tailwind-variants";
 
-import { cn, formatLocalDate, getAddressLabel, capitalizeWord } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
-import { Evaluation } from "../../types";
-
-const ReviewDropdownVariants = tv({
+const reviewDropdownVariants = tv({
   slots: {
     header: "flex w-full items-center justify-between gap-4 py-4 pr-2",
     headerLeft: "flex flex-1 items-center gap-4",
@@ -38,8 +37,6 @@ const evaluationSummaryVariants = tv({
     background: "default",
   },
 });
-
-type ReviewDropdownVariants = VariantProps<typeof ReviewDropdownVariants>;
 
 export interface ReviewDropdownContentProps {
   evaluation: Evaluation;
@@ -75,7 +72,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
   if (evaluation.evaluatorType === "HUMAN") {
     reviewTitle = `Review ${index ?? ""}`;
     evaluatorIconType = IconType.USER;
-    evaluatorTitle = `by ${getAddressLabel(undefined, evaluation.evaluator)}`;
+    evaluatorTitle = `by ${parseENSOrAddress(undefined, evaluation.evaluator)}`;
   } else {
     reviewTitle = "AI Powered";
     evaluatorIconType = IconType.SHINE;
@@ -100,7 +97,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
     reviewTitle: reviewTitleClass,
     evaluatorTitle: evaluatorTitleClass,
     reviewDate,
-  } = ReviewDropdownVariants({
+  } = reviewDropdownVariants({
     variant: "default",
   });
 
@@ -126,7 +123,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
           </p>
         </div>
         <Badge variant={reviewStatusBadgeVariant}>
-          {capitalizeWord(evaluation.evaluationStatus)}
+          {capitalizeString(evaluation.evaluationStatus)}
         </Badge>
       </div>
     </div>
@@ -135,7 +132,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
 
 // Content Component
 const ReviewDropdownContent: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
-  const { content } = ReviewDropdownVariants({ variant: "default" });
+  const { content } = reviewDropdownVariants({ variant: "default" });
 
   return (
     <div className={cn(content())}>

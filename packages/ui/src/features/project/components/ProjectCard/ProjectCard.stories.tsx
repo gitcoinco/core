@@ -1,6 +1,5 @@
+import { createQueryState } from "@gitcoin/utils";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { createQueryState } from "@/lib";
 
 import { ProjectCard, ProjectCardProps, ProjectCardQueryProps } from "./ProjectCard";
 

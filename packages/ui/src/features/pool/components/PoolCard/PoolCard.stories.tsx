@@ -1,8 +1,7 @@
+import { PoolStatus, PoolType } from "@gitcoin/types";
+import { createQueryState } from "@gitcoin/utils";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { createQueryState } from "@/lib";
-import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCard, PoolCardProps, PoolCardQueryProps } from "./PoolCard";
 

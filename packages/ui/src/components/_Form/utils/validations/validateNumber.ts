@@ -20,7 +20,6 @@ export function buildNumberSchema(
   }, z.number());
 
   const schema = baseSchema.superRefine((val, ctx) => {
-
     // Then check number constraints
     if (typeof val === "number") {
       if (numberValidation?.min !== undefined) {

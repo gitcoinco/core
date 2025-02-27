@@ -2,13 +2,13 @@
 
 import { ComponentProps, forwardRef, Ref, useContext } from "react";
 
-import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
+import { Markdown } from "@gitcoin/types";
+import { cn } from "@gitcoin/utils";
+import MDEditor, { commands, ContextStore, EditorContext } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { IconType } from "@/index";
-import { cn } from "@/lib";
 import { Icon } from "@/primitives/Icon";
-import { Markdown } from "@/types";
 
 import "./markdown_editor.css";
 
@@ -18,7 +18,7 @@ export interface MarkdownEditorProps extends Markdown {
 }
 
 const WriteButton = () => {
-  const { preview, dispatch } = useContext(EditorContext);
+  const { preview, dispatch } = useContext<ContextStore>(EditorContext);
 
   const click = () => {
     if (dispatch) {
@@ -42,7 +42,7 @@ const WriteButton = () => {
 };
 
 const PreviewButton = () => {
-  const { preview, dispatch } = useContext(EditorContext);
+  const { preview, dispatch } = useContext<ContextStore>(EditorContext);
 
   const click = () => {
     if (dispatch) {
@@ -116,7 +116,7 @@ export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
         rehypePlugins: [[rehypeSanitize]],
       }}
       value={props.value ?? props.placeholder}
-      onChange={(val) => props.onChange?.(val ?? "")}
+      onChange={(val?: string) => props.onChange?.(val ?? "")}
       data-color-mode="light"
     />
   );

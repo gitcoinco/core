@@ -3,11 +3,11 @@
 import { useRef } from "react";
 import { UseFormReturn } from "react-hook-form";
 
+import { cn } from "@gitcoin/utils";
 import { CheckIcon } from "@heroicons/react/solid";
 
 import { FormWithPersist_ } from "@/components/_Form";
 import { useIndexedDB } from "@/hooks";
-import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
 import { FormWithPersistStep } from "@/types";

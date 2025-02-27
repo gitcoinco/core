@@ -1,0 +1,35 @@
+{
+  "name": "@repo/mocks",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitcoinco/core",
+    "directory": "tooling/mocks"
+  },
+  "sideEffects": false,
+  "license": "AGPL-3.0",
+  "exports": {
+    "./application": "./src/application/index.ts",
+    "./checker": "./src/checker/index.ts",
+    "./handlers": "./src/handlers.ts",
+    "./listGrid": "./src/listGrid.tsx",
+    "./mockData": "./src/mockData/index.ts"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "devDependencies": {
+    "@gitcoin/config": "workspace:*",
+    "@gitcoin/types": "workspace:*",
+    "@gitcoin/utils": "workspace:*",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "msw": "^2.4.11",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tsup": "^8.0.2"
+  }
+}

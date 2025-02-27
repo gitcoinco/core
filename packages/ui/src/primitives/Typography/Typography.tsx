@@ -1,8 +1,7 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { tv, VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib";
 
 // TODO: Add variant (h1, h2, h3, p, body, caption, label, link, div), size, weight, etc
 

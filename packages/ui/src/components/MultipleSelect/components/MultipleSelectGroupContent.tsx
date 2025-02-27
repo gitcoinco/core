@@ -1,6 +1,6 @@
+import { cn } from "@gitcoin/utils";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
 
-import { cn } from "@/lib/utils";
 import { Checkbox } from "@/primitives/Checkbox";
 import { CommandItem } from "@/ui-shadcn/command";
 import { CommandGroup } from "@/ui-shadcn/command";
@@ -64,7 +64,7 @@ export const MultipleSelectGroupContent = ({
           return (
             <CommandItem
               key={optItem.value}
-              onSelect={(str) => {
+              onSelect={(str: string) => {
                 // Only toggle if not clicking the checkbox (which has its own handler)
                 if (!str.startsWith("checkbox-click")) {
                   toggleOption(optItem, group.groupLabel, group.multiple);

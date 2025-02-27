@@ -1,6 +1,5 @@
+import { TabType } from "@gitcoin/types";
 import { DocumentTextIcon } from "@heroicons/react/solid";
-
-import { TabType } from "@/types";
 
 export const EmptyBallot = ({ setActiveTab }: { setActiveTab: (tab: TabType) => void }) => {
   return (

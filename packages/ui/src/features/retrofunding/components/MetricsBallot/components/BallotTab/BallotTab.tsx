@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { FieldErrors } from "react-hook-form";
 
+import { BallotFieldValues, MetricsBallotFormValues, TabType } from "@gitcoin/types";
+
 import { sortOptions, sortFieldsByOrder } from "@/features/retrofunding/utils/metricsBallot";
 import { Button } from "@/primitives";
 import { Select } from "@/primitives";
-import { BallotFieldValues, MetricsBallotFormValues, TabType } from "@/types";
 
 import { BallotItem, EmptyBallot } from ".";
 

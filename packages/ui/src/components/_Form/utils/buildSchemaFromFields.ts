@@ -4,9 +4,9 @@ import { FormField } from "@/types";
 
 import { buildArraySchema } from "./validations/validateArray";
 import { buildFileSchema } from "./validations/validateFile";
+import { buildNumberSchema } from "./validations/validateNumber";
 import { getRoundDatesSchema } from "./validations/validateRoundDates";
 import { buildStringSchema } from "./validations/validateString";
-import { buildNumberSchema } from "./validations/validateNumber";
 
 /**
  * Builds a Zod schema object from an array of FormFields.

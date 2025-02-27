@@ -2,8 +2,6 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 
-import { openDB, IDBPDatabase } from "idb";
-
 import {
   UseIndexedDBProps,
   UseIndexedDBReturn,
@@ -11,7 +9,8 @@ import {
   DBKey,
   DBValue,
   DBEntry,
-} from "@/types/indexedDB";
+} from "@gitcoin/types";
+import { openDB, IDBPDatabase } from "idb";
 
 export const useIndexedDB = ({
   dbName,

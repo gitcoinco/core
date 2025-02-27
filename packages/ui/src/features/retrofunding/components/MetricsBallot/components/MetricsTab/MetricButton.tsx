@@ -1,6 +1,6 @@
+import { cn } from "@gitcoin/utils";
 import { PlusIcon } from "@heroicons/react/solid";
 
-import { cn } from "@/lib/utils";
 import { Button, IconType } from "@/primitives";
 import { Icon } from "@/primitives";
 import { TooltipContent, Tooltip, TooltipProvider, TooltipTrigger } from "@/ui-shadcn/tooltip";

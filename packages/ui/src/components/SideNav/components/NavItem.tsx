@@ -1,7 +1,8 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
+
 import { SideNavItem } from "@/components/SideNav";
-import { cn } from "@/lib/utils";
 import { Icon } from "@/primitives/Icon";
 
 interface NavItemProps {

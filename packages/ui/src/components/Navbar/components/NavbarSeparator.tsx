@@ -1,8 +1,7 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
-
-import { cn } from "@/lib";
 
 const separatorStyle = tv({
   base: "h-4 w-0 border-1.5 border-grey-900 bg-grey-900",

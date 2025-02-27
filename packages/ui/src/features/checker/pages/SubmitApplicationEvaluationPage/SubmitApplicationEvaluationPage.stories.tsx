@@ -1,6 +1,5 @@
+import { handlers } from "@repo/mocks/handlers";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { handlers } from "@/mocks/handlers";
 
 import { usePerformEvaluation } from "~checker/hooks";
 import { CheckerProvider } from "~checker/store";

@@ -2,10 +2,9 @@
 
 import React from "react";
 
+import { formatDate, DateFormat, parseENSOrAddress } from "@gitcoin/utils";
 import { match } from "ts-pattern";
 
-import { formatDate, DateFormat } from "@/lib/dates/formatDate";
-import { getAddressLabel } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Skeleton } from "@/primitives/Skeleton";
 
@@ -144,7 +143,7 @@ export const IconLabel: React.FC<
     .with(
       { type: "address" },
       ({ address, ens, className, iconType, iconVariant, textVariant }) => {
-        const label = getAddressLabel(ens, address);
+        const label = parseENSOrAddress(ens, address);
         return (
           <IconLabelContainer
             type="default"

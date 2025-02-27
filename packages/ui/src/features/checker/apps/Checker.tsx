@@ -1,12 +1,11 @@
 "use client";
 
+import { Step } from "@gitcoin/types";
+import { EvaluationBody, ReviewBody } from "@gitcoin/types/checker";
 import { Hex } from "viem";
-
-import { Step } from "@/types";
 
 import { CheckerRouter } from "~checker/routers";
 import { CheckerProvider } from "~checker/store";
-import { EvaluationBody, ReviewBody } from "~checker/types";
 
 export interface CheckerProps {
   address: Hex;

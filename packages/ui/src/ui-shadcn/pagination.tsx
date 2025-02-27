@@ -1,9 +1,10 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { ButtonProps, ButtonSizes, buttonVariants } from "@/primitives/Button/Button";
+
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"

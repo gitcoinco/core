@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 
+import { PoolConfig } from "@gitcoin/types";
+
 import { StatCardProps } from "@/primitives/StatCard";
 import { StatCardGroupProps } from "@/primitives/StatCardGroup";
-import { PoolConfig } from "@/types/distribute";
 
 import { formatAmount, safeParseUnits } from "../utils";
 
@@ -57,7 +58,7 @@ export const useRound = ({
   };
 
   const fundRoundCompleted =
-    (tokensNeeded <= 0n) ||
+    tokensNeeded <= 0n ||
     safeParseUnits(poolConfig.amountOfTokensToDistribute, poolConfig.tokenDecimals) <=
       totalPaid + currentBalance ||
     distributionCompleted;

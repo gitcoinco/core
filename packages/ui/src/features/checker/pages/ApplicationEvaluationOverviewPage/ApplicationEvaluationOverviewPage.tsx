@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { Hex } from "viem";
 
-import { cn } from "@/lib";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 

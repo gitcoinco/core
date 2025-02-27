@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import { FormProvider } from "react-hook-form";
 
+import { getBallotSchema, DB_NAME, STORE_NAME } from "@gitcoin/types";
+
 import { useFormWithPersist } from "@/hooks/usePersistForm";
-import { getBallotSchema, DB_NAME, STORE_NAME } from "@/types";
 
 import { MetricsBallotController, MetricsBallotControllerProps } from "./components/BallotForm";
 

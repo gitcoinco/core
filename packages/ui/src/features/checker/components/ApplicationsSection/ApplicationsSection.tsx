@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import { ProjectReview } from "@gitcoin/types/checker";
 import { match } from "ts-pattern";
 
 import { Button } from "@/primitives/Button";
@@ -9,7 +10,6 @@ import { Skeleton } from "@/primitives/Skeleton";
 
 import { ProjectReviewList } from "~checker/components";
 import { useCheckerContext } from "~checker/store";
-import { ProjectReview } from "~checker/types";
 
 export interface SectionCountHeadingProps {
   label: string;

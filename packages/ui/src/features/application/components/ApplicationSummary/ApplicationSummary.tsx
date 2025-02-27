@@ -1,17 +1,19 @@
 "use client";
 
+import { ApplicationBadgeStatus } from "@gitcoin/types";
+import { PastApplication, ProjectApplication, ProjectMetadata } from "@gitcoin/types/checker";
+import { DateFormat, formatDate } from "@gitcoin/utils";
+
 import { IconLabel } from "@/components/IconLabel";
 import { usePoolManager } from "@/features/checker/hooks";
-import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
 import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown";
 
-import { PastApplication, ProjectApplication, ProjectMetadata } from "~checker/services/allo/types";
 import { ProjectSummary } from "~project";
 
-import { ApplicationBadge, ApplicationBadgeStatus } from "../ApplicationBadge";
+import { ApplicationBadge } from "../ApplicationBadge";
 
 export enum SummaryAccordians {
   project = "project",

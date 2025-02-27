@@ -1,12 +1,12 @@
 "use client";
 
+import { Step } from "@gitcoin/types";
 import { Check, X } from "lucide-react";
 
 import { ProgressModal } from "@/components/ProgressModal";
 import { Button } from "@/primitives/Button";
 import { Dialog, DialogHeader, DialogTitle } from "@/primitives/Dialog";
 import { Modal } from "@/primitives/Modal";
-import { Step } from "@/types";
 
 export interface SubmitFinalEvaluationModalProps {
   reviews: Record<string, boolean>;

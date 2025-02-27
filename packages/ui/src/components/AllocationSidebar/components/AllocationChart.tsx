@@ -40,7 +40,7 @@ export const AllocationChart = ({
         strokeDasharray="4"
       />
       <Line
-        dot={(p) => {
+        dot={(p: any) => {
           const { key, r, cx, cy } = p;
           return p.index === 0 ? (
             <circle key={key} r={r} cx={cx} cy={cy} fill="rgba(125, 103, 235, 1)" />

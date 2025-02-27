@@ -1,4 +1,4 @@
-import { BallotFieldValues } from "@/types";
+import { BallotFieldValues } from "@gitcoin/types";
 
 export const sortFieldsByOrder = (
   arr: BallotFieldValues[],

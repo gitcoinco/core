@@ -1,7 +1,6 @@
+import { cn } from "@gitcoin/utils";
+import { stringToBlobUrl } from "@gitcoin/utils";
 import { match, P } from "ts-pattern";
-
-import { stringToBlobUrl } from "@/lib/icons";
-import { cn } from "@/lib/utils";
 
 export interface LabelProps {
   icon?: React.ReactNode;

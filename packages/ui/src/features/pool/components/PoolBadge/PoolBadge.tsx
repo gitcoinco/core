@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
+import { isPoolStatus, isPoolType, PoolStatus, PoolType } from "@gitcoin/types";
 import { match, P } from "ts-pattern";
 
 import { Badge } from "@/primitives/Badge";
-import { isPoolStatus, isPoolType, PoolStatus, PoolType } from "@/types";
 
 import { PoolStatusBadge } from "../PoolStatusBadge";
 import { PoolTypeBadge } from "../PoolTypeBadge";

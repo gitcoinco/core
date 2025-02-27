@@ -51,8 +51,8 @@ export const Default: Story = {
     name: "metrics",
     availableMetrics: mockAvailableMetrics,
     maxAllocation: 100,
-    onSubmit: (values) => onSubmit(values),
-    onFormChange: (values) => onFormChange(values),
+    onSubmit: (values: any) => onSubmit(values),
+    onFormChange: (values: any) => onFormChange(values),
   },
 };
 
@@ -61,8 +61,8 @@ export const AlreadyVoted: Story = {
     name: "alreadyVoted-metrics",
     availableMetrics: mockAvailableMetrics,
     maxAllocation: 100,
-    onSubmit: (values) => onSubmit(values),
-    onFormChange: (values) => onFormChange(values),
+    onSubmit: (values: any) => onSubmit(values),
+    onFormChange: (values: any) => onFormChange(values),
     submittedBallot: {
       ballot: [
         {

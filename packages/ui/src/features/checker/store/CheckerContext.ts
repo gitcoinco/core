@@ -1,7 +1,6 @@
 import { createContext } from "react";
 
-import { CheckerAction } from "./actions";
-import { CheckerContextType, CheckerRoute } from "./types";
+import { CheckerAction, CheckerContextType, CheckerRoute } from "@gitcoin/types/checker";
 
 export const initialState: CheckerContextType = {
   poolsData: {},

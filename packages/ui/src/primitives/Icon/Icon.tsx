@@ -1,10 +1,11 @@
+import { cn } from "@gitcoin/utils";
+
 import {
   customIconComponents,
   heroiconsComponents,
   networkIconComponents,
   socialMediaIconComponents,
 } from "@/assets/icons";
-import { cn } from "@/lib/utils";
 
 export enum IconType {
   // Heroicons
