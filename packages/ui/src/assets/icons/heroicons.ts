@@ -30,6 +30,7 @@ import {
   MenuAlt2Icon,
   DotsCircleHorizontalIcon,
   ChevronDownIcon,
+  ExternalLinkIcon,
 } from "@heroicons/react/solid";
 
 enum HeroiconsType {
@@ -63,6 +64,7 @@ enum HeroiconsType {
   DOTS_CIRCLE_HORIZONTAL = "dots-circle-horizontal",
   CHEVRON_DOWN = "chevron-down",
   PAPER_CLIP = "paper-clip",
+  EXTERNAL_LINK = "external-link",
 }
 
 const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -96,6 +98,7 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   "dots-circle-horizontal": DotsCircleHorizontalIcon,
   "chevron-down": ChevronDownIcon,
   "paper-clip": PaperClipIcon,
+  "external-link": ExternalLinkIcon,
 };
 
 const heroIcons = Object.keys(heroiconsComponents).sort((a, b) =>
@@ -126,6 +129,7 @@ export {
   UserGroupIcon,
   XSolidIcon,
   XIcon,
+  ExternalLinkIcon,
 };
 
 export { heroiconsComponents, HeroiconsType, heroIcons };
