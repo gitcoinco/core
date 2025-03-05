@@ -14,10 +14,10 @@ export interface PoolInfo {
   };
   project: {
     id: string;
+    projectRoles: {
+      address: string;
+    }[];
   };
-  roles: {
-    address: string;
-  }[];
   strategyAddress: string;
   strategyName: string;
   applicationsStartTime: string;

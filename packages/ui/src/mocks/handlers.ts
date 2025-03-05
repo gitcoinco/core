@@ -31,7 +31,7 @@ export const checkerPoolDataHandler = graphql.query("getCheckerPoolData", () => 
 });
 
 export const indexerGetApplicationByIdHandler = graphql.query("getApplicationByIdQuery", () => {
-  return HttpResponse.json({ data: { application: getApplicationById } });
+  return HttpResponse.json({ data: { applications: [getApplicationById] } });
 });
 
 export const checkerApplicationEvaluationsHandler = graphql.query(

@@ -64,8 +64,8 @@ export const application: CheckerApplication = {
       updatedAt: "2023-01-01T00:00:00Z",
     },
   ],
-  canonicalProject: {
-    roles: [{ address: "0xroleaddress1234567890abcdef12345678" }],
+  project: {
+    projectRoles: [{ address: "0xroleaddress1234567890abcdef12345678" }],
   },
   alloApplicationId: "",
   evaluations: [],
