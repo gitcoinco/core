@@ -1,10 +1,9 @@
 "use client";
 
-import { getTransactionUrl } from "@gitcoin/utils";
-
 import { IconType } from "@/index";
 import { Icon } from "@/index";
 import { Button } from "@/index";
+import { getTransactionUrl } from "@/lib";
 
 export const ViewTransactionButton = ({ chainId, txHash }: { chainId: number; txHash: string }) => {
   return (

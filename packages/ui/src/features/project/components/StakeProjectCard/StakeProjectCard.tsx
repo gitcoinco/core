@@ -1,7 +1,7 @@
-import { formatDate, DateFormat, cn } from "@gitcoin/utils";
 import moment from "moment";
 import { match, P } from "ts-pattern";
 
+import { formatDate, DateFormat, cn } from "@/lib";
 import { Button } from "@/primitives";
 import { IconType, Icon } from "@/primitives/Icon";
 

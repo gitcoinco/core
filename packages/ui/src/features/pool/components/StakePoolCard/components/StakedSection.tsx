@@ -1,5 +1,4 @@
-import { formatDate, DateFormat } from "@gitcoin/utils";
-
+import { formatDate, DateFormat } from "@/lib";
 import { Badge } from "@/primitives/Badge";
 import { Button } from "@/primitives/Button";
 import { IconType, Icon } from "@/primitives/Icon";
