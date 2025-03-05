@@ -5,3 +5,5 @@ export * from "./components/PoolList";
 export * from "./components/PoolStatusBadge";
 export * from "./components/PoolSummary";
 export * from "./components/PoolTypeBadge";
+export * from "./components/StakePoolCard";
+export * from "./components/StakePoolCard/types";
