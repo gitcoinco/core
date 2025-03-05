@@ -1,4 +1,6 @@
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
+import { mockDateDecorator } from "storybook-mock-date-decorator";
+
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
 
@@ -48,6 +50,7 @@ const preview: Preview = {
       defaultTheme: "light",
       attributeName: "data-theme",
     }),
+    mockDateDecorator,
   ],
 
   tags: ["autodocs"],
