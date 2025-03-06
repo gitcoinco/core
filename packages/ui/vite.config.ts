@@ -27,7 +27,7 @@ export default defineConfig({
         "use-indexed-db": resolve(__dirname, "./src/hooks/useIndexedDB.ts"),
         "use-persist-form": resolve(__dirname, "./src/hooks/usePersistForm.ts"),
         "use-toast": resolve(__dirname, "./src/hooks/useToast.ts"),
-
+        "use-click-outside": resolve(__dirname, "./src/hooks/useClickOutside.ts"),
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),
         checker: resolve(__dirname, "./src/features/checker/index.ts"),

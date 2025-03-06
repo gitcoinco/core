@@ -64,6 +64,11 @@
       "import": "./dist/use-toast.js",
       "require": "./dist/use-toast.js"
     },
+    "./hooks/useClickOutside": {
+      "types": "./dist/use-click-outside.d.ts",
+      "import": "./dist/use-click-outside.js",
+      "require": "./dist/use-click-outside.js"
+    },
     "./icons": {
       "types": "./dist/icons.d.ts",
       "import": "./dist/icons.js",
