@@ -23,6 +23,8 @@ export const Stake: Story = {
       console.log(applicationId, amount);
     },
     tokenUsdValue: 1,
+    numberOfContributors: 100,
+    totalDonations: 1000,
   },
 };
 
@@ -39,6 +41,8 @@ export const StakeWithLongDescription: Story = {
       console.log(applicationId, amount);
     },
     tokenUsdValue: 1000,
+    numberOfContributors: 100,
+    totalDonations: 1000,
   },
 };
 
@@ -51,7 +55,6 @@ export const StakedLockedUnclaimed: Story = {
     amount: 25,
     stakedAt: new Date("2023-12-10"),
     unlockAt: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // 7 days in the future
-    onClaim: () => alert("Claim reward clicked"),
     totalStaked: 1000,
   },
 };
@@ -65,8 +68,8 @@ export const StakedUnlockedUnclaimed: Story = {
     amount: 50,
     stakedAt: new Date("2023-10-15"),
     unlockAt: new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000), // 14 days in the past
-    onClaim: () => alert("Claim reward clicked"),
   },
+
 };
 
 export const Claimed: Story = {
@@ -97,5 +100,7 @@ export const Leaderboard: Story = {
       console.log(applicationId, amount);
     },
     tokenUsdValue: 1,
+    numberOfContributors: 100,
+    totalDonations: 1000,
   },
 };

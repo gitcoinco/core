@@ -20,6 +20,8 @@ interface StakeProjectCardBaseProps {
   name?: string; // Project name
   description?: string; // Project description
   totalStaked?: number; // Total amount staked on the project
+  numberOfContributors?: number; // Number of contributors that donated on the project
+  totalDonations?: number; // Total donations in USD on the project
 }
 
 // Props for staking functionality
@@ -94,8 +96,11 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
                   </>
                 );
               })
-              .otherwise(() => null)}
-            <span className="font-ui-sans text-base font-bold">{props.name || "Project Name"}</span>
+              .otherwise(() => (
+                <span className="font-ui-sans text-base font-bold">
+                  {props.name || "Project Name"}
+                </span>
+              ))}
           </div>
           <span className="line-clamp-1 max-h-[20px] max-w-[513px] font-ui-sans text-sm font-normal">
             {props.description || "Project Description"}
@@ -105,15 +110,28 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
         {/* Show total staked only for stake and leaderboard variants */}
         {match(props)
           .with({ variant: P.union("leaderboard", "stake") }, (data) => (
-            <IconWithDetails
-              icon={IconType.UP_TREND}
-              label="Total staked"
-              value={`${data.totalStaked} GTC`}
-            />
+            <div className="flex items-center gap-4">
+              <IconWithDetails
+                icon={IconType.UP_TREND}
+                label="Total staked"
+                value={`${data.totalStaked} GTC`}
+              />
+              <IconWithDetails
+                icon={IconType.BADGE_CHECK}
+                iconClassName="fill-blue-500"
+                label="Total donations"
+                value={`$${data.totalDonations} USD`}
+              />
+              <IconWithDetails
+                icon={IconType.USERS}
+                iconClassName="fill-red-500"
+                label="Total contributors"
+                value={`${data.numberOfContributors}`}
+              />
+            </div>
           ))
           .otherwise(() => null)}
       </div>
-
       {/* Right side content - varies by variant */}
       {match(props)
         .with({ variant: P.union("leaderboard", "stake") }, (data) => (
@@ -155,15 +173,46 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
             <div className="flex items-center justify-end gap-8">
               <IconWithDetails
                 icon={IconType.LIGHTNING_BOLT}
-                label={`Staked ${staked.amount} GTC`}
-                value={`on ${formatDate(staked.stakedAt, DateFormat.ShortMonthDayYear)}`}
+                iconClassName="size-6"
+                label={`on ${formatDate(staked.stakedAt, DateFormat.ShortMonthDayYear)}`}
+                value={`Staked ${staked.amount} GTC`}
+                labelClassName="font-ui-sans text-sm font-normal"
+                valueClassName="font-ui-sans text-base font-bold"
               />
+              {isUnlocked ? (
+                <IconWithDetails
+                  icon={IconType.LIGHTNING_BOLT}
+                  iconClassName="size-6 fill-green-500 stroke-green-500"
+                  label={`Stake Reward`}
+                  value={`${staked.amount} USD`}
+                  labelClassName="font-ui-sans text-sm font-normal"
+                  valueClassName="font-ui-sans text-base font-bold"
+                />
+              ) : staked.variant === "claimed" ? (
+                <IconWithDetails
+                  icon={IconType.LIGHTNING_BOLT}
+                  iconClassName="size-6 fill-purple-500 stroke-purple-500"
+                  label="Claimed reward"
+                  value={`${staked.amount} USD`}
+                  labelClassName="font-ui-sans text-sm font-normal"
+                  valueClassName="font-ui-sans text-base font-bold"
+                />
+              ) : (
+                <IconWithDetails
+                  icon={IconType.LIGHTNING_BOLT}
+                  iconClassName="size-6 fill-red-500 stroke-red-500"
+                  label="Stake Reward"
+                  value={`~ ${staked.amount} USD`}
+                  labelClassName="font-ui-sans text-sm font-normal"
+                  valueClassName="font-ui-sans text-base font-bold"
+                />
+              )}
 
               <div className="flex flex-col items-center gap-2">
                 {match(staked)
                   .with({ variant: "staked" }, (unclaimed) => (
                     <>
-                      {isUnlocked && (
+                      {/* {isUnlocked && (
                         <Button
                           value="Claim reward"
                           icon={<Icon type={IconType.ARROW_RIGHT} className="size-4" />}
@@ -171,7 +220,7 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
                           iconPosition="right"
                           className="bg-moss-100 text-black"
                         />
-                      )}
+                      )} */}
                       <span className="text-sm font-normal text-black">{unlockMessage}</span>
                     </>
                   ))

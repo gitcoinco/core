@@ -15,12 +15,13 @@ export const StakingPeriodSection = ({
       <div>
         <div className="inline-flex items-center justify-start gap-4 text-grey-900">
           <div className="flex items-center justify-start gap-2">
-            <div className="text-[16px]/[24px] font-medium leading-7">Staking Period</div>
+            <div className="font-ui-sans text-base font-medium text-grey-900">Staking period</div>
             <IconLabel
               type="period"
               iconVariant="text-black"
               startDate={votingStartDate}
               endDate={votingEndDate}
+              textVariant="text-sm text-grey-900 font-normal font-ui-sans"
             />
           </div>
         </div>
