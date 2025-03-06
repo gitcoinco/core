@@ -44,25 +44,37 @@ export const IconLabel: React.FC<
       },
     )
 
-    .with({ type: "date" }, ({ date, className, isLoading, iconVariant, textVariant }) => (
-      <IconLabelContainer
-        type="date"
-        className={className}
-        iconType={IconType.CLOCK}
-        iconVariant={iconVariant ?? icon({ type: isLoading ? "loading" : "date" })}
-      >
-        {match(isLoading)
-          .with(true, () => <Skeleton className="h-6 w-40 rounded-lg" />)
-          .otherwise(() => (
-            <span className={textVariant ?? text()}>
-              {formatDate(date, DateFormat.FullDate24Hour)}
-            </span>
-          ))}
-      </IconLabelContainer>
-    ))
+    .with(
+      { type: "date" },
+      ({ date, className, isLoading, iconVariant, textVariant, dateFormat }) => (
+        <IconLabelContainer
+          type="date"
+          className={className}
+          iconType={IconType.CLOCK}
+          iconVariant={iconVariant ?? icon({ type: isLoading ? "loading" : "date" })}
+        >
+          {match(isLoading)
+            .with(true, () => <Skeleton className="h-6 w-40 rounded-lg" />)
+            .otherwise(() => (
+              <span className={textVariant ?? text()}>
+                {formatDate(date, dateFormat ?? DateFormat.FullDate24Hour)}
+              </span>
+            ))}
+        </IconLabelContainer>
+      ),
+    )
     .with(
       { type: "period" },
-      ({ startDate, endDate, className, isLoading, iconType, iconVariant, textVariant }) => (
+      ({
+        startDate,
+        endDate,
+        className,
+        isLoading,
+        iconType,
+        iconVariant,
+        textVariant,
+        dateFormat,
+      }) => (
         <IconLabelContainer
           type="period"
           className={className}
@@ -74,8 +86,8 @@ export const IconLabel: React.FC<
             .otherwise(() => (
               <span className={textVariant ?? text()}>{`${formatDate(
                 startDate,
-                DateFormat.ShortMonthDayYear,
-              )} - ${formatDate(endDate, DateFormat.ShortMonthDayYear)}`}</span>
+                dateFormat ?? DateFormat.ShortMonthDayYear,
+              )} - ${formatDate(endDate, dateFormat ?? DateFormat.ShortMonthDayYear)}`}</span>
             ))}
         </IconLabelContainer>
       ),
@@ -91,6 +103,7 @@ export const IconLabel: React.FC<
         iconType,
         iconVariant,
         textVariant,
+        dateFormat,
       }) => (
         <IconLabelContainer
           type="period"
@@ -108,9 +121,12 @@ export const IconLabel: React.FC<
             .otherwise(() => (
               <span
                 className={textVariant ?? text({ type: "roundPeriod" })}
-              >{`${label} ${formatDate(startDate, DateFormat.ShortMonthDayYear24HourUTC)} - ${
+              >{`${label} ${formatDate(
+                startDate,
+                dateFormat ?? DateFormat.ShortMonthDayYear24HourUTC,
+              )} - ${
                 endDate
-                  ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
+                  ? formatDate(endDate, dateFormat ?? DateFormat.ShortMonthDayYear24HourUTC)
                   : "No end date (open round)"
               }`}</span>
             ))}
@@ -119,7 +135,7 @@ export const IconLabel: React.FC<
     )
     .with(
       { type: "dateWithPrefix" },
-      ({ date, prefix, className, isLoading, iconType, iconVariant, textVariant }) => (
+      ({ date, prefix, className, isLoading, iconType, iconVariant, textVariant, dateFormat }) => (
         <IconLabelContainer
           type="date"
           className={className}
@@ -136,7 +152,7 @@ export const IconLabel: React.FC<
             .otherwise(() => (
               <span
                 className={textVariant ?? text({ type: "dateWithPrefix" })}
-              >{`${prefix} ${formatDate(date, DateFormat.FullDate12Hour)}`}</span>
+              >{`${prefix} ${formatDate(date, dateFormat ?? DateFormat.FullDate12Hour)}`}</span>
             ))}
         </IconLabelContainer>
       ),
