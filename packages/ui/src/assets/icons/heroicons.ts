@@ -1,5 +1,10 @@
 // Status Icons
-import { InformationCircleIcon, PaperClipIcon } from "@heroicons/react/outline";
+import {
+  InformationCircleIcon,
+  PaperClipIcon,
+  LogoutIcon,
+  LoginIcon,
+} from "@heroicons/react/outline";
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -31,6 +36,7 @@ import {
   DotsCircleHorizontalIcon,
   ChevronDownIcon,
   ExternalLinkIcon,
+  BadgeCheckIcon,
 } from "@heroicons/react/solid";
 
 enum HeroiconsType {
@@ -65,6 +71,9 @@ enum HeroiconsType {
   CHEVRON_DOWN = "chevron-down",
   PAPER_CLIP = "paper-clip",
   EXTERNAL_LINK = "external-link",
+  LOGOUT = "logout",
+  LOGIN = "login",
+  BADGE_CHECK = "badge-check",
 }
 
 const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -99,6 +108,9 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   "chevron-down": ChevronDownIcon,
   "paper-clip": PaperClipIcon,
   "external-link": ExternalLinkIcon,
+  logout: LoginIcon,
+  login: LogoutIcon,
+  "badge-check": BadgeCheckIcon,
 };
 
 const heroIcons = Object.keys(heroiconsComponents).sort((a, b) =>
@@ -130,6 +142,9 @@ export {
   XSolidIcon,
   XIcon,
   ExternalLinkIcon,
+  LogoutIcon,
+  LoginIcon,
+  BadgeCheckIcon,
 };
 
 export { heroiconsComponents, HeroiconsType, heroIcons };

@@ -39,6 +39,8 @@ export enum IconType {
   CHEVRON_DOWN = "chevron-down",
   PAPER_CLIP = "paper-clip",
   EXTERNAL_LINK = "external-link",
+  LOGOUT = "logout",
+  BADGE_CHECK = "badge-check",
   // Social Media
   TWITTER = "twitter",
   GITHUB = "github",
@@ -63,6 +65,7 @@ export enum IconType {
   LIGHTNING_BOLT = "lightningBolt",
   UP_TREND = "upTrend",
   ARROW_RIGHT = "arrowRight",
+  GITCOIN = "gitcoin",
 }
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;

@@ -1,5 +1,6 @@
 import ExplorerIconRaw from "@/assets/logos/explorer/explorer.svg?react";
 import ExplorerIcon from "@/assets/logos/explorer/explorerGrad.svg?react";
+import GTCIcon from "@/assets/logos/gitcoin/gitcoin.svg?react";
 
 import ArrowRightIcon from "./arrowRight.svg?react";
 import BoldIcon from "./bold.svg?react";
@@ -31,6 +32,7 @@ enum CustomIconType {
   LIGHTNING_BOLT = "lightningBolt",
   UP_TREND = "upTrend",
   ARROW_RIGHT = "arrowRight",
+  GITCOIN = "gitcoin",
 }
 
 const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -48,6 +50,7 @@ const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSV
   lightningBolt: LightningBoltIcon,
   upTrend: UpTrendIcon,
   arrowRight: ArrowRightIcon,
+  gitcoin: GTCIcon,
 };
 
 const customIcons = Object.keys(customIconComponents).sort((a, b) =>
@@ -70,5 +73,6 @@ export {
   LightningBoltIcon,
   UpTrendIcon,
   ArrowRightIcon,
+  GTCIcon,
 };
 export { CustomIconType, customIconComponents, customIcons };
