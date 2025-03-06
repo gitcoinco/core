@@ -1,6 +1,7 @@
-import { PoolStatus, PoolType } from "@/types";
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
+
+import { PoolStatus, PoolType } from "@/types";
 
 import { StakePoolCard } from "./StakePoolCard";
 
@@ -13,8 +14,6 @@ const simpleRound = {
   chainId: 10,
   votingStartDate: new Date("2024-12-09T19:22:56.413Z"),
   votingEndDate: new Date("2024-12-10T19:23:30.678Z"),
-  logoImg:
-    "https://cdn.prod.website-files.com/6433c5d029c6bb75f3f00bd5/66f47dd26d8ec8d0e48a22d0_gitcoin-profile.png",
   onClick: (pool?: { chainId: number; roundId: string }) => onPoolClick(pool),
   createdAtBlock: 123456,
   matchingPoolAmount: 100000,
@@ -121,7 +120,6 @@ export const NoLogo: Story = {
   args: {
     data: {
       ...simpleRound,
-      logoImg: "https://gateway.pinata.cloud/ipfs/undefined",
     },
   },
   parameters: {

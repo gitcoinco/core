@@ -1,12 +1,42 @@
-import { DefaultLogo } from "@/assets";
-import { getChainInfo } from "@/lib";
+import { useState } from "react";
+
+import {
+  StakeProjectCard,
+  StakeProjectCardProps,
+} from "@/features/project/components/StakeProjectCard/StakeProjectCard";
+import { cn, getChainInfo } from "@/lib";
 import { Badge } from "@/primitives/Badge";
+import { Button } from "@/primitives/Button";
+import { IconType } from "@/primitives/Icon";
+import { Icon } from "@/primitives/Icon";
 
 import { StakePoolDataCardProps } from "../types";
 import { PoolMetricsSection } from "./PoolMetricsSection";
 import { StakedSection } from "./StakedSection";
 import { StakingPeriodSection } from "./StakingPeriodSection";
 
+const availableToClaimCardProps: StakeProjectCardProps[] = [
+  {
+    name: "Project Name",
+    variant: "staked",
+    id: "1",
+    chainId: 1,
+    roundId: "1",
+    amount: 100,
+    stakedAt: new Date(),
+    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
+  },
+  {
+    name: "Project Name",
+    variant: "staked",
+    id: "2",
+    chainId: 1,
+    roundId: "1",
+    amount: 100,
+    stakedAt: new Date(),
+    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
+  },
+];
 /**
  * Component to display stake pool data in a card format
  */
@@ -15,7 +45,6 @@ export const StakePoolDataCard = ({
   roundDescription,
   chainId,
   roundId,
-  logoImg,
   votingStartDate,
   votingEndDate,
   totalProjects,
@@ -24,14 +53,12 @@ export const StakePoolDataCard = ({
   stakedAmount,
   lastStakeDate,
   claimed,
-  onClaim,
   onClick,
+  stakedProjects = availableToClaimCardProps,
 }: StakePoolDataCardProps) => {
   const { icon } = getChainInfo(chainId);
   const today = new Date();
-
-  // Resolve logo image with fallback
-  const image = logoImg && !logoImg.endsWith("undefined") ? logoImg : DefaultLogo;
+  const [isOpen, setIsOpen] = useState(false);
 
   // Calculate unlock timing
   const unlocksIn = votingEndDate.getTime() - today.getTime();
@@ -56,48 +83,53 @@ export const StakePoolDataCard = ({
     });
   };
 
-  // Handle claim
-  const handleClaim = () => {
-    onClaim?.({
-      chainId,
-      roundId,
-    });
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className="inline-flex h-60 w-full items-center rounded-2xl border border-grey-100 p-6">
-      <div className="flex w-full items-center justify-between gap-6">
-        <img
-          className="relative size-48 cursor-pointer rounded-2xl"
-          src={image}
-          alt={`${roundName} logo`}
-          onClick={handleCardClick}
-        />
+    <div className="relative">
+      <div className="inline-flex h-60 w-full items-center rounded-2xl border border-grey-100 p-6">
         <div className="flex w-full flex-col items-start justify-between gap-6">
-          <div
-            className="flex w-full cursor-pointer flex-col items-start justify-start gap-2"
-            onClick={handleCardClick}
-          >
-            <div className="flex w-full items-center justify-between">
-              <div className="self-stretch text-2xl font-medium">{roundName}</div>
+          <div className="flex w-full flex-col items-start justify-start gap-2">
+            <div className="flex w-full justify-between">
+              <div className="flex cursor-pointer flex-col  gap-2" onClick={handleCardClick}>
+                <div className="self-stretch text-2xl font-medium">{roundName}</div>
+                <div className="line-clamp-2 font-ui-sans text-sm font-normal leading-normal text-black">
+                  {roundDescription}
+                </div>
+              </div>
               {!hasStaked && (
                 <Badge className={`${roundStatus.className}`}>{roundStatus.text}</Badge>
               )}
-            </div>
-            <div className="h-5 font-ui-sans text-sm font-normal leading-normal text-black">
-              {roundDescription}
+
+              {hasStaked && (
+                <div className="flex flex-col gap-2">
+                  <Button
+                    size="small"
+                    value={!isUnlocked ? "Pending" : claimed ? "Claimed" : "Ready to claim"}
+                    icon={
+                      <Icon
+                        type={IconType.CHEVRON_DOWN}
+                        className={cn("size-4", { "rotate-180": isOpen })}
+                      />
+                    }
+                    iconPosition="right"
+                    className="bg-moss-100 text-black"
+                    onClick={toggleAccordion}
+                  />
+                  {!claimed && (
+                    <div className="font-ui-sans text-sm font-normal leading-tight text-black">
+                      {unlockMessage}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
           {hasStaked ? (
-            <StakedSection
-              isUnlocked={isUnlocked}
-              stakeAmount={stakedAmount}
-              lastStakeDate={lastStakeDate}
-              claimed={claimed}
-              unlockMessage={unlockMessage}
-              onClaim={handleClaim}
-            />
+            <StakedSection stakeAmount={stakedAmount} lastStakeDate={lastStakeDate} />
           ) : (
             <StakingPeriodSection votingStartDate={votingStartDate} votingEndDate={votingEndDate} />
           )}
@@ -108,6 +140,16 @@ export const StakePoolDataCard = ({
             totalStaked={totalStaked}
             chainIcon={icon}
           />
+        </div>
+      </div>
+      <div
+        className={cn("relative", "transition-all duration-300", {
+          "h-0 overflow-hidden opacity-0": !isOpen,
+          "h-auto opacity-100": isOpen,
+        })}
+      >
+        <div className="mt-2 flex flex-col gap-2 p-2">
+          {stakedProjects?.map((project) => <StakeProjectCard key={project.id} {...project} />)}
         </div>
       </div>
     </div>
@@ -128,16 +170,16 @@ const getRoundStatus = (
   if (votingStartDate > today)
     return {
       text: "Upcoming",
-      className: "bg-purple-100 text-purple-900",
+      className: "bg-purple-100 text-purple-900 h-6",
     };
   if (votingEndDate > today)
     return {
       text: "Active",
-      className: "bg-green-100 text-green-900",
+      className: "bg-green-100 text-green-900 h-6",
     };
   return {
     text: "Ended",
-    className: "bg-grey-100 text-grey-900",
+    className: "bg-grey-100 text-grey-900 h-6",
   };
 };
 
