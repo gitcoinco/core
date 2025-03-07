@@ -13,7 +13,13 @@ import { SelectedDateRenderer } from "./SelectedDateRenderer";
 import { TimelineRow } from "./TimelineRow";
 import { timezones } from "./utils";
 
-export const RoundDatesFormController: React.FC = () => {
+export interface RoundDatesFormProps {
+  enableNoRoundEndDate?: boolean;
+}
+
+export const RoundDatesFormController: React.FC<RoundDatesFormProps> = ({
+  enableNoRoundEndDate = false,
+}) => {
   const {
     control,
     watch,
@@ -190,24 +196,26 @@ export const RoundDatesFormController: React.FC = () => {
                 />
               )}
             />
-            <div className="flex items-center gap-2">
-              <Controller
-                name="roundDates.round.noEndDate"
-                control={control}
-                render={({ field }) => (
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        setValue("roundDates.round.end", "");
-                      }
-                      field.onChange(checked);
-                    }}
-                  />
-                )}
-              />
-              <Label className="text-sm font-normal">This round does not have an end date</Label>
-            </div>
+            {enableNoRoundEndDate && (
+              <div className="flex items-center gap-2">
+                <Controller
+                  name="roundDates.round.noEndDate"
+                  control={control}
+                  render={({ field }) => (
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          setValue("roundDates.round.end", "");
+                        }
+                        field.onChange(checked);
+                      }}
+                    />
+                  )}
+                />
+                <Label className="text-sm font-normal">This round does not have an end date</Label>
+              </div>
+            )}
           </div>
         </TimelineRow>
 
