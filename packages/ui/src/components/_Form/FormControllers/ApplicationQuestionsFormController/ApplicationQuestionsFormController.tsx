@@ -229,7 +229,8 @@ export const ApplicationQuestionsFormController: React.FC<
                               )}
                             />
 
-                            <Controller
+                            {/* TODO: Enable after implementing encryption */}
+                            {/* <Controller
                               name={encryptedField}
                               control={control}
                               render={({ field }) => (
@@ -241,7 +242,8 @@ export const ApplicationQuestionsFormController: React.FC<
                                   <Label>Encrypted</Label>
                                 </div>
                               )}
-                            />
+                            /> */}
+
                           </div>
                           {selectedType === "multiple-choice" ||
                           selectedType === "checkbox" ||
