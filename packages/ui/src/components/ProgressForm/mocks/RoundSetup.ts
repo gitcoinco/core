@@ -164,6 +164,28 @@ const roundDatesArgs = {
   },
 };
 
+const roundDatesWithEnabledNoEndDateFields: FormField[] = [
+  {
+    field: {
+      name: "roundDates",
+      label: "",
+      validation: { isRoundDates: true },
+    },
+    component: "RoundDates",
+    enableNoRoundEndDate: true,
+  },
+];
+
+const roundDatesWithEnabledNoEndDateArgs = {
+  fields: roundDatesWithEnabledNoEndDateFields,
+  persistKey: "storybook-round-setup-round-dates-no-end-date",
+  defaultValues: {
+    roundDates: {
+      timezone: moment.tz.guess(),
+    },
+  },
+};
+
 const applicationQuestionsFields: FormField[] = [
   {
     field: {
@@ -222,6 +244,14 @@ export const roundSetupSteps = [
   {
     name: "Round dates",
     formProps: roundDatesArgs,
+    stepProps: {
+      formTitle: "Round dates",
+      formDescription: "Configure the dates for the application and payout periods.",
+    },
+  },
+  {
+    name: "Round dates with option to disable end date",
+    formProps: roundDatesWithEnabledNoEndDateArgs,
     stepProps: {
       formTitle: "Round dates",
       formDescription: "Configure the dates for the application and payout periods.",

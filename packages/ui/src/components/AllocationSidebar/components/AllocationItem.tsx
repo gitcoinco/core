@@ -5,6 +5,7 @@ import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/primitives/Skeleton";
 import { ProjectAllocation } from "@/types";
+import { DefaultLogo } from "@/assets";
 
 export const AllocationItem = ({
   id,
@@ -30,16 +31,16 @@ export const AllocationItem = ({
             }
           }}
         >
-          {image ? (
+          {!isLoading ? (
             <div
               className="size-6 shrink-0 rounded-lg bg-grey-100 bg-cover bg-center"
               style={{
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${image || DefaultLogo})`,
               }}
             />
           ) : (
             <Skeleton
-              className={cn("size-6 shrink-0 rounded-lg", { "animate-none": !isLoading })}
+              className={cn("size-6 shrink-0 rounded-lg")}
             />
           )}
           <div className="truncate font-ui-sans text-xs font-normal text-grey-900">

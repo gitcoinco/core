@@ -1,4 +1,4 @@
-import { AllowlistProps, FieldArrayProps, MetricsProps } from "@/components/_Form";
+import { AllowlistProps, FieldArrayProps, MetricsProps, RoundDatesFormProps } from "@/components/_Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
 import { InputProps } from "@/primitives/Input";
 import { SelectProps } from "@/primitives/Select";
@@ -92,7 +92,7 @@ export interface FieldArray extends FieldArrayProps {
   component: "FieldArray";
 }
 
-export interface RoundDates {
+export interface RoundDates extends RoundDatesFormProps {
   field: BaseField;
   component: "RoundDates";
 }

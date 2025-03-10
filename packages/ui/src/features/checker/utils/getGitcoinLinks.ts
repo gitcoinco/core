@@ -74,7 +74,11 @@ export const getApplyLink = (chainId: number, poolId: string, strategyName?: Poo
 export const getExplorerUrl = (chainId: number, strategyName?: PoolType): string => {
   switch (strategyName) {
     case PoolType.Retrofunding:
-      return "https://retrofunding-vote.vercel.app";
+      return getUrlByChainType(
+        chainId,
+        "https://beta.rf.vote.gitcoin.co",
+        "https://beta.rf.vote.gitcoin.co",
+      );
     default:
       return getUrlByChainType(
         chainId,
@@ -86,6 +90,8 @@ export const getExplorerUrl = (chainId: number, strategyName?: PoolType): string
 
 export const getPoolLinkOnExplorer = (chainId: number, poolId: string, strategyName?: PoolType) => {
   switch (strategyName) {
+    case PoolType.Retrofunding:
+      return `${getExplorerUrl(chainId, strategyName)}/#/${chainId}/${poolId}`;
     default:
       return `${getExplorerUrl(chainId, strategyName)}/#/round/${chainId}/${poolId}`;
   }
@@ -112,6 +118,8 @@ export const getVotingInterfaceLinkOnExplorer = (
   strategyName?: PoolType,
 ) => {
   switch (strategyName) {
+    case PoolType.Retrofunding:
+      return `${getExplorerUrl(chainId, strategyName)}/#/${chainId}/${poolId}`;
     default:
       return `${getExplorerUrl(chainId, strategyName)}/#/round/${chainId}/${poolId}/voting`;
   }
