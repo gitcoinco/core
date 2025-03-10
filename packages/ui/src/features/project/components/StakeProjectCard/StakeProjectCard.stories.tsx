@@ -17,6 +17,7 @@ export const Stake: Story = {
     id: "1",
     name: "Project Name",
     description: "Project Description",
+    image: "https://picsum.photos/200",
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
@@ -35,6 +36,7 @@ export const StakeWithLongDescription: Story = {
     name: "Web3 Social Network",
     description:
       "A decentralized social network built on blockchain technology that allows users to own their data and monetize their content. The platform features end-to-end encryption, token-based rewards, and community governance mechanisms.",
+    image: "https://picsum.photos/200",
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
@@ -52,6 +54,7 @@ export const StakedLockedUnclaimed: Story = {
     id: "2",
     name: "Staked Project",
     description: "This project has been staked but not yet claimed",
+    image: "https://picsum.photos/200",
     amount: 25,
     stakedAt: new Date("2023-12-10"),
     unlockAt: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // 7 days in the future
@@ -68,8 +71,9 @@ export const StakedUnlockedUnclaimed: Story = {
     amount: 50,
     stakedAt: new Date("2023-10-15"),
     unlockAt: new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000), // 14 days in the past
+    image: "https://picsum.photos/200",
+    totalStaked: 1000,
   },
-
 };
 
 export const Claimed: Story = {
@@ -83,6 +87,7 @@ export const Claimed: Story = {
     unlockAt: new Date("2023-12-05"),
     claimedAt: new Date("2023-12-10"),
     txHash: "0x1234567890abcdef1234567890abcdef1234567890abcdef",
+    image: "https://picsum.photos/200",
     totalStaked: 1000,
   },
 };
@@ -94,6 +99,7 @@ export const Leaderboard: Story = {
     name: "Leaderboard Project",
     description: "This project is in the leaderboard",
     rank: 4,
+    image: "https://picsum.photos/200",
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {

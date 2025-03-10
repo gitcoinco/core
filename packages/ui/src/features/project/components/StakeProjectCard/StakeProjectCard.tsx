@@ -2,8 +2,7 @@ import moment from "moment";
 import { match, P } from "ts-pattern";
 
 import { formatDate, DateFormat, cn } from "@/lib";
-import { Button } from "@/primitives";
-import { IconType, Icon } from "@/primitives/Icon";
+import { IconType } from "@/primitives/Icon";
 
 import {
   IconWithDetails,
@@ -19,6 +18,7 @@ interface StakeProjectCardBaseProps {
   roundId: string; // Round ID of the project
   name?: string; // Project name
   description?: string; // Project description
+  image?: string; // Project image
   totalStaked?: number; // Total amount staked on the project
   numberOfContributors?: number; // Number of contributors that donated on the project
   totalDonations?: number; // Total donations in USD on the project
@@ -27,6 +27,7 @@ interface StakeProjectCardBaseProps {
 // Props for staking functionality
 interface StakingProps {
   onStakeChange: (id: string, amount: number) => void; // Handler for stake amount changes
+  stakeAmount: number; // Amount that is currently staked
   maxStakeAmount: number; // Maximum amount that can be staked
   tokenUsdValue: number; // USD value of one token
 }
@@ -46,7 +47,6 @@ interface StakedUnclaimedCardProps extends StakeProjectCardBaseProps {
   amount: number; // Amount staked
   stakedAt: Date; // Date when staked
   unlockAt: Date; // Date when unlocked
-  onClaim?: () => void; // Handler for claiming
 }
 
 interface ClaimedCardProps extends StakeProjectCardBaseProps {
@@ -67,44 +67,43 @@ export type StakeProjectCardProps =
 
 export const StakeProjectCard = (props: StakeProjectCardProps) => {
   return (
-    <div className="flex w-full justify-between gap-6 rounded-lg bg-grey-100 p-6">
+    <div className="flex w-full justify-between gap-6 rounded-lg bg-grey-50 p-6">
       {/* Project Information Section - Common to all variants */}
       <div className="flex flex-col justify-start gap-6">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            {match(props)
-              .with({ variant: "leaderboard" }, (leaderboard) => {
-                const getRankColor = (rank: number) => {
-                  if (rank === 1) return "bg-green-500";
-                  if (rank === 2) return "bg-green-300";
-                  if (rank === 3) return "bg-green-100";
-                  return "bg-grey-300";
-                };
-                return (
-                  <>
-                    <span
-                      className={cn(
-                        "flex h-6 w-6 items-center justify-center rounded-full font-ui-sans text-sm font-normal",
-                        getRankColor(leaderboard.rank),
-                      )}
-                    >
-                      {leaderboard.rank}
-                    </span>
-                    <span className="font-ui-sans text-base font-bold">
-                      {leaderboard.name || "Project Name"}
-                    </span>
-                  </>
-                );
-              })
-              .otherwise(() => (
-                <span className="font-ui-sans text-base font-bold">
-                  {props.name || "Project Name"}
-                </span>
-              ))}
+        <div className="flex items-center gap-4">
+          {match(props)
+            .with({ variant: "leaderboard" }, (props) => {
+              const getRankColor = (rank: number) => {
+                if (rank === 1) return "bg-green-500";
+                if (rank === 2) return "bg-green-300";
+                if (rank === 3) return "bg-green-100";
+                return "bg-grey-300";
+              };
+              return (
+                <>
+                  <span
+                    className={cn(
+                      "flex h-6 w-6 items-center justify-center rounded-full font-ui-sans text-sm font-normal",
+                      getRankColor(props.rank),
+                    )}
+                  >
+                    {props.rank}
+                  </span>
+                </>
+              );
+            })
+            .otherwise(() => null)}
+          <img
+            src={props.image}
+            alt={props.name || "Project Image"}
+            className="size-12 rounded-sm"
+          />
+          <div className="flex flex-col gap-2">
+            <span className="font-ui-sans text-base font-bold">{props.name || "Project Name"}</span>
+            <span className="line-clamp-1 max-h-[20px] max-w-[513px] font-ui-sans text-sm font-normal">
+              {props.description || "Project Description"}
+            </span>
           </div>
-          <span className="line-clamp-1 max-h-[20px] max-w-[513px] font-ui-sans text-sm font-normal">
-            {props.description || "Project Description"}
-          </span>
         </div>
 
         {/* Show total staked only for stake and leaderboard variants */}
@@ -141,6 +140,7 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
               <StakeInput
                 project={{ id: data.id }}
                 maxAmount={data.maxStakeAmount}
+                stakeAmount={data.stakeAmount}
                 tokenUsdValue={data.tokenUsdValue}
                 onChange={(id, amount) => {
                   data.onStakeChange(id, amount);
@@ -210,19 +210,8 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
 
               <div className="flex flex-col items-center gap-2">
                 {match(staked)
-                  .with({ variant: "staked" }, (unclaimed) => (
-                    <>
-                      {/* {isUnlocked && (
-                        <Button
-                          value="Claim reward"
-                          icon={<Icon type={IconType.ARROW_RIGHT} className="size-4" />}
-                          onClick={unclaimed.onClaim}
-                          iconPosition="right"
-                          className="bg-moss-100 text-black"
-                        />
-                      )} */}
-                      <span className="text-sm font-normal text-black">{unlockMessage}</span>
-                    </>
+                  .with({ variant: "staked" }, () => (
+                    <span className="text-sm font-normal text-black">{unlockMessage}</span>
                   ))
                   .with({ variant: "claimed" }, (props) => {
                     const claimedDateDiff = moment.duration(moment().diff(props.claimedAt));
