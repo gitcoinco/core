@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-import {
-  StakeProjectCard,
-  StakeProjectCardProps,
-} from "@/features/project/components/StakeProjectCard/StakeProjectCard";
+import { StakeProjectCard } from "@/features/project/components/StakeProjectCard/StakeProjectCard";
 import { cn, getChainInfo } from "@/lib";
 import { Badge } from "@/primitives/Badge";
 import { Button } from "@/primitives/Button";
@@ -15,28 +12,6 @@ import { PoolMetricsSection } from "./PoolMetricsSection";
 import { StakedSection } from "./StakedSection";
 import { StakingPeriodSection } from "./StakingPeriodSection";
 
-const availableToClaimCardProps: StakeProjectCardProps[] = [
-  {
-    name: "Project Name",
-    variant: "staked",
-    id: "1",
-    chainId: 1,
-    roundId: "1",
-    amount: 100,
-    stakedAt: new Date(),
-    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
-  },
-  {
-    name: "Project Name",
-    variant: "staked",
-    id: "2",
-    chainId: 1,
-    roundId: "1",
-    amount: 100,
-    stakedAt: new Date(),
-    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
-  },
-];
 /**
  * Component to display stake pool data in a card format
  */
@@ -54,7 +29,7 @@ export const StakePoolDataCard = ({
   lastStakeDate,
   claimed,
   onClick,
-  stakedProjects = availableToClaimCardProps,
+  stakedProjects,
 }: StakePoolDataCardProps) => {
   const { icon } = getChainInfo(chainId);
   const today = new Date();

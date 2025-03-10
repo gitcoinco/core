@@ -20,20 +20,11 @@ export const IconWithDetails = ({
   valueClassName?: string;
 }) => {
   return (
-    <div className="inline-flex h-[38px] items-center justify-start gap-2">
-      <Icon type={icon} className={cn("size-5", iconClassName)} />
-      <div className="inline-flex flex-col items-start justify-start self-stretch ">
-        <span
-          className={cn(
-            "text-start font-ui-mono text-sm font-normal leading-[14px]",
-            labelClassName,
-          )}
-        >
-          {label}
-        </span>
-        <span className={cn("text-start font-ui-mono text-sm font-medium", valueClassName)}>
-          {value}
-        </span>
+    <div className="inline-flex items-center justify-start gap-2">
+      <Icon type={icon} className={cn("size-5 items-start", iconClassName)} />
+      <div className="flex flex-col">
+        <span className={cn("font-ui-mono text-sm font-normal ", labelClassName)}>{label}</span>
+        <span className={cn("font-ui-mono text-sm font-medium", valueClassName)}>{value}</span>
       </div>
     </div>
   );

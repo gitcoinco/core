@@ -4,6 +4,30 @@ import { Meta, StoryObj } from "@storybook/react";
 import { PoolStatus, PoolType } from "@/types";
 
 import { StakePoolCard } from "./StakePoolCard";
+import { StakePoolDataCardProps } from "./types";
+
+const availableToClaimCardProps = [
+  {
+    name: "Project Name",
+    variant: "staked",
+    id: "1",
+    chainId: 1,
+    roundId: "1",
+    amount: 100,
+    stakedAt: new Date(),
+    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
+  },
+  {
+    name: "Project Name",
+    variant: "staked",
+    id: "2",
+    chainId: 1,
+    roundId: "1",
+    amount: 100,
+    stakedAt: new Date(),
+    unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
+  },
+];
 
 const onPoolClick = action("Pool Clicked!");
 const onClaim = action("Claiming page or modal!");
@@ -22,6 +46,7 @@ const simpleRound = {
   totalStaked: 100000,
   lastStakeDate: new Date("2024-12-08T19:22:56.413Z"),
   onClaim: () => onClaim(),
+  stakedProjects: availableToClaimCardProps,
 };
 
 export default {
@@ -48,7 +73,7 @@ type Story = StoryObj<typeof StakePoolCard>;
 
 export const Default: Story = {
   args: {
-    data: simpleRound,
+    data: simpleRound as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2025, 1, 1),
@@ -60,7 +85,7 @@ export const Upcoming: Story = {
     data: {
       ...simpleRound,
       stakedAmount: 0,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2023, 1, 1),
@@ -72,7 +97,7 @@ export const Active: Story = {
     data: {
       ...simpleRound,
       stakedAmount: 0,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date("2024-12-10T19:22:30.678Z"),
@@ -84,7 +109,7 @@ export const Ended: Story = {
     data: {
       ...simpleRound,
       stakedAmount: 0,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date("2024-12-11T19:22:30.678Z"),
@@ -97,7 +122,7 @@ export const Claimed: Story = {
       ...simpleRound,
       stakedAmount: 100000,
       claimed: true,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2026, 1, 1),
@@ -109,7 +134,7 @@ export const Loading: Story = {
     data: {
       ...simpleRound,
       isLoading: true,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2023, 1, 1),
@@ -120,7 +145,7 @@ export const NoLogo: Story = {
   args: {
     data: {
       ...simpleRound,
-    },
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2023, 1, 1),
