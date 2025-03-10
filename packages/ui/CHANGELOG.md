@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.24
+
+### Patch Changes
+
+- [#46](https://github.com/gitcoinco/core/pull/46) [`d278736`](https://github.com/gitcoinco/core/commit/d2787365be02445264edf9065f3c30db5fef0776) Thanks [@nijoe1](https://github.com/nijoe1)! - Stacking hub beta components
+
 ## 0.0.0-beta.23
 
 ### Patch Changes
