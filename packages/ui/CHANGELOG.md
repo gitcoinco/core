@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.25
+
+### Patch Changes
+
+- [#47](https://github.com/gitcoinco/core/pull/47) [`fc7a802`](https://github.com/gitcoinco/core/commit/fc7a8026c2c462f36bbf0be63fbf9f4316749fc0) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - fix: retrofunding tweaks
+
 ## 0.0.0-beta.24
 
 ### Patch Changes
