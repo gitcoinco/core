@@ -3,6 +3,7 @@
 import { tv, VariantProps } from "tailwind-variants";
 import { match } from "ts-pattern";
 
+import { cn } from "@/lib";
 import { Skeleton } from "@/primitives/Skeleton";
 import { Card } from "@/ui-shadcn/card";
 
@@ -42,16 +43,17 @@ const statCardVariants = tv({
 export interface StatCardProps extends VariantProps<typeof statCardVariants> {
   label: string;
   value?: string;
+  className?: string;
 }
 
-export const StatCard = ({ label, value, size, color }: StatCardProps) => {
+export const StatCard = ({ label, value, size, color, className }: StatCardProps) => {
   const { card, label: labelStyle, value: valueStyle } = statCardVariants({ size, color });
   const content = match(value)
     .with(undefined, () => <Skeleton className="size-8 rounded-2xl" />)
     .otherwise((val) => <div className={valueStyle()}>{val}</div>);
 
   return (
-    <Card className={card()}>
+    <Card className={cn(card(), className)}>
       {content}
       <div className={labelStyle()}>{label}</div>
     </Card>

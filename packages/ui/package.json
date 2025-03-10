@@ -64,6 +64,11 @@
       "import": "./dist/use-toast.js",
       "require": "./dist/use-toast.js"
     },
+    "./hooks/useClickOutside": {
+      "types": "./dist/use-click-outside.d.ts",
+      "import": "./dist/use-click-outside.js",
+      "require": "./dist/use-click-outside.js"
+    },
     "./icons": {
       "types": "./dist/icons.d.ts",
       "import": "./dist/icons.js",
@@ -263,6 +268,7 @@
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "sonner": "^1.5.0",
+    "storybook-mock-date-decorator": "^2.0.6",
     "tailwind-variants": "^0.2.1",
     "ts-pattern": "^5.5.0",
     "vaul": "^1.1.0",

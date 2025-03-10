@@ -1,14 +1,18 @@
 import ExplorerIconRaw from "@/assets/logos/explorer/explorer.svg?react";
 import ExplorerIcon from "@/assets/logos/explorer/explorerGrad.svg?react";
+import GTCIcon from "@/assets/logos/gitcoin/gitcoin.svg?react";
 
+import ArrowRightIcon from "./arrowRight.svg?react";
 import BoldIcon from "./bold.svg?react";
 import CheckerIcon from "./checker.svg?react";
 import HeadingIcon from "./heading.svg?react";
 import ItalicIcon from "./italic.svg?react";
+import LightningBoltIcon from "./lightning-bolt.svg?react";
 import RetrofundingIcon from "./retrofunding.svg?react";
 import ShineIcon from "./shine.svg?react";
 import SortIcon from "./sortIcon.svg?react";
 import SpinnerIcon from "./spinner.svg?react";
+import UpTrendIcon from "./upTrend.svg?react";
 import UserIcon from "./user.svg?react";
 import VerifiedBadgeIcon from "./verifiedBadge.svg?react";
 import VoteIcon from "./vote.svg?react";
@@ -25,6 +29,10 @@ enum CustomIconType {
   ITALIC = "italic",
   SPINNER = "spinner",
   SORT = "sort",
+  LIGHTNING_BOLT = "lightningBolt",
+  UP_TREND = "upTrend",
+  ARROW_RIGHT = "arrowRight",
+  GITCOIN = "gitcoin",
 }
 
 const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -39,6 +47,10 @@ const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSV
   italic: ItalicIcon,
   spinner: SpinnerIcon,
   sort: SortIcon,
+  lightningBolt: LightningBoltIcon,
+  upTrend: UpTrendIcon,
+  arrowRight: ArrowRightIcon,
+  gitcoin: GTCIcon,
 };
 
 const customIcons = Object.keys(customIconComponents).sort((a, b) =>
@@ -58,5 +70,9 @@ export {
   BoldIcon,
   ItalicIcon,
   SortIcon,
+  LightningBoltIcon,
+  UpTrendIcon,
+  ArrowRightIcon,
+  GTCIcon,
 };
 export { CustomIconType, customIconComponents, customIcons };
