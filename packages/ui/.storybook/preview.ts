@@ -35,9 +35,9 @@ const preview: Preview = {
         locales: "en-US",
       },
     },
-    msw: {
-      handlers,
-    },
+    // msw: {
+    //   handlers,
+    // },
   },
 
   loaders: [mswLoader],

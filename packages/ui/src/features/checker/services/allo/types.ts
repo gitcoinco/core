@@ -95,8 +95,8 @@ interface StatusSnapshot {
 export interface ProjectApplicationForManager extends ProjectApplication {
   anchorAddress: Address;
   statusSnapshots: StatusSnapshot[];
-  canonicalProject: {
-    roles: { address: Address }[];
+  project: {
+    projectRoles: { address: Address }[];
   };
 }
 

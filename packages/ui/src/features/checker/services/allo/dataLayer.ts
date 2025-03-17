@@ -19,7 +19,7 @@ export async function getApplicationsFromIndexer(
     });
     return {
       applications: response.applications as ProjectApplicationForManager[],
-      roundData: response.round as PoolInfo,
+      roundData: response.rounds[0] as PoolInfo,
     };
   } catch (e) {
     throw new Error(`Failed to fetch applications data. with error: ${e}`);
@@ -37,7 +37,7 @@ export async function getApplicationByIdFromIndexer(
       roundId,
       applicationId,
     });
-    return response.application as ProjectApplication;
+    return response.applications[0] as ProjectApplication;
   } catch (e) {
     throw new Error(`Failed to fetch application data. with error: ${e}`);
   }
@@ -55,7 +55,7 @@ export async function getPastApplicationsByApplicationIdFromIndexer(
       applicationId,
     });
 
-    return response.applications[0].project.applications as PastApplication[];
+    return response.applications[0].project[0].applications as PastApplication[];
   } catch (e) {
     throw new Error(`Failed to fetch past applications data. with error: ${e}`);
   }
