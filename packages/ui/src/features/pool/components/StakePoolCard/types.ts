@@ -10,11 +10,12 @@ export interface StakePoolDataCardProps {
   totalProjects: number;
   totalStaked: number;
   matchingPoolAmount: number;
+  matchingPoolTokenTicker: string;
   stakedAmount?: number;
   lastStakeDate?: Date;
+  isClaimable?: boolean;
   claimed?: boolean;
   isLoading?: boolean;
-  onClaim?: (pool: { chainId: number; roundId: string }) => void;
-  onClick?: (pool: { chainId: number; roundId: string }) => void;
   stakedProjects?: StakeProjectCardProps[];
+  onClick?: (pool: { chainId: number; roundId: string }) => void;
 }

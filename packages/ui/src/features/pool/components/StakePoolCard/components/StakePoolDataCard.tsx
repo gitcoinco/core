@@ -25,9 +25,11 @@ export const StakePoolDataCard = ({
   totalProjects,
   totalStaked,
   matchingPoolAmount,
+  matchingPoolTokenTicker,
   stakedAmount,
   lastStakeDate,
   claimed,
+  isClaimable,
   onClick,
   stakedProjects,
 }: StakePoolDataCardProps) => {
@@ -48,7 +50,12 @@ export const StakePoolDataCard = ({
   const hasStaked = Boolean(stakedAmount && stakedAmount > 0);
 
   // Format unlock message
-  const unlockMessage = formatUnlockMessage(isUnlocked, unlocksInMonths, unlocksInDays);
+  const unlockMessage = formatUnlockMessage(
+    isUnlocked,
+    !!isClaimable,
+    unlocksInMonths,
+    unlocksInDays,
+  );
 
   // Handle card click
   const handleCardClick = () => {
@@ -82,7 +89,13 @@ export const StakePoolDataCard = ({
                 <div className="flex flex-col gap-2">
                   <Button
                     size="small"
-                    value={!isUnlocked ? "Pending" : claimed ? "Claimed" : "Ready to claim"}
+                    value={
+                      claimed
+                        ? "Claimed"
+                        : !isUnlocked || !isClaimable
+                          ? "Pending"
+                          : "Ready to claim"
+                    }
                     icon={
                       <Icon
                         type={IconType.CHEVRON_DOWN}
@@ -111,6 +124,7 @@ export const StakePoolDataCard = ({
 
           <PoolMetricsSection
             matchingPoolAmount={matchingPoolAmount}
+            matchingPoolTokenTicker={matchingPoolTokenTicker}
             totalProjects={totalProjects}
             totalStaked={totalStaked}
             chainIcon={icon}
@@ -123,7 +137,7 @@ export const StakePoolDataCard = ({
           "h-auto opacity-100": isOpen,
         })}
       >
-        <div className="mt-2 flex flex-col gap-2 p-2">
+        <div className="mt-2 flex max-h-[330px] flex-col gap-2 overflow-y-auto p-2">
           {stakedProjects?.map((project) => <StakeProjectCard key={project.id} {...project} />)}
         </div>
       </div>
@@ -163,21 +177,24 @@ const getRoundStatus = (
  */
 const formatUnlockMessage = (
   isUnlocked: boolean,
+  isClaimable: boolean,
   unlocksInMonths: number,
   unlocksInDays: number,
 ): string => {
   if (isUnlocked) {
-    return `Unlocked ${
-      unlocksInMonths === 1
-        ? `${unlocksInMonths} month`
-        : unlocksInMonths > 1
-          ? `${Math.ceil(unlocksInMonths)} months`
-          : unlocksInDays === 1
-            ? `${unlocksInDays} day`
-            : unlocksInDays > 1
-              ? `${Math.ceil(unlocksInDays)} days`
-              : "< 1 day"
-    } ago`;
+    return isClaimable
+      ? `Unlocked ${
+          unlocksInMonths === 1
+            ? `${unlocksInMonths} month`
+            : unlocksInMonths > 1
+              ? `${Math.ceil(unlocksInMonths)} months`
+              : unlocksInDays === 1
+                ? `${unlocksInDays} day`
+                : unlocksInDays > 1
+                  ? `${Math.ceil(unlocksInDays)} days`
+                  : "< 1 day"
+        } ago`
+      : "Finalizing the claim process";
   }
   return `Unlocks in ${
     unlocksInMonths === 1

@@ -13,7 +13,7 @@ const availableToClaimCardProps = [
     id: "1",
     chainId: 1,
     roundId: "1",
-    amount: 100,
+    stakedAmount: 100,
     stakedAt: new Date(),
     unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
   },
@@ -23,7 +23,7 @@ const availableToClaimCardProps = [
     id: "2",
     chainId: 1,
     roundId: "1",
-    amount: 100,
+    stakedAmount: 100,
     stakedAt: new Date(),
     unlockAt: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 10),
   },
@@ -41,6 +41,7 @@ const simpleRound = {
   onClick: (pool?: { chainId: number; roundId: string }) => onPoolClick(pool),
   createdAtBlock: 123456,
   matchingPoolAmount: 100000,
+  matchingPoolTokenTicker: "GTC",
   stakedAmount: 100000,
   totalProjects: 100,
   totalStaked: 100000,
@@ -73,10 +74,65 @@ type Story = StoryObj<typeof StakePoolCard>;
 
 export const Default: Story = {
   args: {
-    data: simpleRound as StakePoolDataCardProps,
+    data: {
+      ...simpleRound,
+    } as StakePoolDataCardProps,
+  },
+  parameters: {
+    date: new Date(2023, 1, 1),
+  },
+};
+
+export const Claimable: Story = {
+  args: {
+    data: {
+      ...simpleRound,
+      isClaimable: true,
+      stakedProjects: simpleRound.stakedProjects.map((project) => ({
+        ...project,
+        unlockAt: simpleRound.votingEndDate,
+        isClaimable: true,
+      })),
+    } as StakePoolDataCardProps,
   },
   parameters: {
     date: new Date(2025, 1, 1),
+  },
+};
+
+export const PendingFinalization: Story = {
+  args: {
+    data: {
+      ...simpleRound,
+      stakedProjects: simpleRound.stakedProjects.map((project) => ({
+        ...project,
+        unlockAt: simpleRound.votingEndDate,
+      })),
+    } as StakePoolDataCardProps,
+  },
+  parameters: {
+    date: new Date(2025, 1, 1),
+  },
+};
+
+export const Claimed: Story = {
+  args: {
+    data: {
+      ...simpleRound,
+      stakedAmount: 100000,
+      claimed: true,
+      isClaimable: true,
+      stakedProjects: simpleRound.stakedProjects.map((project) => ({
+        ...project,
+        variant: "claimed",
+        isClaimable: true,
+        claimedAt: new Date(2025, 29, 12),
+        txHash: "0x1234567890abcdef",
+      })),
+    } as StakePoolDataCardProps,
+  },
+  parameters: {
+    date: new Date(2026, 1, 1),
   },
 };
 
@@ -116,35 +172,11 @@ export const Ended: Story = {
   },
 };
 
-export const Claimed: Story = {
-  args: {
-    data: {
-      ...simpleRound,
-      stakedAmount: 100000,
-      claimed: true,
-    } as StakePoolDataCardProps,
-  },
-  parameters: {
-    date: new Date(2026, 1, 1),
-  },
-};
-
 export const Loading: Story = {
   args: {
     data: {
       ...simpleRound,
       isLoading: true,
-    } as StakePoolDataCardProps,
-  },
-  parameters: {
-    date: new Date(2023, 1, 1),
-  },
-};
-
-export const NoLogo: Story = {
-  args: {
-    data: {
-      ...simpleRound,
     } as StakePoolDataCardProps,
   },
   parameters: {
