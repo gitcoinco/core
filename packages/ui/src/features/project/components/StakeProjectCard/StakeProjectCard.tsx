@@ -22,6 +22,8 @@ interface StakeProjectCardBaseProps {
   totalStaked?: number; // Total amount staked on the project
   numberOfContributors?: number; // Number of contributors that donated on the project
   totalDonations?: number; // Total donations in USD on the project
+  stakedAmount?: number; // Amount staked from a user
+  stakedAt?: Date; // Date when staked
 }
 
 // Props for staking functionality
@@ -30,6 +32,7 @@ interface StakingProps {
   stakeAmount: number; // Amount that is currently staked
   maxStakeAmount: number; // Maximum amount that can be staked
   tokenUsdValue: number; // USD value of one token
+  isStakingPeriodOver: boolean; // Whether the staking period is over
 }
 
 // Variant-specific props
@@ -44,14 +47,17 @@ interface StakeCardProps extends StakeProjectCardBaseProps, StakingProps {
 
 interface StakedUnclaimedCardProps extends StakeProjectCardBaseProps {
   variant: "staked";
-  amount: number; // Amount staked
+  stakedAmount: number; // Amount staked
+  rewardAmount?: number; // Estimated amount of reward
   stakedAt: Date; // Date when staked
   unlockAt: Date; // Date when unlocked
+  isClaimable?: boolean; // Whether the project is claimable depends on the merkleAirdrop contract
 }
 
 interface ClaimedCardProps extends StakeProjectCardBaseProps {
   variant: "claimed";
-  amount: number; // Amount staked
+  stakedAmount: number; // Amount staked
+  rewardAmount?: number; // Amount of reward
   stakedAt: Date; // Date when staked
   unlockAt: Date; // Date when unlocked
   claimedAt: Date; // Date when claimed
@@ -127,6 +133,16 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
                 label="Total contributors"
                 value={`${data.numberOfContributors}`}
               />
+              {data.stakedAmount && data.stakedAt && (
+                <IconWithDetails
+                  icon={IconType.LIGHTNING_BOLT}
+                  iconClassName="size-6 fill-purple-500"
+                  label={`on ${formatDate(data.stakedAt, DateFormat.ShortMonthDayYear)}`}
+                  value={`Staked ${data.stakedAmount} GTC`}
+                  labelClassName="font-ui-sans text-sm font-normal"
+                  valueClassName="font-ui-sans text-base font-bold"
+                />
+              )}
             </div>
           ))
           .otherwise(() => null)}
@@ -135,18 +151,20 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
       {match(props)
         .with({ variant: P.union("leaderboard", "stake") }, (data) => (
           <div className="flex flex-col items-end justify-end gap-6">
-            <div className="flex flex-col gap-2">
-              <span className="font-ui-sans text-sm font-normal">Amount (GTC)</span>
-              <StakeInput
-                project={{ id: data.id }}
-                maxAmount={data.maxStakeAmount}
-                stakeAmount={data.stakeAmount}
-                tokenUsdValue={data.tokenUsdValue}
-                onChange={(id, amount) => {
-                  data.onStakeChange(id, amount);
-                }}
-              />
-            </div>
+            {!data.isStakingPeriodOver && (
+              <div className="flex flex-col gap-2">
+                <span className="font-ui-sans text-sm font-normal">Amount (GTC)</span>
+                <StakeInput
+                  project={{ id: data.id }}
+                  maxAmount={data.maxStakeAmount}
+                  stakeAmount={data.stakeAmount}
+                  tokenUsdValue={data.tokenUsdValue}
+                  onChange={(id, amount) => {
+                    data.onStakeChange(id, amount);
+                  }}
+                />
+              </div>
+            )}
             <ViewProjectButton
               chainId={data.chainId}
               roundId={data.roundId}
@@ -160,52 +178,54 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
           const diff = moment.duration(moment().diff(staked.unlockAt));
           const days = diff.days();
           const months = diff.months();
+          const isClaimable = staked.variant === "staked" && staked.isClaimable;
 
-          const unlockMessage = isUnlocked
-            ? Math.abs(months) > 0
-              ? `Unlocked ${Math.abs(months)} months ago`
-              : `Unlocked ${Math.abs(days)} days ago`
-            : months > 0
-              ? `Unlocks in ${months} months`
-              : `Unlocks in ${days} days`;
+          const unlockMessage =
+            isUnlocked && isClaimable
+              ? Math.abs(months) > 0
+                ? `Unlocked ${Math.abs(months)} months ago`
+                : Math.abs(days) > 0
+                  ? `Unlocked ${Math.abs(days)} days ago`
+                  : `Unlocked < 1 day ago`
+              : isUnlocked && !isClaimable
+                ? "Finalizing the claim process"
+                : months > 0
+                  ? `Unlocks in ${months} months`
+                  : Math.abs(days) > 0
+                    ? `Unlocks in ${days} days`
+                    : `Unlocks in < 1 day`;
 
           return (
             <div className="flex items-center justify-end gap-8">
               <IconWithDetails
                 icon={IconType.LIGHTNING_BOLT}
-                iconClassName="size-6"
+                iconClassName="size-6 fill-purple-500"
                 label={`on ${formatDate(staked.stakedAt, DateFormat.ShortMonthDayYear)}`}
-                value={`Staked ${staked.amount} GTC`}
+                value={`Staked ${staked.stakedAmount} GTC`}
                 labelClassName="font-ui-sans text-sm font-normal"
                 valueClassName="font-ui-sans text-base font-bold"
               />
-              {isUnlocked ? (
+              {isUnlocked && staked.rewardAmount && staked.variant === "staked" ? (
                 <IconWithDetails
                   icon={IconType.LIGHTNING_BOLT}
                   iconClassName="size-6 fill-green-500 stroke-green-500"
                   label={`Stake Reward`}
-                  value={`${staked.amount} USD`}
-                  labelClassName="font-ui-sans text-sm font-normal"
-                  valueClassName="font-ui-sans text-base font-bold"
-                />
-              ) : staked.variant === "claimed" ? (
-                <IconWithDetails
-                  icon={IconType.LIGHTNING_BOLT}
-                  iconClassName="size-6 fill-purple-500 stroke-purple-500"
-                  label="Claimed reward"
-                  value={`${staked.amount} USD`}
+                  value={`~${staked.rewardAmount} USD`}
                   labelClassName="font-ui-sans text-sm font-normal"
                   valueClassName="font-ui-sans text-base font-bold"
                 />
               ) : (
-                <IconWithDetails
-                  icon={IconType.LIGHTNING_BOLT}
-                  iconClassName="size-6 fill-red-500 stroke-red-500"
-                  label="Stake Reward"
-                  value={`~ ${staked.amount} USD`}
-                  labelClassName="font-ui-sans text-sm font-normal"
-                  valueClassName="font-ui-sans text-base font-bold"
-                />
+                staked.rewardAmount &&
+                staked.variant === "claimed" && (
+                  <IconWithDetails
+                    icon={IconType.LIGHTNING_BOLT}
+                    iconClassName="size-6 fill-purple-500 stroke-purple-500"
+                    label="Claimed reward"
+                    value={`${staked.rewardAmount} USD`}
+                    labelClassName="font-ui-sans text-sm font-normal"
+                    valueClassName="font-ui-sans text-base font-bold"
+                  />
+                )
               )}
 
               <div className="flex flex-col items-center gap-2">
