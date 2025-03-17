@@ -34,11 +34,11 @@ export default meta;
 type Story = StoryObj<typeof ApplicationEvaluationOverviewPage>;
 
 export const Default: Story = {
-  // parameters: {
-  //   msw: {
-  //     handlers,
-  //   },
-  // },
+  parameters: {
+    msw: {
+      handlers,
+    },
+  },
   args: {
     chainId: 10,
     poolId: "7",

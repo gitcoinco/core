@@ -2,14 +2,12 @@
 import { GraphQLClient } from "graphql-request";
 
 // Base URL for the GraphQL API
-const GS_INDEXER_ENDPOINT = "http://gitcoin-data-layer-staging-lb-242619440.us-east-2.elb.amazonaws.com/v1/graphql";
-const GS_INDEXER_ADMIN_SECRET = "ADD_SECRET_HERE";
+const GS_INDEXER_ENDPOINT = "https://yc7lia2566.execute-api.us-east-2.amazonaws.com/api/v1/graphql";
 
 // Create a new instance of GraphQLClient
 export const graphqlClient = new GraphQLClient(GS_INDEXER_ENDPOINT, {
   headers: {
     "Content-Type": "application/json",
-    "x-hasura-admin-secret": GS_INDEXER_ADMIN_SECRET,
   },
 });
 
