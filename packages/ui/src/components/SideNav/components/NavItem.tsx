@@ -34,13 +34,13 @@ export const NavItem = ({
       {isRecursive ? (
         <div className={cn(baseClasses, "-ml-6")}>
           <div className="flex items-center gap-2 pl-6">
-            {item.iconType ? <Icon type={item.iconType} /> : item.icon}
+            {item.iconType ? <Icon type={item.iconType} className="shrink-0" /> : item.icon}
             {item.content}
           </div>
         </div>
       ) : (
         <div className={cn(baseClasses, "flex items-center gap-2")}>
-          {item.iconType ? <Icon type={item.iconType} /> : item.icon}
+          {item.iconType ? <Icon type={item.iconType} className="shrink-0" /> : item.icon}
           {item.content}
         </div>
       )}
