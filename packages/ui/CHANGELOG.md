@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.27
+
+### Patch Changes
+
+- [#50](https://github.com/gitcoinco/core/pull/50) [`d4f0a77`](https://github.com/gitcoinco/core/commit/d4f0a7779319c1a4230a61e8423544e6672a8563) Thanks [@thelostone-mc](https://github.com/thelostone-mc)! - migrate checker to use new indexer
+
 ## 0.0.0-beta.26
 
 ### Patch Changes
