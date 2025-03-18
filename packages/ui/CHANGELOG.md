@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.26
+
+### Patch Changes
+
+- [#51](https://github.com/gitcoinco/core/pull/51) [`8d51cce`](https://github.com/gitcoinco/core/commit/8d51cce48b4517cec330fc7564d0217469816c94) Thanks [@nijoe1](https://github.com/nijoe1)! - Staking app components improvements
+
 ## 0.0.0-beta.25
 
 ### Patch Changes
