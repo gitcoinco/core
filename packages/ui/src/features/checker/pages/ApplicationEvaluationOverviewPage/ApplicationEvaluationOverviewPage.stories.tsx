@@ -40,8 +40,8 @@ export const Default: Story = {
     },
   },
   args: {
-    chainId: 11155111,
-    poolId: "605",
+    chainId: 10,
+    poolId: "7",
     applicationId: "1",
     address: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
   },

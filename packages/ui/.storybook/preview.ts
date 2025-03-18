@@ -1,8 +1,7 @@
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
-import { mockDateDecorator } from "storybook-mock-date-decorator";
-
 import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+import { mockDateDecorator } from "storybook-mock-date-decorator";
 
 import "../src/index.css";
 import { handlers } from "../src/mocks/handlers";
