@@ -1,5 +1,7 @@
 # @gitcoin/config
 
+## 0.0.0-beta.27
+
 ## 0.0.0-beta.26
 
 ## 0.0.0-beta.25
