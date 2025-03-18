@@ -1,7 +1,5 @@
 import { formatDate, DateFormat } from "@/lib";
-import { Badge } from "@/primitives/Badge";
-import { Button } from "@/primitives/Button";
-import { IconType, Icon } from "@/primitives/Icon";
+import { IconType } from "@/primitives/Icon";
 
 import { IconWithDetails } from "./IconWithDetails";
 
@@ -19,7 +17,7 @@ export const StakedSection = ({
     <div className="flex w-full items-center justify-between">
       <IconWithDetails
         icon={IconType.LIGHTNING_BOLT}
-        iconClassName="size-6"
+        iconClassName="size-6 fill-purple-500"
         value={lastStakeDate ? `On ${formatDate(lastStakeDate, DateFormat.ShortMonthDayYear)}` : ""}
         valueClassName="font-ui-sans text-sm font-normal"
         label={`Staked ${stakeAmount} GTC`}

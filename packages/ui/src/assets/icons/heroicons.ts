@@ -4,6 +4,8 @@ import {
   PaperClipIcon,
   LogoutIcon,
   LoginIcon,
+  UserCircleIcon,
+  ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import {
   BriefcaseIcon,
@@ -74,6 +76,8 @@ enum HeroiconsType {
   LOGOUT = "logout",
   LOGIN = "login",
   BADGE_CHECK = "badge-check",
+  USER_CIRCLE = "user-circle",
+  SHOPPING_CART = "shopping-cart",
 }
 
 const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGElement>>> = {
@@ -111,6 +115,8 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   logout: LoginIcon,
   login: LogoutIcon,
   "badge-check": BadgeCheckIcon,
+  "user-circle": UserCircleIcon,
+  "shopping-cart": ShoppingCartIcon,
 };
 
 const heroIcons = Object.keys(heroiconsComponents).sort((a, b) =>
@@ -144,6 +150,8 @@ export {
   ExternalLinkIcon,
   LogoutIcon,
   LoginIcon,
+  UserCircleIcon,
+  ShoppingCartIcon,
   BadgeCheckIcon,
 };
 

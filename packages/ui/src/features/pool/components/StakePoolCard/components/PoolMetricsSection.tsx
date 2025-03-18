@@ -8,11 +8,13 @@ import { IconWithDetails } from "./IconWithDetails";
  */
 export const PoolMetricsSection = ({
   matchingPoolAmount,
+  matchingPoolTokenTicker,
   totalProjects,
   totalStaked,
   chainIcon,
 }: {
   matchingPoolAmount?: number;
+  matchingPoolTokenTicker?: string;
   totalProjects?: number;
   totalStaked?: number;
   chainIcon: IconType;
@@ -24,7 +26,7 @@ export const PoolMetricsSection = ({
           <div className="flex items-center justify-start gap-8">
             <IconWithDetails
               icon={IconType.GLOBE}
-              label={`${matchingPoolAmount} USD`}
+              label={`${matchingPoolAmount} ${matchingPoolTokenTicker}`}
               value="Matching Pool"
             />
             <IconWithDetails

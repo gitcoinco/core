@@ -1,6 +1,9 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { StakeProjectCard } from "./StakeProjectCard";
+
+const onStakeChange = action("onStakeChange");
 
 const meta: Meta<typeof StakeProjectCard> = {
   title: "Features/Project/StakeProjectCard",
@@ -21,7 +24,7 @@ export const Stake: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1,
     numberOfContributors: 100,
@@ -40,7 +43,7 @@ export const StakeWithLongDescription: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1000,
     numberOfContributors: 100,
@@ -55,7 +58,8 @@ export const StakedLockedUnclaimed: Story = {
     name: "Staked Project",
     description: "This project has been staked but not yet claimed",
     image: "https://picsum.photos/200",
-    amount: 25,
+    stakedAmount: 25,
+    rewardAmount: 10,
     stakedAt: new Date("2023-12-10"),
     unlockAt: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // 7 days in the future
     totalStaked: 1000,
@@ -68,7 +72,8 @@ export const StakedUnlockedUnclaimed: Story = {
     id: "3",
     name: "Unlocked Project",
     description: "This project is unlocked and ready to claim",
-    amount: 50,
+    stakedAmount: 50,
+    rewardAmount: 10,
     stakedAt: new Date("2023-10-15"),
     unlockAt: new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000), // 14 days in the past
     image: "https://picsum.photos/200",
@@ -82,7 +87,8 @@ export const Claimed: Story = {
     id: "4",
     name: "Claimed Project",
     description: "This project has been claimed",
-    amount: 75,
+    stakedAmount: 75,
+    rewardAmount: 10,
     stakedAt: new Date("2023-09-05"),
     unlockAt: new Date("2023-12-05"),
     claimedAt: new Date("2023-12-10"),
@@ -103,7 +109,7 @@ export const Leaderboard: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1,
     numberOfContributors: 100,

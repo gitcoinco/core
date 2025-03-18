@@ -41,6 +41,8 @@ export enum IconType {
   EXTERNAL_LINK = "external-link",
   LOGOUT = "logout",
   BADGE_CHECK = "badge-check",
+  USER_CIRCLE = "user-circle",
+  SHOPPING_CART = "shopping-cart",
   // Social Media
   TWITTER = "twitter",
   GITHUB = "github",
