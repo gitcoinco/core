@@ -5,13 +5,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { SideNav, SideNavProps } from "@/components/SideNav";
 
-const handleClick = action("handleClick");
+const handleClickAction = action("handleClick");
 
 // Wrapper component to handle state
 function SideNavWrapper(props: SideNavProps) {
   const [activeId, setActiveId] = useState<string | undefined>(props.activeId);
   const handleClick = (id: string | undefined) => {
-    console.log("id", id);
+    handleClickAction(id);
     setActiveId(id);
   };
 
@@ -95,7 +95,7 @@ const sampleItems = [
 export const Default: Story = {
   args: {
     items: sampleItems,
-    onClick: handleClick,
+    onClick: handleClickAction,
     hoverVariant: "grey",
   },
 };
@@ -110,6 +110,6 @@ export const WithCustomClass: Story = {
   args: {
     items: sampleItems,
     className: "bg-gray-100 p-4 rounded-lg",
-    onClick: handleClick,
+    onClick: handleClickAction,
   },
 };

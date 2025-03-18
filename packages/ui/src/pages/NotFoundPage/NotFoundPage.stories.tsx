@@ -1,7 +1,9 @@
+import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { NotFoundPage } from "./NotFoundPage";
 
+const handleClickAction = action("handleClick");
 const CUSTOM_DESCRIPTION =
   "Oops! We couldn’t find this voting page. Double-check the round ID/chain ID or reach out to your round admin for the correct link.";
 
@@ -37,7 +39,7 @@ export const WithButton: Story = {
     button: {
       label: "Go to home",
       onClick: () => {
-        console.log("clicked");
+        handleClickAction("clicked");
       },
     },
   },

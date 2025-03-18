@@ -4,13 +4,15 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { EvaluationAction } from "../../types";
 import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
 
+const onEvaluateAction = action("onEvaluate");
+
 const meta = {
   title: "Features/Checker/Components/ProjectEvaluationAction",
   component: ProjectEvaluationAction,
   args: {
     status: "pending",
     onEvaluate: (projectId: string, action: EvaluationAction) => {
-      console.log(`Evaluating project ${projectId} with action ${action}`);
+      onEvaluateAction(projectId, action);
     },
   },
 } satisfies Meta;
@@ -18,8 +20,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof ProjectEvaluationAction>;
-
-const onEvaluateAction = action("onEvaluate");
 
 export const Default: Story = {
   args: {

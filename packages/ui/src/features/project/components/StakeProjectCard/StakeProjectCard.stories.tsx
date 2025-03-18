@@ -1,6 +1,9 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { StakeProjectCard } from "./StakeProjectCard";
+
+const onStakeChange = action("onStakeChange");
 
 const meta: Meta<typeof StakeProjectCard> = {
   title: "Features/Project/StakeProjectCard",
@@ -21,7 +24,7 @@ export const Stake: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1,
     numberOfContributors: 100,
@@ -40,7 +43,7 @@ export const StakeWithLongDescription: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1000,
     numberOfContributors: 100,
@@ -106,7 +109,7 @@ export const Leaderboard: Story = {
     totalStaked: 1000,
     maxStakeAmount: 1000,
     onStakeChange: (applicationId, amount) => {
-      console.log(applicationId, amount);
+      onStakeChange(applicationId, amount);
     },
     tokenUsdValue: 1,
     numberOfContributors: 100,
