@@ -57,6 +57,7 @@ export const Toaster = () => {
               .otherwise(() => <Icon type={IconType.SOLID_X} className="size-5 rounded-full" />);
             return (
               <Toast
+                key={toast.id}
                 toast={{
                   ...toast,
                   icon: ToastIcon ?? IconType.SOLID_X,
