@@ -7,7 +7,7 @@ import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { FundRoundSection, ActionButtons } from "./components";
 import { DistributeTabs } from "./components/DistributeTabs";
 import { useRound } from "./hooks/useRound";
-import { formatAmountFromPercentage } from "./utils";
+import { formatAmountFromPercentageWithConstant, getAvailableTokensToDistribute } from "./utils";
 
 interface DistributeProps {
   applications: ApplicationPayout[];
@@ -42,6 +42,11 @@ export const Distribute = ({
     [applications],
   );
 
+  const availableTokensToDistribute = getAvailableTokensToDistribute(
+    applications.length,
+    poolConfig,
+  );
+
   const canEdit = finalizedApplications.length === 0 && pendingApplications.length > 0;
   const hasPendingApplications = pendingApplications.length > 0;
   const distributionCompleted =
@@ -53,10 +58,11 @@ export const Distribute = ({
         .filter((p) => selectedApplications.includes(p.id))
         .map((p) => ({
           applicationId: p.id,
-          amount: formatAmountFromPercentage(
-            poolConfig.amountOfTokensToDistribute,
+          amount: formatAmountFromPercentageWithConstant(
+            availableTokensToDistribute,
             p.payoutPercentage,
             poolConfig.tokenDecimals,
+            poolConfig.constantAmountPerGrant,
           ),
         })),
     );
@@ -65,10 +71,11 @@ export const Distribute = ({
   const totalPaid = finalizedApplications.reduce(
     (acc, curr) =>
       acc +
-      formatAmountFromPercentage(
-        poolConfig.amountOfTokensToDistribute,
+      formatAmountFromPercentageWithConstant(
+        availableTokensToDistribute,
         curr.payoutPercentage,
         poolConfig.tokenDecimals,
+        poolConfig.constantAmountPerGrant,
       ),
     0n,
   );

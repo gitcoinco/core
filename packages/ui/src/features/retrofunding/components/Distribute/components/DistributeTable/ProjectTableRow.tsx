@@ -4,10 +4,13 @@ import { NumericFormat } from "react-number-format";
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
 import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { TableRow, TableCell } from "@/primitives/Table";
+import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 
-import { formatAmountFromPercentage } from "../../utils";
+import {
+  formatAmountFromPercentageWithConstant,
+  getAvailableTokensToDistribute,
+} from "../../utils";
 
 interface ApplicationTableRowProps {
   application: ApplicationPayout;
@@ -61,6 +64,10 @@ export const ProjectTableRow = ({
     return () => input?.removeEventListener("wheel", handleWheel);
   }, [handleWheel, inputRef.current]);
 
+  const availableTokensToDistribute = getAvailableTokensToDistribute(
+    allApplications.length,
+    poolConfig,
+  );
   const handleSafeChange = useCallback(
     (newValue: number) => {
       const otherApplicationsTotal = editedApplications
@@ -73,7 +80,8 @@ export const ProjectTableRow = ({
   );
 
   const formatPayoutAmount = (percentage: number): number => {
-    const amount = (percentage / 100) * poolConfig.amountOfTokensToDistribute;
+    const amount =
+      (percentage / 100) * availableTokensToDistribute + poolConfig.constantAmountPerGrant;
     return Number(amount.toFixed(4));
   };
 
@@ -169,10 +177,11 @@ export const ProjectTableRow = ({
               onDistribute([
                 {
                   applicationId: application.id,
-                  amount: formatAmountFromPercentage(
+                  amount: formatAmountFromPercentageWithConstant(
                     poolConfig.amountOfTokensToDistribute,
                     application.payoutPercentage,
                     poolConfig.tokenDecimals,
+                    poolConfig.constantAmountPerGrant,
                   ),
                 },
               ])
