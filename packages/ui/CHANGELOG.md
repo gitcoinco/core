@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.28
+
+### Patch Changes
+
+- [#54](https://github.com/gitcoinco/core/pull/54) [`5b195a4`](https://github.com/gitcoinco/core/commit/5b195a4cde0b05f2688d6832f6d6613710bd6bfe) Thanks [@nijoe1](https://github.com/nijoe1)! - Fixes past applications query
+
 ## 0.0.0-beta.27
 
 ### Patch Changes
