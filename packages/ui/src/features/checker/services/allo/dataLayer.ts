@@ -55,7 +55,7 @@ export async function getPastApplicationsByApplicationIdFromIndexer(
       applicationId,
     });
 
-    return response.applications[0].project[0].applications as PastApplication[];
+    return response.applications[0].project.applications as PastApplication[];
   } catch (e) {
     throw new Error(`Failed to fetch past applications data. with error: ${e}`);
   }

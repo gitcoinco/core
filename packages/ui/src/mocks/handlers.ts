@@ -5,6 +5,7 @@ import { applicationsForManagers } from "./mockData/applicationsForManager";
 import { checkerApplicationEvaluations } from "./mockData/checkerApplicationEvaluations";
 import { checkerPoolData } from "./mockData/checkerPoolData";
 import { getApplicationById } from "./mockData/indexerGetApplicationById";
+import { pastApplicationsByApplicationId } from "./mockData/pastApplicationsByApplicationId";
 
 export const taskListHandler = http.get("https://jsonplaceholder.typicode.com/todos", () => {
   return HttpResponse.json([
@@ -43,10 +44,18 @@ export const checkerApplicationEvaluationsHandler = graphql.query(
   },
 );
 
+export const getPastApplicationsByApplicationIdHandler = graphql.query(
+  "getPastApplicationsByApplicationId",
+  () => {
+    return HttpResponse.json({ data: pastApplicationsByApplicationId });
+  },
+);
+
 export const handlers = [
   taskListHandler,
   applicationForManagerHandler,
   checkerPoolDataHandler,
   indexerGetApplicationByIdHandler,
   checkerApplicationEvaluationsHandler,
+  getPastApplicationsByApplicationIdHandler,
 ];
