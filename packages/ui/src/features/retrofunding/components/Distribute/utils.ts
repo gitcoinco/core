@@ -1,5 +1,7 @@
 import { formatUnits, parseUnits } from "viem";
 
+import { PoolConfig } from "@/types/distribute";
+
 /**
  * Calculates a percentage of a token amount and converts it to the token's smallest unit (wei/gwei/etc)
  * @param amountOfTokens - The total amount of tokens in human readable format (e.g., 100 for 100 tokens)
@@ -13,6 +15,26 @@ export const formatAmountFromPercentage = (
   tokenDecimals: number,
 ) => {
   return safeParseUnits(((amountOfTokens * percentage) / 100) * 10 ** 9, tokenDecimals) / 10n ** 9n;
+};
+
+/**
+ * Formats a token amount from a percentage and a constant amount per grant
+ * @param amountOfTokens - The total amount of tokens in human readable format (e.g., 100 for 100 tokens)
+ * @param percentage - The percentage to calculate (e.g., 50 for 50%)
+ * @param tokenDecimals - The number of decimal places for the token (e.g., 18 for ETH)
+ * @param constantAmountPerGrant - The constant amount per grant in human readable format (e.g., 100 for 100 tokens)
+ * @returns The formatted amount in the token's smallest unit as a bigint
+ */
+export const formatAmountFromPercentageWithConstant = (
+  amountOfTokens: number,
+  percentage: number,
+  tokenDecimals: number,
+  constantAmountPerGrant: number,
+) => {
+  return (
+    formatAmountFromPercentage(amountOfTokens, percentage, tokenDecimals) +
+    safeParseUnits(constantAmountPerGrant.toString(), tokenDecimals)
+  );
 };
 
 /**
@@ -82,4 +104,23 @@ export const formatAmount = (amount: bigint, decimals: number, maxDecimals?: num
     useGrouping: false,
     maximumSignificantDigits: decimals,
   });
+};
+
+export const getAvailableTokensToDistribute = (
+  numberOfApplications: number,
+  poolConfig: PoolConfig,
+) => {
+  const constantDistributeAmount = (
+    numberOfApplications * poolConfig.constantAmountPerGrant
+  ).toLocaleString("fullwide", {
+    useGrouping: false,
+    maximumSignificantDigits: 9,
+  });
+
+  const totalConstantDistributeAmount = Number(safeParseUnits(constantDistributeAmount, 9)) / 1e9;
+
+  const availableTokensToDistribute =
+    poolConfig.amountOfTokensToDistribute - totalConstantDistributeAmount;
+
+  return availableTokensToDistribute;
 };

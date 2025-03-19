@@ -64,6 +64,21 @@ export const FundRoundSection = ({
           <span className="font-ui-mono text-sm font-bold">
             {poolConfig.amountOfTokensToDistribute} {poolConfig.tokenTicker}
           </span>
+          {!!poolConfig.constantAmountPerGrant && (
+            <div className="flex items-center gap-1 pl-5">
+              <Icon
+                className="size-5 rounded-full text-yellow-500"
+                type={IconType.INFORMATION_CIRCLE}
+              />
+              <span className="font-ui-sans text-sm font-normal">
+                This round has a constant distribution amount per application of
+              </span>
+
+              <span className="font-ui-mono text-sm font-bold">
+                {poolConfig.constantAmountPerGrant} {poolConfig.tokenTicker}
+              </span>
+            </div>
+          )}
         </div>
       )}
     </div>

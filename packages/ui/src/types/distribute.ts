@@ -11,6 +11,7 @@ export interface ApplicationPayout {
 
 export interface PoolConfig {
   tokenTicker: string;
+  constantAmountPerGrant: number;
   amountOfTokensInPool: bigint | string;
   amountOfTokensToDistribute: number;
   tokenDecimals: number;

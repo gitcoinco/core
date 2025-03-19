@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { StoryObj, Meta } from "@storybook/react";
-import { parseUnits } from "viem";
+import { formatUnits, parseUnits } from "viem";
 
 import { PoolStatus } from "@/types";
 import { ApplicationPayout, PoolConfig } from "@/types/distribute";
@@ -19,11 +19,12 @@ const TOKEN_DECIMALS = 18;
 
 const POOL_CONFIG: PoolConfig = {
   tokenTicker: "ETH",
-  amountOfTokensInPool: parseUnits("10", TOKEN_DECIMALS).toString(),
+  amountOfTokensInPool: parseUnits("100", TOKEN_DECIMALS).toString(),
   amountOfTokensToDistribute: 100,
   tokenDecimals: TOKEN_DECIMALS,
   poolStatus: PoolStatus.FundingPending,
   chainId: 11155111,
+  constantAmountPerGrant: 0,
 };
 
 const MOCK_APPLICATIONS: ApplicationPayout[] = [
@@ -32,28 +33,28 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
     title: "Project Alpha",
     imageUrl: "https://picsum.photos/100",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 23,
+    payoutPercentage: 10.4,
   },
   {
     id: "2",
     title: "Long Project Title That Might Need Truncation",
     imageUrl: "https://picsum.photos/101",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 23,
+    payoutPercentage: 14.6,
   },
   {
     id: "3",
     title: "Project Beta",
     imageUrl: "https://picsum.photos/102",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 23,
+    payoutPercentage: 23.7,
   },
   {
     id: "4",
     title: "Project Gamma",
     imageUrl: "https://picsum.photos/103",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 23,
+    payoutPercentage: 22.3,
   },
   {
     id: "5",
@@ -77,14 +78,14 @@ const MOCK_APPLICATIONS: ApplicationPayout[] = [
     title: "Project Zeta",
     imageUrl: "https://picsum.photos/106",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2,
+    payoutPercentage: 13.4,
   },
   {
     id: "8",
     title: "Project Epsilon",
     imageUrl: "https://picsum.photos/107",
     payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2,
+    payoutPercentage: 11.6,
   },
 ];
 
@@ -93,7 +94,17 @@ const args = {
   poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: parseUnits("96", TOKEN_DECIMALS).toString() },
   canResetEdit: true,
   onFundRound: async (values: any) => onFundRound(values),
-  onDistribute: async (values: any) => onDistribute(values),
+  onDistribute: async (values: any) => {
+    const finalAmount = values.reduce((acc: any, curr: any) => {
+      acc += curr.amount;
+      return acc;
+    }, 0n);
+    onDistribute(
+      "Amount to distribute: ",
+      formatUnits(finalAmount, POOL_CONFIG.tokenDecimals),
+      values,
+    );
+  },
   onEditPayouts: async (values: any) => onEditPayouts(values),
   onResetEdit: async () => onResetEdit(),
   className: "w-full",
@@ -149,6 +160,23 @@ export const NoFinalizedProjects: StoryObj<typeof Distribute> = {
     poolConfig: {
       ...POOL_CONFIG,
       amountOfTokensInPool: parseUnits("100", POOL_CONFIG.tokenDecimals).toString(),
+    },
+  },
+};
+
+export const NoFinalizedProjectsWithConstantAmountPerGrant: StoryObj<typeof Distribute> = {
+  args: {
+    ...args,
+    applications: MOCK_APPLICATIONS.map((application) => ({
+      ...application,
+      payoutTransactionHash: undefined,
+    })),
+    poolConfig: {
+      ...POOL_CONFIG,
+      constantAmountPerGrant: 10000,
+      amountOfTokensInPool: parseUnits("300000", POOL_CONFIG.tokenDecimals).toString(),
+      amountOfTokensToDistribute: 300000,
+      tokenTicker: "USDC",
     },
   },
 };
