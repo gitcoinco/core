@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.29
+
+### Patch Changes
+
+- [#56](https://github.com/gitcoinco/core/pull/56) [`0fa143f`](https://github.com/gitcoinco/core/commit/0fa143fa5d441daee7ccd3d8fb7061eadd3a56bd) Thanks [@nijoe1](https://github.com/nijoe1)! - Adds optional constant funding per grantee in retrofunding Distribute component
+
 ## 0.0.0-beta.28
 
 ### Patch Changes
