@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, Fragment } from "react";
 
 import { tv } from "tailwind-variants";
 
@@ -21,7 +23,7 @@ const desktopLeaderboard = tv({
     projectName: "leaderboard-table-headers font-ui-sans text-xl font-normal leading-7",
     metricValue: "leaderboard-table-items font-ui-sans text-xl font-normal leading-7",
     icon: "leaderboard-table-icons size-5 shrink-0 cursor-pointer",
-    tooltipText: "leaderboard-table-items text-sm",
+    tooltipText: "leaderboard-table-items w-44 text-sm",
   },
 });
 
@@ -85,7 +87,7 @@ export const DesktopLeaderboard = ({
   };
 
   return (
-    <div className="hidden flex-col gap-4 overflow-y-auto md:flex">
+    <div className="flex-col gap-4 overflow-y-auto">
       <Table className="table-auto">
         <TableHeader>
           <TableRow className="border-none">
@@ -130,8 +132,8 @@ export const DesktopLeaderboard = ({
             const { project, metrics: projectMetrics, originalRank } = projectData;
             const isExpanded = expandedProject === originalRank;
             return (
-              <>
-                <TableRow key={originalRank} className="border-b border-leaderboard-border">
+              <Fragment key={originalRank}>
+                <TableRow className="border-b border-leaderboard-border">
                   <TableCell className="pl-12">
                     <span
                       className={cn(
@@ -177,7 +179,7 @@ export const DesktopLeaderboard = ({
                     </TableCell>
                   </TableRow>
                 )}
-              </>
+              </Fragment>
             );
           })}
         </TableBody>

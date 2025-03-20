@@ -1,11 +1,13 @@
 import { tv } from "tailwind-variants";
+import { useMediaQuery } from "usehooks-ts";
 
 import { IconLabel } from "@/components/IconLabel";
+import { cn } from "@/lib";
 import { IconType } from "@/primitives/Icon";
 
 const projectInfoVariants = tv({
   slots: {
-    container: "flex flex-col gap-4 pb-4 pl-4 md:pl-6",
+    container: "flex flex-col gap-4 pb-4 pl-4",
     title:
       "leaderboard-project-info-link cursor-pointer truncate font-ui-sans text-sm font-normal leading-7 hover:underline",
     description:
@@ -25,9 +27,10 @@ interface ProjectInfoProps {
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
   const { container, title, description, icon } = projectInfoVariants();
+  const isDesktopView = useMediaQuery("(min-width: 768px)");
   return (
-    <div className={container()}>
-      <div className="flex w-fit flex-col gap-1 md:flex-row md:gap-6">
+    <div className={cn(container(), isDesktopView && "pl-6")}>
+      <div className={cn("flex w-fit flex-col gap-1", isDesktopView && "flex-row gap-6")}>
         <IconLabel
           type="social"
           platform="website"

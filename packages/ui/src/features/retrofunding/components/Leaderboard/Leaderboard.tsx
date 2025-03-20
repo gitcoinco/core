@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
+import { useMediaQuery } from "usehooks-ts";
+
+import { cn } from "@/lib/utils";
 
 import { DesktopLeaderboard, MobileLeaderboard } from "./components";
 import { LeaderboardProps } from "./types";
@@ -35,7 +38,7 @@ const leaderboardVariants = tv({
 
 interface LeaderboardPropsWithVariants
   extends VariantProps<typeof leaderboardVariants>,
-    Omit<LeaderboardProps, "expandedProject" | "setExpandedProject"> {}
+    Omit<LeaderboardProps, "expandedProject" | "setExpandedProject" | "paginationProps"> {}
 
 export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWithVariants) => {
   const leaderboardClassNames = leaderboardVariants({
@@ -44,6 +47,7 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const isDesktopView = useMediaQuery("(min-width: 768px)");
 
   const totalProjects = Object.keys(projects).length;
 
@@ -68,33 +72,38 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
   };
 
   return (
-    <div className={leaderboardClassNames}>
-      <DesktopLeaderboard
-        projects={projects}
-        metrics={metrics}
-        paginationProps={{
-          currentPage,
-          totalPages,
-          rowsPerPage: itemsPerPage,
-          onPageChange: handlePageChange,
-          onRowsChange: handleRowsChange,
-        }}
-        expandedProject={expandedProject}
-        setExpandedProject={setExpandedProject}
-      />
-      <MobileLeaderboard
-        projects={projects}
-        metrics={metrics}
-        paginationProps={{
-          currentPage,
-          totalPages,
-          rowsPerPage: itemsPerPage,
-          onPageChange: handlePageChange,
-          onRowsChange: handleRowsChange,
-        }}
-        expandedProject={expandedProject}
-        setExpandedProject={setExpandedProject}
-      />
+    <div className={cn(leaderboardClassNames, "w-full")}>
+      {isDesktopView ? (
+        <DesktopLeaderboard
+          key={`desktop-leaderboard-${currentPage}`}
+          projects={projects}
+          metrics={metrics}
+          paginationProps={{
+            currentPage,
+            totalPages,
+            rowsPerPage: itemsPerPage,
+            onPageChange: handlePageChange,
+            onRowsChange: handleRowsChange,
+          }}
+          expandedProject={expandedProject}
+          setExpandedProject={setExpandedProject}
+        />
+      ) : (
+        <MobileLeaderboard
+          key={`mobile-leaderboard-${currentPage}`}
+          projects={projects}
+          metrics={metrics}
+          paginationProps={{
+            currentPage,
+            totalPages,
+            rowsPerPage: itemsPerPage,
+            onPageChange: handlePageChange,
+            onRowsChange: handleRowsChange,
+          }}
+          expandedProject={expandedProject}
+          setExpandedProject={setExpandedProject}
+        />
+      )}
     </div>
   );
 };
