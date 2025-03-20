@@ -271,6 +271,7 @@
     "storybook-mock-date-decorator": "^2.0.6",
     "tailwind-variants": "^0.2.1",
     "ts-pattern": "^5.5.0",
+    "usehooks-ts": "^3.1.1",
     "vaul": "^1.1.0",
     "viem": "^2.21.48",
     "vite-plugin-svgr": "^4.2.0",

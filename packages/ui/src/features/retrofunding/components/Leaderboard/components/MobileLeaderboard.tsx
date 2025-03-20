@@ -19,7 +19,7 @@ const mobileLeaderboard = tv({
     metricValue: "leaderboard-table-items font-ui-sans text-base font-medium",
     itemContainer: "leaderboard-border overflow-hidden rounded-lg border bg-transparent",
     icon: "leaderboard-table-icons size-5 shrink-0 cursor-pointer",
-    tooltipText: "leaderboard-table-items text-sm",
+    tooltipText: "leaderboard-table-items w-36 text-sm",
   },
 });
 
@@ -58,7 +58,7 @@ export const MobileLeaderboard = ({
     paginationProps.currentPage * paginationProps.rowsPerPage,
   );
   return (
-    <div className="block space-y-4 p-1 md:hidden">
+    <div className="space-y-4 p-1">
       {paginatedProjects.map((projectData) => {
         const { project, metrics: projectMetrics, originalRank } = projectData;
         const isExpanded = expandedProject === originalRank;
