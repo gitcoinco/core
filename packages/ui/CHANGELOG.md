@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.30
+
+### Patch Changes
+
+- [#58](https://github.com/gitcoinco/core/pull/58) [`7fd46ec`](https://github.com/gitcoinco/core/commit/7fd46ec076d7a91ccfd85ba1b6f3064534d51374) Thanks [@nijoe1](https://github.com/nijoe1)! - Fixed retrofunding leaderboard component issues
+
 ## 0.0.0-beta.29
 
 ### Patch Changes
