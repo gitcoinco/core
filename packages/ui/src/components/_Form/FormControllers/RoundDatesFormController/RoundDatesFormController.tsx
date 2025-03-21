@@ -175,7 +175,7 @@ export const RoundDatesFormController: React.FC<RoundDatesFormProps> = ({
           isSelected={isSelected(roundStart)}
           lineColor={roundLineColor}
           showLine
-          lineHeight="h-[104px]"
+          lineHeight={enableNoRoundEndDate ? "h-[104px]" : "h-[75px]"}
           error={roundStartError}
         >
           <div className="flex flex-col gap-2 ">
