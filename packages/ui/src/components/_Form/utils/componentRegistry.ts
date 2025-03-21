@@ -10,7 +10,7 @@ import { MetricsFormController } from "../FormControllers";
 import { RoundDatesFormController } from "../FormControllers";
 import { DisabledProgramInputFormController } from "../FormControllers";
 import { SelectFormController } from "../FormControllers";
-
+import { WeightedAllowlistFormController } from "../FormControllers";
 // Extend or adjust as you add more components.
 export const componentRegistry = {
   Input: {
@@ -55,6 +55,10 @@ export const componentRegistry = {
   },
   DisabledProgramInput: {
     Component: DisabledProgramInputFormController,
+    isControlled: true,
+  },
+  WeightedAllowlist: {
+    Component: WeightedAllowlistFormController,
     isControlled: true,
   },
 };

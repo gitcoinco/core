@@ -7,3 +7,4 @@ export * from "./AllowlistFormController";
 export * from "./ApplicationQuestionsFormController";
 export * from "./MetricsFormController";
 export * from "./DisabledProgramInputFormController";
+export * from "./WeightedAllowlistFormController";
