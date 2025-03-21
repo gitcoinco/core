@@ -208,16 +208,39 @@ const voterAllowlistFields: FormField[] = [
       name: "voterAllowlist",
       label: "",
       validation: {
-        arrayValidation: {
-          itemType: "address",
-          minItems: 2,
-          maxItems: 100,
-          minItemsMessage: "At least two addresses are required",
-          maxItemsMessage: "Maximum of 100 addresses allowed",
+        objectValidation: {
+          properties: {
+            addresses: {
+              type: "array",
+              label: "addresses",
+              isRequired: true,
+              arrayValidation: {
+                minItems: 1,
+                minItemsMessage: "At least one address is required",
+                itemType: "address",
+              },
+            },
+            weights: {
+              type: "array",
+              label: "weights",
+              arrayValidation: {
+                minItems: 0,
+                maxItems: 10,
+                minItemsMessage: "At least one address is required",
+                itemType: "number",
+              },
+              isRequired: false,
+            },
+            isWeighted: {
+              type: "boolean",
+              label: "Weighted",
+              isRequired: false,
+            },
+          },
         },
       },
     },
-    component: "Allowlist",
+    component: "WeightedAllowlist",
   },
 ];
 
