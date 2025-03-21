@@ -10,6 +10,7 @@
     "@gitcoin/utils": "0.0.0"
   },
   "changesets": [
+    "chatty-otters-visit",
     "chilly-poems-decide",
     "cuddly-pumas-watch",
     "curly-clouds-travel",

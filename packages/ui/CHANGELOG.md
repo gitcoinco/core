@@ -1,5 +1,14 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.31
+
+### Patch Changes
+
+- [#60](https://github.com/gitcoinco/core/pull/60) [`8cdb29e`](https://github.com/gitcoinco/core/commit/8cdb29ebd4a5944acf06aead83f8a54d01b02073) Thanks [@nijoe1](https://github.com/nijoe1)! - feat: add WeightedAllowlistFormController to modular Form
+  feat: create Object validator for modular form
+  fix: improve checker evaluation form
+  fix: update RoundDatesController UI styling
+
 ## 0.0.0-beta.30
 
 ### Patch Changes
