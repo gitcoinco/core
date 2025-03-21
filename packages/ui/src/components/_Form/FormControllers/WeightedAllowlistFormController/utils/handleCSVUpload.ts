@@ -1,5 +1,5 @@
-import { isAddress, getAddress } from "ethers/lib/utils";
 import Papa from "papaparse";
+import { isAddress, getAddress } from "viem";
 
 /**
  * Handles CSV file upload and extracts valid addresses with optional weights
