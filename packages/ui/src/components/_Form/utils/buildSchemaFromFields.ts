@@ -4,9 +4,10 @@ import { FormField } from "@/types";
 
 import { buildArraySchema } from "./validations/validateArray";
 import { buildFileSchema } from "./validations/validateFile";
+import { buildNumberSchema } from "./validations/validateNumber";
+import { buildObjectSchema } from "./validations/validateObject";
 import { getRoundDatesSchema } from "./validations/validateRoundDates";
 import { buildStringSchema } from "./validations/validateString";
-import { buildNumberSchema } from "./validations/validateNumber";
 
 /**
  * Builds a Zod schema object from an array of FormFields.
@@ -62,7 +63,14 @@ export function buildSchemaFromFields(fields: FormField[]): z.ZodObject<any> {
       continue;
     }
 
-    // 6) Otherwise, default to string-based validation
+    // 7) isObjectValidation
+    if (validation?.objectValidation) {
+      fieldSchema = buildObjectSchema(validation.objectValidation);
+      shape[name] = fieldSchema;
+      continue;
+    }
+
+    // 8) Otherwise, default to string-based validation
     shape[name] = z.string();
   }
 

@@ -1,4 +1,10 @@
-import { AllowlistProps, FieldArrayProps, MetricsProps, RoundDatesFormProps } from "@/components/_Form";
+import {
+  AllowlistProps,
+  FieldArrayProps,
+  MetricsProps,
+  RoundDatesFormProps,
+  ObjectValidationConfig,
+} from "@/components/_Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
 import { InputProps } from "@/primitives/Input";
 import { SelectProps } from "@/primitives/Select";
@@ -20,7 +26,7 @@ export interface FileValidationConfig {
 }
 
 export interface ArrayValidationConfig {
-  itemType?: "string" | "address";
+  itemType?: "string" | "address" | "number";
   minItems?: number;
   minItemsMessage?: string;
   maxItems?: number;
@@ -47,6 +53,7 @@ export interface ValidationConfig extends BaseValidation {
   arrayValidation?: ArrayValidationConfig;
   stringValidation?: StringValidationConfig;
   numberValidation?: NumberValidationConfig;
+  objectValidation?: ObjectValidationConfig;
   // any other custom validations
 }
 
@@ -117,6 +124,11 @@ export interface DisabledProgramInput {
   component: "DisabledProgramInput";
 }
 
+export interface WeightedAllowlist {
+  field: BaseField;
+  component: "WeightedAllowlist";
+}
+
 export type FormField =
   | InputField
   | TextareaField
@@ -128,4 +140,5 @@ export type FormField =
   | Metrics
   | ApplicationQuestions
   | Allowlist
-  | DisabledProgramInput;
+  | DisabledProgramInput
+  | WeightedAllowlist;

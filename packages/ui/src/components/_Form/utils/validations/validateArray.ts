@@ -10,7 +10,7 @@ import { ArrayValidationConfig } from "@/types";
  * - validating each item as an address
  */
 export function buildArraySchema(config: ArrayValidationConfig) {
-  let schema = z.array(z.string());
+  let schema = z.array(z.any());
 
   if (config.minItems) {
     schema = schema.min(config.minItems, config.minItemsMessage);
@@ -26,6 +26,32 @@ export function buildArraySchema(config: ArrayValidationConfig) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
             message: `Invalid address at index ${idx}`,
+          });
+        }
+      });
+    });
+  }
+
+  if (config.itemType === "string") {
+    return schema.superRefine((arr, ctx) => {
+      arr.forEach((item, idx) => {
+        if (typeof item !== "string") {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `Invalid string at index ${idx}`,
+          });
+        }
+      });
+    });
+  }
+
+  if (config.itemType === "number") {
+    return schema.superRefine((arr, ctx) => {
+      arr.forEach((item, idx) => {
+        if (typeof item !== "number") {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `Invalid number at index ${idx}`,
           });
         }
       });

@@ -108,7 +108,7 @@ export const SubmitApplicationEvaluationPage = ({
   }) => {
     const data = evaluationQuestions.map((q) => ({
       questionIndex: q.questionIndex,
-      answerEnum: getAnswerEnum(selections[q.questionIndex - 1]),
+      answerEnum: getAnswerEnum(selections[Number(q.questionIndex)]),
     }));
 
     const evaluationType =

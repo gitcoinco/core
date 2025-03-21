@@ -35,7 +35,7 @@ export const EvaluationForm: React.FC<EvaluationFormProps> = ({ onSubmit, groups
   const [feedback, setFeedback] = React.useState("");
 
   const handleSelectionChange = (newSelections: Record<string, string>) => {
-    setSelections(newSelections);
+    setSelections((prev) => ({ ...prev, ...newSelections }));
   };
 
   const handleFeedbackChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
