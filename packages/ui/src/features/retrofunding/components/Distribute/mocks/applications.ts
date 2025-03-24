@@ -1,0 +1,98 @@
+import Decimal from "decimal.js";
+
+import { ApplicationPayout } from "@/types/distribute";
+
+export const MOCK_APPLICATIONS: ApplicationPayout[] = [
+  {
+    id: "1",
+    title: "Project Alpha",
+    imageUrl: "https://picsum.photos/100",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(10.4),
+  },
+  {
+    id: "2",
+    title: "Long Project Title That Might Need Truncation",
+    imageUrl: "https://picsum.photos/101",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(14.6),
+  },
+  {
+    id: "3",
+    title: "Project Beta",
+    imageUrl: "https://picsum.photos/102",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(23.7),
+  },
+  {
+    id: "4",
+    title: "Project Gamma",
+    imageUrl: "https://picsum.photos/103",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(22.3),
+  },
+  {
+    id: "5",
+    title: "Project Delta",
+    imageUrl: "https://picsum.photos/104",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(2 + 1e-7),
+    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
+  },
+  {
+    id: "6",
+    title: "Project Epsilon",
+    imageUrl: "https://picsum.photos/105",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(1 + (1 - 1e-7)),
+    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
+  },
+
+  {
+    id: "7",
+    title: "Project Zeta",
+    imageUrl: "https://picsum.photos/106",
+    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+    payoutPercentage: new Decimal(25),
+  },
+];
+
+export const MOCK_APPLICATIONS2: ApplicationPayout[] = [
+  { id: "1", payoutPercentage: 7.2546, payoutTransactionHash: undefined },
+  { id: "2", payoutPercentage: 5.8971, payoutTransactionHash: undefined },
+  { id: "3", payoutPercentage: 1.0325, payoutTransactionHash: undefined },
+  { id: "4", payoutPercentage: 3.4782, payoutTransactionHash: undefined },
+  { id: "5", payoutPercentage: 4.2159, payoutTransactionHash: undefined },
+  { id: "6", payoutPercentage: 2.7634, payoutTransactionHash: undefined },
+  { id: "7", payoutPercentage: 6.5298, payoutTransactionHash: undefined },
+  { id: "8", payoutPercentage: 0.8745, payoutTransactionHash: undefined },
+  { id: "9", payoutPercentage: 1.5236, payoutTransactionHash: undefined },
+  { id: "10", payoutPercentage: 5.1278, payoutTransactionHash: undefined },
+  { id: "11", payoutPercentage: 8.9342, payoutTransactionHash: undefined },
+  { id: "12", payoutPercentage: 2.3698, payoutTransactionHash: undefined },
+  { id: "13", payoutPercentage: 4.8765, payoutTransactionHash: undefined },
+  { id: "14", payoutPercentage: 3.6943, payoutTransactionHash: undefined },
+  { id: "15", payoutPercentage: 1.2478, payoutTransactionHash: undefined },
+  { id: "16", payoutPercentage: 0.6321, payoutTransactionHash: undefined },
+  { id: "17", payoutPercentage: 9.7452, payoutTransactionHash: undefined },
+  { id: "18", payoutPercentage: 2.1576, payoutTransactionHash: undefined },
+  { id: "19", payoutPercentage: 3.8219, payoutTransactionHash: undefined },
+  { id: "20", payoutPercentage: 1.9845, payoutTransactionHash: undefined },
+  { id: "21", payoutPercentage: 4.5678, payoutTransactionHash: undefined },
+  { id: "22", payoutPercentage: 2.8923, payoutTransactionHash: undefined },
+  { id: "23", payoutPercentage: 0.7856, payoutTransactionHash: undefined },
+  { id: "24", payoutPercentage: 1.4532, payoutTransactionHash: undefined },
+  { id: "25", payoutPercentage: 3.9278, payoutTransactionHash: undefined },
+  { id: "26", payoutPercentage: 2.6591, payoutTransactionHash: undefined },
+  { id: "27", payoutPercentage: 0.5467, payoutTransactionHash: undefined },
+  { id: "28", payoutPercentage: 2.9437, payoutTransactionHash: undefined },
+  { id: "29", payoutPercentage: 1.3254, payoutTransactionHash: undefined },
+  { id: "30", payoutPercentage: 0.7371, payoutTransactionHash: undefined },
+].map((app) => ({
+  ...app,
+  payoutPercentage: new Decimal(app.payoutPercentage),
+  id: app.id.toString(),
+  title: `Project ${app.id}`,
+  imageUrl: `https://picsum.photos/10${app.id}`,
+  payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
+}));
