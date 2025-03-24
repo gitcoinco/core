@@ -4,8 +4,8 @@ import { bigintToDecimal, decimalToBigint } from "./decimal";
 
 // Configure Decimal.js for maximum precision
 Decimal.set({
-  precision: 64, // Precision for financial calculations
-  rounding: Decimal.ROUND_DOWN, // Better for financial calculations (prevents overshooting)
+  precision: 64,
+  rounding: Decimal.ROUND_DOWN,
 });
 
 /**
