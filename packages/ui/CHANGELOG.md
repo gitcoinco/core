@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.32
+
+### Patch Changes
+
+- [#62](https://github.com/gitcoinco/core/pull/62) [`318ab5e`](https://github.com/gitcoinco/core/commit/318ab5e2e4feb8de34bdaf204451d4bf32da0d40) Thanks [@nijoe1](https://github.com/nijoe1)! - fixes: retrofunding calculations using decimal.js
+
 ## 0.0.0-beta.31
 
 ### Patch Changes
