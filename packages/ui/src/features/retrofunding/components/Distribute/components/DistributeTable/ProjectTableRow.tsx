@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef } from "react";
 import { NumericFormat } from "react-number-format";
 
+import Decimal from "decimal.js";
+import { formatUnits } from "viem";
+
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
 import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
@@ -23,7 +26,7 @@ interface ApplicationTableRowProps {
   poolConfig: PoolConfig;
   onSelect: (projectId: string, checked: boolean) => void;
   onEditApplication?: (application: ApplicationPayout) => void;
-  onDistribute?: (applications: { applicationId: string; amount: bigint }[]) => void;
+  onDistribute?: (applicationId?: string) => void;
 }
 
 export const ProjectTableRow = ({
@@ -46,12 +49,12 @@ export const ProjectTableRow = ({
       e.preventDefault();
       const delta = e.deltaY < 0 ? 1 : -1;
       const currentVal = editedApplication.payoutPercentage;
-      const nextVal = Number((currentVal + delta).toFixed(4));
+      const nextVal = Number(currentVal.plus(delta).toFixed(4));
 
       if (nextVal >= 0 && handleSafeChange(nextVal) && onEditApplication) {
         onEditApplication({
           ...editedApplication,
-          payoutPercentage: nextVal,
+          payoutPercentage: new Decimal(nextVal),
         });
       }
     },
@@ -72,17 +75,24 @@ export const ProjectTableRow = ({
     (newValue: number) => {
       const otherApplicationsTotal = editedApplications
         .filter((a) => a.id !== application.id)
-        .reduce((acc, p) => acc + (p.payoutPercentage ?? 0), 0);
+        .reduce((acc, p) => acc.plus(p.payoutPercentage), new Decimal(0));
 
-      return otherApplicationsTotal + newValue <= 100;
+      return otherApplicationsTotal.plus(newValue).lte(new Decimal(100));
     },
     [editedApplications, application.id],
   );
 
-  const formatPayoutAmount = (percentage: number): number => {
-    const amount =
-      (percentage / 100) * availableTokensToDistribute + poolConfig.constantAmountPerGrant;
-    return Number(amount.toFixed(4));
+  const formatPayoutAmount = (percentage: Decimal): number => {
+    const safeAmountBigInt = formatAmountFromPercentageWithConstant(
+      availableTokensToDistribute,
+      percentage,
+      poolConfig.tokenDecimals,
+      poolConfig.constantAmountPerGrant,
+    );
+    const formattedAmount = Number(formatUnits(safeAmountBigInt, poolConfig.tokenDecimals)).toFixed(
+      3,
+    );
+    return Number(formattedAmount);
   };
 
   const showCheckbox = !isEditing && !isFinalized && allApplications.length > 1;
@@ -124,7 +134,9 @@ export const ProjectTableRow = ({
             isFinalized && "border-none bg-grey-100 text-grey-500",
           )}
         >
-          <span className="font-ui-mono text-sm">{`${application.payoutPercentage}%`}</span>
+          <span className="font-ui-mono text-sm">{`${Number(application.payoutPercentage).toFixed(
+            3,
+          )}%`}</span>
         </div>
       </TableCell>
       {isEditing && (
@@ -142,7 +154,7 @@ export const ProjectTableRow = ({
               const val = values?.floatValue ?? 0;
               return val >= 0 && handleSafeChange(val);
             }}
-            value={editedApplication.payoutPercentage}
+            value={editedApplication.payoutPercentage.toString()}
             onBlur={(e) => {
               const newValue = Number(
                 Number(e.target.value.replace("%", "").replace(",", ".")).toFixed(4),
@@ -150,7 +162,7 @@ export const ProjectTableRow = ({
               if (handleSafeChange(newValue) && onEditApplication) {
                 onEditApplication({
                   ...editedApplication,
-                  payoutPercentage: newValue,
+                  payoutPercentage: new Decimal(newValue),
                 });
               }
             }}
@@ -173,19 +185,7 @@ export const ProjectTableRow = ({
             disabled={!isSelected}
             variant="light-purple"
             value="Distribute"
-            onClick={() =>
-              onDistribute([
-                {
-                  applicationId: application.id,
-                  amount: formatAmountFromPercentageWithConstant(
-                    poolConfig.amountOfTokensToDistribute,
-                    application.payoutPercentage,
-                    poolConfig.tokenDecimals,
-                    poolConfig.constantAmountPerGrant,
-                  ),
-                },
-              ])
-            }
+            onClick={() => onDistribute(application.id)}
           />
         </TableCell>
       )}

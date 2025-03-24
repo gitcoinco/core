@@ -11,12 +11,7 @@ interface DistributeTabsProps {
   isEditing: boolean;
   poolConfig: PoolConfig;
   onSelectApplications: (applicationIds: string[]) => void;
-  onDistribute: (
-    applications: {
-      applicationId: string;
-      amount: bigint;
-    }[],
-  ) => void;
+  onDistribute: (applicationId?: string) => void;
   onEditPayouts: (applications: ApplicationPayout[]) => void;
 }
 
