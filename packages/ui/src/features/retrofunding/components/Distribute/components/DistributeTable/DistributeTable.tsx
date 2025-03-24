@@ -12,7 +12,7 @@ interface DistributeTableProps {
   isFinalized?: boolean;
   poolConfig: PoolConfig;
   onSelectApplications?: (projects: ApplicationPayout[]) => void;
-  onDistribute?: (applications: { applicationId: string; amount: bigint }[]) => void;
+  onDistribute?: (applicationId?: string) => void;
   onEditPayouts?: (applications: ApplicationPayout[]) => void;
 }
 

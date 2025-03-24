@@ -1,3 +1,5 @@
+import Decimal from "decimal.js";
+
 import { PoolStatus } from "@/types";
 
 export interface ApplicationPayout {
@@ -5,7 +7,7 @@ export interface ApplicationPayout {
   title: string;
   imageUrl: string;
   payoutAddress: string;
-  payoutPercentage: number;
+  payoutPercentage: Decimal;
   payoutTransactionHash?: string;
 }
 

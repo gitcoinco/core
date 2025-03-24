@@ -7,14 +7,17 @@ import { ApplicationPayout, PoolConfig } from "@/types/distribute";
 import { FundRoundSection, ActionButtons } from "./components";
 import { DistributeTabs } from "./components/DistributeTabs";
 import { useRound } from "./hooks/useRound";
-import { formatAmountFromPercentageWithConstant, getAvailableTokensToDistribute } from "./utils";
+import { formatAndAdjustAmounts, getAvailableTokensToDistribute } from "./utils";
 
 interface DistributeProps {
   applications: ApplicationPayout[];
   poolConfig: PoolConfig;
   canResetEdit: boolean;
   onFundRound: (amount: bigint) => Promise<void>;
-  onDistribute: (applications: { applicationId: string; amount: bigint }[]) => Promise<void>;
+  onDistribute: (
+    applications: { applicationId: string; amount: bigint }[],
+    selectedApplications: string[],
+  ) => Promise<void>;
   onEditPayouts: (applications: ApplicationPayout[]) => Promise<void>;
   onResetEdit: () => Promise<void>;
   className?: string;
@@ -47,38 +50,43 @@ export const Distribute = ({
     poolConfig,
   );
 
+  const distributionData = useMemo(() => {
+    return formatAndAdjustAmounts(
+      applications,
+      availableTokensToDistribute,
+      poolConfig.tokenDecimals,
+      poolConfig.constantAmountPerGrant,
+      poolConfig.amountOfTokensToDistribute,
+    );
+  }, [applications, availableTokensToDistribute, poolConfig]);
+
+  const totalPaid = useMemo(() => {
+    const finalizedApplicationsDistributionInfo = distributionData.filter((app) =>
+      finalizedApplications.map((app) => app.id).includes(app.applicationId),
+    );
+
+    const totalPaid = finalizedApplicationsDistributionInfo.reduce(
+      (acc, curr) => acc + curr.amount,
+      0n,
+    );
+    return totalPaid;
+  }, [distributionData, finalizedApplications]);
+
   const canEdit = finalizedApplications.length === 0 && pendingApplications.length > 0;
   const hasPendingApplications = pendingApplications.length > 0;
   const distributionCompleted =
     pendingApplications.length === 0 && finalizedApplications.length > 0;
 
-  const handleDistribute = () => {
-    onDistribute(
-      applications
-        .filter((p) => selectedApplications.includes(p.id))
-        .map((p) => ({
-          applicationId: p.id,
-          amount: formatAmountFromPercentageWithConstant(
-            availableTokensToDistribute,
-            p.payoutPercentage,
-            poolConfig.tokenDecimals,
-            poolConfig.constantAmountPerGrant,
-          ),
-        })),
-    );
+  const handleDistribute = (applicationId?: string) => {
+    if (applicationId) {
+      const application = distributionData.find((app) => app.applicationId === applicationId);
+      if (application) {
+        onDistribute(distributionData, [applicationId]);
+      }
+    } else {
+      onDistribute(distributionData, selectedApplications);
+    }
   };
-
-  const totalPaid = finalizedApplications.reduce(
-    (acc, curr) =>
-      acc +
-      formatAmountFromPercentageWithConstant(
-        availableTokensToDistribute,
-        curr.payoutPercentage,
-        poolConfig.tokenDecimals,
-        poolConfig.constantAmountPerGrant,
-      ),
-    0n,
-  );
 
   const { fundRoundCompleted } = useRound({
     poolConfig,

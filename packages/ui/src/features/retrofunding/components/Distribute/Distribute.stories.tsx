@@ -3,9 +3,10 @@ import { StoryObj, Meta } from "@storybook/react";
 import { formatUnits, parseUnits } from "viem";
 
 import { PoolStatus } from "@/types";
-import { ApplicationPayout, PoolConfig } from "@/types/distribute";
+import { PoolConfig } from "@/types/distribute";
 
 import { Distribute } from "./Distribute";
+import { MOCK_APPLICATIONS, MOCK_APPLICATIONS2 } from "./mocks/applications";
 
 const onDistribute = action("onDistribute");
 
@@ -27,82 +28,24 @@ const POOL_CONFIG: PoolConfig = {
   constantAmountPerGrant: 0,
 };
 
-const MOCK_APPLICATIONS: ApplicationPayout[] = [
-  {
-    id: "1",
-    title: "Project Alpha",
-    imageUrl: "https://picsum.photos/100",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 10.4,
-  },
-  {
-    id: "2",
-    title: "Long Project Title That Might Need Truncation",
-    imageUrl: "https://picsum.photos/101",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 14.6,
-  },
-  {
-    id: "3",
-    title: "Project Beta",
-    imageUrl: "https://picsum.photos/102",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 23.7,
-  },
-  {
-    id: "4",
-    title: "Project Gamma",
-    imageUrl: "https://picsum.photos/103",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 22.3,
-  },
-  {
-    id: "5",
-    title: "Project Delta",
-    imageUrl: "https://picsum.photos/104",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 2 + 1e-7,
-    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
-  },
-  {
-    id: "6",
-    title: "Project Epsilon",
-    imageUrl: "https://picsum.photos/105",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 1 + (1 - 1e-7),
-    payoutTransactionHash: "0x010ddbb8a9039a7f9c672538b6dded667dd7ca9cad9f9fd5bf6aed1301bcdb5b",
-  },
-
-  {
-    id: "7",
-    title: "Project Zeta",
-    imageUrl: "https://picsum.photos/106",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 13.4,
-  },
-  {
-    id: "8",
-    title: "Project Epsilon",
-    imageUrl: "https://picsum.photos/107",
-    payoutAddress: "0x4614291bb169905074Da4aFaA39784D175162f79",
-    payoutPercentage: 11.6,
-  },
-];
-
 const args = {
   applications: MOCK_APPLICATIONS,
   poolConfig: { ...POOL_CONFIG, amountOfTokensInPool: parseUnits("96", TOKEN_DECIMALS).toString() },
   canResetEdit: true,
   onFundRound: async (values: any) => onFundRound(values),
-  onDistribute: async (values: any) => {
-    const finalAmount = values.reduce((acc: any, curr: any) => {
+  onDistribute: async (values: any, selectedApplications: any) => {
+    const filteredValues = values.filter((app: any) =>
+      selectedApplications.includes(app.applicationId),
+    );
+    const finalAmount = filteredValues.reduce((acc: any, curr: any) => {
       acc += curr.amount;
       return acc;
     }, 0n);
     onDistribute(
-      "Amount to distribute: ",
-      formatUnits(finalAmount, POOL_CONFIG.tokenDecimals),
-      values,
+      `Amount to distribute for the #${
+        selectedApplications.length
+      } selected applications: ${formatUnits(finalAmount, POOL_CONFIG.tokenDecimals)}`,
+      filteredValues,
     );
   },
   onEditPayouts: async (values: any) => onEditPayouts(values),
@@ -167,15 +110,16 @@ export const NoFinalizedProjects: StoryObj<typeof Distribute> = {
 export const NoFinalizedProjectsWithConstantAmountPerGrant: StoryObj<typeof Distribute> = {
   args: {
     ...args,
-    applications: MOCK_APPLICATIONS.map((application) => ({
+    applications: MOCK_APPLICATIONS2.map((application) => ({
       ...application,
+      title: `Project Alpha ${application.id}`,
       payoutTransactionHash: undefined,
     })),
     poolConfig: {
       ...POOL_CONFIG,
-      constantAmountPerGrant: 10000,
-      amountOfTokensInPool: parseUnits("300000", POOL_CONFIG.tokenDecimals).toString(),
-      amountOfTokensToDistribute: 300000,
+      constantAmountPerGrant: 13962,
+      amountOfTokensInPool: parseUnits("639657", POOL_CONFIG.tokenDecimals).toString(),
+      amountOfTokensToDistribute: 639657,
       tokenTicker: "USDC",
     },
   },

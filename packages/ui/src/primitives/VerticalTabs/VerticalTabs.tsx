@@ -57,6 +57,8 @@ export interface VerticalTabsProps {
   listClassName?: string;
   contentClassName?: string;
   tabs: VerticalTabProps[];
+  value?: string;
+  onValueChange?: (value: string) => void;
 }
 
 const Tab = ({ tabTitle, tabSubtitle, tabIcon, withIcon = false }: TabProps) => {
@@ -88,6 +90,8 @@ export const VerticalTabs = ({
   withIcons = false,
   listClassName,
   contentClassName,
+  value,
+  onValueChange,
 }: VerticalTabsProps) => {
   const {
     tabs: tabsClasses,
@@ -100,11 +104,22 @@ export const VerticalTabs = ({
   const defaultValue = tabs[0]?.tabKey;
 
   return (
-    <Tabs orientation="vertical" defaultValue={defaultValue} className={tabsClasses()}>
+    <Tabs
+      orientation="vertical"
+      value={value}
+      defaultValue={defaultValue}
+      onValueChange={onValueChange}
+      className={tabsClasses()}
+    >
       <TabsList className={cn(tabsListClasses(), listClassName)}>
         {tabs.map((tab) => {
           return (
-            <TabsTrigger key={tab.tabKey} value={tab.tabKey} className={tabsTriggerClasses()}>
+            <TabsTrigger
+              key={tab.tabKey}
+              value={tab.tabKey}
+              onClick={() => onValueChange?.(tab.tabKey)}
+              className={tabsTriggerClasses()}
+            >
               <Tab {...tab} withIcon={withIcons} />
             </TabsTrigger>
           );
