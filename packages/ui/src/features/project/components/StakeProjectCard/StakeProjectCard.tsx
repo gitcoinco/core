@@ -32,7 +32,7 @@ interface StakingProps {
   stakeAmount: number; // Amount that is currently staked
   maxStakeAmount: number; // Maximum amount that can be staked
   tokenUsdValue: number; // USD value of one token
-  isStakingPeriod: boolean; // Whether the staking period is over
+  isStakingPeriod: boolean; // Whether the staking period is active
 }
 
 // Variant-specific props
