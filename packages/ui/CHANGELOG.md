@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.33
+
+### Patch Changes
+
+- [#64](https://github.com/gitcoinco/core/pull/64) [`8c5c09d`](https://github.com/gitcoinco/core/commit/8c5c09dc44e17954d889636f35e65a975bc14d76) Thanks [@nijoe1](https://github.com/nijoe1)! - fix: staking-project-card-design
+
 ## 0.0.0-beta.32
 
 ### Patch Changes
