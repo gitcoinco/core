@@ -32,7 +32,7 @@ interface StakingProps {
   stakeAmount: number; // Amount that is currently staked
   maxStakeAmount: number; // Maximum amount that can be staked
   tokenUsdValue: number; // USD value of one token
-  isStakingPeriodOver: boolean; // Whether the staking period is over
+  isStakingPeriod: boolean; // Whether the staking period is active
 }
 
 // Variant-specific props
@@ -133,6 +133,15 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
                 label="Total contributors"
                 value={`${data.numberOfContributors}`}
               />
+            </div>
+          ))
+          .otherwise(() => null)}
+      </div>
+      {/* Right side content - varies by variant */}
+      {match(props)
+        .with({ variant: P.union("leaderboard", "stake") }, (data) => (
+          <div className="flex flex-col items-end justify-end gap-6">
+            <div className="flex items-end justify-between gap-6">
               {data.stakedAmount && data.stakedAt && (
                 <IconWithDetails
                   icon={IconType.LIGHTNING_BOLT}
@@ -143,28 +152,21 @@ export const StakeProjectCard = (props: StakeProjectCardProps) => {
                   valueClassName="font-ui-sans text-base font-bold"
                 />
               )}
+              {data.isStakingPeriod && (
+                <div className="flex flex-col gap-2">
+                  <span className="font-ui-sans text-sm font-normal">Amount (GTC)</span>
+                  <StakeInput
+                    project={{ id: data.id }}
+                    maxAmount={data.maxStakeAmount}
+                    stakeAmount={data.stakeAmount}
+                    tokenUsdValue={data.tokenUsdValue}
+                    onChange={(id, amount) => {
+                      data.onStakeChange(id, amount);
+                    }}
+                  />
+                </div>
+              )}
             </div>
-          ))
-          .otherwise(() => null)}
-      </div>
-      {/* Right side content - varies by variant */}
-      {match(props)
-        .with({ variant: P.union("leaderboard", "stake") }, (data) => (
-          <div className="flex flex-col items-end justify-end gap-6">
-            {!data.isStakingPeriodOver && (
-              <div className="flex flex-col gap-2">
-                <span className="font-ui-sans text-sm font-normal">Amount (GTC)</span>
-                <StakeInput
-                  project={{ id: data.id }}
-                  maxAmount={data.maxStakeAmount}
-                  stakeAmount={data.stakeAmount}
-                  tokenUsdValue={data.tokenUsdValue}
-                  onChange={(id, amount) => {
-                    data.onStakeChange(id, amount);
-                  }}
-                />
-              </div>
-            )}
             <ViewProjectButton
               chainId={data.chainId}
               roundId={data.roundId}
