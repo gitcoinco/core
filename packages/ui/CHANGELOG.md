@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.34
+
+### Patch Changes
+
+- [#66](https://github.com/gitcoinco/core/pull/66) [`7302377`](https://github.com/gitcoinco/core/commit/7302377ace35999fb27074a7e3b35462dbf316ab) Thanks [@nijoe1](https://github.com/nijoe1)! - fix: checker applications query with pagination to support more than 200 entries
+
 ## 0.0.0-beta.33
 
 ### Patch Changes
