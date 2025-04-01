@@ -5,6 +5,7 @@ import {
   applicationsForManagerQuery,
   getApplicationByIdQuery,
   getPastApplicationsQueryByApplicationId,
+  getRoundQuery,
 } from "./queries";
 import { PastApplication, ProjectApplication, ProjectApplicationForManager } from "./types";
 
@@ -13,13 +14,40 @@ export async function getApplicationsFromIndexer(
   roundId?: string,
 ): Promise<{ applications: ProjectApplicationForManager[]; roundData: PoolInfo }> {
   try {
-    const response = await executeQuery(applicationsForManagerQuery, {
+    const roundResponse = await executeQuery(getRoundQuery, {
       chainId,
       roundId,
     });
+
+    const PAGE_SIZE = 200; // You can adjust this value based on your needs
+    let allApplications: ProjectApplicationForManager[] = [];
+    let offset = 0;
+    let hasMore = true;
+
+    while (hasMore) {
+      const response: { applications: ProjectApplicationForManager[] } = await executeQuery(
+        applicationsForManagerQuery,
+        {
+          chainId,
+          roundId,
+          limit: PAGE_SIZE,
+          offset,
+        },
+      );
+
+      const applications = response.applications;
+      allApplications = [...allApplications, ...applications];
+
+      // If we got fewer results than the page size, we've reached the end
+      if (applications.length < PAGE_SIZE) {
+        hasMore = false;
+      } else {
+        offset += PAGE_SIZE;
+      }
+    }
     return {
-      applications: response.applications as ProjectApplicationForManager[],
-      roundData: response.rounds[0] as PoolInfo,
+      applications: allApplications,
+      roundData: roundResponse.rounds[0] as PoolInfo,
     };
   } catch (e) {
     throw new Error(`Failed to fetch applications data. with error: ${e}`);
