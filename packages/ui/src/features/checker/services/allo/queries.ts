@@ -1,8 +1,12 @@
 import { gql } from "graphql-request";
 
 export const applicationsForManagerQuery = gql`
-  query getApplicationsForManager($chainId: Int!, $roundId: String!) {
-    applications(limit: 1000, where: { roundId: { _eq: $roundId }, chainId: { _eq: $chainId } }) {
+  query getApplicationsForManager($chainId: Int!, $roundId: String!, $limit: Int!, $offset: Int!) {
+    applications(
+      limit: $limit
+      offset: $offset
+      where: { roundId: { _eq: $roundId }, chainId: { _eq: $chainId } }
+    ) {
       id
       projectId
       chainId
@@ -19,6 +23,11 @@ export const applicationsForManagerQuery = gql`
         }
       }
     }
+  }
+`;
+
+export const getRoundQuery = gql`
+  query getRound($chainId: Int!, $roundId: String!) {
     rounds(where: { chainId: { _eq: $chainId }, id: { _eq: $roundId } }) {
       roundMetadata
       strategyName

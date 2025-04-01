@@ -2,6 +2,8 @@ import { http, HttpResponse } from "msw";
 import { graphql } from "msw";
 
 import { applicationsForManagers } from "./mockData/applicationsForManager";
+import { rounds } from "./mockData/rounds";
+
 import { checkerApplicationEvaluations } from "./mockData/checkerApplicationEvaluations";
 import { checkerPoolData } from "./mockData/checkerPoolData";
 import { getApplicationById } from "./mockData/indexerGetApplicationById";
@@ -23,6 +25,10 @@ export const taskListHandlerWithError = http.get(
 
 export const applicationForManagerHandler = graphql.query("getApplicationsForManager", () => {
   return HttpResponse.json(applicationsForManagers);
+});
+
+export const getRoundHandler = graphql.query("getRound", () => {
+  return HttpResponse.json(rounds);
 });
 
 export const checkerPoolDataHandler = graphql.query("getCheckerPoolData", () => {
