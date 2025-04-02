@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.35
+
+### Patch Changes
+
+- [#68](https://github.com/gitcoinco/core/pull/68) [`9e597b2`](https://github.com/gitcoinco/core/commit/9e597b27494771678298d50fcab93e61a2dc6cdc) Thanks [@nijoe1](https://github.com/nijoe1)! - fixes staking project input
+
 ## 0.0.0-beta.34
 
 ### Patch Changes
