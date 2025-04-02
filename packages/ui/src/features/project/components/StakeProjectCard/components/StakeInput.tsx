@@ -20,6 +20,7 @@ export const StakeInput = ({
 }: StakeInputProps) => {
   const [value, setValue] = useState(stakeAmount);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isFocused, setIsFocused] = useState(false);
 
   // Immediate value clamping with cleanup
   const handleValueChange = useCallback(
@@ -56,6 +57,7 @@ export const StakeInput = ({
 
   useEffect(() => {
     const input = inputRef.current;
+    if (!isFocused) return;
     input?.addEventListener("wheel", handleWheel, { passive: false });
     return () => input?.removeEventListener("wheel", handleWheel);
   }, [handleWheel]);
@@ -64,9 +66,19 @@ export const StakeInput = ({
     <div className="flex items-center justify-between">
       <NumericFormat
         getInputRef={inputRef}
-        value={value}
+        value={Number(value.toFixed(5))}
         onValueChange={({ floatValue = 0 }) => handleValueChange(floatValue)}
         isAllowed={({ floatValue = 0 }) => floatValue >= 0 && floatValue <= maxAmount}
+        onWheel={(e: React.WheelEvent<HTMLInputElement>) => {
+          if (!isFocused) return;
+          e.preventDefault();
+          const stepSize = Math.floor((maxAmount / 10) * 100000) / 100000; // 5 decimal precision
+          const delta = e.deltaY < 0 ? stepSize : -stepSize;
+          const newValue = Math.min(Math.max(value + delta, 0), maxAmount);
+          handleValueChange(newValue);
+        }}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         allowNegative={false}
         decimalScale={100}
         max={maxAmount}
