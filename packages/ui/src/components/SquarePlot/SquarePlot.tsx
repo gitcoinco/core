@@ -144,6 +144,7 @@ export function SquarePlot({
               values: values,
               text: values.map((value) => `$${formatAmount(value.toFixed(2))}`),
               textinfo: "label+text",
+              // @ts-expect-error hoverinfo type is not properly typed in react-plotly.js
               hoverinfo: "label+text",
               // hoverlabel: {namelength: -1},
               title: { text: "label" },
