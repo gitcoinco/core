@@ -32,7 +32,8 @@
       "~program": ["./src/features/program"],
       "~program/*": ["./src/features/program/*"],
       "~project": ["./src/features/project"],
-      "~project/*": ["./src/features/project/*"]
+      "~project/*": ["./src/features/project/*"],
+      "plotly.js": ["../node_modules/plotly.js/lib/core.js"]
     },
     "outDir": "./dist"
   },

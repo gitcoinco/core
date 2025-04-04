@@ -20,7 +20,7 @@ type Story = StoryObj<typeof StatCardGroup>;
 export const Default: Story = {};
 
 const stats = [
-  { label: "Application approved", value: "10" },
+  { label: "Application approved", value: "10", subvalue: "10%" },
   { label: "Application rejected", value: "10" },
   { label: "Applications rejected", value: "30" },
 ];
@@ -86,5 +86,12 @@ export const withFiveCard: Story = {
       { label: "Total applications", value: "100" },
       { label: "Review Pending", value: "40" },
     ],
+  },
+};
+
+export const largeWithFourCards: Story = {
+  args: {
+    stats: [...stats, { label: "Total applications", value: "100" }],
+    size: "lg",
   },
 };

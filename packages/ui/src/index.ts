@@ -39,5 +39,8 @@ export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";
 export * from "./components/SideNav";
 export * from "./components/Toaster";
+export * from "./components/ShareButton";
+export * from "./components/SquarePlot";
+export * from "./features/retrofunding/components/Leaderboard";
 
 export * from "./pages/NotFoundPage";

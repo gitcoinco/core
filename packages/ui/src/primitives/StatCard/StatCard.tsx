@@ -25,6 +25,11 @@ const statCardVariants = tv({
         label: "text-sm",
         value: "text-2xl",
       },
+      lg: {
+        card: "h-[132px] w-[380px]",
+        label: "text-sm",
+        value: "text-2xl",
+      },
     },
     color: {
       grey: {
@@ -43,14 +48,20 @@ const statCardVariants = tv({
 export interface StatCardProps extends VariantProps<typeof statCardVariants> {
   label: string;
   value?: string;
+  subvalue?: string;
   className?: string;
 }
 
-export const StatCard = ({ label, value, size, color, className }: StatCardProps) => {
+export const StatCard = ({ label, value, subvalue, size, color, className }: StatCardProps) => {
   const { card, label: labelStyle, value: valueStyle } = statCardVariants({ size, color });
   const content = match(value)
     .with(undefined, () => <Skeleton className="size-8 rounded-2xl" />)
-    .otherwise((val) => <div className={valueStyle()}>{val}</div>);
+    .otherwise((val) => (
+      <div className="flex flex-col">
+        <div className={valueStyle()}>{val}</div>
+        {subvalue && <div className="font-ui-mono text-xs font-normal text-black">{subvalue}</div>}
+      </div>
+    ));
 
   return (
     <Card className={cn(card(), className)}>

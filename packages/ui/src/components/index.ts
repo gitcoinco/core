@@ -6,3 +6,4 @@ export * from "./RadioGroupList";
 export * from "./SideNav";
 export * from "./Toaster";
 export * from "./IconWithTooltip";
+export * from "./ShareButton";

@@ -17,6 +17,7 @@ const variants = tv({
       [PoolStatus.ApplicationsInProgress]: "bg-blue-100",
       [PoolStatus.FundingPending]:
         "border border-legacy-orange-400 bg-white text-legacy-orange-400",
+      [PoolStatus.Ended]: "bg-grey-100 text-black",
     },
   },
 });
@@ -26,6 +27,7 @@ const badgeTexts = {
   [PoolStatus.RoundInProgress]: "Round in progress",
   [PoolStatus.ApplicationsInProgress]: "Applications in progress",
   [PoolStatus.FundingPending]: "Funding pending",
+  [PoolStatus.Ended]: "Ended",
 };
 
 const invalidValueText = "Error: Invalid status";
