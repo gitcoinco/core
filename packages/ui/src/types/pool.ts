@@ -3,6 +3,7 @@ export enum PoolStatus {
   RoundInProgress = "RoundInProgress",
   ApplicationsInProgress = "ApplicationsInProgress",
   FundingPending = "FundingPending",
+  Ended = "Ended",
 }
 
 // Type guard for PoolStatus

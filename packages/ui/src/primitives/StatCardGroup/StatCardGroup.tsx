@@ -27,15 +27,16 @@ const statCardGroupVariants = tv({
 
 export interface StatCardGroupProps extends VariantProps<typeof statCardGroupVariants> {
   stats: StatCardProps[];
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-export const StatCardGroup = ({ stats, justify, className }: StatCardGroupProps) => {
+export const StatCardGroup = ({ stats, justify, size, className }: StatCardGroupProps) => {
   const { root } = statCardGroupVariants({ justify });
   return (
     <div className={cn(root(), className)}>
       {stats.map((stat, index) => (
-        <StatCard key={index} {...stat} />
+        <StatCard key={index} {...stat} size={size} />
       ))}
     </div>
   );

@@ -38,6 +38,7 @@ export interface PoolSummaryProps {
   applicationsEndTime?: string;
   donationsStartTime?: string;
   donationsEndTime?: string;
+  hideBreadcrumbs?: boolean;
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
@@ -68,6 +69,8 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
     poolStatus = PoolStatus.FundingPending;
   } else if (now > allocationStartDate && now <= allocationEndDate) {
     poolStatus = PoolStatus.RoundInProgress;
+  } else if (now > allocationEndDate) {
+    poolStatus = PoolStatus.Ended;
   } else {
     poolStatus = PoolStatus.PreRound;
   }
@@ -95,7 +98,9 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   return (
     <div className={cn(variants.variants.default, "grid grid-cols-2 py-6")}>
       <div className="flex flex-col items-start justify-start gap-4">
-        <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
+        {!pool.hideBreadcrumbs && (
+          <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
+        )}
         <div className="flex flex-col gap-4">
           <div>
             <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
@@ -135,8 +140,10 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
         <div className="flex items-end gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
-            className="border-grey-100 bg-white text-black shadow-sm"
+            className="shadow-sm"
             value="Round application"
+            variant={"secondary"}
+            disabled={now > registerEndDate}
             onClick={() => {
               navigator.clipboard.writeText(applyLink).then(
                 () => {

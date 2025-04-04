@@ -46,6 +46,7 @@ export enum IconType {
   // Social Media
   TWITTER = "twitter",
   GITHUB = "github",
+  WARPCAST = "warpcast",
   // Networks
   ETH = "eth",
   OPTIMISM = "optimism",

@@ -3,7 +3,6 @@ import { twMerge } from "tailwind-merge";
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -60,4 +59,11 @@ export function capitalizeWord(word: string): string {
 export const addressFrom = (index: number): Hex => {
   const address = index.toString(16).padStart(40, "0");
   return `0x${address}`;
+};
+
+export const formatAmount = (amount: string | number, noDigits?: boolean) => {
+  return Number(amount).toLocaleString("en-US", {
+    maximumFractionDigits: noDigits ? 0 : 2,
+    minimumFractionDigits: noDigits ? 0 : 2,
+  });
 };
