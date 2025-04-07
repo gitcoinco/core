@@ -74,6 +74,7 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   } else {
     poolStatus = PoolStatus.PreRound;
   }
+
   const applyLink = getApplyLink(pool.chainId, pool.poolId, poolType);
   const explorerLink = getPoolLinkOnExplorer(pool.chainId, pool.poolId, poolType);
   const managerProgramLink = getProgramLinkOnManager(pool.chainId, pool.programId, poolType);
@@ -96,48 +97,56 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   );
 
   return (
-    <div className={cn(variants.variants.default, "grid grid-cols-2 py-6")}>
-      <div className="flex flex-col items-start justify-start gap-4">
-        {!pool.hideBreadcrumbs && (
-          <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
-        )}
-        <div className="flex flex-col gap-4">
-          <div>
-            <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
-          </div>
-          <IconLabel
-            textVariant="text-[36px]/[39px]"
-            iconVariant="size-6"
-            iconType={chainInfo.icon}
-            type="default"
-            label={pool.name}
-            isLoading={pool.isLoading}
-            laodingSkeletonClassName="h-10 w-72 rounded-lg"
-          />
-
-          <div className="flex flex-col gap-2">
-            <IconLabel
-              type="roundPeriod"
-              startDate={registerStartDate}
-              endDate={registerEndDate}
-              isLoading={pool.isLoading}
-              label={registerDateLabel}
-            />
-            <IconLabel
-              type="roundPeriod"
-              startDate={allocationStartDate}
-              endDate={allocationEndDate}
-              isLoading={pool.isLoading}
-              label={allocationDateLabel}
-            />
-          </div>
+    <div
+      className={cn(variants.variants.default, "flex flex-col gap-2 py-6 [&>*:nth-child(4)]:mt-4")}
+    >
+      {/* First row: Breadcrumbs and Status Badge */}
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          {!pool.hideBreadcrumbs && (
+            <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
+          )}
         </div>
+        <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
       </div>
-      <div className="flex flex-col items-end justify-between">
-        <div className="flex items-end">
-          <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
+
+      {/* Second row: Pool Type Badge */}
+      <div>
+        <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
+      </div>
+
+      {/* Third row: Pool Name */}
+      <div className="w-full">
+        <IconLabel
+          textVariant="text-[36px]/[39px]"
+          iconVariant="size-6"
+          iconType={chainInfo.icon}
+          type="default"
+          label={pool.name}
+          isLoading={pool.isLoading}
+          laodingSkeletonClassName="h-10 w-full rounded-lg"
+        />
+      </div>
+
+      {/* Fourth row: Dates and Buttons */}
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <IconLabel
+            type="roundPeriod"
+            startDate={registerStartDate}
+            endDate={registerEndDate}
+            isLoading={pool.isLoading}
+            label={registerDateLabel}
+          />
+          <IconLabel
+            type="roundPeriod"
+            startDate={allocationStartDate}
+            endDate={allocationEndDate}
+            isLoading={pool.isLoading}
+            label={allocationDateLabel}
+          />
         </div>
-        <div className="flex items-end gap-6">
+        <div className="flex items-center gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
             className="shadow-sm"

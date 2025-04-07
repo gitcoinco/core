@@ -29,10 +29,15 @@ const leaderboardVariants = tv({
       "2xl": "rounded-2xl",
       "3xl": "rounded-3xl",
     },
+    size: {
+      default: "",
+      slim: "[&_.leaderboard-rank-default]:size-6 [&_.leaderboard-rank-default]:text-base [&_.leaderboard-table-headers]:text-lg [&_.leaderboard-table-icons]:size-4 [&_.leaderboard-table-items]:text-base [&_.metric-value]:text-base [&_.metric-value]:leading-6 [&_.project-logo]:size-7 [&_.project-name]:text-lg [&_.project-name]:leading-6 [&_td:first-child]:flex [&_td:first-child]:w-12 [&_td:first-child]:justify-center [&_td:not(:nth-child(2))]:text-center [&_td]:px-2 [&_th:first-child]:w-12 [&_th:not(:nth-child(2))]:text-center [&_th:nth-child(2)]:min-w-[300px] [&_th]:px-2",
+    },
   },
   defaultVariants: {
     padding: "xl",
     radius: "2xl",
+    size: "default",
   },
 });
 

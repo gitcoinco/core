@@ -20,8 +20,9 @@ const desktopLeaderboard = tv({
       "leaderboard-rank-default flex size-7 items-center justify-center rounded-full bg-none text-right text-lg",
     firstRankBadge: "leaderboard-rank-1st",
     secondRankBadge: "leaderboard-rank-2nd",
-    projectName: "leaderboard-table-headers font-ui-sans text-xl font-normal leading-7",
-    metricValue: "leaderboard-table-items font-ui-sans text-xl font-normal leading-7",
+    projectName:
+      "project-name leaderboard-table-headers font-ui-sans text-xl font-normal leading-7",
+    metricValue: "metric-value leaderboard-table-items font-ui-sans text-xl font-normal leading-7",
     icon: "leaderboard-table-icons size-5 shrink-0 cursor-pointer",
     tooltipText: "leaderboard-table-items w-44 text-sm",
   },
@@ -148,7 +149,7 @@ export const DesktopLeaderboard = ({
                   <TableCell className="max-w-80 px-7">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex w-fit items-center gap-3">
-                        <div className="size-9 shrink-0 overflow-hidden rounded-full">
+                        <div className="project-logo size-9 shrink-0 overflow-hidden rounded-full">
                           <img
                             src={project.logoImg}
                             alt={project.name}
