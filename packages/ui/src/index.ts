@@ -42,5 +42,7 @@ export * from "./components/Toaster";
 export * from "./components/ShareButton";
 export * from "./components/SquarePlot";
 export * from "./features/retrofunding/components/Leaderboard";
+export * from "./components/PieChart";
+export * from "./components/BarChart";
 
 export * from "./pages/NotFoundPage";
