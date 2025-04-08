@@ -97,38 +97,31 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   );
 
   return (
-    <div
-      className={cn(variants.variants.default, "flex flex-col gap-2 py-6 [&>*:nth-child(4)]:mt-4")}
-    >
-      {/* First row: Breadcrumbs and Status Badge */}
-      <div className="flex items-center justify-between">
-        <div className="flex-1">
-          {!pool.hideBreadcrumbs && (
-            <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
-          )}
+    <div className={cn(variants.variants.default, "flex flex-col gap-6 py-6")}>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <div className="flex-1">
+            {!pool.hideBreadcrumbs && (
+              <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
+            )}
+          </div>
+          <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
         </div>
-        <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
+        <div>
+          <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
+        </div>
+        <div className="w-full">
+          <IconLabel
+            textVariant="text-[36px]/[39px]"
+            iconVariant="size-6"
+            iconType={chainInfo.icon}
+            type="default"
+            label={pool.name}
+            isLoading={pool.isLoading}
+            laodingSkeletonClassName="h-10 w-full rounded-lg"
+          />
+        </div>
       </div>
-
-      {/* Second row: Pool Type Badge */}
-      <div>
-        <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
-      </div>
-
-      {/* Third row: Pool Name */}
-      <div className="w-full">
-        <IconLabel
-          textVariant="text-[36px]/[39px]"
-          iconVariant="size-6"
-          iconType={chainInfo.icon}
-          type="default"
-          label={pool.name}
-          isLoading={pool.isLoading}
-          laodingSkeletonClassName="h-10 w-full rounded-lg"
-        />
-      </div>
-
-      {/* Fourth row: Dates and Buttons */}
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <IconLabel
