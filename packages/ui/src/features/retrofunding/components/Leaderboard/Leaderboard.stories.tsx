@@ -321,6 +321,14 @@ export const AllMetrics: Story = {
   },
 };
 
+export const AllMetricsSlim: Story = {
+  args: {
+    projects: mockData.projects,
+    metrics: mockData.metrics,
+    size: "slim",
+  },
+};
+
 export const Empty: Story = {
   args: {
     projects: {},

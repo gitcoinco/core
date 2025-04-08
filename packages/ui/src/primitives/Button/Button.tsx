@@ -44,7 +44,7 @@ const buttonVariants = tv({
   variants: {
     variant: {
       primary: "border-moss-700 bg-moss-700 text-white",
-      secondary: "border-grey-50 bg-grey-50 text-black",
+      secondary: "border-grey-100 bg-white text-black", // updated figma design
       grey: "border-grey-100 bg-grey-100 text-black",
       subtle: "bg-grey-50 text-black",
       error: "border-red-50 bg-red-50 text-red-700",
@@ -53,8 +53,8 @@ const buttonVariants = tv({
       "outlined-success": "border-2 border-moss-500 text-moss-700",
       "outlined-primary": "border-2 border-moss-700 bg-white text-moss-700",
       "outlined-secondary": "border-2 border-grey-500 bg-white text-black",
-      disabled: "border-grey-100 bg-grey-100 text-grey-500",
-      "outlined-disabled": "border-2 border-grey-500 bg-white text-grey-500",
+      disabled: "cursor-not-allowed border-grey-100 bg-grey-100 text-grey-500",
+      "outlined-disabled": "cursor-not-allowed border-2 border-grey-500 bg-white text-grey-500",
       "outlined-error-filled": "border-2 border-red-700 bg-red-50 text-red-900",
       "outlined-success-filled": "border-2 border-moss-500 bg-moss-50 text-moss-700",
       "light-purple": "border-purple-100 bg-purple-100 text-text-primary",

@@ -38,6 +38,7 @@ export interface PoolSummaryProps {
   applicationsEndTime?: string;
   donationsStartTime?: string;
   donationsEndTime?: string;
+  hideBreadcrumbs?: boolean;
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
@@ -68,9 +69,12 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
     poolStatus = PoolStatus.FundingPending;
   } else if (now > allocationStartDate && now <= allocationEndDate) {
     poolStatus = PoolStatus.RoundInProgress;
+  } else if (now > allocationEndDate) {
+    poolStatus = PoolStatus.Ended;
   } else {
     poolStatus = PoolStatus.PreRound;
   }
+
   const applyLink = getApplyLink(pool.chainId, pool.poolId, poolType);
   const explorerLink = getPoolLinkOnExplorer(pool.chainId, pool.poolId, poolType);
   const managerProgramLink = getProgramLinkOnManager(pool.chainId, pool.programId, poolType);
@@ -93,13 +97,20 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   );
 
   return (
-    <div className={cn(variants.variants.default, "grid grid-cols-2 py-6")}>
-      <div className="flex flex-col items-start justify-start gap-4">
-        <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
-        <div className="flex flex-col gap-4">
-          <div>
-            <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
+    <div className={cn(variants.variants.default, "flex flex-col gap-6 py-6")}>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <div className="flex-1">
+            {!pool.hideBreadcrumbs && (
+              <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
+            )}
           </div>
+          <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
+        </div>
+        <div>
+          <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
+        </div>
+        <div className="w-full">
           <IconLabel
             textVariant="text-[36px]/[39px]"
             iconVariant="size-6"
@@ -107,36 +118,34 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             type="default"
             label={pool.name}
             isLoading={pool.isLoading}
-            laodingSkeletonClassName="h-10 w-72 rounded-lg"
+            laodingSkeletonClassName="h-10 w-full rounded-lg"
           />
-
-          <div className="flex flex-col gap-2">
-            <IconLabel
-              type="roundPeriod"
-              startDate={registerStartDate}
-              endDate={registerEndDate}
-              isLoading={pool.isLoading}
-              label={registerDateLabel}
-            />
-            <IconLabel
-              type="roundPeriod"
-              startDate={allocationStartDate}
-              endDate={allocationEndDate}
-              isLoading={pool.isLoading}
-              label={allocationDateLabel}
-            />
-          </div>
         </div>
       </div>
-      <div className="flex flex-col items-end justify-between">
-        <div className="flex items-end">
-          <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
+          <IconLabel
+            type="roundPeriod"
+            startDate={registerStartDate}
+            endDate={registerEndDate}
+            isLoading={pool.isLoading}
+            label={registerDateLabel}
+          />
+          <IconLabel
+            type="roundPeriod"
+            startDate={allocationStartDate}
+            endDate={allocationEndDate}
+            isLoading={pool.isLoading}
+            label={allocationDateLabel}
+          />
         </div>
-        <div className="flex items-end gap-6">
+        <div className="flex items-center gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
-            className="border-grey-100 bg-white text-black shadow-sm"
+            className="shadow-sm"
             value="Round application"
+            variant={"secondary"}
+            disabled={now > registerEndDate}
             onClick={() => {
               navigator.clipboard.writeText(applyLink).then(
                 () => {

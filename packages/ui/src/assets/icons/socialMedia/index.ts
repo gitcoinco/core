@@ -1,9 +1,11 @@
 import GithubIcon from "./github.svg?react";
 import TwitterIcon from "./twitter.svg?react";
+import WarpcastIcon from "./warpcast.svg?react";
 
 enum SocialMediaIconType {
   TWITTER = "twitter",
   GITHUB = "github",
+  WARPCAST = "warpcast",
 }
 
 const socialMediaIconComponents: Record<
@@ -12,6 +14,7 @@ const socialMediaIconComponents: Record<
 > = {
   twitter: TwitterIcon,
   github: GithubIcon,
+  warpcast: WarpcastIcon,
 };
 
 const socialMediaIcons = Object.keys(socialMediaIconComponents).sort((a, b) =>
