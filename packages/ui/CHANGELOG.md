@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.36
+
+### Patch Changes
+
+- created components for metrics
+
 ## 0.0.0-beta.35
 
 ### Patch Changes
