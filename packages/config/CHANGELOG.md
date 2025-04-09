@@ -1,5 +1,7 @@
 # @gitcoin/config
 
+## 0.0.0-beta.38
+
 ## 0.0.0-beta.37
 
 ## 0.0.0-beta.36

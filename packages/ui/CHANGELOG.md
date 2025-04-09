@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.38
+
+### Patch Changes
+
+- Add charts
+
 ## 0.0.0-beta.37
 
 ### Patch Changes
