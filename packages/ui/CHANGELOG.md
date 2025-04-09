@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.39
+
+### Patch Changes
+
+- [#76](https://github.com/gitcoinco/core/pull/76) [`bf71975`](https://github.com/gitcoinco/core/commit/bf71975af675d55d76083e21b00a4713baedf8f9) Thanks [@nijoe1](https://github.com/nijoe1)! - chore: leaderboard improvements
+
 ## 0.0.0-beta.38
 
 ### Patch Changes
