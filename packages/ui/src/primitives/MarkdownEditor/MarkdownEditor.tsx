@@ -1,21 +1,19 @@
 "use client";
 
-import { ComponentProps, forwardRef, Ref, useContext } from "react";
+import { forwardRef, useContext } from "react";
+import { Suspense, lazy } from "react";
+import { useState, useEffect, ComponentType } from "react";
 
-import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
+import { EditorContext, commands, MDEditorProps } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { IconType } from "@/index";
 import { cn } from "@/lib";
 import { Icon } from "@/primitives/Icon";
-import { Markdown } from "@/types";
 
 import "./markdown_editor.css";
 
-export interface MarkdownEditorProps extends Markdown {
-  onChange?: (value: string) => void;
-  value?: string;
-}
+const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 
 const WriteButton = () => {
   const { preview, dispatch } = useContext(EditorContext);
@@ -94,30 +92,46 @@ const customItalicCommand = {
   icon: <Icon type={IconType.ITALIC} className="size-fit text-grey-900" />,
 };
 
-export const MarkdownEditor = forwardRef(function MarkdownEditorComponent(
-  { ...props }: MarkdownEditorProps & ComponentProps<"div">,
-  ref: Ref<HTMLDivElement>,
-) {
+export const MarkdownEditor_ = forwardRef(function MarkdownEditorComponent({
+  ...props
+}: MDEditorProps) {
   return (
-    <MDEditor
-      commands={[editPreviewCommand, customPreviewCommand]}
-      // TODO: Customize commands Icons
-      extraCommands={[
-        customTitleCommand,
-        customBoldCommand,
-        customItalicCommand,
-        commands.divider,
-        commands.link,
-        commands.image,
-      ]}
-      ref={ref}
-      preview="edit"
-      previewOptions={{
-        rehypePlugins: [[rehypeSanitize]],
-      }}
-      value={props.value ?? props.placeholder}
-      onChange={(val) => props.onChange?.(val ?? "")}
-      data-color-mode="light"
-    />
+    <Suspense fallback={null}>
+      <MDEditor
+        commands={[editPreviewCommand, customPreviewCommand]}
+        extraCommands={[
+          customTitleCommand,
+          customBoldCommand,
+          customItalicCommand,
+          commands.divider,
+          commands.link,
+          commands.image,
+        ]}
+        preview="edit"
+        previewOptions={{
+          rehypePlugins: [[rehypeSanitize]],
+        }}
+        value={props.value}
+        onChange={(val) => props.onChange?.(val ?? "")}
+        data-color-mode="light"
+      />
+    </Suspense>
   );
 });
+
+export const MarkdownEditor = (props: MDEditorProps) => (
+  <DynamicLoader component={MarkdownEditor_} {...props} />
+);
+
+export function DynamicLoader<T extends object>({
+  component: Component,
+  ...props
+}: { component: ComponentType<T> } & T) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) return null;
+  return <Component {...(props as T)} />;
+}

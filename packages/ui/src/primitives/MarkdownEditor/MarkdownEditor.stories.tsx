@@ -22,9 +22,9 @@ type Story = StoryObj<typeof MarkdownEditor>;
 const MarkdownEditorWithHooks = (args: React.ComponentProps<typeof MarkdownEditor>) => {
   const [value, setValue] = useState(args.value || "");
 
-  const handleChange = (valueOrEvent: string | React.FormEvent<HTMLDivElement>) => {
-    if (typeof valueOrEvent === "string") {
-      setValue(valueOrEvent);
+  const handleChange = (value?: string, event?: React.ChangeEvent<HTMLTextAreaElement>, state?: any) => {
+    if (value !== undefined) {
+      setValue(value);
     }
   };
 
