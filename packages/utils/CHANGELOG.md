@@ -1,5 +1,7 @@
 # @gitcoin/utils
 
+## 0.0.0-beta.40
+
 ## 0.0.0-beta.39
 
 ## 0.0.0-beta.38
