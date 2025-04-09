@@ -101,7 +101,7 @@ export const DesktopLeaderboard = ({
                 <Icon type={IconType.SORT} className={icon()} />
               </div>
             </TableHead>
-            <TableHead className="max-w-80 px-7">
+            <TableHead className="min-w-96 px-7">
               <span className={headerText()}>Project name</span>
             </TableHead>
             {metricIds.map((metricId) => (
