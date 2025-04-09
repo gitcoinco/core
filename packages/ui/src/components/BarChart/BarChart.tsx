@@ -35,39 +35,34 @@ export interface BarChartProps {
 
 export function BarChart({
   width = 800,
-  height = 400,
   data,
   title,
   description,
   xAxisTitle,
   yAxisTitle,
-  xAxisLabelInterval = 1,
-  yAxisLabelInterval = 1,
   showLegend = true,
-  barGap = 0.1,
-  barGroupGap = 0.2,
   isDateAxis = false,
 }: BarChartProps) {
   // Transform data into recharts format
-  const chartData = data.length > 0 ? data[0].x.map((date, index) => {
-    const item: Record<string, any> = { date };
-    data.forEach((series) => {
-      item[series.name || "value"] = series.y[index];
-    });
-    return item;
-  }) : [];
+  const chartData =
+    data.length > 0
+      ? data[0].x.map((date, index) => {
+          const item: Record<string, any> = { date };
+          data.forEach((series) => {
+            item[series.name || "value"] = series.y[index];
+          });
+          return item;
+        })
+      : [];
 
   // Create chart config with default colors
-  const chartConfig = data.reduce<ChartConfig>(
-    (acc, series, index) => {
-      acc[series.name || "value"] = {
-        label: series.name || "Value",
-        color: series.color || "#25BDCE", // Default teal color
-      };
-      return acc;
-    },
-    {},
-  );
+  const chartConfig = data.reduce<ChartConfig>((acc, series, index) => {
+    acc[series.name || "value"] = {
+      label: series.name || "Value",
+      color: series.color || "#25BDCE", // Default teal color
+    };
+    return acc;
+  }, {});
 
   // Check if the first x value is a date
   const isDate = (value: string) => {
@@ -110,7 +105,7 @@ export function BarChart({
               axisLine={false}
               tickMargin={8}
               minTickGap={32}
-              label={xAxisTitle ? { value: xAxisTitle, position: "bottom", offset: 40 } : undefined}
+              label={xAxisTitle ? { value: xAxisTitle, position: "bottom", offset: 30 } : undefined}
               tickFormatter={formatXAxis}
             />
             <YAxis
@@ -119,7 +114,7 @@ export function BarChart({
               tickMargin={8}
               label={
                 yAxisTitle
-                  ? { value: yAxisTitle, angle: -90, position: "left", offset: 20 }
+                  ? { value: yAxisTitle, angle: -90, position: "left", offset: 10 }
                   : undefined
               }
               tickFormatter={(value) => value.toLocaleString()}
@@ -130,13 +125,13 @@ export function BarChart({
                   className="w-[150px]"
                   nameKey="value"
                   labelFormatter={(value) => {
-                    if (isDate(value)) {
-                      return new Date(value).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      });
-                    }
+                    // if (isDate(value)) {
+                    //   return new Date(value).toLocaleDateString("en-US", {
+                    //     month: "short",
+                    //     day: "numeric",
+                    //     year: "numeric",
+                    //   });
+                    // }
                     return value;
                   }}
                 />
