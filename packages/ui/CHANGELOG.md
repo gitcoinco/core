@@ -1,5 +1,12 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.40
+
+### Patch Changes
+
+- [#78](https://github.com/gitcoinco/core/pull/78) [`39c53f5`](https://github.com/gitcoinco/core/commit/39c53f564e14ee115ecaa98f2854cab83f1260b8) Thanks [@nijoe1](https://github.com/nijoe1)! - chore: improve leaderboard sorting
+  feat: add share to twitter btn after submitting the ballot
+
 ## 0.0.0-beta.39
 
 ### Patch Changes
