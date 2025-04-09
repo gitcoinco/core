@@ -34,6 +34,7 @@ interface BallotFormProps {
   maxAllocation?: number;
   onSubmit: (values: BallotValues[]) => void;
   onChange?: (values: BallotValues[]) => void;
+  onShare?: () => void;
 }
 
 const getTotalAllocation = (items: BallotItemsMap) =>
@@ -52,6 +53,7 @@ export const BallotForm: React.FC<BallotFormProps> = ({
   maxAllocation = 100,
   onSubmit,
   onChange,
+  onShare,
 }) => {
   const { getValue, setValue, isReady } = useIndexedDB({
     dbName: DB_NAME,
@@ -182,7 +184,10 @@ export const BallotForm: React.FC<BallotFormProps> = ({
 
   return (
     <div className={cn("flex flex-col gap-6", className)}>
-      <AlreadyVotedBadge submittedAt={submittedBallot?.submittedAt} />
+      <AlreadyVotedBadge
+        submittedAt={submittedBallot?.submittedAt}
+        onShare={onShare}
+      />
       <div className="w-[720px] space-y-4 rounded-xl border border-grey-300 bg-grey-50 p-10">
         <BallotHeader sortOrder={sortOrder ?? DEFAULT_SORT_ORDER} setSortOrder={setSortOrder} />
         <div>

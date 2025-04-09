@@ -31,6 +31,8 @@ export interface LeaderboardProps {
   };
   expandedProject: number | null;
   setExpandedProject: (project: number | null) => void;
+  sortConfig: SortConfig;
+  setSortConfig: (config: SortConfig) => void;
 }
 
 export interface SortConfig {

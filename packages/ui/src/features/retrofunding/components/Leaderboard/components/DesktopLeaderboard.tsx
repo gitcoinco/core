@@ -35,6 +35,8 @@ export const DesktopLeaderboard = ({
   expandedProject,
   setExpandedProject,
   parentWidth,
+  sortConfig,
+  setSortConfig,
 }: LeaderboardProps & { parentWidth: number }) => {
   const {
     headerText,
@@ -46,7 +48,6 @@ export const DesktopLeaderboard = ({
     icon,
     tooltipText,
   } = desktopLeaderboard();
-  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: "rank", direction: "asc" });
   const ranks = Object.keys(projects).map(Number);
   const metricIds = Object.keys(metrics);
 
@@ -77,14 +78,9 @@ export const DesktopLeaderboard = ({
   );
 
   const handleSort = (key: "rank" | string) => {
-    setSortConfig((currentConfig) => {
-      if (currentConfig.key === key) {
-        return {
-          key,
-          direction: currentConfig.direction === "asc" ? "desc" : "asc",
-        };
-      }
-      return { key, direction: "desc" };
+    setSortConfig({
+      key,
+      direction: sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc",
     });
   };
 

@@ -29,6 +29,8 @@ export const MobileLeaderboard = ({
   paginationProps,
   expandedProject,
   setExpandedProject,
+  sortConfig,
+  setSortConfig,
 }: LeaderboardProps) => {
   const {
     rankBadge,
@@ -51,12 +53,33 @@ export const MobileLeaderboard = ({
       ...projects[rank],
     }))
     .sort((a, b) => {
-      return a.originalRank - b.originalRank;
+      if (sortConfig.key === "rank") {
+        return sortConfig.direction === "asc"
+          ? a.originalRank - b.originalRank
+          : b.originalRank - a.originalRank;
+      }
+
+      const aValue = a.metrics[sortConfig.key];
+      const bValue = b.metrics[sortConfig.key];
+
+      if (sortConfig.direction === "asc") {
+        return aValue - bValue;
+      }
+      return bValue - aValue;
     });
+
   const paginatedProjects = sortedProjects.slice(
     (paginationProps.currentPage - 1) * paginationProps.rowsPerPage,
     paginationProps.currentPage * paginationProps.rowsPerPage,
   );
+
+  const handleSort = (key: "rank" | string) => {
+    setSortConfig({
+      key,
+      direction: sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc",
+    });
+  };
+
   return (
     <div className="space-y-4 p-1">
       {paginatedProjects.map((projectData) => {
@@ -74,6 +97,7 @@ export const MobileLeaderboard = ({
                       originalRank === 1 && firstRankBadge(),
                       originalRank === 2 && secondRankBadge(),
                     )}
+                    onClick={() => handleSort("rank")}
                   >
                     {originalRank}
                   </span>
@@ -102,7 +126,9 @@ export const MobileLeaderboard = ({
                 {metricIds.map((metricId) => (
                   <div key={metricId} className="space-y-1">
                     <div className="flex items-center gap-1">
-                      <span className={metricLabel()}>{metrics[metricId].name}</span>
+                      <span className={metricLabel()} onClick={() => handleSort(metricId)}>
+                        {metrics[metricId].name}
+                      </span>
                       {metrics[metricId].description && (
                         <IconWithTooltip
                           iconType={IconType.INFORMATION_CIRCLE}
@@ -111,6 +137,11 @@ export const MobileLeaderboard = ({
                           tooltipClassName={tooltipText()}
                         />
                       )}
+                      <Icon
+                        type={IconType.SORT}
+                        className={cn(icon())}
+                        onClick={() => handleSort(metricId)}
+                      />
                     </div>
                     <div className={metricValue()}>{projectMetrics[metricId]}</div>
                   </div>
