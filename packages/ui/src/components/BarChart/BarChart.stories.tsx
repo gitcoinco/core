@@ -111,10 +111,13 @@ export const TimeSeries: Story = {
     height: 500,
     data: [
       {
-        name: "Donations",
-        x: generateTimeSeriesData(30).map((d) => d.x),
-        y: generateTimeSeriesData(30).map((d) => d.y),
-        color: "#25BDCE",
+        const timeSeriesData = generateTimeSeriesData(30);
+        {
+          name: "Donations",
+          x: timeSeriesData.map((d) => d.x),
+          y: timeSeriesData.map((d) => d.y),
+          color: "#25BDCE",
+        },
       },
     ],
     title: "Daily Donations",
@@ -134,15 +137,23 @@ export const MultipleSeries: Story = {
     data: [
       {
         name: "Donations",
-        x: generateTimeSeriesData(30).map((d) => d.x),
-        y: generateTimeSeriesData(30).map((d) => d.y),
-        color: "#25BDCE",
-      },
-      {
-        name: "Matching Funds",
-        x: generateTimeSeriesData(30).map((d) => d.x),
-        y: generateTimeSeriesData(30).map((d) => d.y * 0.5),
-        color: "#FF7043",
++ const multipleSeriesData = generateTimeSeriesData(30);
+  {
+    name: "Donations",
+-   x: generateTimeSeriesData(30).map((d) => d.x),
+-   y: generateTimeSeriesData(30).map((d) => d.y),
++   x: multipleSeriesData.map((d) => d.x),
++   y: multipleSeriesData.map((d) => d.y),
+    color: "#25BDCE",
+  },
+  {
+    name: "Matching Funds",
+-   x: generateTimeSeriesData(30).map((d) => d.x),
+-   y: generateTimeSeriesData(30).map((d) => d.y * 0.5),
++   x: multipleSeriesData.map((d) => d.x),
++   y: multipleSeriesData.map((d) => d.y * 0.5),
+    color: "#FF7043",
+  },
       },
     ],
     title: "Donations and Matching Funds",
@@ -193,16 +204,23 @@ export const NumericAxis: Story = {
     height: 500,
     data: [
       {
-        name: "Series A",
-        x: generateNumericData(10).map((d) => d.x),
-        y: generateNumericData(10).map((d) => d.y),
-        color: "#25BDCE",
-      },
-      {
-        name: "Series B",
-        x: generateNumericData(10).map((d) => d.x),
-        y: generateNumericData(10).map((d) => d.y),
-        color: "#FF7043",
++ const numericData = generateNumericData(10);
+  {
+    name: "Series A",
+-   x: generateNumericData(10).map((d) => d.x),
+-   y: generateNumericData(10).map((d) => d.y),
++   x: numericData.map((d) => d.x),
++   y: numericData.map((d) => d.y),
+    color: "#25BDCE",
+  },
+  {
+    name: "Series B",
+-   x: generateNumericData(10).map((d) => d.x),
+-   y: generateNumericData(10).map((d) => d.y),
++   x: numericData.map((d) => d.x),
++   y: numericData.map((d) => d.y * 0.7), // Creating some variation between series
+    color: "#FF7043",
+  },
       },
     ],
     title: "Numeric X-Axis Example",
@@ -224,9 +242,15 @@ export const NoLegend: Story = {
     data: [
       {
         name: "Donations",
-        x: generateTimeSeriesData(30).map((d) => d.x),
-        y: generateTimeSeriesData(30).map((d) => d.y),
-        color: "#25BDCE",
++ const noLegendData = generateTimeSeriesData(30);
+{
+  name: "Donations",
+-  x: generateTimeSeriesData(30).map((d) => d.x),
+-  y: generateTimeSeriesData(30).map((d) => d.y),
++  x: noLegendData.map((d) => d.x),
++  y: noLegendData.map((d) => d.y),
+  color: "#25BDCE",
+},
       },
     ],
     title: "Daily Donations",

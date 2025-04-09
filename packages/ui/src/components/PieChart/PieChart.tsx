@@ -52,6 +52,9 @@ export function PieChart({
   total,
   totalLabel = "Total",
 }: PieChartProps) {
+  if (!data || data.length === 0) {
+    return [];
+  }
   const chartData = data.map((item, index) => ({
     name: item.name,
     value: item.value,
@@ -59,13 +62,13 @@ export function PieChart({
   }));
 
   const chartConfig = data.reduce(
-    (acc, item, index) => ({
-      ...acc,
-      [item.name]: {
-        label: item.name,
+    (acc, item, index) => {
+      acc[item.name] = {
+        label: item.name, 
         color: item.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
-      },
-    }),
+      };
+      return acc;
+    },
     {},
   );
 

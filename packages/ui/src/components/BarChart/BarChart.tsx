@@ -49,23 +49,23 @@ export function BarChart({
   isDateAxis = false,
 }: BarChartProps) {
   // Transform data into recharts format
-  const chartData = data[0].x.map((date, index) => {
+  const chartData = data.length > 0 ? data[0].x.map((date, index) => {
     const item: Record<string, any> = { date };
     data.forEach((series) => {
       item[series.name || "value"] = series.y[index];
     });
     return item;
-  });
+  }) : [];
 
   // Create chart config with default colors
   const chartConfig = data.reduce<ChartConfig>(
-    (acc, series, index) => ({
-      ...acc,
-      [series.name || "value"]: {
+    (acc, series, index) => {
+      acc[series.name || "value"] = {
         label: series.name || "Value",
         color: series.color || "#25BDCE", // Default teal color
-      },
-    }),
+      };
+      return acc;
+    },
     {},
   );
 
