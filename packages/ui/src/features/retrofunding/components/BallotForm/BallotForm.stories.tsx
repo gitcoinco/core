@@ -90,3 +90,11 @@ export const AlreadyVoted: Story = {
     },
   },
 };
+
+export const ShareBallot: Story = {
+  args: {
+    ...AlreadyVoted.args,
+    name: "shareBallot-metrics",
+    onShare: action("onShare"),
+  },
+};
