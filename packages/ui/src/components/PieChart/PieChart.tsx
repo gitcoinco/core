@@ -53,8 +53,7 @@ export function PieChart({
   totalLabel = "Total",
 }: PieChartProps) {
   if (!data || data.length === 0) {
--    return [];
-+    return null;
+    return null;
   }
   const chartData = data.map((item, index) => ({
     name: item.name,
@@ -62,10 +61,10 @@ export function PieChart({
     fill: item.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
   }));
 
-  const chartConfig = data.reduce(
+  const chartConfig = data.reduce<Record<string, { label: string; color: string }>>(
     (acc, item, index) => {
       acc[item.name] = {
-        label: item.name, 
+        label: item.name,
         color: item.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
       };
       return acc;
@@ -83,7 +82,7 @@ export function PieChart({
         <div style={{ width: "100%", height: height, maxWidth: "100%", overflow: "auto" }}>
           <ChartContainer
             config={chartConfig}
-            className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square max-h-[400px] w-full pb-0 responsive-chart"
+            className="[&_.recharts-pie-label-text]:fill-foreground responsive-chart mx-auto aspect-square max-h-[400px] w-full pb-0"
           >
             <RechartsPieChart width={width} height={height}>
               <ChartTooltip content={<ChartTooltipContent hideLabel />} />
