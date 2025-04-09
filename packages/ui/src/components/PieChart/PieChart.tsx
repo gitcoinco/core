@@ -79,10 +79,10 @@ export function PieChart({
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <div style={{ width: "100%", height: height }}>
+        <div style={{ width: "100%", height: height, maxWidth: "100%", overflow: "auto" }}>
           <ChartContainer
             config={chartConfig}
-            className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square max-h-[400px] w-full pb-0"
+            className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square max-h-[400px] w-full pb-0 responsive-chart"
           >
             <RechartsPieChart width={width} height={height}>
               <ChartTooltip content={<ChartTooltipContent hideLabel />} />
