@@ -8,7 +8,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 
 import { DesktopLeaderboard, MobileLeaderboard } from "./components";
-import { LeaderboardProps } from "./types";
+import { LeaderboardProps, SortConfig } from "./types";
 
 const leaderboardVariants = tv({
   base: "leaderboard-container",
@@ -44,7 +44,7 @@ const leaderboardVariants = tv({
 
 interface LeaderboardPropsWithVariants
   extends VariantProps<typeof leaderboardVariants>,
-    Omit<LeaderboardProps, "expandedProject" | "setExpandedProject" | "paginationProps"> {}
+    Omit<LeaderboardProps, "expandedProject" | "setExpandedProject" | "paginationProps" | "sortConfig" | "setSortConfig"> {}
 
 export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWithVariants) => {
   const leaderboardClassNames = leaderboardVariants({
@@ -53,6 +53,7 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: "rank", direction: "asc" });
   const isDesktopView = useMediaQuery("(min-width: 768px)");
 
   const totalProjects = Object.keys(projects).length;
@@ -115,6 +116,8 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
           expandedProject={expandedProject}
           setExpandedProject={setExpandedProject}
           parentWidth={parentWidth}
+          sortConfig={sortConfig}
+          setSortConfig={setSortConfig}
         />
       ) : (
         <MobileLeaderboard
@@ -130,6 +133,8 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
           }}
           expandedProject={expandedProject}
           setExpandedProject={setExpandedProject}
+          sortConfig={sortConfig}
+          setSortConfig={setSortConfig}
         />
       )}
     </div>
