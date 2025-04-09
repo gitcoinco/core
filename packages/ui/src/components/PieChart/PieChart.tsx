@@ -53,7 +53,8 @@ export function PieChart({
   totalLabel = "Total",
 }: PieChartProps) {
   if (!data || data.length === 0) {
-    return [];
+-    return [];
++    return null;
   }
   const chartData = data.map((item, index) => ({
     name: item.name,
