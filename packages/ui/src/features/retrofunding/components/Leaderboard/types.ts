@@ -6,6 +6,7 @@ export interface LeaderboardProps {
         name: string;
         logoImg?: string;
         website?: string;
+        projectProfile?: string;
         projectTwitter?: string;
         projectGithub?: string;
         description?: string;
