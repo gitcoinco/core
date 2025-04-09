@@ -34,7 +34,8 @@ export const DesktopLeaderboard = ({
   paginationProps,
   expandedProject,
   setExpandedProject,
-}: LeaderboardProps) => {
+  parentWidth,
+}: LeaderboardProps & { parentWidth: number }) => {
   const {
     headerText,
     rankBadge,
@@ -176,7 +177,7 @@ export const DesktopLeaderboard = ({
                 {isExpanded && (
                   <TableRow className="z-20 border-none hover:bg-transparent">
                     <TableCell colSpan={metricIds.length + 2} className="px-7">
-                      <ProjectInfo project={project} />
+                      <ProjectInfo project={project} parentWidth={parentWidth} />
                     </TableCell>
                   </TableRow>
                 )}

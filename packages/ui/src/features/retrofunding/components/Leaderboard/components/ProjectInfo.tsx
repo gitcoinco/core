@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { tv } from "tailwind-variants";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -25,11 +27,17 @@ interface ProjectInfoProps {
     projectGithub?: string;
     description?: string;
   };
+  parentWidth?: number;
 }
 
-export const ProjectInfo = ({ project }: ProjectInfoProps) => {
+export const ProjectInfo = ({ project, parentWidth }: ProjectInfoProps) => {
   const { container, title, description, icon } = projectInfoVariants();
   const isDesktopView = useMediaQuery("(min-width: 768px)");
+
+  const descriptionWidth = useMemo(() => {
+    if (!isDesktopView || !parentWidth) return undefined;
+    return { width: `${parentWidth - 90}px` };
+  }, [isDesktopView, parentWidth]);
   return (
     <div className={cn(container(), isDesktopView && "pl-6")}>
       <div className={cn("flex w-fit flex-col gap-1", isDesktopView && "flex-row gap-6")}>
@@ -81,7 +89,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
         )}
       </div>
 
-      <div className={cn(description(), "w-[calc(100vw-328px)]")}>
+      <div className={cn(description())} style={descriptionWidth}>
         <Markdown>{project.description}</Markdown>
       </div>
     </div>

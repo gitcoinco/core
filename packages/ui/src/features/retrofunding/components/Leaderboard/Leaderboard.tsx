@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
 import { useMediaQuery } from "usehooks-ts";
@@ -32,7 +32,7 @@ const leaderboardVariants = tv({
     size: {
       default:
         "[&_td:first-child]:mt-1 [&_td:first-child]:w-12 [&_td:first-child]:flex-1 [&_td:first-child]:flex-col ",
-      slim: "[&_.leaderboard-rank-default]:size-6 [&_.leaderboard-rank-default]:text-base [&_.leaderboard-table-headers]:text-lg [&_.leaderboard-table-icons]:size-4 [&_.leaderboard-table-items]:text-base [&_.metric-value]:text-base [&_.metric-value]:leading-6 [&_.project-logo]:size-7 [&_.project-name]:text-lg [&_.project-name]:leading-6 [&_td:first-child]:flex [&_td:first-child]:w-12 [&_td:first-child]:justify-center [&_td:not(:nth-child(2))]:text-center [&_td]:px-2 [&_th:first-child]:w-12 [&_th:not(:nth-child(2))]:text-center [&_th:nth-child(2)]:min-w-[300px] [&_th]:px-2",
+      slim: "[&_.leaderboard-rank-default]:size-6 [&_.leaderboard-rank-default]:text-base [&_.leaderboard-table-headers]:text-lg [&_.leaderboard-table-icons]:size-4 [&_.leaderboard-table-items]:text-base [&_.metric-value]:text-base [&_.metric-value]:leading-6 [&_.project-logo]:size-7 [&_.project-name]:text-lg [&_.project-name]:leading-6 [&_td:first-child]:w-12 [&_td:first-child]:flex-col [&_td:first-child]:justify-center [&_td:first-child]:pl-6 [&_td:not(:nth-child(2))]:text-center [&_td]:px-2 [&_th:first-child]:w-12 [&_th:not(:nth-child(2))]:text-center [&_th:nth-child(2)]:min-w-[300px] [&_th]:px-2",
     },
   },
   defaultVariants: {
@@ -77,8 +77,29 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
     setCurrentPage(Math.min(newCurrentPage, newTotalPages));
   };
 
+  const [parentWidth, setParentWidth] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        // Get the actual visible width of the parent container
+        const visibleWidth = entry.contentRect.width;
+        setParentWidth(visibleWidth);
+      }
+    });
+
+    resizeObserver.observe(containerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
+
   return (
-    <div className={cn(leaderboardClassNames, "w-full")}>
+    <div className={cn(leaderboardClassNames, "w-full")} ref={containerRef}>
       {isDesktopView ? (
         <DesktopLeaderboard
           key={`desktop-leaderboard-${currentPage}`}
@@ -93,6 +114,7 @@ export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWit
           }}
           expandedProject={expandedProject}
           setExpandedProject={setExpandedProject}
+          parentWidth={parentWidth}
         />
       ) : (
         <MobileLeaderboard
