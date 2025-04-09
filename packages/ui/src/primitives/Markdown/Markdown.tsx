@@ -1,18 +1,22 @@
 "use client";
 
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import ReactMarkdown from "react-markdown";
+
+import rehypeHighlight from "rehype-highlight";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 
 import { withSSR } from "@/lib/withSSR";
 
-const MarkdownComponent = ({ children }: { children: string }) => {
+export const MarkdownComponent = ({ children }: { children?: string }) => {
   return (
-    <MarkdownPreview
-      source={children}
-      wrapperElement={{
-        "data-color-mode": "light",
-      }}
-    />
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm, remarkMath]}
+      rehypePlugins={[rehypeKatex, rehypeHighlight]}
+    >
+      {children}
+    </ReactMarkdown>
   );
 };
-
 export const Markdown = withSSR(MarkdownComponent);
