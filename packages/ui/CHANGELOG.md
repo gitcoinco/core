@@ -1,5 +1,13 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.37
+
+### Patch Changes
+
+- [#73](https://github.com/gitcoinco/core/pull/73) [`a6f3317`](https://github.com/gitcoinco/core/commit/a6f3317273e649054c28688e2b488157f3129efd) Thanks [@nijoe1](https://github.com/nijoe1)! - chore: leaderboard impovements
+  chore: start using react-markdown instead of markdown-preview
+  fix: markdown editor to work with next.js
+
 ## 0.0.0-beta.36
 
 ### Patch Changes
