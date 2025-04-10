@@ -180,6 +180,11 @@ export const BallotForm: React.FC<BallotFormProps> = ({
     () => sortFieldsByOrder(itemsArray, sortOrder || DEFAULT_SORT_ORDER),
     [itemsArray, sortOrder],
   );
+
+  const sumOfAllocations = useMemo(() => {
+    return getTotalAllocation(items);
+  }, [items]);
+
   if (!isReady) return null;
 
   return (
@@ -189,7 +194,11 @@ export const BallotForm: React.FC<BallotFormProps> = ({
         onShare={onShare}
       />
       <div className="w-[720px] space-y-4 rounded-xl border border-grey-300 bg-grey-50 p-10">
-        <BallotHeader sortOrder={sortOrder ?? DEFAULT_SORT_ORDER} setSortOrder={setSortOrder} />
+        <BallotHeader
+          sortOrder={sortOrder ?? DEFAULT_SORT_ORDER}
+          setSortOrder={setSortOrder}
+          sumOfAllocations={sumOfAllocations}
+        />
         <div>
           {sortedFields.map((item, idx) => {
             const { metricId } = item;
