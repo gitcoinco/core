@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.41
+
+### Patch Changes
+
+- [#80](https://github.com/gitcoinco/core/pull/80) [`d7d9891`](https://github.com/gitcoinco/core/commit/d7d989101da4fc6adb08383914753e4c211fa916) Thanks [@nijoe1](https://github.com/nijoe1)! - feat: adds an allocation bar to the ballot form
+
 ## 0.0.0-beta.40
 
 ### Patch Changes
