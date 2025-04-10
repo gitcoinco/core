@@ -12,7 +12,7 @@ export interface ProgressBarProps {
   withLabel?: boolean;
 }
 
-export type ProgressVariants = "default" | "green" | "green-md";
+export type ProgressVariants = "default" | "green" | "green-sm" | "green-md";
 
 const progressVariants = tv({
   slots: {
@@ -29,6 +29,10 @@ const progressVariants = tv({
         root: " bg-grey-100",
         indicator: "bg-moss-700",
       },
+      "green-sm": {
+        root: "h-2 w-[136px] bg-grey-100",
+        indicator: "bg-moss-700",
+      },
       "green-md": {
         root: "w-[228px] bg-grey-100",
         indicator: "bg-moss-700",
@@ -43,7 +47,7 @@ const progressVariants = tv({
 export const ProgressBar = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & {
-    variant?: "default" | "green" | "green-md";
+    variant?: "default" | "green" | "green-sm" | "green-md";
     withLabel?: boolean;
   }
 >(({ className, value, variant = "default", withLabel = false, ...props }, ref) => {
