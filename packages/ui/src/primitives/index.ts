@@ -6,7 +6,7 @@ export * from "./Breadcrumb";
 export * from "./Button";
 export * from "./FileUpload";
 export * from "./Icon";
-export * from "./Indicators";
+export * from "./CircleStat";
 export * from "./ListGrid";
 export * from "./Markdown";
 export * from "./MarkdownEditor";

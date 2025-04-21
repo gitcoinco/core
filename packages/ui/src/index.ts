@@ -8,7 +8,7 @@ export * from "./primitives/Breadcrumb";
 export * from "./primitives/Button";
 export * from "./primitives/FileUpload";
 export * from "./primitives/Icon";
-export * from "./primitives/Indicators";
+export * from "./primitives/CircleStat";
 export * from "./primitives/ListGrid";
 export * from "./primitives/Modal";
 export * from "./primitives/ProgressBar";
