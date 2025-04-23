@@ -1,5 +1,11 @@
 # @gitcoin/types
 
+## 1.0.0-next.1
+
+### Patch Changes
+
+- package/types -> add files: ["dist"] to package.json
+
 ## 1.0.0-next.0
 
 ### Major Changes
