@@ -2,9 +2,8 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { CloudUpload, Image } from "lucide-react";
-
-import { cn } from "@/lib";
 
 export interface FileUploadProps {
   value?: Blob | null;

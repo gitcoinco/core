@@ -1,7 +1,7 @@
+import { cn } from "@gitcoin/utils";
 import { tv, VariantProps } from "tailwind-variants";
 
 import { SpinnerIcon } from "@/assets";
-import { cn } from "@/lib";
 
 const variants = tv({
   base: "shrink-0 animate-spin fill-black dark:fill-white",

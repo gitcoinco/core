@@ -1,8 +1,8 @@
+import { cn } from "@gitcoin/utils";
 import { ChevronLeft, ChevronRight, LucideChevronsRight, LucideChevronsLeft } from "lucide-react";
 import { tv } from "tailwind-variants";
 import { useMediaQuery } from "usehooks-ts";
 
-import { cn } from "@/lib";
 import { Select } from "@/primitives";
 
 const paginationVariants = tv({

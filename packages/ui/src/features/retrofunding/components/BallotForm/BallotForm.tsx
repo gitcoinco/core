@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { debounce } from "lodash";
 
 import { sortFieldsByOrder } from "@/features/retrofunding/utils/metricsBallot";
 import { useIndexedDB } from "@/hooks/useIndexedDB";
-import { cn } from "@/lib";
 import { Button } from "@/primitives";
 
 import { AlreadyVotedBadge, BallotHeader, BallotItem } from "./components";
@@ -189,10 +189,7 @@ export const BallotForm: React.FC<BallotFormProps> = ({
 
   return (
     <div className={cn("flex flex-col gap-6", className)}>
-      <AlreadyVotedBadge
-        submittedAt={submittedBallot?.submittedAt}
-        onShare={onShare}
-      />
+      <AlreadyVotedBadge submittedAt={submittedBallot?.submittedAt} onShare={onShare} />
       <div className="w-[720px] space-y-4 rounded-xl border border-grey-300 bg-grey-50 p-10">
         <BallotHeader
           sortOrder={sortOrder ?? DEFAULT_SORT_ORDER}

@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { tv, VariantProps } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { cn } from "@/lib";
 import { Skeleton } from "@/primitives/Skeleton";
 import { Card } from "@/ui-shadcn/card";
 

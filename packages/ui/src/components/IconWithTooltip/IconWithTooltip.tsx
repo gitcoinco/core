@@ -5,7 +5,7 @@ import {
   TooltipTrigger,
   TooltipProvider,
   TooltipContentProps,
-} from "@/ui-shadcn/tooltip";
+} from "@/primitives/Tooltip";
 
 interface IconWithTooltipProps extends TooltipContentProps {
   iconType: IconType;

@@ -4,11 +4,11 @@ import { forwardRef, useContext } from "react";
 import { Suspense, lazy } from "react";
 import { useState, useEffect, ComponentType } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { EditorContext, commands, MDEditorProps } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { IconType } from "@/index";
-import { cn } from "@/lib";
 import { Icon } from "@/primitives/Icon";
 
 import "./markdown_editor.css";

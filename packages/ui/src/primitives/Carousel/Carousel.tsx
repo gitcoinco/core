@@ -1,11 +1,11 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/outline";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { tv, VariantProps } from "tailwind-variants";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button/Button";
 
 export const carouselVariants = tv({

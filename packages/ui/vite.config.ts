@@ -29,11 +29,10 @@ export default defineConfig({
         "use-toast": resolve(__dirname, "./src/hooks/useToast.ts"),
         "use-click-outside": resolve(__dirname, "./src/hooks/useClickOutside.ts"),
         // features
-        application: resolve(__dirname, "./src/features/application/index.ts"),
-        checker: resolve(__dirname, "./src/features/checker/index.ts"),
-        pool: resolve(__dirname, "./src/features/pool/index.ts"),
-        program: resolve(__dirname, "./src/features/program/index.ts"),
-        project: resolve(__dirname, "./src/features/project/index.ts"),
+        application: resolve(__dirname, "./src/components/Application/index.ts"),
+        pool: resolve(__dirname, "./src/components/Pool/index.ts"),
+        program: resolve(__dirname, "./src/components/Program/index.ts"),
+        project: resolve(__dirname, "./src/components/Project/index.ts"),
         retrofunding: resolve(__dirname, "./src/features/retrofunding/index.ts"),
       },
       name: "gitcoin-ui",
@@ -62,12 +61,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "~checker": path.resolve(__dirname, "./src/features/checker"),
       "~retrofunding": path.resolve(__dirname, "./src/features/retrofunding"),
-      "~pool": path.resolve(__dirname, "./src/features/pool"),
-      "~application": path.resolve(__dirname, "./src/features/application"),
-      "~program": path.resolve(__dirname, "./src/features/program"),
-      "~project": path.resolve(__dirname, "./src/features/project"),
+      "~pool": path.resolve(__dirname, "./src/components/Pool"),
+      "~application": path.resolve(__dirname, "./src/components/Application"),
+      "~program": path.resolve(__dirname, "./src/components/Program"),
+      "~project": path.resolve(__dirname, "./src/components/Project"),
     },
   },
   css: {

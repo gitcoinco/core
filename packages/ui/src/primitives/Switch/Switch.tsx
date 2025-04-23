@@ -2,10 +2,9 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import { tv, VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const switchVariants = tv({
   slots: {

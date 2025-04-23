@@ -2,7 +2,8 @@
 
 import { ReactNode } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
+
 import { ScrollArea, ScrollBar } from "@/primitives/ScrollArea";
 import { ProjectAllocation, SortConfig } from "@/types";
 

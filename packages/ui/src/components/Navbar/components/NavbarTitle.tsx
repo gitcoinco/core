@@ -1,4 +1,4 @@
-import { cn } from "@/lib";
+import { cn } from "@gitcoin/utils";
 
 export interface NavbarTitleProps {
   text: string;

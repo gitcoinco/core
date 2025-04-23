@@ -3,9 +3,8 @@
 import { useMemo } from "react";
 import Plotly from "react-plotly.js";
 
+import { formatAmount } from "@gitcoin/utils";
 import { useMediaQuery } from "usehooks-ts";
-
-import { formatAmount } from "../../lib/utils";
 
 export function SquarePlot({
   width,

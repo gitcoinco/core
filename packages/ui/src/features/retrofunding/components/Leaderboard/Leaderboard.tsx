@@ -2,10 +2,9 @@
 
 import { useEffect, useRef, useMemo, useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv, type VariantProps } from "tailwind-variants";
 import { useMediaQuery } from "usehooks-ts";
-
-import { cn } from "@/lib/utils";
 
 import { DesktopLeaderboard, MobileLeaderboard } from "./components";
 import { LeaderboardProps, SortConfig } from "./types";
@@ -44,7 +43,10 @@ const leaderboardVariants = tv({
 
 interface LeaderboardPropsWithVariants
   extends VariantProps<typeof leaderboardVariants>,
-    Omit<LeaderboardProps, "expandedProject" | "setExpandedProject" | "paginationProps" | "sortConfig" | "setSortConfig"> {}
+    Omit<
+      LeaderboardProps,
+      "expandedProject" | "setExpandedProject" | "paginationProps" | "sortConfig" | "setSortConfig"
+    > {}
 
 export const Leaderboard = ({ projects, metrics, ...props }: LeaderboardPropsWithVariants) => {
   const leaderboardClassNames = leaderboardVariants({

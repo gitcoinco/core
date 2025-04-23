@@ -1,6 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
+
 import { Skeleton } from "@/primitives/Skeleton";
 
 import { AllocationItem } from "./AllocationItem";

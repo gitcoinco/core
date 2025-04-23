@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { NumericFormat } from "react-number-format";
 
+import { cn } from "@gitcoin/utils";
 import { LockClosedIcon, LockOpenIcon, PlusIcon, MinusIcon } from "@heroicons/react/solid";
-
-import { cn } from "@/lib/utils";
 
 import { BallotValues } from "../types";
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { ProgramCard, ProgramCardProps } from "@/features/program/components/ProgramCard";
 import {
   Carousel,
   CarouselContent,
@@ -11,6 +10,8 @@ import {
 import { Dialog, DialogTitle } from "@/primitives/Dialog";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Modal } from "@/primitives/Modal";
+
+import { ProgramCard, ProgramCardProps } from "~program/ProgramCard";
 
 export interface ProgramPickerModalProps {
   programs: ProgramCardProps[];

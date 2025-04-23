@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { tv, VariantProps } from "tailwind-variants";
 
-import { cn } from "@/lib";
 import { Icon, IconType } from "@/primitives/Icon";
 
 const variants = tv({
