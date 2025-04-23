@@ -1,5 +1,11 @@
 # @gitcoin/types
 
+## 1.0.0-next.2
+
+### Patch Changes
+
+- fix: build before publishing
+
 ## 1.0.0-next.1
 
 ### Patch Changes
