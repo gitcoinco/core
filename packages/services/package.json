@@ -18,6 +18,9 @@
   },
   "sideEffects": false,
   "license": "AGPL-3.0",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
