@@ -1,5 +1,15 @@
 # @gitcoin/config
 
+## 1.0.0-next.0
+
+### Major Changes
+
+- - moved packages/ui feature checker to apps/checker (npm: @gitcoin/checker)
+  - moved the types that were used by checker and ui to packages/types (npm: @gitcoin/types)
+  - moved the utils that were used by checker and ui to packages/utils (npm: @gitcoin/utils)
+  - moved allo and checker services from checker feature to packages/services (npm:
+    @packages/services)
+
 ## 0.0.0-beta.41
 
 ## 0.0.0-beta.40
