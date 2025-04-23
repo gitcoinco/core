@@ -1,5 +1,14 @@
 # @gitcoin/checker
 
+## 1.0.0-next.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @gitcoin/services@1.0.0-next.1
+  - @gitcoin/ui@1.0.0-next.1
+  - @gitcoin/utils@1.0.0-next.1
+
 ## 1.0.0-next.0
 
 ### Major Changes
