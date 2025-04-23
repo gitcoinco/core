@@ -12,6 +12,7 @@
     "@gitcoin/utils": "0.0.0-beta.41"
   },
   "changesets": [
+    "cruel-eels-rule",
     "rare-rats-worry",
     "ten-islands-jump"
   ]

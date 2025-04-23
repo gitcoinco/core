@@ -17,6 +17,7 @@
     "changeset:pre-exit": "changeset pre exit",
     "version-packages": "changeset version",
     "release": "turbo build --filter=@repo/*^... && changeset publish",
+    "release:ci": "changeset publish",
     "prepare": "husky",
     "lint-staged": "turbo lint-staged"
   },

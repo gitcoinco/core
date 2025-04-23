@@ -1,5 +1,15 @@
 # @gitcoin/ui
 
+## 1.0.0-next.2
+
+### Patch Changes
+
+- fix: build before publishing
+
+- Updated dependencies []:
+  - @gitcoin/services@1.0.0-next.2
+  - @gitcoin/utils@1.0.0-next.2
+
 ## 1.0.0-next.1
 
 ### Patch Changes

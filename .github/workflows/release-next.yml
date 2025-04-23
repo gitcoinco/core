@@ -32,11 +32,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
+      - name: Build Packages
+        run: pnpm build
+
       - name: Create Next Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release
+          publish: pnpm release:ci
           version: pnpm version-packages
           commit: "ci: new next release"
           title: "ci: new next release candidate"
