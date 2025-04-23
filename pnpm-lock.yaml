@@ -290,6 +290,8 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
+  packages/example: {}
+
   packages/services:
     dependencies:
       graphql-request:
