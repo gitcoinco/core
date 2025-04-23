@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
 import { AccordionItem, NavItem, InternalSideNavProps } from "@/components/SideNav";
-import { cn } from "@/lib/utils";
 
 /**
  * Tailwind variants for side navigation hover states

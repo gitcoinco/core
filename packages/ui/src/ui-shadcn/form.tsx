@@ -8,10 +8,10 @@ import {
   useFormContext,
 } from "react-hook-form";
 
+import { cn } from "@gitcoin/utils";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
 
-import { cn } from "@/lib/utils";
 import { Label } from "@/primitives/Label";
 
 const Form = FormProvider;

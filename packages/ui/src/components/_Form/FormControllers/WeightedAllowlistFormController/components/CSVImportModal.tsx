@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { UploadIcon } from "@heroicons/react/outline";
 
-import { cn } from "@/lib/utils";
 import { Icon, IconType, Switch } from "@/primitives";
 import { Button } from "@/primitives/Button";
 import { DialogContent, DialogTitle, Dialog } from "@/primitives/Dialog";

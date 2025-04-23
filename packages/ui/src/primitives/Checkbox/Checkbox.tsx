@@ -2,11 +2,10 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { CheckIcon } from "@heroicons/react/solid";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { tv, VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const checkboxVariants = tv({
   slots: {

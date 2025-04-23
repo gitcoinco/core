@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 import { useMediaQuery } from "usehooks-ts";
 
 import { IconLabel } from "@/components/IconLabel";
-import { cn } from "@/lib";
 import { IconType } from "@/primitives/Icon";
 import { Markdown } from "@/primitives/Markdown";
 

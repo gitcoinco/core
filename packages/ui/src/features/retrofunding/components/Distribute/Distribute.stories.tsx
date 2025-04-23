@@ -1,8 +1,8 @@
+import { PoolStatus } from "@gitcoin/types";
 import { action } from "@storybook/addon-actions";
 import { StoryObj, Meta } from "@storybook/react";
 import { formatUnits, parseUnits } from "viem";
 
-import { PoolStatus } from "@/types";
 import { PoolConfig } from "@/types/distribute";
 
 import { Distribute } from "./Distribute";

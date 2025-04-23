@@ -1,10 +1,9 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const Sheet = SheetPrimitive.Root;
 

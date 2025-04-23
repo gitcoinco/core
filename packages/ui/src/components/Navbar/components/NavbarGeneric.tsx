@@ -2,9 +2,8 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv, type VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib";
 
 import { filterAndSortChildren } from "../utils/filterAndSortChildren";
 

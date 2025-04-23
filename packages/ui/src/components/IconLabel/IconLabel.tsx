@@ -2,10 +2,10 @@
 
 import React from "react";
 
+import { getAddressLabel } from "@gitcoin/utils";
+import { formatDate, DateFormat } from "@gitcoin/utils";
 import { match } from "ts-pattern";
 
-import { formatDate, DateFormat } from "@/lib/dates/formatDate";
-import { getAddressLabel } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 import { Skeleton } from "@/primitives/Skeleton";
 

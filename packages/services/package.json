@@ -1,0 +1,43 @@
+{
+  "name": "@gitcoin/services",
+  "version": "1.0.0-next.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitcoinco/core",
+    "directory": "packages/services"
+  },
+  "exports": {
+    "./allo": {
+      "types": "./dist/allo.d.mts",
+      "import": "./dist/allo.mjs"
+    },
+    "./checker": {
+      "types": "./dist/checker.d.mts",
+      "import": "./dist/checker.mjs"
+    }
+  },
+  "sideEffects": false,
+  "license": "AGPL-3.0",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "devDependencies": {
+    "@gitcoin/config": "workspace:*",
+    "@gitcoin/types": "workspace:*",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.2",
+    "typescript": "5.5.4",
+    "viem": "^2.21.48"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "graphql-request": "^7.1.0"
+  }
+}

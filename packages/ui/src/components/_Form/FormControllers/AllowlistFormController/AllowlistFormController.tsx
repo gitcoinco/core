@@ -3,11 +3,11 @@
 import React, { useRef } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
+import { cn } from "@gitcoin/utils";
 import { UploadIcon } from "@heroicons/react/solid";
 import Papa from "papaparse";
 import { getAddress, isAddress } from "viem";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { TextArea } from "@/primitives/TextArea";
 

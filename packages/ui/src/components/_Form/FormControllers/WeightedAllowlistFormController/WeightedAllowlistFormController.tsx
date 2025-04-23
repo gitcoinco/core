@@ -3,9 +3,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useFormContext, useWatch, FieldErrors } from "react-hook-form";
 
+import { cn } from "@gitcoin/utils";
 import { UploadIcon, PencilIcon } from "@heroicons/react/solid";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { IconType } from "@/primitives/Icon";
 import { Icon } from "@/primitives/Icon";

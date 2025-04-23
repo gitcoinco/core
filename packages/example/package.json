@@ -1,0 +1,17 @@
+{
+  "name": "@repo/example",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitcoinco/core",
+    "directory": "packages/example"
+  },
+  "sideEffects": false,
+  "license": "AGPL-3.0",
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}

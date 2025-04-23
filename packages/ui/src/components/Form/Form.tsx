@@ -3,10 +3,10 @@
 import { useRef } from "react";
 import { UseFormReturn } from "react-hook-form";
 
+import { cn } from "@gitcoin/utils";
 import { tv, VariantProps } from "tailwind-variants";
 
 import { Form_ } from "@/components/_Form";
-import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { FormStep } from "@/types";
 

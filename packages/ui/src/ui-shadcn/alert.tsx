@@ -1,8 +1,7 @@
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import { tv, type VariantProps } from "tailwind-variants";
-
-import { cn } from "@/lib/utils";
 
 const alertVariants = tv({
   base: "relative w-full rounded-lg border border-grey-100 p-4 dark:border-black [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-black dark:[&>svg]:text-grey-50 [&>svg~*]:pl-7",

@@ -2,10 +2,9 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: {
-    "index": "src/index.ts",
-    // "./button": "src/button.ts",
+    index: "src/index.ts",
   },
   format: ["esm"],
-  external: ["react"],
+  external: [],
   dts: true,
 });

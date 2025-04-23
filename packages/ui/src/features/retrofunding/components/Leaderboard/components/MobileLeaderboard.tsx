@@ -1,7 +1,7 @@
+import { cn } from "@gitcoin/utils";
 import { tv } from "tailwind-variants";
 
 import { IconWithTooltip } from "@/components/IconWithTooltip";
-import { cn } from "@/lib/utils";
 import { IconType, Icon } from "@/primitives/Icon";
 import { Pagination } from "@/primitives/Pagination";
 

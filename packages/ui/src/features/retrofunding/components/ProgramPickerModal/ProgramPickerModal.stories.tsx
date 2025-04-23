@@ -4,7 +4,8 @@ import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { CreateButton } from "@/components/CreateButton";
-import { ProgramCardProps } from "@/features/program/components/ProgramCard";
+
+import { ProgramCardProps } from "~program/ProgramCard";
 
 import { ProgramPickerModal, ProgramPickerModalProps } from "./ProgramPickerModal";
 

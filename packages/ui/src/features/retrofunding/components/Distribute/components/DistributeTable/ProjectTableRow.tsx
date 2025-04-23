@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef } from "react";
 import { NumericFormat } from "react-number-format";
 
+import { cn } from "@gitcoin/utils";
 import Decimal from "decimal.js";
 import { formatUnits } from "viem";
 
 import { getTransactionUrl } from "@/lib/explorer/getTransactionUrl";
-import { cn } from "@/lib/utils";
 import { Button, Checkbox } from "@/primitives";
 import { TableRow, TableCell } from "@/primitives/Table";
 import { ApplicationPayout, PoolConfig } from "@/types/distribute";

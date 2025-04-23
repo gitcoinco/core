@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
 
 import { BallotValues } from "../types";
 import { BallotInput } from "./BallotInput";

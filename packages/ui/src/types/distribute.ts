@@ -1,6 +1,5 @@
+import { PoolStatus } from "@gitcoin/types";
 import Decimal from "decimal.js";
-
-import { PoolStatus } from "@/types";
 
 export interface ApplicationPayout {
   id: string;

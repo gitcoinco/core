@@ -1,0 +1,65 @@
+import "@gitcoin/ui/styles.css";
+import { withThemeByDataAttribute } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/react";
+import { initialize, mswLoader } from "msw-storybook-addon";
+import { mockDateDecorator } from "storybook-mock-date-decorator";
+
+import { handlers } from "../src/mocks/handlers";
+
+initialize();
+
+const preview: Preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: [
+          "Welcome",
+          "Docs",
+          "Styles",
+          "Features",
+          ["Checker", "Retrofunding", "Application", "*"],
+          "Components",
+          "Primitives",
+          "Pages",
+          "Shadcn",
+          "*",
+        ],
+        locales: "en-US",
+      },
+    },
+    msw: {
+      handlers,
+    },
+  },
+
+  loaders: [mswLoader],
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+      attributeName: "data-theme",
+    }),
+    mockDateDecorator,
+  ],
+
+  tags: ["autodocs"],
+};
+
+// NOTE: Example of global loaders
+// export const loaders = [
+//   async () => ({
+//     userData: await fetch('/api/user').then((res) => res.json()),
+//   }),
+// ];
+
+export default preview;

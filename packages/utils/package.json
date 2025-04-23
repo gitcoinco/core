@@ -1,27 +1,40 @@
 {
   "name": "@gitcoin/utils",
-  "version": "0.0.0-beta.41",
+  "version": "1.0.0-next.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/gitcoinco/core",
     "directory": "packages/utils"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "sideEffects": false,
   "license": "AGPL-3.0",
   "files": [
     "dist/**"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.mjs"
+    },
+    "./checker": {
+      "types": "./dist/checker/index.d.mts",
+      "import": "./dist/checker/index.mjs",
+      "require": "./dist/checker/index.mjs"
+    }
+  },
   "scripts": {
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "build": "tsup src/index.ts src/checker/index.ts --format esm --dts --external react",
+    "dev": "tsup src/index.ts src/checker/index.ts --format esm --watch --dts --external react",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@gitcoin/config": "workspace:*",
+    "@gitcoin/types": "workspace:*",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
@@ -29,7 +42,12 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "react": "18.3.1"
+    "@gitcoin/gitcoin-chain-data": "^1.0.43",
+    "clsx": "^2.1.1",
+    "moment": "^2.30.1",
+    "react": "18.3.1",
+    "tailwind-merge": "^2.5.4",
+    "viem": "^2.21.48"
   },
   "publishConfig": {
     "access": "public"

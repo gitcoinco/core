@@ -2,10 +2,11 @@
 
 import { PropsWithChildren } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@gitcoin/utils";
+
+import { DefaultLogo } from "@/assets";
 import { Skeleton } from "@/primitives/Skeleton";
 import { ProjectAllocation } from "@/types";
-import { DefaultLogo } from "@/assets";
 
 export const AllocationItem = ({
   id,
@@ -39,9 +40,7 @@ export const AllocationItem = ({
               }}
             />
           ) : (
-            <Skeleton
-              className={cn("size-6 shrink-0 rounded-lg")}
-            />
+            <Skeleton className={cn("size-6 shrink-0 rounded-lg")} />
           )}
           <div className="truncate font-ui-sans text-xs font-normal text-grey-900">
             {name || (

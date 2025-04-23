@@ -2,12 +2,12 @@
 
 import * as React from "react";
 
+import { cn } from "@gitcoin/utils";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import { X } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { ToasterToast } from "@/hooks/useToast";
-import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 
 // Define variant styles for the Toast viewport
