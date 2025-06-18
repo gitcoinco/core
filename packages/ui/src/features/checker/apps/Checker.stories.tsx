@@ -40,7 +40,12 @@ export const Default: Story = {
       );
     };
     return (
-      <CheckerProvider>
+      <CheckerProvider
+        config={{
+          checkerEndpoint: "https://checker-api-production.up.railway.app",
+          gsIndexerEndpoint: "https://hasura-production-3454.up.railway.app/v1/graphql",
+        }}
+      >
         <StoryWrapper />
       </CheckerProvider>
     );
