@@ -1,15 +1,16 @@
 // services/graphqlClient.ts
 import { GraphQLClient } from "graphql-request";
 
-// Base URL for the GraphQL API
-const GS_INDEXER_ENDPOINT = "https://yc7lia2566.execute-api.us-east-2.amazonaws.com/api/v1/graphql";
+let graphqlClient: GraphQLClient;
 
 // Create a new instance of GraphQLClient
-export const graphqlClient = new GraphQLClient(GS_INDEXER_ENDPOINT, {
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+export const initializeAlloClient = (endpoint: string) => {
+  graphqlClient = new GraphQLClient(endpoint, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 /**
  * Executes a GraphQL query.

@@ -1,6 +1,6 @@
 import { EvaluationBody } from "../../types";
 import { ProjectApplicationForManager } from "../allo";
-import { CHECKER_ENDPOINT } from "./checkerClient";
+import { getCheckerEndpoint } from "./checkerClient";
 
 export interface SyncPoolBody {
   chainId: number;
@@ -17,7 +17,7 @@ export interface TriggerLLMBody {
 export async function submitEvaluation(
   evaluationBody: EvaluationBody,
 ): Promise<{ evaluationId: string }> {
-  const url = `${CHECKER_ENDPOINT}/api/evaluate`;
+  const url = `${getCheckerEndpoint()}/api/evaluate`;
 
   try {
     const response = await fetch(url, {
@@ -42,7 +42,7 @@ export async function submitEvaluation(
 }
 
 export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
-  const url = `${CHECKER_ENDPOINT}/api/pools`;
+  const url = `${getCheckerEndpoint()}/api/pools`;
 
   try {
     const response = await fetch(url, {
@@ -69,7 +69,7 @@ export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
 }
 
 export async function triggerLLM(triggerLLMBody: TriggerLLMBody): Promise<boolean> {
-  const url = `${CHECKER_ENDPOINT}/api/evaluate/llm`;
+  const url = `${getCheckerEndpoint()}/api/evaluate/llm`;
 
   try {
     const response = await fetch(url, {
@@ -97,7 +97,7 @@ export async function triggerLLM(triggerLLMBody: TriggerLLMBody): Promise<boolea
 export async function verifyCredentials(
   application: Partial<ProjectApplicationForManager>,
 ): Promise<{ twitter: boolean; github: boolean }> {
-  const url = `${CHECKER_ENDPOINT}/api/passport/validate`;
+  const url = `${getCheckerEndpoint()}/api/passport/validate`;
 
   try {
     const response = await fetch(url, {

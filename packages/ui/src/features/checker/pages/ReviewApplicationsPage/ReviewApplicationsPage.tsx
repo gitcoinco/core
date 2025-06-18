@@ -60,10 +60,7 @@ export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean
   };
 
   const openCheckerApplicationEvaluations = (projectId: string) => {
-    window.open(
-      `https://beta.checker.gitcoin.co/view/application/${chainId}/${poolId}/${projectId}`,
-      "_blank",
-    );
+    window.open(`/view/application/${chainId}/${poolId}/${projectId}`, "_blank");
   };
 
   return (

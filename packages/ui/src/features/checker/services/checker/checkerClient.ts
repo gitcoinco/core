@@ -1,16 +1,20 @@
 // services/graphqlClient.ts
 import { GraphQLClient } from "graphql-request";
 
-// Base URL for the GraphQL API
-export const CHECKER_ENDPOINT = "https://api.checker.gitcoin.co";
-const CHECKER_GRAPHQL_ENDPOINT = `${CHECKER_ENDPOINT}/graphql`;
-
 // Create a new instance of GraphQLClient
-export const graphqlClient = new GraphQLClient(CHECKER_GRAPHQL_ENDPOINT, {
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+let graphqlClient: GraphQLClient;
+let _checkerEndpoint = "https://api.checker.gitcoin.co";
+export const getCheckerEndpoint = () => _checkerEndpoint;
+
+export const initializeCheckerClient = (endpoint: string) => {
+  _checkerEndpoint = endpoint;
+  const CHECKER_GRAPHQL_ENDPOINT = `${endpoint}/graphql`;
+  graphqlClient = new GraphQLClient(CHECKER_GRAPHQL_ENDPOINT, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 /**
  * Executes a GraphQL query.
