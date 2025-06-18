@@ -1,5 +1,11 @@
 # @gitcoin/ui
 
+## 0.0.0-beta.42
+
+### Patch Changes
+
+- [#85](https://github.com/gitcoinco/core/pull/85) [`7b1c601`](https://github.com/gitcoinco/core/commit/7b1c60163b6d927e14613cb2093ae59c7230aba8) Thanks [@ghostffcode](https://github.com/ghostffcode)! - Updated default setup for CheckerProvider with InitChecker
+
 ## 0.0.0-beta.41
 
 ### Patch Changes
